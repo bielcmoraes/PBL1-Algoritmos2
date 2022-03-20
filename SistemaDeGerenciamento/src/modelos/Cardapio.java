@@ -16,7 +16,7 @@ public class Cardapio {
 		ArrayList<Prato> selecionados = new ArrayList();
 		
 		//Fazer um código que recebe um array com nome dos pratos, procura no ArrayList
-		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList; Legal fera bem loko
+		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList; LUIS FERNANDO ESTEVE AQUI
 		
 		return selecionados;
 	}
