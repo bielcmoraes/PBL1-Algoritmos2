@@ -1,6 +1,6 @@
-package modelos;
+package gerenciamentos;
 
-public class Usuario {
+public abstract class Usuario {
 	private int id;
 	private String login;
 	private String senha;
@@ -9,13 +9,11 @@ public class Usuario {
 	public Usuario() {
 		login = "admin";
 		senha = "admin";
-		setVip(true);
 	}
 	
 	public Usuario(String login, String senha) {
 		this.login = login;
 		this.senha = senha;
-		setVip(false);
 	}
 	
 	//Getters e Setters
@@ -50,6 +48,4 @@ public class Usuario {
 	public void setVip(boolean vip) {
 		this.vip = vip;
 	}
-	
-	
 }

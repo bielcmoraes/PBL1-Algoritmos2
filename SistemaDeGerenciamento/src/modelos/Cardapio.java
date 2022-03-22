@@ -6,6 +6,7 @@ public class Cardapio {
 	
 	private int id;
 	private ArrayList<Prato> pratos;
+	
 	public Cardapio(ArrayList<Prato> pratos) {
 		this.pratos = pratos;
 	}

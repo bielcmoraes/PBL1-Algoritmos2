@@ -8,6 +8,7 @@ public class Fornecedor {
 	private String nome;
 	private int cnpj;
 	private String endereco;
+	private String clientes;
 	
 	public Fornecedor(String nome, int cnpj) {
 		this.nome = nome;
