@@ -1,24 +1,25 @@
 package modelos;
 
+import java.util.Date;
+
 public class Produto {
 	
 	private int id;
 	private String nome;
 	private double preco;
-	//private date validade;
+	private Date validade;
 	
 	public Produto(String nome, double preco) {
 		this.nome = nome;
 		this.preco = preco;
 	}
 	
-	/*
-	public Produto(String nome, double preco, date validade) {
+	public Produto(String nome, double preco, Date validade) {
 		this.nome = nome;
 		this.preco = preco;
-		this.validade = validade;
+		this.setValidade(validade);
 	}
-*/
+
 	
 	//Getters e Setters
 	public String getNome() {
@@ -43,6 +44,14 @@ public class Produto {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Date getValidade() {
+		return validade;
+	}
+
+	public void setValidade(Date validade) {
+		this.validade = validade;
 	}
 	
 }

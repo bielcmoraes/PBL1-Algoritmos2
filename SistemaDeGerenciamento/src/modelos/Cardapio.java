@@ -12,15 +12,11 @@ public class Cardapio {
 	}
 	
 	//Metodos
-	public ArrayList<Prato> selecionaPratos(String pratos[]){
+	
 		
-		ArrayList<Prato> selecionados = new ArrayList();
 		
 		//Fazer um código que recebe um array com nome dos pratos, procura no ArrayList
 		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList;
-		
-		return selecionados;
-	}
 	
 	//Getters e Setters
 	public int getId() {

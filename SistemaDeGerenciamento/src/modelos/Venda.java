@@ -12,16 +12,39 @@ public class Venda {
 	public Venda(ArrayList<Prato> itens, double precoTotal, String metodoDePagamento) {
 		
 		this.itens = itens;
-		this.metodoDePagamento = metodoDePagamento;
+		this.setMetodoDePagamento(metodoDePagamento);
 		
 		
 	}
 	
-	/*private double calculaPrecoTotal(ArrayList<Prato> comprados) {
+	//Metodo que seleciona um prato e adiciona no ArrayList de itens
+	//Lembrar de colocar o codigo abaixo no Construtor
+	public void selecionaPratos(ArrayList<Prato> pratos, String codigoPrato){
 		
-		for(int cont = 0; cont < comprados.length; cont++) {
-			precoTotal += comprados.preco;
+		for(Prato prato: pratos) {
+			if (prato.getId() == codigoPrato) {
+				itens.add(prato);
+			}
+		}
+	}
+	
+	private double setPrecoTotal(double precoTotal) {
+		
+		for(Prato item : itens) {
+			precoTotal += item.getPreco();
 		}
 		return precoTotal;
-	}*/
+	}
+
+	public double getPrecoTotal() {
+		return precoTotal;
+	}
+
+	public String getMetodoDePagamento() {
+		return metodoDePagamento;
+	}
+
+	public void setMetodoDePagamento(String metodoDePagamento) {
+		this.metodoDePagamento = metodoDePagamento;
+	}
 }

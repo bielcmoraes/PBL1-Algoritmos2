@@ -8,17 +8,18 @@ public class Fornecedor {
 	private String nome;
 	private int cnpj;
 	private String endereco;
-	private String clientes;
+	private String cliente;
 	
 	public Fornecedor(String nome, int cnpj) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 	}
 	
-	public Fornecedor(String nome, int cnpj, String endereco) {
+	public Fornecedor(String nome, int cnpj, String endereco, String cliente) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
+		this.cliente = cliente;
 	}
 	
 	//Setters e Getters
@@ -52,6 +53,14 @@ public class Fornecedor {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 	
 	
