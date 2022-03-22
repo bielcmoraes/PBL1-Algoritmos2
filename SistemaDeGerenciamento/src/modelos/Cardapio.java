@@ -16,7 +16,7 @@ public class Cardapio {
 		
 		
 		//Fazer um código que recebe um array com nome dos pratos, procura no ArrayList
-		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList;
+		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList
 	
 	//Getters e Setters
 	public int getId() {
