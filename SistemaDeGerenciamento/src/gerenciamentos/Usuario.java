@@ -4,7 +4,6 @@ public abstract class Usuario {
 	private int id;
 	private String login;
 	private String senha;
-	private boolean vip;
 	
 	public Usuario() {
 		login = "admin";
@@ -39,13 +38,5 @@ public abstract class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public boolean isVip() {
-		return vip;
-	}
-
-	public void setVip(boolean vip) {
-		this.vip = vip;
 	}
 }
