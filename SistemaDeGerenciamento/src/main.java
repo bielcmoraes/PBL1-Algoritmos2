@@ -1,8 +1,12 @@
+import modelos.Gerente;
 
 public class main {
 
 	public static void main(String[] args) {
-		System.out.println("Tá rodando");
+		
+		Gerente g1 = new Gerente();
+		
+		g1.cadastrar();
 
 	}
 
