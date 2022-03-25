@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.ListagemCopyable;
+import controller.ListagemCopyable;
 
 public class ListagemView implements ListagemCopyable {
 

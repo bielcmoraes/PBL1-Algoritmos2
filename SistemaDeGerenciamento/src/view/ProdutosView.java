@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.ProdutoCopyable;
+import controller.ProdutoCopyable;
 
 public class ProdutosView implements ProdutoCopyable {
 

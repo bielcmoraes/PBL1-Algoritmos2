@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import modelos.Prato;
@@ -8,17 +9,24 @@ import modelos.Venda;
 
 public class VendaView {
 	
-	private ArrayList<Prato> pratos;
-	public VendaView(ArrayList<Prato> listaDePratos) {
+	//Atributos
+	ArrayList<Prato> pratos;
+	//Contrutores
+	
+	//Metodos
+	public Venda cadastrarVenda(ArrayList<Prato> listaDePratos) {
 		
 		Scanner input = new Scanner(System.in);
+		Date data = new Date();
 		
-		String data = input.nextLine(); //Fazer uma função que converte datas para o tipo Date
+		System.out.println("Digite o codigo de um item do cardapio");
+		String primeiroItem = input.nextLine();
 		
-		this.pratos = listaDePratos;
-		String primeiroPrato = input.nextLine();
+		System.out.println("Digite o metodo de pagamento");
 		String metodoDePagamento = input.nextLine();
-		Venda venda = new Venda(data,listaDePratos, primeiroPrato, metodoDePagamento);
+		
+		Venda novaVenda = new Venda(data, pratos, primeiroItem, metodoDePagamento);
+		
+		return novaVenda;
 	}
-	
 	}

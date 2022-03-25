@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.UsuarioCopyable;
+import controller.UsuarioCopyable;
 
 public class UsuarioView implements UsuarioCopyable {
 

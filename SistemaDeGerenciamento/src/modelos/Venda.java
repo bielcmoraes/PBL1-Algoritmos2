@@ -16,6 +16,7 @@ public class Venda {
 		this.setMetodoDePagamento(metodoDePagamento);
 		
 		for(Prato prato: pratos) {
+			
 			if (prato.getId() == primeiroPrato) {
 				this.itens.add(prato);
 			}

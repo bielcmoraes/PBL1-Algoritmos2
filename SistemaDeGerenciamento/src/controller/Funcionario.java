@@ -1,14 +1,16 @@
-package modelos;
+package controller;
 
 import java.util.ArrayList;
 
-import interfaces.ListagemCopyable;
-import interfaces.VendaCopyable;
+import modelos.Prato;
+import modelos.Usuario;
+import modelos.Venda;
+import view.VendaView;
 
 public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
 	
 	//Atributos
-	
+	private ArrayList<Prato> listaDePratos;
 	
 	//Construtores
 	public Funcionario() {
@@ -21,10 +23,10 @@ public class Funcionario extends Usuario implements ListagemCopyable, VendaCopya
 	
 	//Metodos
 	@Override
-	public void cadastrarVenda(ArrayList<Venda> vendas) {
-		VendaView novaVenda = new VendaView();
-		vendaView.salvar();
+	public void cadastrarVenda(ArrayList<Venda> listaVendas) {
 		
+		VendaView venda = new VendaView();
+		Venda novaVenda = venda.cadastrarVenda(listaDePratos);
 	}
 
 	@Override

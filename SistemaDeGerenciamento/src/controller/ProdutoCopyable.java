@@ -1,4 +1,4 @@
-package interfaces;
+package controller;
 
 public interface ProdutoCopyable {
 	public void cadastrarProduto();

@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.CardapioCopyable;
+import controller.CardapioCopyable;
 
 public class CardapioView implements CardapioCopyable {
 

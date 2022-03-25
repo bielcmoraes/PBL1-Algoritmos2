@@ -1,6 +1,6 @@
-package modelos;
+package controller;
 
-import interfaces.CardapioCopyable;
+import modelos.Usuario;
 
 public class Gerente extends Usuario implements CardapioCopyable{
 

@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.FornecedorCopyable;
+import controller.FornecedorCopyable;
 
 public class FornecedorView implements FornecedorCopyable {
 

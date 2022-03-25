@@ -1,6 +1,6 @@
 package view;
 
-import interfaces.PratoCopyable;
+import controller.PratoCopyable;
 
 public class PratoView implements PratoCopyable {
 
