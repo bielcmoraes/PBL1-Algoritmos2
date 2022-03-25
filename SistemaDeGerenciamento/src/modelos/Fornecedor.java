@@ -1,9 +1,8 @@
 package modelos;
 
-// Testando
+
 public class Fornecedor {
 	
-	//testando git
 	private int id;
 	private String nome;
 	private int cnpj;
@@ -14,11 +13,10 @@ public class Fornecedor {
 		this.cnpj = cnpj;
 	}
 	
-	public Fornecedor(String nome, int cnpj, String endereco, String cliente) {
+	public Fornecedor(String nome, int cnpj, String endereco) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
-		this.cliente = cliente;
 	}
 	
 	//Setters e Getters

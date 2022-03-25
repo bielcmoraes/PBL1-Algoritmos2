@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaCardapio {
+public interface CardapioCopyable {
 	
 	public void cadastrarCardapio();
 	public void editarCardapio();

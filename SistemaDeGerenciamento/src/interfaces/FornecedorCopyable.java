@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaFornecedor {
+public interface FornecedorCopyable {
 
 	public void cadastrarFornecedor();
 	public void editarFornecedor();

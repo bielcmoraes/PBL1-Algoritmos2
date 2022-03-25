@@ -1,8 +1,8 @@
-package modelos;
+package view;
 
 import interfaces.CardapioCopyable;
 
-public class Gerente extends Usuario implements CardapioCopyable{
+public class CardapioView implements CardapioCopyable {
 
 	@Override
 	public void cadastrarCardapio() {

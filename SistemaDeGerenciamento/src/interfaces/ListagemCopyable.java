@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaListagem {
+public interface ListagemCopyable {
 	
 	public void listarCardapio();
 	public void listarFornecedor();

@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaPrato {
+public interface PratoCopyable {
 	
 	public void cadastrarPrato();
 	public void editarPrato();

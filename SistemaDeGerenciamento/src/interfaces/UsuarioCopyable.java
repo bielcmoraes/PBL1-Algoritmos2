@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaUsuario {
+public interface UsuarioCopyable {
 	
 	public void cadastrarUsuario();
 	public void editarUsuario();

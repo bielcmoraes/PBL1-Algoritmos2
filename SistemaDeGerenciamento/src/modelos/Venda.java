@@ -1,39 +1,50 @@
 package modelos;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Venda {
-	/*private date data;
-	private date hora;*/
+	private Date data;
 	private ArrayList<Prato> itens;
 	private double precoTotal;
 	private String metodoDePagamento;
 	
-	public Venda(ArrayList<Prato> itens, double precoTotal, String metodoDePagamento) {
+	//Construtores
+	public Venda(Date data, ArrayList<Prato> pratos, String primeiroPrato, String metodoDePagamento) {
 		
-		this.itens = itens;
+		this.data = data;
 		this.setMetodoDePagamento(metodoDePagamento);
 		
-		
-	}
-	
-	//Metodo que seleciona um prato e adiciona no ArrayList de itens
-	//Lembrar de colocar o codigo abaixo no Construtor
-	public void selecionaPratos(ArrayList<Prato> pratos, String codigoPrato){
-		
 		for(Prato prato: pratos) {
-			if (prato.getId() == codigoPrato) {
-				itens.add(prato);
+			if (prato.getId() == primeiroPrato) {
+				this.itens.add(prato);
 			}
 		}
+		
+		for(Prato item : this.itens) {
+			this.precoTotal += item.getPreco();
+		}
 	}
 	
-	private double setPrecoTotal(double precoTotal) {
+	//Atualiza o preço total
+	public void atualizaPrecoTotal() {
 		
-		for(Prato item : itens) {
-			precoTotal += item.getPreco();
+		for(Prato item : this.itens) {
+			this.precoTotal += item.getPreco();
 		}
-		return precoTotal;
+	}
+	
+	public void adicionaItens(ArrayList<Prato> pratos, String codigoPrato){
+		
+		//Adiciona mais um prata ao ArrayList de vendas
+		for(Prato prato: pratos) {
+			if (prato.getId() == codigoPrato) {
+				this.itens.add(prato);
+			}
+		
+		//Atualiza o preço Total apos adicionar mais um prato ao ArrayList de vendas
+		atualizaPrecoTotal();
+		}
 	}
 
 	public double getPrecoTotal() {
@@ -46,5 +57,13 @@ public class Venda {
 
 	public void setMetodoDePagamento(String metodoDePagamento) {
 		this.metodoDePagamento = metodoDePagamento;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 }

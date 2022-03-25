@@ -1,6 +1,6 @@
-package gerenciamentos;
+package interfaces;
 
-public interface GerenciaProduto {
+public interface ProdutoCopyable {
 	public void cadastrarProduto();
 	public void editarProduto();
 	public void excluirProduto();

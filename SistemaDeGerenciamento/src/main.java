@@ -1,12 +1,12 @@
 import modelos.Gerente;
+import view.CardapioView;
 
 public class main {
 
 	public static void main(String[] args) {
 		
-		Gerente g1 = new Gerente();
+		CardapioView g1 = new CardapioView();
 		
-		g1.cadastrar();
 
 	}
 
