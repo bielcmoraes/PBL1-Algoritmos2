@@ -2,24 +2,25 @@ package controller;
 
 import modelos.Usuario;
 
-public class Gerente extends Usuario implements CardapioCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable{
 
 	@Override
-	public void cadastrarCardapio() {
+	public void cadastrarFornecedor() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void editarCardapio() {
+	public void editarFornecedor() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void excluirCardapio() {
+	public void excluirFornecedor() {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
