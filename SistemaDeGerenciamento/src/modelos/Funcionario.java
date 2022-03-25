@@ -1,4 +1,4 @@
-package gerenciamentos;
+package modelos;
 
 public class Funcionario extends Usuario {
 	

@@ -1,4 +1,4 @@
-package gerenciamentos;
+package modelos;
 
 public class Gerente extends Usuario {
 	

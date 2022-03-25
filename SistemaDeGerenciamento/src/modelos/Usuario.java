@@ -1,4 +1,4 @@
-package gerenciamentos;
+package modelos;
 
 public abstract class Usuario {
 	private int id;
