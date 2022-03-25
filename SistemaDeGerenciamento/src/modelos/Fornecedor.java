@@ -3,17 +3,17 @@ package modelos;
 
 public class Fornecedor {
 	
-	private int id;
+	private String id;
 	private String nome;
-	private int cnpj;
+	private String cnpj;
 	private String endereco;
 	
-	public Fornecedor(String nome, int cnpj) {
+	public Fornecedor(String nome, String cnpj) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 	}
 	
-	public Fornecedor(String nome, int cnpj, String endereco) {
+	public Fornecedor(String nome, String cnpj, String endereco) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
@@ -28,11 +28,11 @@ public class Fornecedor {
 		this.nome = nome;
 	}
 
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(int cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
@@ -44,11 +44,11 @@ public class Fornecedor {
 		this.endereco = endereco;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

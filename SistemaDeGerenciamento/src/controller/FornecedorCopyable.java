@@ -1,8 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
+
+import modelos.Fornecedor;
+
 public interface FornecedorCopyable {
 
-	public void cadastrarFornecedor();
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores);
 	public void editarFornecedor();
 	public void excluirFornecedor();
 }

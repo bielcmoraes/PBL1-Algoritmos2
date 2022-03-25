@@ -17,6 +17,7 @@ public class BancoDeDados {
 	//Construtores
 	
 	/*
+	 Devemos instanciar os ArrayList no construtor
 	 Podemos inicializar o programa com dados atraves do construtor.
 	 Basta Instanciar objetos e adiciona-los a lista por aqui;
 	*/
