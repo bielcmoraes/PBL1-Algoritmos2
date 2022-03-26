@@ -7,6 +7,6 @@ import modelos.Fornecedor;
 public interface FornecedorCopyable {
 
 	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores);
-	public void editarFornecedor();
-	public void excluirFornecedor();
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores);
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores);
 }

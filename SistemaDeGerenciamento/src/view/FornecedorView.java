@@ -1,6 +1,9 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import modelos.Fornecedor;
 
 public class FornecedorView{
 
@@ -25,9 +28,33 @@ public class FornecedorView{
 		return info;
 	}
 
-	public void editarFornecedor() {
-		// TODO Auto-generated method stub
+	public static String buscaFornecedor() {
 		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Digite o codiigo do Fornecedor que deseja buscar");
+		String codigo = input.nextLine();
+		return codigo;
+	}
+	
+	public static String[] editarFornecedor() {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Digite um novo nome de fornecedor");
+		String nome = input.nextLine();
+		
+		System.out.println("Digite um novo CNPJ de fornecedor");
+		String cnpj = input.nextLine();
+		
+		System.out.println("Digite um novo endereço de fornecedor");
+		String endereco = input.nextLine();
+		
+		String [] info = new String[3];
+		
+		info[0] = nome;
+		info[1] = cnpj;
+		info[2] = endereco;
+		
+		return info;
 	}
 
 	public void excluirFornecedor() {

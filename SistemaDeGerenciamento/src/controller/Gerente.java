@@ -25,15 +25,32 @@ public class Gerente extends Usuario implements FornecedorCopyable{
 	}
 
 	@Override
-	public void editarFornecedor() {
-		// TODO Auto-generated method stub
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		
+		String codigoFornecedor = FornecedorView.buscaFornecedor();
+		try {
+			for(Fornecedor fornecedor : listaFornecedores) {
+				if(fornecedor.getId() == codigoFornecedor) {
+					String [] info = FornecedorView.cadastrarFornecedor();
+					fornecedor.setNome(info[0]);
+					fornecedor.setCnpj(info[1]);
+					fornecedor.setEndereco(info[2]);
+					
+					return true;
+				}
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException a){
+			System.out.println("Fornecedor não editado!!!");
+			System.out.println("Erro com o array");
+		}
+		return false;
 	}
 
 	@Override
-	public void excluirFornecedor() {
-		// TODO Auto-generated method stub
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		
+		return false;
 	}
 
 
