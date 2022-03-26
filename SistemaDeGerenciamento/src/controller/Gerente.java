@@ -50,6 +50,21 @@ public class Gerente extends Usuario implements FornecedorCopyable{
 	@Override
 	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		
+		String codigoFornecedor = FornecedorView.buscaFornecedor();
+		
+		try {
+			for(Fornecedor fornecedor : listaFornecedores) {
+				if(fornecedor.getId() == codigoFornecedor) {
+					int index = listaFornecedores.indexOf(fornecedor);
+					listaFornecedores.remove(index);
+					return true;
+				}
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException a) {
+			System.out.println("Fornecedor não removido!!!");
+			System.out.println("Erro no array");
+		}
 		return false;
 	}
 

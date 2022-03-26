@@ -1,10 +1,8 @@
 
 import java.util.ArrayList;
 
-import controller.Funcionario;
 import controller.Gerente;
 import modelos.Fornecedor;
-import modelos.Venda;
 
 //Fazer uma herança entre o main o BancoDeDados
 public class main {

@@ -57,9 +57,8 @@ public class FornecedorView{
 		return info;
 	}
 
-	public void excluirFornecedor() {
-		// TODO Auto-generated method stub
-		
+	public static String excluirFornecedor() {
+		return buscaFornecedor();
 	}
 
 }
