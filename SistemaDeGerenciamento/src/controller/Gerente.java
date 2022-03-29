@@ -37,6 +37,8 @@ public class Gerente extends Usuario implements FornecedorCopyable{
 					fornecedor.setEndereco(info[2]);
 					
 					return true;
+				}else {
+					System.out.println("Código de fornecedor não encontrado!!!");
 				}
 			}
 		}

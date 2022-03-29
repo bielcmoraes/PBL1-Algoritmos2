@@ -31,7 +31,7 @@ public class FornecedorView{
 	public static String buscaFornecedor() {
 		
 		Scanner input = new Scanner(System.in);
-		System.out.println("Digite o codiigo do Fornecedor que deseja buscar");
+		System.out.println("Digite o codigo do Fornecedor que deseja buscar");
 		String codigo = input.nextLine();
 		return codigo;
 	}

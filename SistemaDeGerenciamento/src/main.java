@@ -20,7 +20,6 @@ public class main {
 		
 		//Edita um fornecedor (Não vai funcionar pq não implementamos um metodo de gerar id)
 		g1.editarFornecedor(listaDeFornecedores);
-		System.out.println(listaDeFornecedores.get(0).getNome());
 		
 	}
 
