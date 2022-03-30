@@ -41,7 +41,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios) {
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
-		//Retorna o cadastro de usuario
+		//Retorna o cadastro de usuari0
 		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios);
 	}
 
