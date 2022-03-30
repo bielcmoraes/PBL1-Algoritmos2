@@ -7,9 +7,8 @@ import modelos.*;
 public class BancoDeDados {
 	
 	//Atributos
-	private ArrayList<Cardapio> listaCardapios;
 	private ArrayList<Fornecedor> listaFornecedores;
-	private ArrayList<Prato> listaPratos;
+	private ArrayList<Prato> cardapio;
 	private ArrayList<Produto> listaProdutos;
 	private ArrayList<Usuario> listaUsuarios;
 	private ArrayList<Venda> listaVendas;
@@ -22,23 +21,11 @@ public class BancoDeDados {
 	 Basta Instanciar objetos e adiciona-los a lista por aqui;
 	*/
 	//Metodos
-	public ArrayList<Cardapio> getListaCardapios() {
-		return listaCardapios;
-	}
-	public void setListaCardapios(ArrayList<Cardapio> listaCardapios) {
-		this.listaCardapios = listaCardapios;
-	}
 	public ArrayList<Fornecedor> getListaFornecedores() {
 		return listaFornecedores;
 	}
 	public void setListaFornecedores(ArrayList<Fornecedor> listaFornecedores) {
 		this.listaFornecedores = listaFornecedores;
-	}
-	public ArrayList<Prato> getListaPratos() {
-		return listaPratos;
-	}
-	public void setListaPratos(ArrayList<Prato> listaPratos) {
-		this.listaPratos = listaPratos;
 	}
 	public ArrayList<Produto> getListaProdutos() {
 		return listaProdutos;
@@ -57,6 +44,12 @@ public class BancoDeDados {
 	}
 	public void setListaVendas(ArrayList<Venda> listaVendas) {
 		this.listaVendas = listaVendas;
+	}
+	public ArrayList<Prato> getCardapio() {
+		return cardapio;
+	}
+	public void setCardapio(ArrayList<Prato> cardapio) {
+		this.cardapio = cardapio;
 	}
 	
 	
