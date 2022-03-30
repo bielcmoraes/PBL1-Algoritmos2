@@ -6,7 +6,16 @@ import modelos.Fornecedor;
 import modelos.Usuario;
 
 public class Gerente extends Usuario implements FornecedorCopyable{
-
+	
+	//Contrutores
+	public Gerente() {
+		super();
+	}
+	
+	public Gerente(String login, String senha) {
+		super(login, senha);
+	}
+	
 	@Override
 	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		

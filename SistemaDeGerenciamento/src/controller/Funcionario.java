@@ -13,9 +13,6 @@ public class Funcionario extends Usuario implements ListagemCopyable, VendaCopya
 	private ArrayList<Prato> listaDePratos;
 	
 	//Construtores
-	public Funcionario() {
-		super();
-	}
 	
 	public Funcionario(String login, String senha) {
 		super(login, senha);

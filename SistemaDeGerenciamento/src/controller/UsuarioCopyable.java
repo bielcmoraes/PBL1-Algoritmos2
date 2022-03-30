@@ -1,8 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
+
+import modelos.Usuario;
+
 public interface UsuarioCopyable {
 	
-	public void cadastrarUsuario();
-	public void editarUsuario();
-	public void excluirUsuario();
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios);
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios);
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios);
 }
