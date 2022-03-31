@@ -13,19 +13,25 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void mostrarCardapio(ArrayList<Prato> cardapio) {
-		// TODO Auto-generated method stub
+		for(Prato prato: cardapio) {
+			System.out.println(prato.getNome() + "-----" + prato.getPreco());
+		}
 		
 	}
 
 	@Override
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
-		// TODO Auto-generated method stub
+		for(Fornecedor fornecedor: listaFornecedores) {
+			System.out.println(fornecedor.getNome() + "----- CNPJ: " + fornecedor.getCnpj());
+		}
 		
 	}
 
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {
-		// TODO Auto-generated method stub
+		for(Produto produto: listaProdutos) {
+			System.out.println(produto.getNome() + "----- Preço: " + produto.getPreco());
+		}
 		
 	}
 

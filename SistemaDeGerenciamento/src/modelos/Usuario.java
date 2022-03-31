@@ -3,20 +3,25 @@ package modelos;
 
 public abstract class Usuario {
 	private int id;
+	private String nome;
 	private String login;
 	private String senha;
 	
-	public Usuario() {
-		login = "admin";
-		senha = "admin";
-	}
-	
-	public Usuario(String login, String senha) {
+	public Usuario(String nome, String login, String senha) {
+		this.setNome(nome);
 		this.login = login;
 		this.senha = senha;
 	}
 	
 	//Getters e Setters
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}
