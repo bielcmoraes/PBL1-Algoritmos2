@@ -7,6 +7,15 @@ import java.util.Scanner;
 
 public class Login {
 	
+	//Contrutores
+	public Login(ArrayList<Usuario> listaUsuarios) {
+		
+		if(listaUsuarios.isEmpty()) {
+			GerenciaUsuario gerenciadorDeUsuario = new GerenciaUsuario();
+			gerenciadorDeUsuario.cadastrarUsuario(listaUsuarios);
+		}
+	}
+	
 	private static String[] telaLogin() {
 			
 			Scanner input = new Scanner(System.in);
@@ -30,6 +39,7 @@ public class Login {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 }

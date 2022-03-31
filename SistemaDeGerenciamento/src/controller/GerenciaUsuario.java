@@ -14,6 +14,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 			Gerente novoGerente = new Gerente(infoUsuario[0], infoUsuario[1]);
 			listaUsuarios.add(novoGerente);
 			return true;
+			
 		}else if(infoUsuario[2] == "2"){
 			Funcionario novoFuncionario = new Funcionario(infoUsuario[0], infoUsuario[1]);
 			listaUsuarios.add(novoFuncionario);

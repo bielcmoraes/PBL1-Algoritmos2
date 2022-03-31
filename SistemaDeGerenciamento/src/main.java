@@ -12,8 +12,7 @@ public class main {
 		
 		//Intaciar um usuario;
 		//Add esse usuario na lista de usuarios;
-		Login login = new Login();
-		boolean logado = login.validaLogin(null);
+		
 		
 	}
 

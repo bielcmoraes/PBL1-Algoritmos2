@@ -14,7 +14,7 @@ public class UsuarioView {
 		System.out.println("Digite a senha do Usuario");
 		String senha = input.nextLine();
 		System.out.println("Digite 1 para cadastrar um Gerente ou 2 para cadastrar um funcionariF");
-		String decisao = input.nextInt();
+		String decisao = input.nextLine();
 		String[] infoUsuario = new String[3];
 		infoUsuario[0] = login;
 		infoUsuario[1] = senha;
