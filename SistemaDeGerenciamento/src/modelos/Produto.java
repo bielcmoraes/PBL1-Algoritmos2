@@ -1,27 +1,32 @@
 package modelos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class Produto {
+public class Produto extends Entidade {
 	
-	private int id;
+	// Attributes
+	private static int ultimoId = 0;
 	private String nome;
-	private double preco;
-	private Date validade;
+	private Double preco;
+	private LocalDate validade;
 	
-	public Produto(String nome, double preco) {
+	// Constructor
+	public Produto(String nome, Double preco, LocalDate validade) {
+		super(ultimoId++);
 		this.nome = nome;
 		this.preco = preco;
-	}
-	
-	public Produto(String nome, double preco, Date validade) {
-		this.nome = nome;
-		this.preco = preco;
-		this.setValidade(validade);
+		this.validade = validade;
 	}
 
+	// Methods
+	public static int getUltimoId() {
+		return ultimoId;
+	}
+
+	public static void setUlitmo_Id(int ulitmo_Id) {
+		Produto.ultimoId = ulitmo_Id;
+	}
 	
-	//Getters e Setters
 	public String getNome() {
 		return nome;
 	}
@@ -30,28 +35,19 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Date getValidade() {
+	public LocalDate getValidade() {
 		return validade;
 	}
 
-	public void setValidade(Date validade) {
+	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
-	
 }
