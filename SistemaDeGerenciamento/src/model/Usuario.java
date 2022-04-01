@@ -1,11 +1,12 @@
 
-package modelos;
+package model;
 
 public abstract class Usuario {
 	private String id;
 	private String nome;
 	private String login;
 	private String senha;
+	//private String tipo;
 	
 	//Construtores
 	

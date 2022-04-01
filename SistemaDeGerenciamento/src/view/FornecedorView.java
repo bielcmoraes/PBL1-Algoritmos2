@@ -1,9 +1,8 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import modelos.Fornecedor;
+import model.Fornecedor;
 
 public class FornecedorView{
 

@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.Usuario;
+import model.Usuario;
 
 public interface UsuarioCopyable {
 	

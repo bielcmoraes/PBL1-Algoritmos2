@@ -2,12 +2,12 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.*;
+import model.*;
 
 public class BancoDeDados {
 	
 	//Atributos
-	private ArrayList<Fornecedor> listaFornecedores;
+	private ArrayList<Fornecedor> listaFornecedores = new ArrayList<Fornecedor>();
 	private ArrayList<Prato> cardapio;
 	private ArrayList<Produto> listaProdutos;
 	private ArrayList<Usuario> listaUsuarios;

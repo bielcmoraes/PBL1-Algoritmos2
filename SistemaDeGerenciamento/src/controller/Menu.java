@@ -1,14 +1,21 @@
 package controller;
 
+import modelos.Usuario;
 import view.MenuView;
 
 public class Menu {
 	
-	public static boolean login() {
-		MenuView.primeiraTelaFuncionario();
-		case 1
-			return true;
+	do {
+		Usuario login = Login.validaLogin(null);
+	}while(login =! null) {
+		Usuario usuario = Login.validaLogin(null);
 	}
 	
-	
+	if (usuario istanceof Gerente) {
+		Funcionario g1 = new Funcionario();
+		MenuView.primeiraTelaGerente();
+		g1.
+		
+		
+	}
 }

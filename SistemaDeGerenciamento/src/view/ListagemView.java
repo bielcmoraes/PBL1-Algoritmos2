@@ -3,11 +3,11 @@ package view;
 import java.util.ArrayList;
 
 import controller.ListagemCopyable;
-import modelos.Fornecedor;
-import modelos.Prato;
-import modelos.Produto;
-import modelos.Usuario;
-import modelos.Venda;
+import model.Fornecedor;
+import model.Prato;
+import model.Produto;
+import model.Usuario;
+import model.Venda;
 
 public class ListagemView implements ListagemCopyable {
 

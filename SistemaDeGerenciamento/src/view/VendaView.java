@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import modelos.Prato;
-import modelos.Venda;
+import model.Prato;
+import model.Venda;
 
 public class VendaView {
 	
