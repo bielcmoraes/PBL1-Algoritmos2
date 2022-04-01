@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import controller.BancoDeDados;
 import controller.Gerente;
 import controller.Login;
-import modelos.Fornecedor;
+import model.Fornecedor;
 
 //Fazer uma herança entre o main o BancoDeDados
 public class main {

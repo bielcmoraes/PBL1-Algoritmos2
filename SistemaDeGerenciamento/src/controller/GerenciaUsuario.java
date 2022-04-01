@@ -2,8 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.Fornecedor;
-import modelos.Usuario;
+import model.Fornecedor;
+import model.Usuario;
 import view.FornecedorView;
 import view.UsuarioView;
 

@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.Venda;
+import model.Venda;
 
 public interface VendaCopyable {
 	

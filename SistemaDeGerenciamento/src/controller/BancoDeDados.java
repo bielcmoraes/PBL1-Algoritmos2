@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.*;
+import model.*;
 
 public class BancoDeDados {
 	

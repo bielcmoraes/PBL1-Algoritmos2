@@ -1,10 +1,11 @@
 package controller;
 
-import modelos.Usuario;
 import view.LoginView;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import model.Usuario;
 
 public class Login {
 	

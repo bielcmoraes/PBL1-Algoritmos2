@@ -2,7 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import modelos.Fornecedor;
+import model.Fornecedor;
 import view.FornecedorView;
 
 public class GerenciaFornecedor implements FornecedorCopyable {
