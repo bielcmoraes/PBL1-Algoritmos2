@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Produto {
 	
-	private int id;
+	private String id;
 	private String nome;
 	private double preco;
 	private Date validade;
@@ -38,11 +38,11 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
