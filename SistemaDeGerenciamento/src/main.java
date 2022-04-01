@@ -8,9 +8,8 @@ import controller.Gerente;
 import controller.Login;
 <<<<<<< HEAD
 import modelos.Fornecedor;
-import modelos.Produto;
-=======
 import model.Fornecedor;
+import model.Produto;
 >>>>>>> branch 'master' of https://github.com/bielcmoraes/PBL1-Algoritmos2.git
 
 //Fazer uma herança entre o main o BancoDeDados

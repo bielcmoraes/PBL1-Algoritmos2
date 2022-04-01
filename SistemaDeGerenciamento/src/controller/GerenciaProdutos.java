@@ -3,7 +3,7 @@ package controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import modelos.Produto;
+import model.Produto;
 
 public class GerenciaProdutos implements ProdutoCopyable {
 	// Attributes
