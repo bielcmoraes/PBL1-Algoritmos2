@@ -51,7 +51,7 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	@Override
 	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		
-String codigoFornecedor = FornecedorView.buscaFornecedor();
+		String codigoFornecedor = FornecedorView.buscaFornecedor();
 		
 		try {
 			for(Fornecedor fornecedor : listaFornecedores) {

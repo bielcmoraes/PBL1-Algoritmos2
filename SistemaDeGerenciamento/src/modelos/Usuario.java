@@ -2,11 +2,19 @@
 package modelos;
 
 public abstract class Usuario {
-	private int id;
+	private String id;
 	private String nome;
 	private String login;
 	private String senha;
 	
+	//Construtores
+	
+	public Usuario() {
+		
+		this.nome = "Master";
+		this.login = "admin";
+		this.senha = "admin";
+	}
 	public Usuario(String nome, String login, String senha) {
 		this.setNome(nome);
 		this.login = login;
@@ -22,11 +30,11 @@ public abstract class Usuario {
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

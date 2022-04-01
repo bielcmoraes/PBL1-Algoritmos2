@@ -35,14 +35,15 @@ public class UsuarioView {
 	
 	public static String[] editaUsuario() {
 		
+		//Edita nome e senha (Não é possivel modificar o login)
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o novo Nome do Usuario");
-		String novoLogin = input.nextLine();
+		String novoNome = input.nextLine();
 		System.out.println("Digite a nova Senha de Usuario");
 		String novaSenha = input.nextLine();
 		
 		String [] infoUsuario = new String [2];
-		infoUsuario[0] = novoLogin;
+		infoUsuario[0] = novoNome;
 		infoUsuario[1] = novaSenha;
 		return infoUsuario;
 	}

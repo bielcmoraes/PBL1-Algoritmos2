@@ -12,10 +12,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		super();
 	}
 	
-	public Gerente(String login, String senha) {
-		super(login, senha);
+	public Gerente(String nome, String login, String senha) {
+		super(nome, login, senha);
 	}
 	
+	//Metodos do gerenciamento de fornecedores
 	@Override
 	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		
@@ -36,7 +37,8 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
 		return gerenciamentoFornecedor.excluirFornecedor(listaFornecedores);
 	}
-
+	
+	//Metodos do gerenciamento de Usuario
 	@Override
 	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios) {
 		//Istancia o gerenciamento de usuario

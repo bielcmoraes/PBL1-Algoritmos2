@@ -2,7 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 
+import modelos.Fornecedor;
 import modelos.Prato;
+import modelos.Produto;
 import modelos.Usuario;
 import modelos.Venda;
 import view.VendaView;
@@ -13,12 +15,15 @@ public class Funcionario extends Usuario implements ListagemCopyable, VendaCopya
 	private ArrayList<Prato> listaDePratos;
 	
 	//Construtores
-	
-	public Funcionario(String login, String senha) {
-		super(login, senha);
+	public Funcionario() {
+		super();
 	}
 	
-	//Metodos
+	public Funcionario(String nome, String login, String senha) {
+		super(nome, login, senha);
+	}
+	
+	//Metodos de venda
 	@Override
 	public void cadastrarVenda(ArrayList<Venda> listaVendas) {
 		
@@ -37,42 +42,39 @@ public class Funcionario extends Usuario implements ListagemCopyable, VendaCopya
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	//Metodos de listagem
 	@Override
-	public void listarCardapio() {
+	public void mostrarCardapio(ArrayList<Prato> listaFornecedores) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void listarFornecedor() {
+	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void listarPrato() {
+	public void listarProduto(ArrayList<Produto> listaFornecedores) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void listarProduto() {
+	public void listarUsuario(ArrayList<Usuario> listaFornecedores) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void listarUsuario() {
+	public void listarVenda(ArrayList<Venda> listaFornecedores) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void listarVenda() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 }
