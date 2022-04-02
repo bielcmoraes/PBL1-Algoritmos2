@@ -19,16 +19,26 @@ public class Login {
 		}
 	}
 	
-	public static Usuario validaLogin(ArrayList<Usuario> listaUsuarios) {
+	public static Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios) {
 		
-		String[] infoLogin = LoginView.logar();
+		boolean logadoComSucesso = false;
 		
-		for(Usuario usuario: listaUsuarios) {
-			if(usuario.getLogin() == infoLogin[0] && usuario.getSenha() == infoLogin[1]) {
-				
-				return usuario;
+		//Tente validar o login
+		do{
+			String[] infoLogin = LoginView.logar();
+			for(Usuario usuario: listaUsuarios) {
+				if(usuario.getLogin() == infoLogin[0] && usuario.getSenha() == infoLogin[1]) {
+					System.out.println("Passou");
+					logadoComSucesso = true;
+					return usuario;
+				}
 			}
-		}
+			
+			//Mensagem de erro de login
+			LoginView.erroLogin();
+		} while(logadoComSucesso == false); //Repita enquanto não conseguir logar;
+		
 		return null;
 	}
+		
 }

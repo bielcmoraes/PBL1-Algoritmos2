@@ -10,7 +10,7 @@ public class BancoDeDados {
 	private ArrayList<Fornecedor> listaFornecedores = new ArrayList<Fornecedor>();
 	private ArrayList<Prato> cardapio;
 	private ArrayList<Produto> listaProdutos;
-	private ArrayList<Usuario> listaUsuarios;
+	private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	private ArrayList<Venda> listaVendas;
 	
 	//Construtores

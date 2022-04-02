@@ -17,4 +17,10 @@ public class LoginView {
 		validacao[1] = senha;
 		return validacao;
 	}
+	
+	public static void erroLogin() {
+		
+		System.out.println("Login ou senha incorretos!!!");
+		System.out.println("Tente novamente!!!");
+	}
 }
