@@ -12,28 +12,29 @@ public class Login {
 	//Contrutores
 	public Login(ArrayList<Usuario> listaUsuarios) {
 		
+		//Se a lista estiver vazia adicionamos o usuario "Master" na lista;
 		if(listaUsuarios.isEmpty()) {
-			GerenciaUsuario gerenciadorDeUsuario = new GerenciaUsuario();
-			gerenciadorDeUsuario.cadastrarUsuario(listaUsuarios);
+			Usuario primeiroUsuario = new Usuario();
+			listaUsuarios.add(primeiroUsuario);
 		}
 	}
 	
-	public static Usuario validaLogin(ArrayList<Usuario> listaUsuarios) {
+	public static boolean validaLogin(ArrayList<Usuario> listaUsuarios) {
 		
 		String[] infoLogin = LoginView.logar();
 		
 		for(Usuario usuario: listaUsuarios) {
 			if(usuario.getLogin() == infoLogin[0] && usuario.getSenha() == infoLogin[1]) {
-				if(usuario instanceof Gerente) {
-					Gerente gerenteLogado = new Gerente();
-					return gerenteLogado;
+				if(usuario.getCargo() == "Gerente") {
+					PermissoesGerente gerenteLogado = new PermissoesGerente();
+					return true;
 				}
-				else if(usuario instanceof Funcionario){
-					Funcionario funcionarioLogado = new Funcionario();
-					return funcionarioLogado;
+				else if(usuario.getCargo() == "Funcionario"){
+					PermissoesFuncionario funcionarioLogado = new PermissoesFuncionario();
+					return true;
 				}
 			}
 		}
-		return null;
+		return false;
 	}
 }

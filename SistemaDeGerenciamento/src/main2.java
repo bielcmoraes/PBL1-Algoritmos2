@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-import controller.Gerente;
+import controller.PermissoesGerente;
 import controller.Login;
 import model.Fornecedor;
 

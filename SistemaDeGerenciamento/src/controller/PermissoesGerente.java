@@ -5,16 +5,7 @@ import java.util.ArrayList;
 import model.Fornecedor;
 import model.Usuario;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable{
-	
-	//Contrutores
-	public Gerente() {
-		super();
-	}
-	
-	public Gerente(String nome, String login, String senha) {
-		super(nome, login, senha);
-	}
+public class PermissoesGerente implements FornecedorCopyable, UsuarioCopyable{
 	
 	//Metodos do gerenciamento de fornecedores
 	@Override

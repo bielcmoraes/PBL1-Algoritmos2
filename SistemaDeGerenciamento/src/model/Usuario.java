@@ -1,12 +1,12 @@
 
 package model;
 
-public abstract class Usuario {
+public class Usuario {
 	private String id;
 	private String nome;
+	private String cargo;
 	private String login;
 	private String senha;
-	//private String tipo;
 	
 	//Construtores
 	
@@ -15,9 +15,11 @@ public abstract class Usuario {
 		this.nome = "Master";
 		this.login = "admin";
 		this.senha = "admin";
+		this.setCargo("Gerente");
 	}
-	public Usuario(String nome, String login, String senha) {
-		this.setNome(nome);
+	public Usuario(String nome, String cargo, String login, String senha) {
+		this.nome = nome;
+		this.setCargo(cargo);
 		this.login = login;
 		this.senha = senha;
 	}
@@ -31,6 +33,13 @@ public abstract class Usuario {
 		this.nome = nome;
 	}
 
+	public String getCargo() {
+		return cargo;
+	}
+	
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 	public String getId() {
 		return id;
 	}

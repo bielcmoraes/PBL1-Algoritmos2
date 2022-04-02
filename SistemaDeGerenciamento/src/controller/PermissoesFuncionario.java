@@ -9,19 +9,12 @@ import model.Usuario;
 import model.Venda;
 import view.VendaView;
 
-public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
+public class PermissoesFuncionario implements ListagemCopyable, VendaCopyable{
 	
 	//Atributos
 	private ArrayList<Prato> listaDePratos;
 	
 	//Construtores
-	public Funcionario() {
-		super();
-	}
-	
-	public Funcionario(String nome, String login, String senha) {
-		super(nome, login, senha);
-	}
 	
 	//Metodos de venda
 	@Override

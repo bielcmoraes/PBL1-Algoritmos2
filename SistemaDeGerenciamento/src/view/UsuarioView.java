@@ -12,17 +12,18 @@ public class UsuarioView {
 		
 		System.out.println("Digite o nome do usuario");
 		String nome = input.nextLine();
+		System.out.println("Digite o cargo do usuario");
+		String cargo = input.nextLine();
 		System.out.println("Digite um Login para o usuario");
 		String login = input.nextLine();
 		System.out.println("Digite a senha do Usuario");
 		String senha = input.nextLine();
-		System.out.println("Digite 1 para cadastrar um Gerente ou 2 para cadastrar um funcionariF");
-		String decisao = input.nextLine();
+
 		String[] infoUsuario = new String[4];
 		infoUsuario[0] = nome;
-		infoUsuario[1] = login;
-		infoUsuario[2] = senha;
-		infoUsuario[3] = decisao;
+		infoUsuario[1] = cargo;
+		infoUsuario[2] = login;
+		infoUsuario[3] = senha;
 		return infoUsuario;
 	}
 	

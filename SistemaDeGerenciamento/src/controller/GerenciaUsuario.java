@@ -12,19 +12,18 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	@Override
 	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios) {
 		String [] infoUsuario = UsuarioView.cadastraUsuario();
-		if(infoUsuario[3] == "1") {
-			//Cria um novo Gerente e adiciona na lista
-			Gerente novoGerente = new Gerente(infoUsuario[0], infoUsuario[1], infoUsuario[2]);
-			listaUsuarios.add(novoGerente);
+		
+		try {
+			//Cria um novo Usuario e adiciona na lista
+			Usuario novoUsuario = new Usuario(infoUsuario[0], infoUsuario[1], infoUsuario[2], infoUsuario[3]);
+			listaUsuarios.add(novoUsuario);
 			return true;
-			
-		}else if(infoUsuario[3] == "2"){
-			//Cria um novo Funcionario e adiciona na lista
-			Funcionario novoFuncionario = new Funcionario(infoUsuario[0], infoUsuario[1], infoUsuario[2]);
-			listaUsuarios.add(novoFuncionario);
-			return true;
+		}catch(ArrayIndexOutOfBoundsException a){
+			System.out.println("Usuario não cadastrado");
+			System.out.println("Problema com o array");
+			return false;
 		}
-		return false;
+	
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 		try {
 			for(Usuario usuario : listaUsuarios) {
 				if(usuario.getId() == codigoUsuario) {
-					String [] info = FornecedorView.cadastrarFornecedor();
+					String [] info = UsuarioView.editaUsuario();
 					usuario.setNome(info[0]);
 					usuario.setSenha(info[1]);
 					return true;
