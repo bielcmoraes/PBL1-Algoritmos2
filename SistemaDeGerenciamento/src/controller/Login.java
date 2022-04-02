@@ -19,22 +19,16 @@ public class Login {
 		}
 	}
 	
-	public static boolean validaLogin(ArrayList<Usuario> listaUsuarios) {
+	public static Usuario validaLogin(ArrayList<Usuario> listaUsuarios) {
 		
 		String[] infoLogin = LoginView.logar();
 		
 		for(Usuario usuario: listaUsuarios) {
 			if(usuario.getLogin() == infoLogin[0] && usuario.getSenha() == infoLogin[1]) {
-				if(usuario.getCargo() == "Gerente") {
-					PermissoesGerente gerenteLogado = new PermissoesGerente();
-					return true;
-				}
-				else if(usuario.getCargo() == "Funcionario"){
-					PermissoesFuncionario funcionarioLogado = new PermissoesFuncionario();
-					return true;
-				}
+				
+				return usuario;
 			}
 		}
-		return false;
+		return null;
 	}
 }
