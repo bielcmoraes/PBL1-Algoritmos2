@@ -13,8 +13,8 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
 		String[] info = ProdutosView.cadastrarProduto();
 		Double preco = Double.parseDouble(info[1]);
-		DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate validade = LocalDate.parse(info[2], dataFormato);
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate validade = LocalDate.parse(info[2], formatoData);
 		Produto novoProduto = new Produto(listaIds, info[0], preco, validade);
 		
 		try {
@@ -34,7 +34,8 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		String codigoProduto = ProdutosView.buscaProduto();
 		try {
 			for(Produto produto : listaProdutos) {
-				if(produto.getId() == codigoProduto) {
+				if(codigoProduto.equals(produto.getId())) {
+					
 					String [] info = ProdutosView.editarProduto();
 					produto.setNome(info[0]);
 					Double preco = Double.parseDouble(info[1]);
@@ -44,10 +45,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 					produto.setValidade(validade);
 					
 					return true;
-				}else {
-					System.out.println("Codigo de fornecedor nao encontrado!!!");
 				}
 			}
+			System.out.println("Codigo de produto nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a){
 			System.out.println("Produto nao editado!!!");
@@ -63,12 +63,13 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		
 		try {
 			for(Produto produto : listaProdutos) {
-				if(produto.getId() == codigoProduto) {
+				if(codigoProduto.equals(produto.getId())) {
 					int index = listaProdutos.indexOf(produto);
 					listaProdutos.remove(index);
 					return true;
 				}
 			}
+			System.out.println("Codigo de produto nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a) {
 			System.out.println("Produto nao removido!!!");

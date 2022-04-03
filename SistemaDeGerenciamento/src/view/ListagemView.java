@@ -1,5 +1,6 @@
 package view;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import controller.ListagemCopyable;
@@ -29,8 +30,15 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {
+		System.out.println("Produtos");
+		System.out.format("%-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO", "VALIDADE");
 		for(Produto produto: listaProdutos) {
-			System.out.println(produto.getNome() + "----- Preço: " + produto.getPreco());
+			DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			System.out.format("%-15s %-15s R$ %-12.2f %-15s\n", 
+					produto.getId(), 
+					produto.getNome(), 
+					produto.getPreco(),
+					produto.getValidade().format(formatoData));
 		}
 		
 	}
