@@ -12,6 +12,7 @@ public class BancoDeDados {
 	private ArrayList<Produto> listaProdutos;
 	private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	private ArrayList<Venda> listaVendas;
+	private ArrayList<String> listaIds = new ArrayList<String>();
 	
 	//Construtores
 	
@@ -24,33 +25,26 @@ public class BancoDeDados {
 	public ArrayList<Fornecedor> getListaFornecedores() {
 		return listaFornecedores;
 	}
-	public void setListaFornecedores(ArrayList<Fornecedor> listaFornecedores) {
-		this.listaFornecedores = listaFornecedores;
-	}
+	
 	public ArrayList<Produto> getListaProdutos() {
 		return listaProdutos;
 	}
-	public void setListaProdutos(ArrayList<Produto> listaProdutos) {
-		this.listaProdutos = listaProdutos;
-	}
+
 	public ArrayList<Usuario> getListaUsuarios() {
 		return listaUsuarios;
 	}
-	public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
-		this.listaUsuarios = listaUsuarios;
-	}
+	
+	
 	public ArrayList<Venda> getListaVendas() {
 		return listaVendas;
 	}
-	public void setListaVendas(ArrayList<Venda> listaVendas) {
-		this.listaVendas = listaVendas;
-	}
+	
 	public ArrayList<Prato> getCardapio() {
 		return cardapio;
 	}
-	public void setCardapio(ArrayList<Prato> cardapio) {
-		this.cardapio = cardapio;
-	}
 	
+	public ArrayList<String> getListaIds() {
+		return listaIds;
+	}
 	
 }

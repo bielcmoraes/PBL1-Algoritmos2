@@ -1,21 +1,28 @@
 package controller;
 
-import modelos.Usuario;
 import view.MenuView;
+import view.SubMenuView;
 
 public class Menu {
 	
-	do {
-		Usuario login = Login.validaLogin(null);
-	}while(login =! null) {
-		Usuario usuario = Login.validaLogin(null);
+	public static int[] gerente() {
+		int escolha = MenuView.primeiraTelaGerente();
+		int [] decisoes = new int[2];
+		
+		if(escolha != 6 && escolha != 7) {
+			int resposta = SubMenuView.telaMenuGerenciamentos();
+			decisoes[0] = escolha;
+			decisoes[1] = resposta;
+	
+		}else if(escolha == 6) {
+			int resposta = SubMenuView.telaMenuListagem();
+			decisoes[0] = escolha;
+			decisoes[1] = resposta;
+			
+		}else {
+			System.out.println("Saindo...");
+		}
+		return decisoes;
 	}
 	
-	if (usuario istanceof Gerente) {
-		Funcionario g1 = new Funcionario();
-		MenuView.primeiraTelaGerente();
-		g1.
-		
-		
-	}
 }

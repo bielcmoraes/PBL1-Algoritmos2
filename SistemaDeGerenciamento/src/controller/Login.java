@@ -19,7 +19,8 @@ public class Login {
 		}
 	}
 	
-	public static Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios) {
+	//Metodos
+	public Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios) {
 		
 		boolean logadoComSucesso = false;
 		
@@ -27,8 +28,7 @@ public class Login {
 		do{
 			String[] infoLogin = LoginView.logar();
 			for(Usuario usuario: listaUsuarios) {
-				if(usuario.getLogin() == infoLogin[0] && usuario.getSenha() == infoLogin[1]) {
-					System.out.println("Passou");
+				if(usuario.getLogin().equals(infoLogin[0]) && usuario.getSenha().equals(infoLogin[1])) {
 					logadoComSucesso = true;
 					return usuario;
 				}

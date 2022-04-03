@@ -10,12 +10,12 @@ import view.UsuarioView;
 public class GerenciaUsuario implements UsuarioCopyable {
 
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios) {
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds) {
 		String [] infoUsuario = UsuarioView.cadastraUsuario();
 		
 		try {
 			//Cria um novo Usuario e adiciona na lista
-			Usuario novoUsuario = new Usuario(infoUsuario[0], infoUsuario[1], infoUsuario[2], infoUsuario[3]);
+			Usuario novoUsuario = new Usuario(listaIds, infoUsuario[0], infoUsuario[1], infoUsuario[2], infoUsuario[3]);
 			listaUsuarios.add(novoUsuario);
 			return true;
 		}catch(ArrayIndexOutOfBoundsException a){

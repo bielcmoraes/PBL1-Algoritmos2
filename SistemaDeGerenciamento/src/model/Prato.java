@@ -2,16 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
-public class Prato {
+public class Prato extends Entidade{
 	
-	private String id;
 	private String nome;
 	private double preco;
 	private ArrayList <Produto> produtos;
 	private String categoria;
 	
-	public Prato(String nome, double preco, ArrayList<Produto> produtos, String categoria) {
+	public Prato(ArrayList<String> listaIds, String nome, double preco, ArrayList<Produto> produtos, String categoria) {
 		
+		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
 		this.produtos = produtos;
@@ -19,14 +19,6 @@ public class Prato {
 	}
 	
 	//Getters e Setters
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getNome() {
 		return nome;
 	}

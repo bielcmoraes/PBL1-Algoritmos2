@@ -1,8 +1,9 @@
 
 package model;
 
-public class Usuario {
-	private String id;
+import java.util.ArrayList;
+
+public class Usuario extends Entidade{
 	private String nome;
 	private String cargo;
 	private String login;
@@ -12,14 +13,16 @@ public class Usuario {
 	
 	public Usuario() {
 		
+		super();
 		this.nome = "Master";
 		this.login = "admin";
 		this.senha = "admin";
 		this.setCargo("Gerente");
 	}
-	public Usuario(String nome, String cargo, String login, String senha) {
+	public Usuario(ArrayList<String> listaIds, String nome, String cargo, String login, String senha) {
+		super(listaIds);
 		this.nome = nome;
-		this.setCargo(cargo);
+		this.cargo = cargo;
 		this.login = login;
 		this.senha = senha;
 	}
@@ -39,13 +42,6 @@ public class Usuario {
 	
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
-	}
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getLogin() {
