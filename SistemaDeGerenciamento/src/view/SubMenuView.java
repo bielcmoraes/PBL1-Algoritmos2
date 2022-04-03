@@ -1,35 +1,11 @@
-
 package view;
 
 import java.util.Scanner;
 
-public class MenuView {
-	
-	public static int primeiraTelaGerente() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("****BEM VINDO****");
-		System.out.println("Digite 1 para gerenciar Fornecedores");
-		System.out.println("Digite 2 para gerenciar Vendas");
-		System.out.println("Digite 3 para gerenciar Usuarios");
-		System.out.println("Digite 4 para gerenciar Cardapio");
-		System.out.println("Digite 5 para gerenciar Produtos");
-		System.out.println("Digite 6 para Listar");
-		System.out.println("Digite 7 para sair");
-		
-		int resposta = input.nextInt();
-		return resposta;
-	}
-	
-	public static int primeiraTelaFuncionario() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Digite 1 para gerenciar Vendas");
-		System.out.println("Digite 2 para Listar");
-		System.out.println("Digite 3 para sair");
-		int resposta = input.nextInt();
-		return resposta;
-	}
+public class SubMenuView {
 	
 	public static int telaMenuGerenciamentos() {
+		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite 1 para Cadastrar");
 		System.out.println("Digite 2 para editar");

@@ -1,21 +1,29 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public abstract class Entidade {
 	
 	// Attributes
-	private int id;
+	private String id;
 	
 	// Constructor
-	public Entidade(int id) {
-		this.id = id+1;
+	public Entidade (ArrayList<String> listaIds) {
+		Random aleatorio = new Random();
+		do {
+			this.id = Integer.toString(aleatorio.nextInt(10000));
+		}while(listaIds.contains(id) != false);
+		
+	}
+	
+	//O construtor vazio é necessário para setar o id do primeiro usuario na classe Usuario
+	public Entidade () {
+		this.id = "99999";
 	}
 	
 	// Methods
-	public int getId() {
+	public String getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 }

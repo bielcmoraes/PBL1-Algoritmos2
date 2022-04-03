@@ -3,15 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Venda {
+public class Venda extends Entidade{
 	private Date data;
 	private ArrayList<Prato> itens;
 	private double precoTotal;
 	private String metodoDePagamento;
 	
 	//Construtores
-	public Venda(Date data, ArrayList<Prato> pratos, String primeiroPrato, String metodoDePagamento) {
+	public Venda(ArrayList<String> listaIds, Date data, ArrayList<Prato> pratos, String primeiroPrato, String metodoDePagamento) {
 		
+		super(listaIds);
 		this.data = data;
 		this.setMetodoDePagamento(metodoDePagamento);
 		

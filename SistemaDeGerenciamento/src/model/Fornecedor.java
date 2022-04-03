@@ -1,19 +1,21 @@
 package model;
 
+import java.util.ArrayList;
 
-public class Fornecedor {
+public class Fornecedor extends Entidade{
 	
-	private String id;
 	private String nome;
 	private String cnpj;
 	private String endereco;
 	
-	public Fornecedor(String nome, String cnpj) {
+	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj) {
+		super(listaIds);
 		this.nome = nome;
 		this.cnpj = cnpj;
 	}
 	
-	public Fornecedor(String nome, String cnpj, String endereco) {
+	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj, String endereco) {
+		super(listaIds);
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
@@ -44,12 +46,4 @@ public class Fornecedor {
 		this.endereco = endereco;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-	
 }

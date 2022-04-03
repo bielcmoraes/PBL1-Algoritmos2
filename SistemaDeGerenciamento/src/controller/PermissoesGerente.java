@@ -31,11 +31,11 @@ public class PermissoesGerente implements FornecedorCopyable, UsuarioCopyable{
 	
 	//Metodos do gerenciamento de Usuario
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios) {
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds) {
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		//Retorna o cadastro de usuari0
-		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios);
+		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios, listaIds);
 	}
 
 	@Override
