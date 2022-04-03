@@ -22,7 +22,7 @@ public class Usuario extends Entidade{
 	public Usuario(ArrayList<String> listaIds, String nome, String cargo, String login, String senha) {
 		super(listaIds);
 		this.nome = nome;
-		this.setCargo(cargo);
+		this.cargo = cargo;
 		this.login = login;
 		this.senha = senha;
 	}

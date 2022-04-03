@@ -35,102 +35,104 @@ public class main {
 		
 		BancoDeDados dados = new BancoDeDados();
 		//Loga o Usuario no sistema
-		//Usuario login = Login.autenticarLogin(dados.getListaUsuarios());
-		//if (login.getCargo() == "Gerente") {
-			//int decisao = Menu.gerente();
-		//}
-		while(true) {
-			int decisao[] = Menu.gerente();
+		Login login = new Login(dados.getListaUsuarios());
 			
-			if(decisao[0] == 1) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Cadastrando Fornecedor");
-					break;
-				case 2:
-					//Editando Fornecedor;
-				case 3:
-					//Excluindo Fornecedor;
-				case 4:
-					break;
+		Usuario usuarioLogado = login.autenticarLogin(dados.getListaUsuarios());
+		
+		while(true) {
+			if(usuarioLogado.getCargo().equals("Gerente")) {
+				
+				int decisao[] = Menu.gerente();
+				if(decisao[0] == 1) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Cadastrando Fornecedor");
+						break;
+					case 2:
+						//Editando Fornecedor;
+					case 3:
+						//Excluindo Fornecedor;
+					case 4:
+						break;
+					}
+					
 				}
 				
-			}
-			
-			else if(decisao[0] == 2) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Cadastrando Vendas");
-					break;
-				case 2:
-					//Editando Fornecedor;
-				case 3:
-					//Excluindo Fornecedor;
-				case 4:
-					break;
+				else if(decisao[0] == 2) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Cadastrando Vendas");
+						break;
+					case 2:
+						//Editando Fornecedor;
+					case 3:
+						//Excluindo Fornecedor;
+					case 4:
+						break;
+					}
 				}
-			}
-			else if(decisao[0] == 3) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Cadastrando Vendas");
-					break;
-				case 2:
-					//Editando Fornecedor;
-				case 3:
-					//Excluindo Fornecedor;
-				case 4:
-					break;
+				else if(decisao[0] == 3) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Cadastrando Vendas");
+						break;
+					case 2:
+						//Editando Fornecedor;
+					case 3:
+						//Excluindo Fornecedor;
+					case 4:
+						break;
+					}
 				}
-			}
-			else if(decisao[0] == 4) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Cadastrando Vendas");
-					break;
-				case 2:
-					//Editando Fornecedor;
-				case 3:
-					//Excluindo Fornecedor;
-				case 4:
-					break;
+				else if(decisao[0] == 4) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Cadastrando Vendas");
+						break;
+					case 2:
+						//Editando Fornecedor;
+					case 3:
+						//Excluindo Fornecedor;
+					case 4:
+						break;
+					}
 				}
-			}
-			else if(decisao[0] == 5) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Cadastrando Vendas");
-					break;
-				case 2:
-					//Editando Fornecedor;
-				case 3:
-					//Excluindo Fornecedor;
-				case 4:
-					break;
+				else if(decisao[0] == 5) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Cadastrando Vendas");
+						break;
+					case 2:
+						//Editando Fornecedor;
+					case 3:
+						//Excluindo Fornecedor;
+					case 4:
+						break;
+					}
 				}
-			}
-			else if(decisao[0] == 6) {
-				switch(decisao[1]) {
-				case 1:
-					System.out.println("Mostrando Cardapio");
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					break;
-				case 7:
-					break;
+				else if(decisao[0] == 6) {
+					switch(decisao[1]) {
+					case 1:
+						System.out.println("Mostrando Cardapio");
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;
+					case 5:
+						break;
+					case 6:
+						break;
+					case 7:
+						break;
+					}
 				}
+				else if(decisao[0] == 7) {
+					System.exit(0);
+					}
 			}
-			else if(decisao[0] == 7) {
-				System.exit(0);
-				}
 			}
 		}
 		
