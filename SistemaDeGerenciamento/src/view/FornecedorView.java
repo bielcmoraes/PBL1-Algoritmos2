@@ -57,6 +57,7 @@ public class FornecedorView{
 	}
 
 	public static String excluirFornecedor() {
+		
 		return buscaFornecedor();
 	}
 
