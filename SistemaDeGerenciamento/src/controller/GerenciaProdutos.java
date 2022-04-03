@@ -1,33 +1,79 @@
 package controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.Produto;
+import view.ProdutosView;
 
 public class GerenciaProdutos implements ProdutoCopyable {
-	// Attributes
-	private static ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-	
-	// Methods
+
 	@Override
-	public static void cadastrarProduto(Produto produto) {
-		listaProdutos.add(produto);
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
+		String[] info = ProdutosView.cadastrarProduto();
+		Double preco = Double.parseDouble(info[1]);
+		DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate validade = LocalDate.parse(info[2], dataFormato);
+		Produto novoProduto = new Produto(listaIds, info[0], preco, validade);
+		
+		try {
+			listaProdutos.add(novoProduto);
+			return true;
+		} 
+		catch(ArrayIndexOutOfBoundsException a){
+			System.out.println("Produto nÃ£o cadastrado!!!");
+			System.out.println("Problema ao acessar o ArrayList");
+			return false;
+		}
 	}
+
 	@Override
-	public static void editarProduto(Produto produto, String nome) {
-		produto.setNome(nome);
+	public boolean editarProduto(ArrayList<Produto> listaProdutos) {
+		
+		String codigoProduto = ProdutosView.buscaProduto();
+		try {
+			for(Produto produto : listaProdutos) {
+				if(produto.getId() == codigoProduto) {
+					String [] info = ProdutosView.editarProduto();
+					produto.setNome(info[0]);
+					Double preco = Double.parseDouble(info[1]);
+					produto.setPreco(preco);
+					DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate validade = LocalDate.parse(info[2], dataFormato);
+					produto.setValidade(validade);
+					
+					return true;
+				}else {
+					System.out.println("Codigo de fornecedor nao encontrado!!!");
+				}
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException a){
+			System.out.println("Produto nao editado!!!");
+			System.out.println("Erro com o array");
+		}
+		return false;
 	}
+
 	@Override
-	public static void editarProduto(Produto produto, Double preco) {
-		produto.setPreco(preco);
-	}
-	@Override
-	public static void editarProduto(Produto produto, LocalDate validade) {
-		produto.setValidade(validade);
-	}
-	@Override
-	public static void excluirProduto(Produto produto) {
-		listaProdutos.remove(produto);
+	public boolean excluirProduto(ArrayList<Produto> listaProdutos) {
+		
+		String codigoProduto = ProdutosView.buscaProduto();
+		
+		try {
+			for(Produto produto : listaProdutos) {
+				if(produto.getId() == codigoProduto) {
+					int index = listaProdutos.indexOf(produto);
+					listaProdutos.remove(index);
+					return true;
+				}
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException a) {
+			System.out.println("Produto nao removido!!!");
+			System.out.println("Erro no array");
+		}
+		return false;
 	}
 }

@@ -8,10 +8,10 @@ public class BancoDeDados {
 	
 	//Atributos
 	private ArrayList<Fornecedor> listaFornecedores = new ArrayList<Fornecedor>();
-	private ArrayList<Prato> cardapio;
-	private ArrayList<Produto> listaProdutos;
+	private ArrayList<Prato> cardapio = new ArrayList<Prato>();
+	private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
 	private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-	private ArrayList<Venda> listaVendas;
+	private ArrayList<Venda> listaVendas = new ArrayList<Venda>();
 	private ArrayList<String> listaIds = new ArrayList<String>();
 	
 	//Construtores
