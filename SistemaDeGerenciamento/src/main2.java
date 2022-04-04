@@ -2,7 +2,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import controller.PermissoesGerente;
+import controller.Gerente;
 import controller.BancoDeDados;
 import controller.GerenciaCardapio;
 import controller.GerenciaProdutos;

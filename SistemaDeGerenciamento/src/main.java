@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import controller.BancoDeDados;
 import controller.Login;
 import controller.Menu;
-import controller.PermissoesGerente;
+import controller.Gerente;
 import model.Fornecedor;
 import model.Produto;
 import model.Usuario;
@@ -42,7 +42,7 @@ public class main {
 		while(true) {
 			if(usuarioLogado.getCargo().equals("Gerente")) {
 				
-				PermissoesGerente funcoes = new PermissoesGerente();
+				Gerente funcoes = new Gerente();
 				int decisao[] = Menu.gerente();
 				if(decisao[0] == 1) {
 					switch(decisao[1]) {

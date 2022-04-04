@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.Fornecedor;
 import model.Usuario;
 
-public class PermissoesGerente implements FornecedorCopyable, UsuarioCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable{
 	
 	//Metodos do gerenciamento de fornecedores
 	@Override
