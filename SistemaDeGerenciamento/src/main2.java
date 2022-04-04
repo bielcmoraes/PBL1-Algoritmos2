@@ -2,12 +2,12 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import controller.Gerente;
 import controller.BancoDeDados;
 import controller.GerenciaCardapio;
 import controller.GerenciaProdutos;
 import controller.Login;
 import model.Fornecedor;
+import model.Gerente;
 import model.Prato;
 import model.Produto;
 import view.ListagemView;

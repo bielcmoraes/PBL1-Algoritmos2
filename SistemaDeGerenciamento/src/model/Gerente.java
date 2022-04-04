@@ -1,9 +1,9 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 
-import model.Fornecedor;
-import model.Usuario;
+import controller.FornecedorCopyable;
+import controller.UsuarioCopyable;
 
 public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable{
 	

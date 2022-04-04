@@ -1,12 +1,9 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 
-import model.Fornecedor;
-import model.Prato;
-import model.Produto;
-import model.Usuario;
-import model.Venda;
+import controller.ListagemCopyable;
+import controller.VendaCopyable;
 import view.VendaView;
 
 public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
