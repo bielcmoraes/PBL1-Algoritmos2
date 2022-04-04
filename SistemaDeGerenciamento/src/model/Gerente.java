@@ -3,9 +3,20 @@ package model;
 import java.util.ArrayList;
 
 import controller.FornecedorCopyable;
+import controller.GerenciaFornecedor;
+import controller.GerenciaUsuario;
 import controller.UsuarioCopyable;
 
 public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable{
+	
+	//Construtores
+	public Gerente() {
+		super();
+	}
+	
+	public Gerente(ArrayList<String> listaIds, String nome, String login, String senha) {
+		super(listaIds, nome, login, senha);
+	}
 	
 	//Metodos do gerenciamento de fornecedores
 	@Override
