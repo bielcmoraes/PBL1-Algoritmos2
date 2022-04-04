@@ -12,9 +12,24 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	@Override
 	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
 		String[] info = ProdutosView.cadastrarProduto();
-		Double preco = Double.parseDouble(info[1]);
+		Double preco;
+		try {
+			preco = Double.parseDouble(info[1]);
+		} catch (java.lang.NumberFormatException a) {
+			System.out.println("Produto nao cadastrado!!!");
+			System.out.println("Preco invalido");
+			return false;
+		}
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate validade = LocalDate.parse(info[2], formatoData);
+		LocalDate validade;
+		try {
+			validade = LocalDate.parse(info[2], formatoData);
+		} catch (java.time.format.DateTimeParseException a) {
+			System.out.println("Produto nao cadastrado!!!");
+			System.out.println("Validade invalida");
+			return false;
+		}
+		
 		Produto novoProduto = new Produto(listaIds, info[0], preco, validade);
 		
 		try {

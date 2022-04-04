@@ -14,8 +14,16 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void mostrarCardapio(ArrayList<Prato> cardapio) {
+		
+		System.out.println("Cardapio");
+		System.out.format("%-15s %-30s %-15s %-50s %-15s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA");
 		for(Prato prato: cardapio) {
-			System.out.println(prato.getNome() + "-----" + prato.getPreco());
+			System.out.format("%-15s %-30s R$ %-12.2f %-50s %-15s\n", 
+					prato.getId(), 
+					prato.getNome(), 
+					prato.getPreco(),
+					prato.getDescricao(),
+					prato.getCategoria());
 		}
 		
 	}

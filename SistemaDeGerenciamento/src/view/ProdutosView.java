@@ -10,7 +10,7 @@ public class ProdutosView {
 		System.out.println("Digite o nome do produto");
 		String nome = input.nextLine();
 		
-		System.out.println("Digite o preço do produto");
+		System.out.println("Digite o preco do produto");
 		String preco = input.nextLine();
 		
 		System.out.println("Digite a validade do produto");

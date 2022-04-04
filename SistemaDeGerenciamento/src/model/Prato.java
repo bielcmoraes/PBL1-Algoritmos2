@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Prato extends Entidade{
 	
 	private String nome;
-	private double preco;
-	private ArrayList <Produto> produtos;
+	private Double preco;
+	private String descricao;
 	private String categoria;
 	
-	public Prato(ArrayList<String> listaIds, String nome, double preco, ArrayList<Produto> produtos, String categoria) {
+	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria) {
 		
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
-		this.produtos = produtos;
+		this.descricao = descricao;
 		this.categoria = categoria;
 	}
 	
@@ -27,20 +27,20 @@ public class Prato extends Entidade{
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
-	public ArrayList<Produto> getProdutos() {
-		return produtos;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setProdutos(ArrayList<Produto> produtos) {
-		this.produtos = produtos;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getCategoria() {
