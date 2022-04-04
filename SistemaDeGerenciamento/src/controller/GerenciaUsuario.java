@@ -3,6 +3,8 @@ package controller;
 import java.util.ArrayList;
 
 import model.Fornecedor;
+import model.Funcionario;
+import model.Gerente;
 import model.Usuario;
 import view.FornecedorView;
 import view.UsuarioView;
@@ -15,9 +17,18 @@ public class GerenciaUsuario implements UsuarioCopyable {
 		
 		try {
 			//Cria um novo Usuario e adiciona na lista
-			Usuario novoUsuario = new Usuario(listaIds, infoUsuario[0], infoUsuario[1], infoUsuario[2], infoUsuario[3]);
-			listaUsuarios.add(novoUsuario);
-			return true;
+			if(infoUsuario[1].equals("1")) {
+				Usuario novoUsuario = new Gerente(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+				listaUsuarios.add(novoUsuario);
+				return true;
+			}
+			else if(infoUsuario[1].equals("2")) {
+				Usuario novoUsuario = new Funcionario(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+				listaUsuarios.add(novoUsuario);
+				return true;
+			}else {
+				return false;
+			}
 		}catch(ArrayIndexOutOfBoundsException a){
 			System.out.println("Usuario não cadastrado");
 			System.out.println("Problema com o array");

@@ -12,7 +12,7 @@ public class UsuarioView {
 		
 		System.out.println("Digite o nome do usuario");
 		String nome = input.nextLine();
-		System.out.println("Digite o cargo do usuario");
+		System.out.println("Digite 1 para cadastrar um Gerente e 2 para cadastrar um Funcionario");
 		String cargo = input.nextLine();
 		System.out.println("Digite um Login para o usuario");
 		String login = input.nextLine();

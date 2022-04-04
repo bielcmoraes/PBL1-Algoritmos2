@@ -36,7 +36,7 @@ public class main2 {
 		
 		// Testes Gerenciamento Cardapio
 		
-		GerenciaCardapio gerenciaCardapio = new GerenciaCardapio();
+		/*GerenciaCardapio gerenciaCardapio = new GerenciaCardapio();
 		System.out.println("TESTE CADASTRO\n");
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds());
 		listagemView.mostrarCardapio(bancoDeDados.getCardapio());
@@ -45,7 +45,8 @@ public class main2 {
 		listagemView.mostrarCardapio(bancoDeDados.getCardapio());
 		System.out.println("\nTESTE EXCLUSAO\n");
 		gerenciaCardapio.excluirPrato(bancoDeDados.getCardapio());
-		listagemView.mostrarCardapio(bancoDeDados.getCardapio());
+		listagemView.mostrarCardapio(bancoDeDados.getCardapio()); */
+		
 	}
 
 }
