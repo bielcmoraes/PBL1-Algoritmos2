@@ -3,9 +3,8 @@ package model;
 
 import java.util.ArrayList;
 
-public class Usuario extends Entidade{
+public abstract class Usuario extends Entidade{
 	private String nome;
-	private String cargo;
 	private String login;
 	private String senha;
 	
@@ -17,12 +16,10 @@ public class Usuario extends Entidade{
 		this.nome = "Master";
 		this.login = "admin";
 		this.senha = "admin";
-		this.setCargo("Gerente");
 	}
-	public Usuario(ArrayList<String> listaIds, String nome, String cargo, String login, String senha) {
+	public Usuario(ArrayList<String> listaIds, String nome, String login, String senha) {
 		super(listaIds);
 		this.nome = nome;
-		this.cargo = cargo;
 		this.login = login;
 		this.senha = senha;
 	}
@@ -34,14 +31,6 @@ public class Usuario extends Entidade{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-	
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
 	}
 
 	public String getLogin() {

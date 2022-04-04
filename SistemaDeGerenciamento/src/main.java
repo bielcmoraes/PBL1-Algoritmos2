@@ -42,6 +42,7 @@ public class main {
 		while(true) {
 			if(usuarioLogado.getCargo().equals("Gerente")) {
 				
+				PermissoesGerente funcoes = new PermissoesGerente();
 				int decisao[] = Menu.gerente();
 				if(decisao[0] == 1) {
 					switch(decisao[1]) {
