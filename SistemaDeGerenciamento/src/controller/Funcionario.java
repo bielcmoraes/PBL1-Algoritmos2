@@ -9,7 +9,7 @@ import model.Usuario;
 import model.Venda;
 import view.VendaView;
 
-public class PermissoesFuncionario implements ListagemCopyable, VendaCopyable{
+public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
 	
 	//Atributos
 	private ArrayList<Prato> listaDePratos;
