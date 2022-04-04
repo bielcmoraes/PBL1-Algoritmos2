@@ -5,6 +5,7 @@ import view.LoginView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.Gerente;
 import model.Usuario;
 
 public class Login {
@@ -14,7 +15,7 @@ public class Login {
 		
 		//Se a lista estiver vazia adicionamos o usuario "Master" na lista;
 		if(listaUsuarios.isEmpty()) {
-			Usuario primeiroUsuario = new Usuario();
+			Usuario primeiroUsuario = new Gerente();
 			listaUsuarios.add(primeiroUsuario);
 		}
 	}

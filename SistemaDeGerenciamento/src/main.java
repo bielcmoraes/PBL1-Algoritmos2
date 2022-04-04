@@ -40,7 +40,7 @@ public class main {
 		Usuario usuarioLogado = login.autenticarLogin(dados.getListaUsuarios());
 		
 		while(true) {
-			if(usuarioLogado.getCargo().equals("Gerente")) {
+			if(usuarioLogado instanceof Gerente) {
 				
 				Gerente funcoes = new Gerente();
 				int decisao[] = Menu.gerente();
