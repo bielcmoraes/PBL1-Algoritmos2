@@ -8,9 +8,9 @@ import view.FornecedorView;
 public class GerenciaFornecedor implements FornecedorCopyable {
 
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds) {
 		String[] info = FornecedorView.cadastrarFornecedor();
-		Fornecedor novoFornecedor = new Fornecedor(info[0], info[1], info[2]);
+		Fornecedor novoFornecedor = new Fornecedor(listaIds, info[0], info[1], info[2]);
 		
 		try {
 			listaFornecedores.add(novoFornecedor);

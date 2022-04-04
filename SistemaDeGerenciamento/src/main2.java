@@ -10,16 +10,17 @@ import model.Fornecedor;
 import model.Gerente;
 import model.Prato;
 import model.Produto;
+import model.Usuario;
 import view.ListagemView;
 
 public class main2 {
 
 	public static void main(String[] args) {
 		
-		BancoDeDados bancoDeDados = new BancoDeDados();
+		BancoDeDados b1 = new BancoDeDados();
 		ListagemView listagemView = new ListagemView();
 		// Testes Gerenciamento Produtos
-		/*
+		
 		GerenciaProdutos gerenciaProdutos = new GerenciaProdutos();
 		System.out.println("TESTE CADASTRO\n");
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds());
@@ -32,7 +33,7 @@ public class main2 {
 		System.out.println("\nTESTE EXCLUSAO\n");
 		gerenciaProdutos.excluirProduto(bancoDeDados.getListaProdutos());
 		listagemView.listarProduto(bancoDeDados.getListaProdutos());
-		*/
+		
 		
 		// Testes Gerenciamento Cardapio
 		
@@ -46,6 +47,7 @@ public class main2 {
 		System.out.println("\nTESTE EXCLUSAO\n");
 		gerenciaCardapio.excluirPrato(bancoDeDados.getCardapio());
 		listagemView.mostrarCardapio(bancoDeDados.getCardapio()); */
+		
 		
 	}
 

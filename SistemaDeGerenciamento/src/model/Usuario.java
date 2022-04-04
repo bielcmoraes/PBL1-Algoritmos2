@@ -4,9 +4,9 @@ package model;
 import java.util.ArrayList;
 
 public abstract class Usuario extends Entidade{
-	private String nome;
-	private String login;
-	private String senha;
+	public String nome;
+	public String login;
+	public String senha;
 	
 	//Construtores
 	
@@ -17,6 +17,8 @@ public abstract class Usuario extends Entidade{
 		this.login = "admin";
 		this.senha = "admin";
 	}
+	
+	
 	public Usuario(ArrayList<String> listaIds, String nome, String login, String senha) {
 		super(listaIds);
 		this.nome = nome;
