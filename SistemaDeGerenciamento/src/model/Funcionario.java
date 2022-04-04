@@ -8,11 +8,14 @@ import view.VendaView;
 
 public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
 	
-	//Atributos
-	private ArrayList<Prato> listaDePratos;
-	
 	//Construtores
+	public Funcionario() {
+		super();
+	}
 	
+	public Funcionario(ArrayList<String> listaIds, String nome, String login, String senha) {
+		super(listaIds, nome, login, senha);
+	}
 	//Metodos de venda
 	@Override
 	public void cadastrarVenda(ArrayList<Venda> listaVendas) {
