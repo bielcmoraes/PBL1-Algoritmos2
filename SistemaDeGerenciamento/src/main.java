@@ -52,9 +52,13 @@ public class main {
 						((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds());
 						break;
 					case 2:
-						//Editando Fornecedor;
+						System.out.println("Editando Fornecedor");
+						((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores());
+						break;
 					case 3:
-						//Excluindo Fornecedor;
+						System.out.println("Excluindo Fornecedor");
+						((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores());
+						break;
 					case 4:
 						break;
 					}
@@ -93,12 +97,17 @@ public class main {
 				else if(decisao[0] == 4) {
 					switch(decisao[1]) {
 					case 1:
-						System.out.println("Cadastrando Vendas");
+						System.out.println("Cadastrando Prato");
+						((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos());
 						break;
 					case 2:
-						//Editando Fornecedor;
+						System.out.println("Editando Prato");
+						((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos());
+						break;
 					case 3:
-						//Excluindo Fornecedor;
+						System.out.println("Excluindo Prato");
+						((Gerente) usuarioLogado).excluirPrato(dados.getCardapio());
+						break;
 					case 4:
 						break;
 					}
@@ -106,12 +115,17 @@ public class main {
 				else if(decisao[0] == 5) {
 					switch(decisao[1]) {
 					case 1:
-						System.out.println("Cadastrando Vendas");
+						System.out.println("Cadastrando Produtos");
+						((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds());
 						break;
 					case 2:
-						//Editando Fornecedor;
+						System.out.println("Editando Produtos");
+						((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos());
+						break;
 					case 3:
-						//Excluindo Fornecedor;
+						System.out.println("Excluindo Produtos");
+						((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos());
+						break;
 					case 4:
 						break;
 					}

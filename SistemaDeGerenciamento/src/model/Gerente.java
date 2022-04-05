@@ -6,11 +6,12 @@ import controller.CardapioCopyable;
 import controller.FornecedorCopyable;
 import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
+import controller.GerenciaProdutos;
 import controller.GerenciaUsuario;
 import controller.ProdutoCopyable;
 import controller.UsuarioCopyable;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable{
 	
 	//Atributos
 	
@@ -67,23 +68,44 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		return gerenciamentoUsuario.excluirUsuario(listaUsuarios);
 	}
-
+	
+	//Metodos de gerenciamento de Produto
 	@Override
 	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
-		// TODO Auto-generated method stub
-		return false;
+		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
+		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds);
 	}
 
 	@Override
 	public boolean editarProduto(ArrayList<Produto> listaProdutos) {
-		// TODO Auto-generated method stub
-		return false;
+		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
+		return gerenciamentoProdutos.editarProduto(listaProdutos);
 	}
 
 	@Override
 	public boolean excluirProduto(ArrayList<Produto> listaProdutos) {
-		// TODO Auto-generated method stub
-		return false;
+		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
+		return gerenciamentoProdutos.excluirProduto(listaProdutos);
+	}
+	
+	//Metodos de Gerenciamento de Cardapio (Mexe com os Pratos)
+	@Override
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds,
+			ArrayList<Produto> listaProdutos) {
+		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
+		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos);
+	}
+
+	@Override
+	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos) {
+		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
+		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos);
+	}
+
+	@Override
+	public boolean excluirPrato(ArrayList<Prato> cardapio) {
+		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
+		return gerenciamentoCardapio.excluirPrato(cardapio);
 	}
 
 }
