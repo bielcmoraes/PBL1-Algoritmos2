@@ -11,19 +11,20 @@ import model.Fornecedor;
 import model.Gerente;
 import model.Prato;
 import model.Produto;
+import model.Usuario;
 import view.ListagemView;
 
 public class main2 {
 
 	public static void main(String[] args) {
 		
-		BancoDeDados bancoDeDados = new BancoDeDados();
-		ListagemView listagemView = new ListagemView();
+		//BancoDeDados b1 = new BancoDeDados();
+		//ListagemView listagemView = new ListagemView();
+		
 		// Testes Gerenciamento Produtos
-
-		GerenciaProdutos gerenciaProdutos = new GerenciaProdutos();
+		//GerenciaProdutos gerenciaProdutos = new GerenciaProdutos();
 		//System.out.println("TESTE CADASTRO\n");
-		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds());
+		//gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds());
 		//gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds());
 		//gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds());
 		//listagemView.listarProduto(bancoDeDados.getListaProdutos());
@@ -33,12 +34,14 @@ public class main2 {
 		//System.out.println("\nTESTE EXCLUSAO\n");
 		//gerenciaProdutos.excluirProduto(bancoDeDados.getListaProdutos());
 		//listagemView.listarProduto(bancoDeDados.getListaProdutos());
+		//System.out.println("\nTESTE EXCLUSAO\n");
+		//gerenciaProdutos.excluirProduto(bancoDeDados.getListaProdutos());
+		//listagemView.listarProduto(bancoDeDados.getListaProdutos());
 		
 		// Testes Gerenciamento Cardapio
-		
-		GerenciaCardapio gerenciaCardapio = new GerenciaCardapio();
+		//GerenciaCardapio gerenciaCardapio = new GerenciaCardapio();
 		//System.out.println("TESTE CADASTRO\n");
-		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos());
+		//gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos());
 		//listagemView.mostrarCardapio(bancoDeDados.getCardapio());
 		//System.out.println("\nTESTE EDICAO\n");
 		//gerenciaCardapio.editarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaProdutos());
@@ -48,18 +51,17 @@ public class main2 {
 		//listagemView.mostrarCardapio(bancoDeDados.getCardapio());
 		
 		// Testes Gerenciamento Vendas
-		
-		GerenciaVendas gerenciaVendas = new GerenciaVendas();
-		
+		//GerenciaVendas gerenciaVendas = new GerenciaVendas();
 		//System.out.println("TESTE CADASTRO\n");
-		gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio());
-		listagemView.listarVenda(bancoDeDados.getListaVendas());
+		//gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio());
+		//listagemView.listarVenda(bancoDeDados.getListaVendas());
 		//System.out.println("\nTESTE EDICAO\n");
-		gerenciaVendas.editarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getCardapio());
-		listagemView.listarVenda(bancoDeDados.getListaVendas());
+		//gerenciaVendas.editarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getCardapio());
+		//listagemView.listarVenda(bancoDeDados.getListaVendas());
 		//System.out.println("\nTESTE EXCLUSAO\n");
-		gerenciaVendas.excluirVenda(bancoDeDados.getListaVendas());
-		listagemView.listarVenda(bancoDeDados.getListaVendas());
+		//gerenciaVendas.excluirVenda(bancoDeDados.getListaVendas());
+		//listagemView.listarVenda(bancoDeDados.getListaVendas());
+		
 		
 	}
 

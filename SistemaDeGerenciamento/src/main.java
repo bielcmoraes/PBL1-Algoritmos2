@@ -33,21 +33,23 @@ public class main {
 		//Fornecedor f1 = new Fornecedor(b1.getListaIds(), "Marcos", "sddjds");
 		//System.out.println(f1.getId());
 		
+		
+		//Intancio as listas
 		BancoDeDados dados = new BancoDeDados();
 		//Loga o Usuario no sistema
 		Login login = new Login(dados.getListaUsuarios());
-			
+		
 		Usuario usuarioLogado = login.autenticarLogin(dados.getListaUsuarios());
 		
 		while(true) {
 			if(usuarioLogado instanceof Gerente) {
 				
-				Gerente funcoes = new Gerente();
 				int decisao[] = Menu.gerente();
 				if(decisao[0] == 1) {
 					switch(decisao[1]) {
 					case 1:
 						System.out.println("Cadastrando Fornecedor");
+						((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds());
 						break;
 					case 2:
 						//Editando Fornecedor;

@@ -2,12 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.CardapioCopyable;
 import controller.FornecedorCopyable;
+import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
 import controller.GerenciaUsuario;
 import controller.UsuarioCopyable;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, CardapioCopyable{
+	
+	//Atributos
 	
 	//Construtores
 	public Gerente() {
@@ -20,10 +24,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	
 	//Metodos do gerenciamento de fornecedores
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores);
+		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds);
 	}
 
 	@Override
@@ -57,6 +61,25 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 
 	@Override
 	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds) {
+		GerenciaCardapio g1 = new GerenciaCardapio();
+		g1.cadastrarPrato(cardapio, listaIds);
+		return false;
+	}
+
+	@Override
+	public boolean editarPrato(ArrayList<Prato> cardapio) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean excluirPrato(ArrayList<Prato> cardapio) {
 		// TODO Auto-generated method stub
 		return false;
 	}
