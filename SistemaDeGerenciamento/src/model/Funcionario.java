@@ -14,7 +14,7 @@ public class Funcionario extends Usuario implements ListagemCopyable, VendaCopya
 	}
 	//Metodos de venda
 	@Override
-	public void cadastrarVenda(ArrayList<Venda> listaVendas) {
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio) {
 		
 		VendaView venda = new VendaView();
 		Venda novaVenda = venda.cadastrarVenda(listaDePratos);

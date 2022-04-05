@@ -77,12 +77,15 @@ public class main {
 				else if(decisao[0] == 3) {
 					switch(decisao[1]) {
 					case 1:
-						System.out.println("Cadastrando Vendas");
+						System.out.println("Cadastrando Usuario");
+						((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds());
 						break;
 					case 2:
-						//Editando Fornecedor;
+						System.out.println("Editando Usuario");
+						((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios());
 					case 3:
-						//Excluindo Fornecedor;
+						System.out.println("Excluindo Usuario");
+						((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios());
 					case 4:
 						break;
 					}

@@ -7,9 +7,10 @@ import controller.FornecedorCopyable;
 import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
 import controller.GerenciaUsuario;
+import controller.ProdutoCopyable;
 import controller.UsuarioCopyable;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, CardapioCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable{
 	
 	//Atributos
 	
@@ -55,34 +56,34 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 
 	@Override
 	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		//Istancia o gerenciamento de usuario
+		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
+		return gerenciamentoUsuario.editarUsuario(listaUsuarios);
 	}
 
 	@Override
 	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios) {
+		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
+		return gerenciamentoUsuario.excluirUsuario(listaUsuarios);
+	}
+
+	@Override
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds) {
-		GerenciaCardapio g1 = new GerenciaCardapio();
-		g1.cadastrarPrato(cardapio, listaIds);
-		return false;
-	}
-
-	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio) {
+	public boolean editarProduto(ArrayList<Produto> listaProdutos) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio) {
+	public boolean excluirProduto(ArrayList<Produto> listaProdutos) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 }
