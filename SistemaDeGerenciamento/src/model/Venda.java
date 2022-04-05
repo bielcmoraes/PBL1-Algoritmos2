@@ -1,56 +1,60 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Venda extends Entidade{
-	private Date data;
-	private ArrayList<Prato> itens;
-	private double precoTotal;
+	
+	// Attributes
+	private LocalDate data;
+	private LocalTime horario;
+	private ArrayList<Prato> pratos;
+	private Double precoTotal;
 	private String metodoDePagamento;
 	
-	//Construtores
-	public Venda(ArrayList<String> listaIds, Date data, ArrayList<Prato> pratos, String primeiroPrato, String metodoDePagamento) {
+	// Constructor
+	public Venda(ArrayList<String> listaIds, LocalDate data, LocalTime horario, ArrayList<Prato> pratos, Double precoTotal, String metodoDePagamento) {
 		
 		super(listaIds);
 		this.data = data;
-		this.setMetodoDePagamento(metodoDePagamento);
-		
-		for(Prato prato: pratos) {
-			
-			if (prato.getId() == primeiroPrato) {
-				this.itens.add(prato);
-			}
-		}
-		
-		for(Prato item : this.itens) {
-			this.precoTotal += item.getPreco();
-		}
-	}
-	
-	//Atualiza o preço total
-	public void atualizaPrecoTotal() {
-		
-		for(Prato item : this.itens) {
-			this.precoTotal += item.getPreco();
-		}
-	}
-	
-	public void adicionaItens(ArrayList<Prato> pratos, String codigoPrato){
-		
-		//Adiciona mais um prata ao ArrayList de vendas
-		for(Prato prato: pratos) {
-			if (prato.getId() == codigoPrato) {
-				this.itens.add(prato);
-			}
-		
-		//Atualiza o preço Total apos adicionar mais um prato ao ArrayList de vendas
-		atualizaPrecoTotal();
-		}
+		this.horario = horario;
+		this.pratos = pratos;
+		this.precoTotal = precoTotal;
+		this.metodoDePagamento = metodoDePagamento;
 	}
 
-	public double getPrecoTotal() {
+	// Getters and Setters
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public LocalTime getHorario() {
+		return horario;
+	}
+
+	public void setHorario(LocalTime horario) {
+		this.horario = horario;
+	}
+
+	public ArrayList<Prato> getPratos() {
+		return pratos;
+	}
+
+	public void setPratos(ArrayList<Prato> pratos) {
+		this.pratos = pratos;
+	}
+
+	public Double getPrecoTotal() {
 		return precoTotal;
+	}
+
+	public void setPrecoTotal(Double precoTotal) {
+		this.precoTotal = precoTotal;
 	}
 
 	public String getMetodoDePagamento() {
@@ -60,12 +64,5 @@ public class Venda extends Entidade{
 	public void setMetodoDePagamento(String metodoDePagamento) {
 		this.metodoDePagamento = metodoDePagamento;
 	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
 }
+

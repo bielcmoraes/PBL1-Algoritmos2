@@ -19,12 +19,16 @@ public class CardapioView {
 		System.out.println("Digite a categoria");
 		String categoria = input.nextLine();
 		
-		String [] info = new String[4];
+		System.out.println("Digite os produtos");
+		String produtos = input.nextLine();
+		
+		String [] info = new String[5];
 		
 		info[0] = nome;
 		info[1] = preco;
 		info[2] = descricao;
 		info[3] = categoria;
+		info[4] = produtos;
 		
 		return info;
 	}
@@ -52,12 +56,16 @@ public class CardapioView {
 		System.out.println("Digite a nova categoria");
 		String categoria = input.nextLine();
 		
-		String [] info = new String[4];
+		System.out.println("Digite os produtos");
+		String produtos = input.nextLine();
+		
+		String [] info = new String[5];
 		
 		info[0] = nome;
 		info[1] = preco;
 		info[2] = descricao;
 		info[3] = categoria;
+		info[4] = produtos;
 		
 		return info;
 		
