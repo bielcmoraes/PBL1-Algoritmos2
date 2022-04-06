@@ -91,21 +91,21 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	//Metodos de Gerenciamento de Cardapio (Mexe com os Pratos)
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds,
-			ArrayList<Produto> listaProdutos) {
+			ArrayList<Produto> listaProdutos, String [] info) {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
-		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos);
+		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos, info);
 	}
 
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos) {
+	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
-		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos);
+		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos, codigoPrato, info);
 	}
 
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio) {
+	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
-		return gerenciamentoCardapio.excluirPrato(cardapio);
+		return gerenciamentoCardapio.excluirPrato(cardapio, listaIds, codigoPrato);
 	}
 
 }

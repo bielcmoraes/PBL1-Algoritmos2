@@ -10,6 +10,7 @@ import model.Fornecedor;
 import model.Gerente;
 import model.Produto;
 import model.Usuario;
+import view.CardapioView;
 import view.MenuView;
 import view.SubMenuView;
 
@@ -98,15 +99,19 @@ public class main {
 					switch(decisao[1]) {
 					case 1:
 						System.out.println("Cadastrando Prato");
-						((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos());
+						String[] infoCadastro = CardapioView.cadastrarPrato();
+						((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
 						break;
 					case 2:
 						System.out.println("Editando Prato");
-						((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos());
+						String codigoPratoEdit = CardapioView.buscaPrato();
+						String [] infoEdicao = CardapioView.editarPrato();
+						((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
 						break;
 					case 3:
 						System.out.println("Excluindo Prato");
-						((Gerente) usuarioLogado).excluirPrato(dados.getCardapio());
+						String codigoPratoDel = CardapioView.buscaPrato();
+						((Gerente) usuarioLogado).excluirPrato(dados.getCardapio(), dados.getListaIds(), codigoPratoDel);
 						break;
 					case 4:
 						break;

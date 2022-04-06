@@ -11,8 +11,8 @@ import view.ProdutosView;
 public class GerenciaCardapio implements CardapioCopyable {
 
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos) {
-		String[] info = CardapioView.cadastrarPrato();
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) {
+		
 		Double preco;
 		ArrayList<Produto> produtos = new ArrayList<Produto>();
 		try {
@@ -51,14 +51,12 @@ public class GerenciaCardapio implements CardapioCopyable {
 	}
 
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos) {
+	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
 		
-		String codigoPrato = CardapioView.buscaPrato();
+		
 		try {
 			for(Prato prato : cardapio) {
 				if(codigoPrato.equals(prato.getId())) {
-				
-					String [] info = CardapioView.editarPrato();
 					Double preco;
 					ArrayList<Produto> produtos = new ArrayList<Produto>();
 		
@@ -101,9 +99,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 	}
 
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio) {
-		
-		String codigoPrato = CardapioView.buscaPrato();
+	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
 		
 		try {
 			for(Prato prato : cardapio) {
