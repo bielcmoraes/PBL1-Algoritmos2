@@ -13,6 +13,7 @@ import model.Usuario;
 import view.CardapioView;
 import view.FornecedorView;
 import view.MenuView;
+import view.ProdutosView;
 import view.SubMenuView;
 
 
@@ -126,15 +127,19 @@ public class main {
 					switch(decisao[1]) {
 					case 1:
 						System.out.println("Cadastrando Produtos");
-						((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds());
+						String[] infoCadastroProduto = ProdutosView.cadastrarProduto();
+						((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto);
 						break;
 					case 2:
 						System.out.println("Editando Produtos");
-						((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos());
+						String codigoProdutoEdit = ProdutosView.buscaProduto();
+						String [] infoProdutoEdit = ProdutosView.editarProduto();
+						((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit);
 						break;
 					case 3:
 						System.out.println("Excluindo Produtos");
-						((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos());
+						String codigoProdutoDel = ProdutosView.buscaProduto();
+						((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos(), dados.getListaIds(), codigoProdutoDel);
 						break;
 					case 4:
 						break;

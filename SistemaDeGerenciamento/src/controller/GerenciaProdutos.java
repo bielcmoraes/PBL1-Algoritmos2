@@ -10,8 +10,8 @@ import view.ProdutosView;
 public class GerenciaProdutos implements ProdutoCopyable {
 
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
-		String[] info = ProdutosView.cadastrarProduto();
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info) {
+		
 		Double preco;
 		try {
 			preco = Double.parseDouble(info[1]);
@@ -44,14 +44,12 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	}
 
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos) {
+	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info) {
 		
-		String codigoProduto = ProdutosView.buscaProduto();
 		try {
 			for(Produto produto : listaProdutos) {
 				if(codigoProduto.equals(produto.getId())) {
 					
-					String [] info = ProdutosView.editarProduto();
 					produto.setNome(info[0]);
 					Double preco = Double.parseDouble(info[1]);
 					produto.setPreco(preco);
@@ -72,9 +70,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	}
 
 	@Override
-	public boolean excluirProduto(ArrayList<Produto> listaProdutos) {
-		
-		String codigoProduto = ProdutosView.buscaProduto();
+	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
 		
 		try {
 			for(Produto produto : listaProdutos) {

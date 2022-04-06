@@ -71,21 +71,21 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	
 	//Metodos de gerenciamento de Produto
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds) {
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
-		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds);
+		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds, info);
 	}
 
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos) {
+	public boolean editarProduto(ArrayList<Produto> listaProdutos,  String codigoProduto, String [] info) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
-		return gerenciamentoProdutos.editarProduto(listaProdutos);
+		return gerenciamentoProdutos.editarProduto(listaProdutos, codigoProduto, info);
 	}
 
 	@Override
-	public boolean excluirProduto(ArrayList<Produto> listaProdutos) {
+	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
-		return gerenciamentoProdutos.excluirProduto(listaProdutos);
+		return gerenciamentoProdutos.excluirProduto(listaProdutos, listaIds, codigoProduto);
 	}
 	
 	//Metodos de Gerenciamento de Cardapio (Mexe com os Pratos)
