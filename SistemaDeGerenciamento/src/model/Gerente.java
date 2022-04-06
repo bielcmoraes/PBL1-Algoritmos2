@@ -40,10 +40,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
-	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores,ArrayList<String> listaIds, String codigoFornecedor) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.excluirFornecedor(listaFornecedores);
+		return gerenciamentoFornecedor.excluirFornecedor(listaFornecedores, listaIds, codigoFornecedor);
 	}
 	
 	//Metodos do gerenciamento de Usuario

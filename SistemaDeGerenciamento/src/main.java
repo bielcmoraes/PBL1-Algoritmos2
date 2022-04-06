@@ -62,7 +62,8 @@ public class main {
 						break;
 					case 3:
 						System.out.println("Excluindo Fornecedor");
-						((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores());
+						String codigoFornecedorDel = FornecedorView.buscaFornecedor();
+						((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores(),dados.getListaIds(), codigoFornecedorDel);
 						break;
 					case 4:
 						break;
