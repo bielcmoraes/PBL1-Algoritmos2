@@ -8,8 +8,8 @@ import view.FornecedorView;
 public class GerenciaFornecedor implements FornecedorCopyable {
 
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds) {
-		String[] info = FornecedorView.cadastrarFornecedor();
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info) {
+		
 		Fornecedor novoFornecedor = new Fornecedor(listaIds, info[0], info[1], info[2]);
 		
 		try {
@@ -24,13 +24,11 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	}
 
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
 		
-		String codigoFornecedor = FornecedorView.buscaFornecedor();
 		try {
 			for(Fornecedor fornecedor : listaFornecedores) {
 				if(fornecedor.getId() == codigoFornecedor) {
-					String [] info = FornecedorView.cadastrarFornecedor();
 					fornecedor.setNome(info[0]);
 					fornecedor.setCnpj(info[1]);
 					fornecedor.setEndereco(info[2]);
@@ -49,7 +47,7 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	}
 
 	@Override
-	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds) {
 		
 		String codigoFornecedor = FornecedorView.buscaFornecedor();
 		

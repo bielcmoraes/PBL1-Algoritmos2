@@ -11,6 +11,7 @@ import model.Gerente;
 import model.Produto;
 import model.Usuario;
 import view.CardapioView;
+import view.FornecedorView;
 import view.MenuView;
 import view.SubMenuView;
 
@@ -50,11 +51,14 @@ public class main {
 					switch(decisao[1]) {
 					case 1:
 						System.out.println("Cadastrando Fornecedor");
-						((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds());
+						String[] infoCadastroFornecedor = FornecedorView.cadastrarFornecedor();
+						((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
 						break;
 					case 2:
 						System.out.println("Editando Fornecedor");
-						((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores());
+						String codigoFornecedorEdit = FornecedorView.buscaFornecedor();
+						String [] infoEditFornecedor = FornecedorView.cadastrarFornecedor();
+						((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
 						break;
 					case 3:
 						System.out.println("Excluindo Fornecedor");

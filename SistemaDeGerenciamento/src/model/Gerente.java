@@ -26,17 +26,17 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	
 	//Metodos do gerenciamento de fornecedores
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds);
+		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds, info);
 	}
 
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.editarFornecedor(listaFornecedores);
+		return gerenciamentoFornecedor.editarFornecedor(listaFornecedores, codigoFornecedor, info);
 	}
 
 	@Override
