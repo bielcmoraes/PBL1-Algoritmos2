@@ -13,8 +13,7 @@ import view.VendaView;
 public class GerenciaVendas implements VendaCopyable {
 
 	@Override
-	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio) {
-		String[] info = VendaView.cadastrarVenda();
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info) {
 	
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate data;
@@ -70,14 +69,11 @@ public class GerenciaVendas implements VendaCopyable {
 	}
 
 	@Override
-	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio) {
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info) {
 		
-		String codigoVenda = VendaView.buscaVenda();
 		try {
 			for(Venda venda : listaVendas) {
 				if(codigoVenda.equals(venda.getId())) {
-				
-					String [] info = VendaView.editarVenda();
 					
 					DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					LocalDate data;
@@ -138,9 +134,7 @@ public class GerenciaVendas implements VendaCopyable {
 	}
 
 	@Override
-	public boolean excluirVenda(ArrayList<Venda> listaVendas) {
-		
-		String codigoVenda = VendaView.buscaVenda();
+	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
 		
 		try {
 			for(Venda venda : listaVendas) {

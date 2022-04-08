@@ -2,68 +2,37 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.GerenciaVendas;
 import controller.ListagemCopyable;
 import controller.VendaCopyable;
-import view.VendaView;
 
-public class Funcionario extends Usuario implements ListagemCopyable, VendaCopyable{
+public class Funcionario extends Usuario implements VendaCopyable{
 	
 	//Construtores
 	public Funcionario(ArrayList<String> listaIds, String nome, String login, String senha) {
 		super(listaIds, nome, login, senha);
 	}
-	//Metodos de venda
-	@Override
-	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio) {
-		
-		VendaView venda = new VendaView();
-		Venda novaVenda = venda.cadastrarVenda(listaDePratos);
-	}
-
-	@Override
-	public void editarVenda() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void excluirVenda() {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	//Metodos de listagem
-	@Override
-	public void mostrarCardapio(ArrayList<Prato> listaFornecedores) {
-		// TODO Auto-generated method stub
-		
-	}
+	//Metodos do gerenciamento de vendas
+	//Gerenciamento de Vendas
+		@Override
+		public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
+				String[] info) {
+			GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+			return gerenciamentoVendas.cadastrarVenda(listaVendas, listaIds, cardapio, info);
+		}
 
-	@Override
-	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
-		// TODO Auto-generated method stub
-		
-	}
+		@Override
+		public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
+				String[] info) {
+			GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+			return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info);
+		}
 
-	@Override
-	public void listarProduto(ArrayList<Produto> listaFornecedores) {
-		// TODO Auto-generated method stub
-		
-	}
+		@Override
+		public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
+			GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+			return gerenciamentoVendas.excluirVenda(listaVendas, listaIds, codigoVenda);
+		}
 
-	@Override
-	public void listarUsuario(ArrayList<Usuario> listaFornecedores) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void listarVenda(ArrayList<Venda> listaFornecedores) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
-	
 }

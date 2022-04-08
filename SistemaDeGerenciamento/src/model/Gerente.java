@@ -8,10 +8,12 @@ import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
 import controller.GerenciaProdutos;
 import controller.GerenciaUsuario;
+import controller.GerenciaVendas;
 import controller.ProdutoCopyable;
 import controller.UsuarioCopyable;
+import controller.VendaCopyable;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable{
 	
 	//Atributos
 	
@@ -106,6 +108,27 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.excluirPrato(cardapio, listaIds, codigoPrato);
+	}
+	
+	//Gerenciamento de Vendas
+	@Override
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
+			String[] info) {
+		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+		return gerenciamentoVendas.cadastrarVenda(listaVendas, listaIds, cardapio, info);
+	}
+
+	@Override
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
+			String[] info) {
+		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info);
+	}
+
+	@Override
+	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
+		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
+		return gerenciamentoVendas.excluirVenda(listaVendas, listaIds, codigoVenda);
 	}
 
 }
