@@ -15,6 +15,7 @@ import view.FornecedorView;
 import view.MenuView;
 import view.ProdutosView;
 import view.SubMenuView;
+import view.UsuarioView;
 
 
 //Fazer uma herança entre o main o BancoDeDados
@@ -89,14 +90,18 @@ public class main {
 					switch(decisao[1]) {
 					case 1:
 						System.out.println("Cadastrando Usuario");
-						((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds());
+						String [] infoUsuario = UsuarioView.cadastraUsuario();
+						((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds(), infoUsuario);
 						break;
 					case 2:
 						System.out.println("Editando Usuario");
-						((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios());
+						String codigoUsuarioEdit = UsuarioView.buscaUsuario();
+						String [] infoEditUsuario = UsuarioView.editaUsuario();
+						((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
 					case 3:
 						System.out.println("Excluindo Usuario");
-						((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios());
+						String codigoUsuarioDel = UsuarioView.buscaUsuario();
+						((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
 					case 4:
 						break;
 					}

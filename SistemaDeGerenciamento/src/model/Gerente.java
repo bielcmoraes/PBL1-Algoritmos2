@@ -48,25 +48,25 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	
 	//Metodos do gerenciamento de Usuario
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds) {
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] info) {
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		//Retorna o cadastro de usuari0
-		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios, listaIds);
+		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios, listaIds, info);
 	}
 
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios) {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
 		
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
-		return gerenciamentoUsuario.editarUsuario(listaUsuarios);
+		return gerenciamentoUsuario.editarUsuario(listaUsuarios, codigoUsuario, info);
 	}
 
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios) {
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
-		return gerenciamentoUsuario.excluirUsuario(listaUsuarios);
+		return gerenciamentoUsuario.excluirUsuario(listaUsuarios, listaIds, codigoUsuario);
 	}
 	
 	//Metodos de gerenciamento de Produto

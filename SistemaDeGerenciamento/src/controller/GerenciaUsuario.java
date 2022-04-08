@@ -12,8 +12,7 @@ import view.UsuarioView;
 public class GerenciaUsuario implements UsuarioCopyable {
 
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds) {
-		String [] infoUsuario = UsuarioView.cadastraUsuario();
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] infoUsuario) {
 		
 		try {
 			//Cria um novo Usuario e adiciona na lista
@@ -38,13 +37,12 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	}
 
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios) {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
 		
-		String codigoUsuario = UsuarioView.buscaUsuario();
+		
 		try {
 			for(Usuario usuario : listaUsuarios) {
 				if(usuario.getId() == codigoUsuario) {
-					String [] info = UsuarioView.editaUsuario();
 					usuario.setNome(info[0]);
 					usuario.setSenha(info[1]);
 					return true;
@@ -61,9 +59,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	}
 
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios) {
-		
-		String codigoUsuario = UsuarioView.buscaUsuario();
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
 		
 		try {
 			for(Usuario usuario : listaUsuarios) {
