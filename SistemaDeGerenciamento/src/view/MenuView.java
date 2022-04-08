@@ -14,7 +14,7 @@ public class MenuView {
 		System.out.println("Digite 4 para gerenciar Cardapio");
 		System.out.println("Digite 5 para gerenciar Produtos");
 		System.out.println("Digite 6 para Listar");
-		System.out.println("Digite 7 para sair");
+		System.out.println("Digite 7 para deslogar");
 		
 		int resposta = input.nextInt();
 		return resposta;
@@ -24,7 +24,7 @@ public class MenuView {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite 1 para gerenciar Vendas");
 		System.out.println("Digite 2 para Listar");
-		System.out.println("Digite 3 para sair");
+		System.out.println("Digite 3 para deslogar");
 		int resposta = input.nextInt();
 		return resposta;
 	}

@@ -14,7 +14,6 @@ public class Funcionario extends Usuario implements VendaCopyable{
 	}
 	
 	//Metodos do gerenciamento de vendas
-	//Gerenciamento de Vendas
 		@Override
 		public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
 				String[] info) {
