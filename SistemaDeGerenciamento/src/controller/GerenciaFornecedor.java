@@ -72,6 +72,7 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 					if(fornecedor.getId().equals(codigoFornecedor)) {
 						int index = listaFornecedores.indexOf(fornecedor);
 						listaFornecedores.remove(index);
+						listaIds.remove(codigoFornecedor);
 						return true;
 					}
 					else {
