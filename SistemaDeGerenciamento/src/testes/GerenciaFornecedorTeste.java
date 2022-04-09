@@ -144,6 +144,5 @@ class GerenciaFornecedorTeste {
 		info[1] = "00000";
 		info[2] = "Rua de baixo";
 		assertTrue(gf.excluirFornecedor(bd.getListaFornecedores(), bd.getListaIds(), codigoFornecedor), "Excluindo fornecedor com sucesso");
-		
 	}
 }

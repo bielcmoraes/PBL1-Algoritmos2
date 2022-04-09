@@ -14,26 +14,51 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	@Override
 	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] infoUsuario) {
 		
-		try {
-			//Cria um novo Usuario e adiciona na lista
-			if(infoUsuario[1].equals("1")) {
-				Usuario novoUsuario = new Gerente(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
-				listaUsuarios.add(novoUsuario);
-				return true;
-			}
-			else if(infoUsuario[1].equals("2")) {
-				Usuario novoUsuario = new Funcionario(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
-				listaUsuarios.add(novoUsuario);
-				return true;
-			}else {
+		if(listaUsuarios != null && listaIds != null) {
+			
+			try {
+				//Cria um novo Gerente e adiciona na lista
+				if(infoUsuario[1].equals("1")) {
+					
+					for(Usuario usuario: listaUsuarios) {
+						if(usuario.getLogin().equals(infoUsuario[2])) {
+							System.out.println("Login repetido");
+							return false;
+						}
+					}
+					Usuario novoUsuario = new Gerente(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+					listaUsuarios.add(novoUsuario);
+					return true;
+				}
+				//Cria um novo Funcionario e adiciona na lista
+				else if(infoUsuario[1].equals("2")) {
+					
+					for(Usuario usuario: listaUsuarios) {
+						if(usuario.getLogin().equals(infoUsuario[2])) {
+							System.out.println("Login repitido");
+							return false;
+						}
+					}
+					
+					Usuario novoUsuario = new Funcionario(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+					listaUsuarios.add(novoUsuario);
+					return true;
+					
+				}else {
+					System.out.println("Opção incorreta escolha 1 ou 2");
+					return false;
+				}
+			}catch(ArrayIndexOutOfBoundsException a){
+				System.out.println("Usuario não cadastrado");
+				System.out.println("Problema com o array");
 				return false;
 			}
-		}catch(ArrayIndexOutOfBoundsException a){
+		}
+		else {
 			System.out.println("Usuario não cadastrado");
-			System.out.println("Problema com o array");
+			System.out.println("Problema no array");
 			return false;
 		}
-	
 	}
 
 	@Override
@@ -42,7 +67,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 		
 		try {
 			for(Usuario usuario : listaUsuarios) {
-				if(usuario.getId() == codigoUsuario) {
+				if(usuario.getId().equals(codigoUsuario)) {
 					usuario.setNome(info[0]);
 					usuario.setSenha(info[1]);
 					return true;
@@ -63,7 +88,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 		
 		try {
 			for(Usuario usuario : listaUsuarios) {
-				if(usuario.getId() == codigoUsuario) {
+				if(usuario.getId().equals(codigoUsuario)) {
 					int index = listaUsuarios.indexOf(usuario);
 					listaUsuarios.remove(index);
 					return true;
@@ -73,6 +98,8 @@ public class GerenciaUsuario implements UsuarioCopyable {
 		catch(ArrayIndexOutOfBoundsException a) {
 			System.out.println("Usuario não removido!!!");
 			System.out.println("Erro no array");
+			
+			return false;
 		}
 		return false;
 	}
