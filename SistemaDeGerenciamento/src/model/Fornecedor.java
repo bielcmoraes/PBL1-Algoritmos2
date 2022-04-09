@@ -8,12 +8,6 @@ public class Fornecedor extends Entidade{
 	private String cnpj;
 	private String endereco;
 	
-	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj) {
-		super(listaIds);
-		this.nome = nome;
-		this.cnpj = cnpj;
-	}
-	
 	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj, String endereco) {
 		super(listaIds);
 		this.nome = nome;
