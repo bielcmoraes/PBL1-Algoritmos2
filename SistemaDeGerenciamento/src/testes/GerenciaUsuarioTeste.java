@@ -116,4 +116,82 @@ class GerenciaUsuarioTeste {
 		assertTrue(gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com mesmo login");
 		
 	}
+	
+	@Test
+	void editandoUsuarioListaUsuarioNull() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		String codigoUsuario = "37469";
+		
+		String[] info = new String[2];
+		info[0] = "Editado";
+		info[1] = "abacate";
+		
+		assertFalse(gu.editarUsuario(null, codigoUsuario, info), "Editando usuario com lista de usuario null");
+	}
+	
+	@Test
+	void editandoUsuarioCodigoUsuarioIncorreto() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		Gerente g1 = new Gerente();
+		bd.getListaUsuarios().add(g1);
+		String codigoUsuario = "99999999999";
+		
+		String[] info = new String[2];
+		info[0] = "Editado";
+		info[1] = "abacate";
+		
+		assertFalse(gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
+	}
+	
+	@Test
+	void editandoUsuarioComSucesso() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		Gerente g1 = new Gerente();
+		bd.getListaUsuarios().add(g1);
+		String codigoUsuario = bd.getListaUsuarios().get(0).getId();
+		String[] info = new String[2];
+		info[0] = "Editado";
+		info[1] = "abacate";
+		
+		assertTrue(gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
+	}
+	
+	@Test
+	void removendoUsuarioListaUsuarioNull() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		String codigoUsuario = "76676";
+	assertFalse(gu.excluirUsuario(null, bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de usuarios null");
+	}
+	
+	@Test
+	void removendoUsuarioListaIdsNull() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		String codigoUsuario = "76676";
+	assertFalse(gu.excluirUsuario(bd.getListaUsuarios(), null, codigoUsuario), "Excluindo usuario com lista de ids null");
+	}
+	
+	@Test
+	void removendoUsuarioCodigoUsuarioIncorreto() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		Gerente g1 = new Gerente();
+		bd.getListaUsuarios().add(g1);
+		String codigoUsuario = "7667699999";
+	assertFalse(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de ids null");
+	}
+	
+	@Test
+	void removendoUsuarioComSucesso() {
+		BancoDeDados bd = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		Gerente g1 = new Gerente();
+		bd.getListaUsuarios().add(g1);
+		String codigoUsuario = bd.getListaUsuarios().get(0).getId();
+	assertTrue(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de ids null");
+	}
 }

@@ -64,21 +64,29 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	@Override
 	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
 		
-		
-		try {
-			for(Usuario usuario : listaUsuarios) {
-				if(usuario.getId().equals(codigoUsuario)) {
-					usuario.setNome(info[0]);
-					usuario.setSenha(info[1]);
-					return true;
-				}else {
-					System.out.println("Código de usuario não encontrado!!!");
+		if(listaUsuarios != null) {
+			
+			try {
+				for(Usuario usuario : listaUsuarios) {
+					if(usuario.getId().equals(codigoUsuario)) {
+						usuario.setNome(info[0]);
+						usuario.setSenha(info[1]);
+						return true;
+					}else {
+						System.out.println("Código de usuario não encontrado!!!");
+						return false;
+					}
 				}
 			}
+			catch(ArrayIndexOutOfBoundsException a){
+				System.out.println("Usuario não editado!!!");
+				System.out.println("Erro com o array");
+				return false;
+			}
 		}
-		catch(ArrayIndexOutOfBoundsException a){
-			System.out.println("Usuario não editado!!!");
-			System.out.println("Erro com o array");
+		else {
+			System.out.println("Não é possivel editar");
+			System.out.println("Problema com o array");
 		}
 		return false;
 	}
@@ -86,20 +94,31 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	@Override
 	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
 		
-		try {
-			for(Usuario usuario : listaUsuarios) {
-				if(usuario.getId().equals(codigoUsuario)) {
-					int index = listaUsuarios.indexOf(usuario);
-					listaUsuarios.remove(index);
-					return true;
+		if(listaUsuarios != null && listaIds != null) {
+	
+			try {
+				for(Usuario usuario : listaUsuarios) {
+					if(usuario.getId().equals(codigoUsuario)) {
+						int index = listaUsuarios.indexOf(usuario);
+						listaUsuarios.remove(index);
+						listaIds.remove(codigoUsuario);
+						return true;
+					}
+					else {
+						System.out.println("Usuario não encontrado");
+						return false;
+					}
 				}
 			}
+			catch(ArrayIndexOutOfBoundsException a) {
+				System.out.println("Usuario não removido!!!");
+				System.out.println("Erro no array");
+				return false;
+			}
 		}
-		catch(ArrayIndexOutOfBoundsException a) {
-			System.out.println("Usuario não removido!!!");
-			System.out.println("Erro no array");
-			
-			return false;
+		else {
+			System.out.println("Não é possivel excluir");
+			System.out.println("Lista vazia");
 		}
 		return false;
 	}
