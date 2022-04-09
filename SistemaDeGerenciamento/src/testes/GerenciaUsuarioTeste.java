@@ -182,7 +182,7 @@ class GerenciaUsuarioTeste {
 		Gerente g1 = new Gerente();
 		bd.getListaUsuarios().add(g1);
 		String codigoUsuario = "7667699999";
-	assertFalse(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de ids null");
+	assertFalse(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com codigo de usuario incorreto");
 	}
 	
 	@Test
@@ -192,6 +192,6 @@ class GerenciaUsuarioTeste {
 		Gerente g1 = new Gerente();
 		bd.getListaUsuarios().add(g1);
 		String codigoUsuario = bd.getListaUsuarios().get(0).getId();
-	assertTrue(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de ids null");
+	assertTrue(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com sucesso");
 	}
 }

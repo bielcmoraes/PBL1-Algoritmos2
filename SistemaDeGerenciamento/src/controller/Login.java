@@ -21,25 +21,25 @@ public class Login {
 	}
 	
 	//Metodos
-	public Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios) {
+	public Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios, String[] infoLogin) {
 		
-		boolean logadoComSucesso = false;
-		
-		//Tente validar o login
-		do{
-			String[] infoLogin = LoginView.logar();
+		if(listaUsuarios != null) {
+			//Tente validar o login
 			for(Usuario usuario: listaUsuarios) {
 				if(usuario.getLogin().equals(infoLogin[0]) && usuario.getSenha().equals(infoLogin[1])) {
-					logadoComSucesso = true;
 					return usuario;
 				}
+				else {
+					//Mensagem de erro de login
+					LoginView.erroLogin();
+				}
 			}
-			
-			//Mensagem de erro de login
-			LoginView.erroLogin();
-		} while(logadoComSucesso == false); //Repita enquanto não conseguir logar;
-		
+		}
+		else {
+			System.out.println("Erro no Array");
+			System.out.println("Reinicie o sistema");
+			return null;
+		}
 		return null;
-	}
-		
+	}	
 }

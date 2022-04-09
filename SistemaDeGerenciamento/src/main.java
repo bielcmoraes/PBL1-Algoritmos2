@@ -7,6 +7,7 @@ import model.Gerente;
 import model.Usuario;
 import view.CardapioView;
 import view.FornecedorView;
+import view.LoginView;
 import view.ProdutosView;
 import view.UsuarioView;
 import view.VendaView;
@@ -24,8 +25,12 @@ public class main {
 			
 			//Loga o Usuario no sistema
 			Login login = new Login(dados.getListaUsuarios());
-			
-			Usuario usuarioLogado = login.autenticarLogin(dados.getListaUsuarios());
+			Usuario usuarioLogado;
+			do{
+				String[] infoLogin = LoginView.logar();
+				usuarioLogado = login.autenticarLogin(dados.getListaUsuarios(), infoLogin);
+				
+			}while(usuarioLogado == null);
 			boolean logado = true;
 			
 			while(logado) {
