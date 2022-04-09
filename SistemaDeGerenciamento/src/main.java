@@ -1,9 +1,12 @@
 
+import java.util.ArrayList;
+
 import controller.BancoDeDados;
 import controller.Login;
 import controller.Menu;
 import model.Funcionario;
 import model.Gerente;
+import model.Prato;
 import model.Usuario;
 import view.CardapioView;
 import view.FornecedorView;
@@ -150,19 +153,21 @@ public class main {
 					else if(decisao[0] == 6) {
 						switch(decisao[1]) {
 						case 1:
-							System.out.println("Mostrando Cardapio");
+							((Gerente) usuarioLogado).mostrarCardapio(dados.getCardapio());
 							break;
 						case 2:
+							((Gerente) usuarioLogado).listarProduto(dados.getListaProdutos());
 							break;
 						case 3:
+							((Gerente) usuarioLogado).listarVenda(dados.getListaVendas());
 							break;
 						case 4:
+							((Gerente) usuarioLogado).listarFornecedor(dados.getListaFornecedores());
 							break;
 						case 5:
+							((Gerente) usuarioLogado).listarUsuario(dados.getListaUsuarios());
 							break;
 						case 6:
-							break;
-						case 7:
 							break;
 						}
 					}
@@ -197,19 +202,21 @@ public class main {
 					}else if(decisao[0] == 2) {
 							switch(decisao[1]) {
 							case 1:
-								System.out.println("Mostrando Cardapio");
+								((Funcionario) usuarioLogado).mostrarCardapio(dados.getCardapio());
 								break;
 							case 2:
+								((Funcionario) usuarioLogado).listarProduto(dados.getListaProdutos());
 								break;
 							case 3:
+								((Funcionario) usuarioLogado).listarVenda(dados.getListaVendas());
 								break;
 							case 4:
+								((Funcionario) usuarioLogado).listarFornecedor(dados.getListaFornecedores());
 								break;
 							case 5:
+								((Funcionario) usuarioLogado).listarUsuario(dados.getListaUsuarios());
 								break;
 							case 6:
-								break;
-							case 7:
 								break;
 							}
 						}

@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class LoginView {
 	
 	public static String[] logar() {
-		
+		System.out.println("\n");
+		System.out.println("=========");
+		System.out.println("= LOGIN =");
+		System.out.println("=========");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Login");
 		String login = input.nextLine();
@@ -19,7 +22,7 @@ public class LoginView {
 	}
 	
 	public static void erroLogin() {
-		
+		System.out.println("\n");
 		System.out.println("Login ou senha incorretos!!!");
 		System.out.println("Tente novamente!!!");
 	}

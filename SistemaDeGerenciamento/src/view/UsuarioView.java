@@ -7,14 +7,17 @@ import controller.UsuarioCopyable;
 public class UsuarioView {
 	
 	public static String[] cadastraUsuario() {
-		
+		System.out.println("\n");
+		System.out.println("=====================");
+		System.out.println("= CADASTRAR USUARIO =");
+		System.out.println("=====================");
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Digite o nome do usuario");
 		String nome = input.nextLine();
-		System.out.println("Digite 1 para cadastrar um Gerente e 2 para cadastrar um Funcionario");
+		System.out.println("Digite 1 para cadastrar um gerente e 2 para cadastrar um funcionario");
 		String cargo = input.nextLine();
-		System.out.println("Digite um Login para o usuario");
+		System.out.println("Digite um login para o usuario");
 		String login = input.nextLine();
 		System.out.println("Digite a senha do Usuario");
 		String senha = input.nextLine();
@@ -29,18 +32,21 @@ public class UsuarioView {
 	
 	public static String buscaUsuario() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Digite o codigo do Usuario que deseja buscar");
+		System.out.println("Digite o codigo do usuario que deseja buscar");
 		String codigo = input.nextLine();
 		return codigo;
 	}
 	
 	public static String[] editaUsuario() {
-		
+		System.out.println("\n");
+		System.out.println("==================");
+		System.out.println("= EDITAR USUARIO =");
+		System.out.println("==================");
 		//Edita nome e senha (Não é possivel modificar o login)
 		Scanner input = new Scanner(System.in);
-		System.out.println("Digite o novo Nome do Usuario");
+		System.out.println("Digite o novo nome do usuario");
 		String novoNome = input.nextLine();
-		System.out.println("Digite a nova Senha de Usuario");
+		System.out.println("Digite a nova senha de usuario");
 		String novaSenha = input.nextLine();
 		
 		String [] infoUsuario = new String [2];
@@ -50,6 +56,10 @@ public class UsuarioView {
 	}
 	
 	public static String excluiUsuario() {
+		System.out.println("\n");
+		System.out.println("===================");
+		System.out.println("= EXCLUIR USUARIO =");
+		System.out.println("===================");
 		return buscaUsuario();
 	}
 

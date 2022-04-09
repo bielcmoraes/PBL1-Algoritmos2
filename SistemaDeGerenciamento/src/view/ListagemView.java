@@ -14,7 +14,10 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void mostrarCardapio(ArrayList<Prato> cardapio) {		
-		System.out.println("Cardapio");
+		System.out.println("\n");
+		System.out.println("============");
+		System.out.println("= CARDAPIO =");
+		System.out.println("============");
 		System.out.format("%-15s %-30s %-15s %-50s %-15s %-50s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA", "PRODUTOS");
 		for(Prato prato: cardapio) {
 			String produtos = "";
@@ -35,16 +38,27 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+		System.out.println("\n");
+		System.out.println("================");
+		System.out.println("= FORNECEDORES =");
+		System.out.println("===============");
+		System.out.format("%-15s %-50s\n", "ID", "NOME", "CNPJ", "ENDERECO");
 		for(Fornecedor fornecedor: listaFornecedores) {
-			System.out.println(fornecedor.getNome() + "----- CNPJ: " + fornecedor.getCnpj());
+			System.out.format("%-15s %-50s %-30s %-50s\n", 
+					fornecedor.getId(), 
+					fornecedor.getNome(),
+					fornecedor.getCnpj(),
+					fornecedor.getEndereco());
 		}
-		
 	}
 
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		System.out.println("Produtos");
+		System.out.println("\n");
+		System.out.println("============");
+		System.out.println("= PRODUTOS =");
+		System.out.println("============");
 		System.out.format("%-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO", "VALIDADE");
 		for(Produto produto: listaProdutos) {
 			System.out.format("%-15s %-15s R$ %-12.2f %-15s\n", 
@@ -58,14 +72,25 @@ public class ListagemView implements ListagemCopyable {
 
 	@Override
 	public void listarUsuario(ArrayList<Usuario> listaUsuarios) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("\n");
+		System.out.println("============");
+		System.out.println("= USUARIOS =");
+		System.out.println("============");
+		System.out.format("%-15s %-50s\n", "ID", "NOME");
+		for(Usuario usuario: listaUsuarios) {
+			System.out.format("%-15s %-50s\n", 
+					usuario.getId(), 
+					usuario.getNome());
+		}
 	}
 
 	@Override
 	public void listarVenda(ArrayList<Venda> listaVendas) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		System.out.println("Vendas");
+		System.out.println("\n");
+		System.out.println("==========");
+		System.out.println("= VENDAS =");
+		System.out.println("==========");
 		System.out.format("%-15s %-15s %-15s %-50s %-15s %-15s\n", "ID", "DATA","HORARIO", "PRATOS", "PRECO TOTAL", "METODO DE PAGAMENTO");
 		for(Venda venda: listaVendas) {
 			String pratos = "";

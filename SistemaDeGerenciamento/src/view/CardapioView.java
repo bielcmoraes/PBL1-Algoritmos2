@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class CardapioView {
 
 	public static String[] cadastrarPrato() {
-				
+		System.out.println("\n");
+		System.out.println("===================");
+		System.out.println("= CADASTRAR PRATO =");
+		System.out.println("===================");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o nome do prato");
 		String nome = input.nextLine();
@@ -36,13 +39,17 @@ public class CardapioView {
 	public static String buscaPrato() {
 		
 		Scanner input = new Scanner(System.in);
+		System.out.println("\n");
 		System.out.println("Digite o codigo do prato que deseja buscar");
 		String codigo = input.nextLine();
 		return codigo;
 	}
 	
 	public static String[] editarPrato() {
-
+		System.out.println("\n");
+		System.out.println("================");
+		System.out.println("= EDITAR PRATO =");
+		System.out.println("================");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o novo nome do prato");
 		String nome = input.nextLine();
@@ -72,6 +79,10 @@ public class CardapioView {
 	}
 
 	public String excluirPrato() {
+		System.out.println("\n");
+		System.out.println("=================");
+		System.out.println("= EXCLUIR PRATO =");
+		System.out.println("=================");
 		
 		return buscaPrato();
 		

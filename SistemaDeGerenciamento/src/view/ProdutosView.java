@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class ProdutosView {
 
 	public static String[] cadastrarProduto() {
-		
+		System.out.println("\n");
+		System.out.println("=====================");
+		System.out.println("= CADASTRAR PRODUTO =");
+		System.out.println("=====================");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o nome do produto");
 		String nome = input.nextLine();
@@ -34,7 +37,10 @@ public class ProdutosView {
 	}
 	
 	public static String[] editarProduto() {
-
+		System.out.println("\n");
+		System.out.println("==================");
+		System.out.println("= EDITAR PRODUTO =");
+		System.out.println("==================");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite um novo nome de produto");
 		String nome = input.nextLine();
@@ -56,7 +62,10 @@ public class ProdutosView {
 	}
 
 	public String excluirProduto() {
-		
+		System.out.println("\n");
+		System.out.println("===================");
+		System.out.println("= EXCLUIR PRODUTO =");
+		System.out.println("===================");
 		return buscaProduto();
 		
 	}

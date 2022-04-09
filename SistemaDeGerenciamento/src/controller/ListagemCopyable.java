@@ -10,9 +10,9 @@ import model.Venda;
 
 public interface ListagemCopyable {
 	
-	public void mostrarCardapio(ArrayList<Prato> listaFornecedores);
+	public void mostrarCardapio(ArrayList<Prato> cardapio);
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores);
-	public void listarProduto(ArrayList<Produto> listaFornecedores);
-	public void listarUsuario(ArrayList<Usuario> listaFornecedores);
-	public void listarVenda(ArrayList<Venda> listaFornecedores);
+	public void listarProduto(ArrayList<Produto> listaProdutos);
+	public void listarUsuario(ArrayList<Usuario> listaUsuarios);
+	public void listarVenda(ArrayList<Venda> listaVendas);
 }

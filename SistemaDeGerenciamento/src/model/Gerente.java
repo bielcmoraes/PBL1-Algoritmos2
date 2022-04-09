@@ -9,11 +9,13 @@ import controller.GerenciaFornecedor;
 import controller.GerenciaProdutos;
 import controller.GerenciaUsuario;
 import controller.GerenciaVendas;
+import controller.ListagemCopyable;
 import controller.ProdutoCopyable;
 import controller.UsuarioCopyable;
 import controller.VendaCopyable;
+import view.ListagemView;
 
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable, ListagemCopyable{
 	
 	//Atributos
 	
@@ -129,6 +131,36 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.excluirVenda(listaVendas, listaIds, codigoVenda);
+	}
+
+	@Override
+	public void mostrarCardapio(ArrayList<Prato> cardapio) {
+		ListagemView listagemView = new ListagemView();
+		listagemView.mostrarCardapio(cardapio);
+	}
+
+	@Override
+	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+		ListagemView listagemView = new ListagemView();
+		listagemView.listarFornecedor(listaFornecedores);
+	}
+
+	@Override
+	public void listarProduto(ArrayList<Produto> listaProdutos) {
+		ListagemView listagemView = new ListagemView();
+		listagemView.listarProduto(listaProdutos);	
+	}
+
+	@Override
+	public void listarUsuario(ArrayList<Usuario> listaUsuarios) {
+		ListagemView listagemView = new ListagemView();
+		listagemView.listarUsuario(listaUsuarios);
+	}
+
+	@Override
+	public void listarVenda(ArrayList<Venda> listaVendas) {
+		ListagemView listagemView = new ListagemView();
+		listagemView.listarVenda(listaVendas);
 	}
 
 }
