@@ -29,7 +29,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param listaIds Lista de id's
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param info Entradas do Usuario
-	 * @return cadastrarVenda
+	 * @return Boolean cadastrarVenda
 	 */
 	@Override
 	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
@@ -43,7 +43,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @param info Entradas do Usuario
-	 * @return editarVenda
+	 * @return Boolean editarVenda
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
@@ -56,7 +56,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param listaVendas Lista de vendas
 	 * @param listaIds Lista de ids
 	 * @param codigoVenda Id da venda que deseja editar
-	 * @return excluirVenda
+	 * @return Boolean excluirVenda
 	 */
 	@Override
 	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {

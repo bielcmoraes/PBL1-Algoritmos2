@@ -42,7 +42,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de fornecedores
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do Usuario
-	 * @return cadastrarFornecedor
+	 * @return Boolean cadastrarFornecedor
 	 */
 	@Override
 	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info) {
@@ -55,7 +55,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de fornecedores
 	 * @param codigoFornecedor Id do fornecedor que deseja editar
 	 * @param info Entradas do Usuario
-	 * @return editarFornecedor
+	 * @return Boolean editarFornecedor
 	 */
 	@Override
 	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
@@ -68,7 +68,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de fornecedores
 	 * @param listaIds Lista de id's
 	 * @param codigoFornecedor Id do fornecedor que deseja excluir
-	 * @return excluirFornecedor
+	 * @return Boolean excluirFornecedor
 	 */
 	@Override
 	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores,ArrayList<String> listaIds, String codigoFornecedor) {
@@ -81,7 +81,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de usuarios
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuario
-	 * @return cadastrarUsuario
+	 * @return Boolean cadastrarUsuario
 	 */
 	@Override
 	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] info) {
@@ -93,7 +93,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de usuarios
 	 * @param codigoUsuario Id do usuario que deseja editar
 	 * @param info Entradas do usuario
-	 * @return editarUsuario
+	 * @return Boolean editarUsuario
 	 */
 	@Override
 	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
@@ -107,7 +107,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaFornecedores Lista de usuarios
 	 * @param listaIds Lista de id's
 	 * @param codigoUsuario Id do usuário que deseja excluir
-	 * @return excluirUsuario
+	 * @return Boolean excluirUsuario
 	 */
 	@Override
 	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
@@ -119,7 +119,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaProdutos Lista de produtos
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuário
-	 * @return cadastrarProduto
+	 * @return Boolean cadastrarProduto
 	 */
 	@Override
 	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info) {
@@ -131,7 +131,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaProdutos Lista de produtos
 	 * @param codigoProduto Id do produto que deseja editar
 	 * @param info Entradas do usuário
-	 * @return editarProduto
+	 * @return Boolean editarProduto
 	 */
 	@Override
 	public boolean editarProduto(ArrayList<Produto> listaProdutos,  String codigoProduto, String [] info) {
@@ -143,7 +143,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaProdutos Lista de produtos
 	 * @param listaIds Lista de id's
 	 * @param codigoProduto Id do produto que deseja excluir
-	 * @return excluirProduto
+	 * @return Boolean excluirProduto
 	 */
 	@Override
 	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
@@ -156,7 +156,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param listaProdutos Lista de produtos
 	 * @param info Entradas do usuário
-	 * @return cadastrarPrato
+	 * @return Boolean cadastrarPrato
 	 */
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds,
@@ -170,7 +170,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaProdutos Lista de produtos
 	 * @param codigoPrato Id do prato que deseja editar
 	 * @param info Entradas do usuário
-	 * @return editarPrato
+	 * @return Boolean editarPrato
 	 */
 	@Override
 	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
@@ -182,7 +182,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param cardapio Lista de pratos
 	 * @param listaIds Lista de id's
 	 * @param codigoPrato Id do prato que deseja editar
-	 * @return excluirPrato
+	 * @return Boolean excluirPrato
 	 */
 	@Override
 	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
@@ -195,7 +195,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param info Entradas do Usuario
-	 * @return cadastrarVenda
+	 * @return Boolean cadastrarVenda
 	 */
 	@Override
 	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
@@ -209,7 +209,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @param info Entradas do Usuario
-	 * @return editarVenda
+	 * @return Boolean editarVenda
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
@@ -222,7 +222,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaVendas Lista de vendas
 	 * @param listaIds Lista de ids
 	 * @param codigoVenda Id da venda que deseja editar
-	 * @return excluirVenda
+	 * @return Boolean excluirVenda
 	 */
 	@Override
 	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
@@ -250,7 +250,6 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	
 	/**Metódo para instanciar um objeto do tipo ListagemView.
 	 * @param listaProduto Lista de produtos
-	 * @return listarProduto
 	 */
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {

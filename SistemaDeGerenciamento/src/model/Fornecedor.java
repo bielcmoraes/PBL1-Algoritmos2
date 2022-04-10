@@ -15,10 +15,10 @@ public class Fornecedor extends Entidade{
 	
 	/**O construtor inicializa o costrutor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro.
 	 * 
-	 * @param listaIds - Lista de id's
-	 * @param nome - Nome do fornecedor
-	 * @param cnpj - CNPJ do fornecedor
-	 * @param endereco - Endereço do fornecedor
+	 * @param listaIds Lista de id's
+	 * @param nome Nome do fornecedor
+	 * @param cnpj CNPJ do fornecedor
+	 * @param endereco Endereço do fornecedor
 	 */
 	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj, String endereco) {
 		super(listaIds);
