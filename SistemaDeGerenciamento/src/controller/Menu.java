@@ -3,8 +3,17 @@ package controller;
 import view.MenuView;
 import view.SubMenuView;
 
+/**Classe reponsável por organizar as telas dos diferente menus, de Gerente e Funcionário, que serão exibidas no sistema.
+ * 
+ * @author Gabriel Moraes e Luis Fernando Cintra
+ *
+ */
 public class Menu {
 	
+	/**Metódo estático que implementa e organiza o menu de gerente.
+	 * 
+	 * @return vetor de inteiros de tamanho dois que contém os valores correspondentes às escolhas do usuário que está acessando o menu de gerentes.
+	 */
 	public static int[] gerente() {
 		int escolha = MenuView.primeiraTelaGerente();
 		int [] decisoes = new int[2];
@@ -27,6 +36,10 @@ public class Menu {
 		return decisoes;
 	}
 	
+	/**Metódo estático que implementa e organiza o menu de funcionários.
+	 * 
+	 * @return vetor de inteiros de tamanho dois que contém os valores correspondentes às escolhas do usuário que está acessando o menu de funcionários.
+	 */
 	public static int[] funcionario() {
 		
 		int escolha = MenuView.primeiraTelaFuncionario();
