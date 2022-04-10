@@ -28,7 +28,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param listaVendas Lista de vendas
 	 * @param listaIds Lista de id's
 	 * @param cardapio Cardapio (lista de pratos)
-	 * @param info Entradas do Usuario
+	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarVenda
 	 */
 	@Override
