@@ -5,11 +5,21 @@ import java.util.ArrayList;
 
 import model.Prato;
 import model.Produto;
-import view.CardapioView;
-import view.ProdutosView;
 
+/**Classe responsável por implementar os metódos de cadastrar, editar e excluir pratos da classe CardapioCopyable.
+ * 
+ * @author Gabriel Moraes e Luis Fernando Cintra
+ *
+ */
 public class GerenciaCardapio implements CardapioCopyable {
-
+	
+	/**
+	 * @param cardapio Lista de pratos
+	 * @param listaIds Lista de id's
+	 * @param listaProdutos Lista de produtos
+	 * @param info Entrada do usuário
+	 * @return
+	 */
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) {
 		
