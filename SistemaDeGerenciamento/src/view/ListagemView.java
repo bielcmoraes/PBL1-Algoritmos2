@@ -3,8 +3,8 @@ package view;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import controller.ListagemCopyable;
 import model.Fornecedor;
+import model.ListagemCopyable;
 import model.Prato;
 import model.Produto;
 import model.Usuario;

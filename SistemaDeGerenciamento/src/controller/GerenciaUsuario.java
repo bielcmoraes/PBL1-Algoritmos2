@@ -6,6 +6,7 @@ import model.Fornecedor;
 import model.Funcionario;
 import model.Gerente;
 import model.Usuario;
+import model.UsuarioCopyable;
 import view.FornecedorView;
 import view.UsuarioView;
 

@@ -1,8 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.Produto;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento de produto e utilizada para "resolver" o problema de herança multipla em Java.
  * 

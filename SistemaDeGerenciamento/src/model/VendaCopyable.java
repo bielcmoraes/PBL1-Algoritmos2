@@ -1,9 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.Prato;
-import model.Venda;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento de vendas e utilizada para "resolver" o problema de herança multipla em Java.
  * 

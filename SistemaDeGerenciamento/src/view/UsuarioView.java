@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import controller.UsuarioCopyable;
+import model.UsuarioCopyable;
 
 public class UsuarioView {
 	

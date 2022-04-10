@@ -1,9 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.Prato;
-import model.Produto;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento do cardápio e utilizada para "resolver" o problema de herança multipla em Java.
  * 

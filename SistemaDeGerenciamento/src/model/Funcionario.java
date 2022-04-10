@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 
 import controller.GerenciaVendas;
-import controller.ListagemCopyable;
-import controller.VendaCopyable;
 import view.ListagemView;
 /**Classe para objetos do tipo Funcionario, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 

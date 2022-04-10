@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.Prato;
 import model.Venda;
+import model.VendaCopyable;
 import view.VendaView;
 
 public class GerenciaVendas implements VendaCopyable {

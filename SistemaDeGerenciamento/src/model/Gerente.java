@@ -2,17 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
-import controller.CardapioCopyable;
-import controller.FornecedorCopyable;
 import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
 import controller.GerenciaProdutos;
 import controller.GerenciaUsuario;
 import controller.GerenciaVendas;
-import controller.ListagemCopyable;
-import controller.ProdutoCopyable;
-import controller.UsuarioCopyable;
-import controller.VendaCopyable;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 

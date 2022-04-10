@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.Produto;
+import model.ProdutoCopyable;
 import view.ProdutosView;
 
 public class GerenciaProdutos implements ProdutoCopyable {

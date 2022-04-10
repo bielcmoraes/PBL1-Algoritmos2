@@ -3,6 +3,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.CardapioCopyable;
 import model.Prato;
 import model.Produto;
 

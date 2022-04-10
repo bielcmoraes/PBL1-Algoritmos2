@@ -1,12 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.Fornecedor;
-import model.Prato;
-import model.Produto;
-import model.Usuario;
-import model.Venda;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados a listagem e utilizada para "resolver" o problema de herança multipla em Java.
  * 
