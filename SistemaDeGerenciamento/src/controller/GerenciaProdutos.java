@@ -51,12 +51,26 @@ public class GerenciaProdutos implements ProdutoCopyable {
 				if(codigoProduto.equals(produto.getId())) {
 					
 					produto.setNome(info[0]);
-					Double preco = Double.parseDouble(info[1]);
+					Double preco;
+					try {
+						preco = Double.parseDouble(info[1]);
+					} catch (java.lang.NumberFormatException a) {
+						System.out.println("Produto nao editado!!!");
+						System.out.println("Preco invalido");
+						return false;
+					}
+					DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate validade;
+					try {
+						validade = LocalDate.parse(info[2], formatoData);
+					} catch (java.time.format.DateTimeParseException a) {
+						System.out.println("Produto nao editado!!!");
+						System.out.println("Validade invalida");
+						return false;
+					}
 					produto.setPreco(preco);
-					DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-					LocalDate validade = LocalDate.parse(info[2], dataFormato);
 					produto.setValidade(validade);
-					
+		
 					return true;
 				}
 			}
