@@ -2,38 +2,29 @@ package model;
 
 import java.util.ArrayList;
 
-public class Cardapio {
+/**Classe que contém os atributos e métodos referentes ao Cardápio.
+ * 
+ * @author Gabriel Moraes e Luis Fernando Cintra
+ *
+ */
+public class Cardapio extends Entidade {
 	
-	private int id;
 	private ArrayList<Prato> pratos;
 	
-	public Cardapio(ArrayList<Prato> pratos) {
+	/**O construtor recebe um ArrayList de pratos e atribui ao atributo pratos.
+	 * 
+	 * @param pratos
+	 */
+	public Cardapio(ArrayList<String> listaIds, ArrayList<Prato> pratos) {
+		super(listaIds);
 		this.pratos = pratos;
 	}
 	
-	//Metodos
-	
-		
-		
-		//Fazer um código que recebe um array com nome dos pratos, procura no ArrayList
-		//de pratos e adiciona em outro ArrayList e retorna esse novo ArrayList
-	
-	//Getters e Setters
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	/**Metódo para retorno de lista de pratos
+	 * 
+	 * @return ArrayList<Prato> - Lista de pratos
+	 */
 	public ArrayList<Prato> getPratos() {
 		return pratos;
 	}
-
-	public void setPratos(ArrayList<Prato> pratos) {
-		this.pratos = pratos;
-	}
-	
-	
 }
