@@ -28,37 +28,37 @@ public class Fornecedor extends Entidade{
 	}
 	
 	/**Metódo para retorno de nome do fornecedor
-	 * @return String - Nome do fornecedor*/
+	 * @return String Nome do fornecedor*/
 	public String getNome() {
 		return nome;
 	}
 	
 	/**Metódo para alterar o nome do fornecedor
-	 * @param nome*/
+	 * @param nome Novo nome do fornecedor*/
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
 	/**Metódo para retorno de CNPJ do fornecedor
-	 * @return String - CNPJ do fornecedor*/
+	 * @return String CNPJ do fornecedor*/
 	public String getCnpj() {
 		return cnpj;
 	}
 	
 	/**Metódo para alterar CNPJ do fornecedor
-	 * @param cnpj*/
+	 * @param cnpj Novo CNPJ do fornecedor*/
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 	
 	/**Metódo para retorno de endereço do fornecedor
-	 * @return String - Endereço do Fornecedor*/
+	 * @return String Endereço do Fornecedor*/
 	public String getEndereco() {
 		return endereco;
 	}
 	
 	/**Metódo para alterar endereço do fornecedor
-	 * @param endereco*/
+	 * @param endereco Novo endereço do fornecedor*/
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}

@@ -42,7 +42,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para alterar o nome do prato.
-	 * @param nome*/
+	 * @param nome Novo nome do prato*/
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -54,7 +54,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para alterar o preço do prato.
-	 * @param preco*/
+	 * @param preco Novo preço do prato*/
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
@@ -66,7 +66,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para alterar a descrição do prato.
-	 * @param descricao*/
+	 * @param descricao Nova descrição do prato*/
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
@@ -78,7 +78,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para alterar a categoria do prato.
-	 * @param categoria*/
+	 * @param categoria Nova categoria do prato*/
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
@@ -90,7 +90,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para alterar a lista de produtos que compõem o prato.
-	 * @param produtos*/
+	 * @param produtos Nova lista de produtos que compõem o prato*/
 	public void setProdutos(ArrayList<Produto> produtos) {
 		this.produtos = produtos;
 	}

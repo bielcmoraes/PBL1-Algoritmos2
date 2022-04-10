@@ -13,8 +13,8 @@ public abstract class Entidade {
 	// Attributes
 	private String id;
 	
-	/**O contrutor recebe como parâmetro a lista de id's e ,utilizando a biblioteca Random, gera um id aleatório entre 0 e 10000 que não está na lista de id's.
-	 * @param listaIds*/
+	/**O construtor recebe como parâmetro a lista de id's e ,utilizando a biblioteca Random, gera um id aleatório entre 0 e 10000 que não está na lista de id's.
+	 * @param listaIds Lista de id's*/
 	public Entidade (ArrayList<String> listaIds) {
 		Random aleatorio = new Random();
 		do {
