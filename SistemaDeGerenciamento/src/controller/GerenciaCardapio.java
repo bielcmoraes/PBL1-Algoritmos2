@@ -15,11 +15,14 @@ import model.Produto;
 public class GerenciaCardapio implements CardapioCopyable {
 	
 	/**
-	 * @param cardapio Lista de pratos
-	 * @param listaIds Lista de id's
-	 * @param listaProdutos Lista de produtos
-	 * @param info Entrada do usuário
-	 * @return true se o prato for cadastrado com sucesso e false se o prato não for cadastrado com sucesso
+	 * O método é responsável por cadastrar um objeto do tipo Prato em uma ArrayList<Prato>.
+	 * Esse cadastro só ocorre caso todos os dados passados atraves da String []
+	 * possam ser convertidos para seus respectivos tipos correspondente.
+	 * @param cardapio - Lista de Pratos
+	 * @param listaIds - Lista de IDs
+	 * @param listaProdutos - Lista de Produtos
+	 * @param info - Lista com as entradas do usuario
+	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) {
@@ -54,7 +57,17 @@ public class GerenciaCardapio implements CardapioCopyable {
 			return false;
 		}
 	}
-
+	/**
+	 * O método é responsável por editar um objeto do tipo Prato em uma ArrayList<Prato>.
+	 * Essa edição só ocorre caso todos os dados passados atraves da String []
+	 * possam ser convertidos para seus respectivos tipos correspondente
+	 * e o prato a ser editado possa ser encontrada na lista de pratos.
+	 * @param cardapio - Lista de Pratos
+	 * @param listaProdutos - Lista de Produtos
+	 * @param codigoPrato - Codigo do prato a ser editado
+	 * @param info - Lista com as entradas do usuario
+	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 */
 	@Override
 	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
 		
@@ -96,7 +109,14 @@ public class GerenciaCardapio implements CardapioCopyable {
 		}
 		return false;
 	}
-
+	/**
+	 * O método é responsável por excluir um objeto do tipo Prato em uma ArrayList<Prato>.
+	 * Essa exclusão só ocorre caso o prato a ser excluido possa ser encontrada na lista de pratos.
+	 * @param cardapio - Lista de Pratos
+	 * @param listaIds - Lista de IDs
+	 * @param codigoPrato - Codigo do prato a ser excluido
+	 * @return true caso a exclusão ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 */
 	@Override
 	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
 		
