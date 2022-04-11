@@ -1,3 +1,4 @@
+package controller;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ import view.VendaView;
 
 
 //Fazer uma herança entre o main o BancoDeDados
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 	
@@ -48,18 +49,27 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Fornecedor");
 							String[] infoCadastroFornecedor = FornecedorView.cadastrarFornecedor();
-							((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
+							boolean cadastrarFornecedor = ((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
+							if(cadastrarFornecedor == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Fornecedor");
 							String codigoFornecedorEdit = FornecedorView.buscaFornecedor();
 							String [] infoEditFornecedor = FornecedorView.cadastrarFornecedor();
-							((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
+							boolean editarFornecedor = ((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
+							if(editarFornecedor == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 3:
 							System.out.println("Excluindo Fornecedor");
 							String codigoFornecedorDel = FornecedorView.buscaFornecedor();
-							((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores(),dados.getListaIds(), codigoFornecedorDel);
+							boolean excluirFornecedor = ((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores(),dados.getListaIds(), codigoFornecedorDel);
+							if(excluirFornecedor == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 4:
 							break;
@@ -72,18 +82,27 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							boolean cadastrarVenda = ((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							if(cadastrarVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							boolean editarVenda = ((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							if(editarVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 3:
 							System.out.println("Excluindo Vendas");
 							String codigoVendaDel = VendaView.buscaVenda();
-							((Gerente) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							boolean excluirVenda = ((Gerente) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							if(excluirVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 4:
 							break;
@@ -94,17 +113,28 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Usuario");
 							String [] infoUsuario = UsuarioView.cadastraUsuario();
-							((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds(), infoUsuario);
+							boolean cadastrarUsuario = ((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds(), infoUsuario);
+							if(cadastrarUsuario == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Usuario");
 							String codigoUsuarioEdit = UsuarioView.buscaUsuario();
 							String [] infoEditUsuario = UsuarioView.editaUsuario();
-							((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
+							boolean editarUsuario =((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
+							if(editarUsuario == false) {
+								SubMenuView.erroGerenciamentos();
+							}
+							break;
 						case 3:
 							System.out.println("Excluindo Usuario");
 							String codigoUsuarioDel = UsuarioView.buscaUsuario();
-							((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
+							boolean excluirUsuario =((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
+							if(excluirUsuario == false) {
+								SubMenuView.erroGerenciamentos();
+							}
+							break;
 						case 4:
 							break;
 						}
@@ -145,18 +175,27 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Produtos");
 							String[] infoCadastroProduto = ProdutosView.cadastrarProduto();
-							((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto);
+							boolean cadastrarProduto = ((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto);
+							if(cadastrarProduto == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Produtos");
 							String codigoProdutoEdit = ProdutosView.buscaProduto();
 							String [] infoProdutoEdit = ProdutosView.editarProduto();
-							((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit);
+							boolean editarProduto = ((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit);
+							if(editarProduto == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 3:
 							System.out.println("Excluindo Produtos");
 							String codigoProdutoDel = ProdutosView.buscaProduto();
-							((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos(), dados.getListaIds(), codigoProdutoDel);
+							boolean excluirProduto = ((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos(), dados.getListaIds(), codigoProdutoDel);
+							if(excluirProduto == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 4:
 							break;
@@ -195,18 +234,27 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							boolean cadastrarVenda = ((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							if(cadastrarVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							boolean editarVenda = ((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							if(editarVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 3:
 							System.out.println("Excluindo Vendas");
 							String codigoVendaDel = VendaView.buscaVenda();
-							((Funcionario) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							boolean excluirVenda = ((Funcionario) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							if(excluirVenda == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 4:
 							break;

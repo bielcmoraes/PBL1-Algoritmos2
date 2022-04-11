@@ -21,8 +21,6 @@ public class GerenciaVendas implements VendaCopyable {
 		try {
 			data = LocalDate.parse(info[0], formatoData);
 		} catch (java.time.format.DateTimeParseException a) {
-			System.out.println("Venda nao cadastrada!!!");
-			System.out.println("Data invalida");
 			return false;
 		}
 		
@@ -31,8 +29,6 @@ public class GerenciaVendas implements VendaCopyable {
 		try {
 			horario = LocalTime.parse(info[1], formatoHorario);
 		} catch (java.time.format.DateTimeParseException a) {
-			System.out.println("Venda nao cadastrada!!!");
-			System.out.println("Horario invalido");
 			return false;
 		}
 		
@@ -46,8 +42,6 @@ public class GerenciaVendas implements VendaCopyable {
 		}
 		
 		if (pratos.size() != info[2].split(", ").length) {
-			System.out.println("Venda nao cadastrada!!!");
-			System.out.println("Pratos invalidos");
 			return false;
 		}
 		
@@ -63,8 +57,6 @@ public class GerenciaVendas implements VendaCopyable {
 			return true;
 		} 
 		catch(ArrayIndexOutOfBoundsException a){
-			System.out.println("Venda nao cadastrada!!!");
-			System.out.println("Problema ao acessar o ArrayList");
 			return false;
 		}
 	}
@@ -81,8 +73,6 @@ public class GerenciaVendas implements VendaCopyable {
 					try {
 						data = LocalDate.parse(info[0], formatoData);
 					} catch (java.time.format.DateTimeParseException a) {
-						System.out.println("Venda nao cadastrada!!!");
-						System.out.println("Data invalida");
 						return false;
 					}
 					
@@ -91,8 +81,6 @@ public class GerenciaVendas implements VendaCopyable {
 					try {
 						horario = LocalTime.parse(info[1], formatoHorario);
 					} catch (java.time.format.DateTimeParseException a) {
-						System.out.println("Venda nao cadastrada!!!");
-						System.out.println("Horario invalido");
 						return false;
 					}
 					
@@ -106,8 +94,6 @@ public class GerenciaVendas implements VendaCopyable {
 					}
 					
 					if (pratos.size() != info[2].split(", ").length) {
-						System.out.println("Venda nao cadastrada!!!");
-						System.out.println("Pratos invalidos");
 						return false;
 					}
 					
@@ -125,11 +111,9 @@ public class GerenciaVendas implements VendaCopyable {
 					return true;
 				}
 			}
-			System.out.println("Codigo da venda nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a){
-			System.out.println("Venda nao editada!!!");
-			System.out.println("Erro com o array");
+			return false;
 		}
 		return false;
 	}
@@ -145,11 +129,9 @@ public class GerenciaVendas implements VendaCopyable {
 					return true;
 				}
 			}
-			System.out.println("Codigo de venda nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a) {
-			System.out.println("Venda nao removida!!!");
-			System.out.println("Erro no array");
+			return false;
 		}
 		return false;
 	}

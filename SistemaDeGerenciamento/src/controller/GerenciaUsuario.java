@@ -35,7 +35,6 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					
 					for(Usuario usuario: listaUsuarios) {
 						if(usuario.getLogin().equals(infoUsuario[2])) {
-							System.out.println("Login repetido");
 							return false;
 						}
 					}
@@ -48,7 +47,6 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					
 					for(Usuario usuario: listaUsuarios) {
 						if(usuario.getLogin().equals(infoUsuario[2])) {
-							System.out.println("Login repitido");
 							return false;
 						}
 					}
@@ -62,14 +60,10 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					return false;
 				}
 			}catch(ArrayIndexOutOfBoundsException a){
-				System.out.println("Usuario não cadastrado");
-				System.out.println("Problema com o array");
 				return false;
 			}
 		}
 		else {
-			System.out.println("Usuario não cadastrado");
-			System.out.println("Problema no array");
 			return false;
 		}
 	}
@@ -93,20 +87,13 @@ public class GerenciaUsuario implements UsuarioCopyable {
 						usuario.setSenha(info[1]);
 						return true;
 					}else {
-						System.out.println("Código de usuario não encontrado!!!");
 						return false;
 					}
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException a){
-				System.out.println("Usuario não editado!!!");
-				System.out.println("Erro com o array");
 				return false;
 			}
-		}
-		else {
-			System.out.println("Não é possivel editar");
-			System.out.println("Problema com o array");
 		}
 		return false;
 	}
@@ -130,20 +117,13 @@ public class GerenciaUsuario implements UsuarioCopyable {
 						return true;
 					}
 					else {
-						System.out.println("Usuario não encontrado");
 						return false;
 					}
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException a) {
-				System.out.println("Usuario não removido!!!");
-				System.out.println("Erro no array");
 				return false;
 			}
-		}
-		else {
-			System.out.println("Não é possivel excluir");
-			System.out.println("Lista vazia");
 		}
 		return false;
 	}

@@ -8,8 +8,8 @@ import view.FornecedorView;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir fornecedor que foram especificados na classe FornecedorCopyable.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  */
 public class GerenciaFornecedor implements FornecedorCopyable {
 	
@@ -29,14 +29,10 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 				return true;
 			} 
 			catch(ArrayIndexOutOfBoundsException a){
-				System.out.println("Fornecedor não cadastrado!!!");
-				System.out.println("Problema ao acessar o ArrayList");
 				return false;
 			}
 		}
 		else {
-			System.out.println("Fornecedor não cadastrado!!!");
-			System.out.println("Problema ao acessar o ArrayList");
 			return false;
 		}
 		
@@ -62,20 +58,15 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 						fornecedor.setEndereco(info[2]);
 						return true;
 					}else {
-						System.out.println("Código de fornecedor não encontrado!!!");
 						return false;
 					}
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException a){
-				System.out.println("Fornecedor não editado!!!");
-				System.out.println("Erro com o array");
 				return false;
 			}
 			
 		}else {
-			System.out.println("Não é possivel editar");
-			System.out.println("Problema ao acessar o ArrayList");
 		}
 		return false;
 	}
@@ -100,19 +91,13 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 						return true;
 					}
 					else {
-						System.out.println("Codigo de Fornecedor Inválido");
 						return false;
 					}
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException a) {
-				System.out.println("Fornecedor não removido!!!");
-				System.out.println("Erro no array");
 				return false;
 			}
-		}
-		else {
-			System.out.println("Erro no array");
 		}
 		return false;
 	}
