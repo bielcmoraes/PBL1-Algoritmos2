@@ -448,9 +448,16 @@ class GerenciaCardapioTest {
 		infoPrato[4] = "Carne de Hamburger, P�o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
+		infoPrato[0] = "Hamburguer Duplo"; // Nome
+		infoPrato[1] = "12.5"; // Preco;
+		infoPrato[2] = "Um delicioso hamburger com o dobro de carne"; // Descricao
+		infoPrato[3] = "Lanche"; // Categoria
+		infoPrato[4] = "Carne de Hamburger, P�o, Alface, Tomate"; // Produtos
+		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
+		
 		String id = bancoDeDados.getCardapio().get(0).getId();
 		
 		gerenciaCardapio.excluirPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), id);
-		assertEquals(0, bancoDeDados.getCardapio().size(), "Excluindo 1 prato do cardapio");
+		assertEquals("Hamburguer Duplo", bancoDeDados.getCardapio().get(0).getNome(), "Excluindo 1 prato do cardapio");
 	}
 }
