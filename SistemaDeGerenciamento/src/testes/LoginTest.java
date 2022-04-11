@@ -8,7 +8,7 @@ import controller.BancoDeDados;
 import controller.Login;
 import model.Usuario;
 
-class LoginTeste {
+class LoginTest {
 	
 	@Test
 	void autenticaLoginListaUsuarioNull(){

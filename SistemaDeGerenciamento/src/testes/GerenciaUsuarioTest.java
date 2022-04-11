@@ -10,7 +10,7 @@ import model.Funcionario;
 import model.Gerente;
 import model.Usuario;
 
-class GerenciaUsuarioTeste {
+class GerenciaUsuarioTest {
 	
 	@Test
 	void cadastrandoGerenteComListaUsuarioNaoInstanciada() {

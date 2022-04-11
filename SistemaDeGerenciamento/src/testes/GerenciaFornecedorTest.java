@@ -8,7 +8,7 @@ import controller.BancoDeDados;
 import controller.GerenciaFornecedor;
 import model.Fornecedor;
 
-class GerenciaFornecedorTeste {
+class GerenciaFornecedorTest {
 	
 	@Test
 	void cadastrandoFornecedorEmListaNaoInstanciada() {

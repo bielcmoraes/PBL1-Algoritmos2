@@ -17,7 +17,7 @@ import model.Produto;
 import model.Usuario;
 import model.Venda;
 
-class BancoDeDadosTeste {
+class BancoDeDadosTest {
 
 	@Test
 	void listaFornecedoresVazia() {
