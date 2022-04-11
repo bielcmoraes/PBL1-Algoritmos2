@@ -4,8 +4,19 @@ import java.util.Scanner;
 
 import model.UsuarioCopyable;
 
+/**Classe reponsável por se comunicar com o usuário do sistema sobre a classes de gerenciamento de usuários, através da exibição de mensagens
+ * e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class UsuarioView {
 	
+	/**Método responsável por capturar e retornar as informações utilizadas para cadastrar um produto no sistema.
+	 * 
+	 * @return Vetor de strings com as informações correspondentes ao nome do usuário, tipo de usuário, login do usuário e senha do usuário nas posições
+	 * 0, 1, 2 e 3, respectivamente.
+	 */
 	public static String[] cadastraUsuario() {
 		System.out.println("\n");
 		System.out.println("=====================");
@@ -30,6 +41,10 @@ public class UsuarioView {
 		return infoUsuario;
 	}
 	
+	/**Método responsável por capturar, do usuário, e retornar o id de um usuário.
+	 * 
+	 * @return Código do usuário
+	 */
 	public static String buscaUsuario() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o codigo do usuario que deseja buscar");
@@ -37,6 +52,10 @@ public class UsuarioView {
 		return codigo;
 	}
 	
+	/**Método responsável por capturar e retornar os inputs que serão utilizados para editar um usuário da lista de usuários.
+	 * 
+	 * @return Vetor de strings com as novas informações correspondentes ao nome do usuário e senha do usuário nas posições 0 e 1, respectivamente.
+	 */
 	public static String[] editaUsuario() {
 		System.out.println("\n");
 		System.out.println("==================");
@@ -55,6 +74,10 @@ public class UsuarioView {
 		return infoUsuario;
 	}
 	
+	/**Método responsável por capturar e retornar as informações necessárias para excluir um usuário da lista de usuários.
+	 * 
+	 * @return Método buscaUsuario
+	 */
 	public static String excluiUsuario() {
 		System.out.println("\n");
 		System.out.println("===================");

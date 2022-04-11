@@ -2,8 +2,18 @@ package view;
 
 import java.util.Scanner;
 
+/**Classe reponsável por se comunicar com o usuário sobre o cardápio através da exibição de mensagens e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class CardapioView {
-
+	
+	/**Método responsável por capturar e retornar as informações utilizadas para cadastrar um prato no cardápio.
+	 * 
+	 * @return Vetor de strings com as informações correspondentes ao nome do prato, preço do prato, descrição do prato, categoria do prato
+	 * e os produtos que compõem o prato nas posições 0,1,2,3 e 4, respectivamente.
+	 */
 	public static String[] cadastrarPrato() {
 		System.out.println("\n");
 		System.out.println("===================");
@@ -35,7 +45,11 @@ public class CardapioView {
 		
 		return info;
 	}
-
+	
+	/**Método responsável por capturar, do usuário, e retornar o código do prato.
+	 * 
+	 * @return Código do prato
+	 */
 	public static String buscaPrato() {
 		
 		Scanner input = new Scanner(System.in);
@@ -45,6 +59,11 @@ public class CardapioView {
 		return codigo;
 	}
 	
+	/**Método responsável por capturar e retornar os inputs que serão utilizados para editar um prato cadastrado no sistema.
+	 * 
+	 * @return Vetor de strings com as novas informações correspondentes ao nome do prato, preço do prato, descrição do prato, categoria do prato
+	 * e os produtos que compõem o prato nas posições 0,1,2,3 e 4, respectivamente.
+	 */
 	public static String[] editarPrato() {
 		System.out.println("\n");
 		System.out.println("================");
@@ -77,7 +96,11 @@ public class CardapioView {
 		return info;
 		
 	}
-
+	
+	/**Método responsável por capturar e retornar as informações necessárias para excluir um prato do cardápio.
+	 * 
+	 * @return Método buscaPrato
+	 */
 	public String excluirPrato() {
 		System.out.println("\n");
 		System.out.println("=================");

@@ -33,7 +33,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -43,7 +43,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		assertEquals(1, bancoDeDados.getCardapio().size(), "Tamanho da lista cardapio apos cadastro de 1 prato");
@@ -72,7 +72,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -82,7 +82,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "a"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		assertEquals(0, bancoDeDados.getCardapio().size(), "Tamanho da lista cardapio apos cadastro de 1 prato");
@@ -116,7 +116,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "a"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		assertEquals(0, bancoDeDados.getCardapio().size(), "Tamanho da lista cardapio apos cadastro de 1 prato");
@@ -133,14 +133,14 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "a"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		assertEquals(0, bancoDeDados.getCardapio().size(), "Tamanho da lista cardapio apos cadastro de 1 prato");
 	}
 	
 	@Test
-	void EditarPratoNãoCadastrado() {
+	void EditarPratoNaoCadastrado() {
 		
 		BancoDeDados bancoDeDados = new BancoDeDados();
 		GerenciaProdutos gerenciaProdutos = new GerenciaProdutos();
@@ -162,7 +162,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -172,7 +172,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "15.99"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger com 2x mais carne"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		
 		assertFalse(gerenciaCardapio.editarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaProdutos(), "999", infoPrato), "Editando 1 prato do cardapio");
 	}
@@ -200,7 +200,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -210,7 +210,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		String id = bancoDeDados.getCardapio().get(0).getId();
 		
@@ -218,7 +218,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "15.99"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger com 2x mais carne"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		
 		assertTrue(gerenciaCardapio.editarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaProdutos(), id, infoPrato), "Editando 1 prato do cardapio");
 	}
@@ -246,7 +246,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -256,7 +256,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		String id = bancoDeDados.getCardapio().get(0).getId();
 		
@@ -264,7 +264,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "a"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger com 2x mais carne"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		
 		assertFalse(gerenciaCardapio.editarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaProdutos(), id, infoPrato), "Editando um prato do cardapio");
 	}
@@ -292,7 +292,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -302,7 +302,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		String id = bancoDeDados.getCardapio().get(0).getId();
 		
@@ -310,7 +310,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "15.99"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger com 2x mais carne"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate, Elemento X"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate, Elemento X"; // Produtos
 		
 		assertFalse(gerenciaCardapio.editarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaProdutos(), id, infoPrato), "Editando um prato do cardapio");
 	}
@@ -338,7 +338,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -348,7 +348,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		String id = bancoDeDados.getCardapio().get(0).getId();
 		
@@ -362,7 +362,7 @@ class GerenciaCardapioTest {
 	}
 	
 	@Test
-	void ExcluirPratoNãoCadastrado() {
+	void ExcluirPratoNaoCadastrado() {
 		
 		BancoDeDados bancoDeDados = new BancoDeDados();
 		GerenciaCardapio gerenciaCardapio = new GerenciaCardapio();
@@ -393,7 +393,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -403,7 +403,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		String id = bancoDeDados.getCardapio().get(0).getId();
@@ -435,7 +435,7 @@ class GerenciaCardapioTest {
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
 		
-		infoProduto[0] = "Pão";
+		infoProduto[0] = "Pï¿½o";
 		infoProduto[1] = "2";
 		infoProduto[2] = "10/10/2022";
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), infoProduto);
@@ -445,7 +445,7 @@ class GerenciaCardapioTest {
 		infoPrato[1] = "10.5"; // Preco;
 		infoPrato[2] = "Um delicioso hamburger comum"; // Descricao
 		infoPrato[3] = "Lanche"; // Categoria
-		infoPrato[4] = "Carne de Hamburger, Pão, Alface, Tomate"; // Produtos
+		infoPrato[4] = "Carne de Hamburger, Pï¿½o, Alface, Tomate"; // Produtos
 		gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), infoPrato);
 		
 		String id = bancoDeDados.getCardapio().get(0).getId();

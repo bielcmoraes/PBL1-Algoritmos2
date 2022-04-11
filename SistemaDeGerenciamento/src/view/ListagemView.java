@@ -10,8 +10,17 @@ import model.Produto;
 import model.Usuario;
 import model.Venda;
 
+/**Classe responsável por implementar os metódos de mostrarCardapio, listarFornecedor, listarProduto, listarUsuario e listarVenda que foram especificados 
+ * na classe ListagemCopyable.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class ListagemView implements ListagemCopyable {
-
+	
+	/**O método percorre a lista de pratos (cardápio) e exibe para o usuário do sistema as informações de id, nome, preço, descrição, categoria e produtos
+	 * de cada prato que compõe o cardápio.
+	 */
 	@Override
 	public void mostrarCardapio(ArrayList<Prato> cardapio) {		
 		System.out.println("\n");
@@ -35,7 +44,10 @@ public class ListagemView implements ListagemCopyable {
 		}
 		
 	}
-
+	
+	/**O método percorre a lista de fornecedores e exibe ao usuário do sistema as informações de id, nome, CNPJ e endereço de todos os fornecedores
+	 * da lista de fornecedores.
+	 */
 	@Override
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		System.out.println("\n");
@@ -52,6 +64,9 @@ public class ListagemView implements ListagemCopyable {
 		}
 	}
 
+	/**O método percorre o ArrayList de produtos e exibe ao usuário do sistema as informações de id, nome, preço e validade de todos os produtos
+	 * cadastrados no sistema.
+	 */
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -69,7 +84,9 @@ public class ListagemView implements ListagemCopyable {
 		}
 		
 	}
-
+	
+	/**Pecorre a lista de usuários e exibe o id e o nome de todos os usuários cadastrados no sistema.
+	 */
 	@Override
 	public void listarUsuario(ArrayList<Usuario> listaUsuarios) {
 		System.out.println("\n");
@@ -83,7 +100,10 @@ public class ListagemView implements ListagemCopyable {
 					usuario.getNome());
 		}
 	}
-
+	
+	/**O método percorre a lista de vendas e exibe ao usuário do sistema as informações de id, data, horario, pratos vendidos, preço total da venda e o
+	 * método de pagamento de todas as vendas cadastradas no sistema.
+	 */
 	@Override
 	public void listarVenda(ArrayList<Venda> listaVendas) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");

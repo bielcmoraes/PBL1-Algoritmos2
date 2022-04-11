@@ -3,8 +3,17 @@ package view;
 
 import java.util.Scanner;
 
+/**Classe reponsável por se comunicar com o usuário do sistema sobre as opções dos menus, através da exibição de mensagens e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class MenuView {
 	
+	/**Método responsável por capturar e retornar a escolha do usuário do sistema em relação ao menu de gerente.
+	 * 
+	 * @return String correspondentes a escolha do usuário.
+	 */
 	public static String primeiraTelaGerente() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
@@ -23,6 +32,10 @@ public class MenuView {
 		return resposta;
 	}
 	
+	/**Método responsável por capturar e retornar a escolha do usuário do sistema em relação ao menu de funcionário.
+	 * 
+	 * @return String correspondentes a escolha do usuário.
+	 */
 	public static String primeiraTelaFuncionario() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");

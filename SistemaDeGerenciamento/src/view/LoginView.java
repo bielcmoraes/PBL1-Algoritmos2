@@ -2,8 +2,17 @@ package view;
 
 import java.util.Scanner;
 
+/**Classe reponsável por se comunicar com o usuário sobre o login, através da exibição de mensagens e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class LoginView {
 	
+	/**Método responsável por capturar e retornar as informações utilizadas para logar no sistema.
+	 * 
+	 * @return Vetor de strings com as informações correspondentes ao login e senha nos index's 0 e 1, respectivamente.
+	 */
 	public static String[] logar() {
 		System.out.println("\n");
 		System.out.println("=========");
@@ -21,6 +30,8 @@ public class LoginView {
 		return validacao;
 	}
 	
+	/**Exibe mensagem de erro na validação de login.
+	 */
 	public static void erroLogin() {
 		System.out.println("\n");
 		System.out.println("Login ou senha incorretos!!!");

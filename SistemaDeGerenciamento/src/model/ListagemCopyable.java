@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados a listagem e utilizada para "resolver" o problema de herança multipla em Java.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  */
 public interface ListagemCopyable {
 	

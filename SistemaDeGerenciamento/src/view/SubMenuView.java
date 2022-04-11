@@ -2,8 +2,17 @@ package view;
 
 import java.util.Scanner;
 
+/**Classe reponsável por se comunicar com o usuário do sistema sobre as opções dos sub-menus, através da exibição de mensagens e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class SubMenuView {
 	
+	/**Método responsável por capturar e retornar a escolha do usuário do sistema em relação aos menus de gerenciamentos.
+	 * 
+	 * @return String correspondentes a escolha do usuário.
+	 */
 	public static String telaMenuGerenciamentos() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
@@ -18,6 +27,10 @@ public class SubMenuView {
 		return resposta;
 	}
 	
+	/**Método responsável por capturar e retornar a escolha do usuário do sistema em relação ao menu de listagem.
+	 * 
+	 * @return String correspondentes a escolha do usuário.
+	 */
 	public static String telaMenuListagem() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");

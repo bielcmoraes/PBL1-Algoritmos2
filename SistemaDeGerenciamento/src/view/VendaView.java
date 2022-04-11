@@ -2,8 +2,18 @@ package view;
 
 import java.util.Scanner;
 
+/**Classe reponsável por se comunicar com o usuário do sistema sobre as vendas, através da exibição de mensagens e da captura de inputs.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class VendaView {
 	
+	/**Método responsável por capturar e retornar as informações utilizadas para cadastrar uma venda no sistema.
+	 * 
+	 * @return Vetor de strings com as informações correspondentes a data da venda, horário da venda, pratos vendidos e método de pagamento nas posições
+	 * 0, 1, 2 e 3, respectivamente.
+	 */
 	public static String[] cadastrarVenda() {
 		System.out.println("\n");
 		System.out.println("===================");
@@ -31,7 +41,11 @@ public class VendaView {
 		
 		return info;
 	}
-
+	
+	/**Método responsável por capturar, do usuário, e retornar o id de uma venda.
+	 * 
+	 * @return Código da venda
+	 */
 	public static String buscaVenda() {
 		
 		Scanner input = new Scanner(System.in);
@@ -40,6 +54,11 @@ public class VendaView {
 		return codigo;
 	}
 	
+	/**Método responsável por capturar e retornar os inputs que serão utilizados para editar uma venda da lista de usuários.
+	 * 
+	 * @return Vetor de strings com as novas informações correspondentes a data da venda, horário da venda, pratos vendidos e método de pagamento
+	 * nas posições 0, 1, 2 e 3, respectivamente.
+	 */
 	public static String[] editarVenda() {
 		System.out.println("\n");
 		System.out.println("================");
@@ -68,7 +87,11 @@ public class VendaView {
 		return info;
 		
 	}
-
+	
+	/**Método responsável por capturar e retornar as informações necessárias para excluir uma venda da lista de vendas.
+	 * 
+	 * @return Método buscaVenda
+	 */
 	public String excluirVenda() {
 		System.out.println("\n");
 		System.out.println("=================");
