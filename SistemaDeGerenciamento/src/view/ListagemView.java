@@ -42,7 +42,7 @@ public class ListagemView implements ListagemCopyable {
 		System.out.println("================");
 		System.out.println("= FORNECEDORES =");
 		System.out.println("===============");
-		System.out.format("%-15s %-50s\n", "ID", "NOME", "CNPJ", "ENDERECO");
+		System.out.format("%-15s %-50s %-30s %-30s\n", "ID", "NOME", "CNPJ", "ENDERECO");
 		for(Fornecedor fornecedor: listaFornecedores) {
 			System.out.format("%-15s %-50s %-30s %-50s\n", 
 					fornecedor.getId(), 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuView {
 	
-	public static int primeiraTelaGerente() {
+	public static String primeiraTelaGerente() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
 		System.out.println("================");
@@ -19,11 +19,11 @@ public class MenuView {
 		System.out.println("Digite 6 para acessar o menu de listagem");
 		System.out.println("Digite 7 para deslogar");
 		
-		int resposta = input.nextInt();
+		String resposta = input.nextLine();
 		return resposta;
 	}
 	
-	public static int primeiraTelaFuncionario() {
+	public static String primeiraTelaFuncionario() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
 		System.out.println("====================");
@@ -32,7 +32,7 @@ public class MenuView {
 		System.out.println("Digite 1 para gerenciar Vendas");
 		System.out.println("Digite 2 para listar");
 		System.out.println("Digite 3 para deslogar");
-		int resposta = input.nextInt();
+		String resposta = input.nextLine();
 		return resposta;
 	}
 }

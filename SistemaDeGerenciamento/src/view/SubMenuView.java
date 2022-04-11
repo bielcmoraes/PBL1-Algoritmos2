@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SubMenuView {
 	
-	public static int telaMenuGerenciamentos() {
+	public static String telaMenuGerenciamentos() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
 		System.out.println("=========================");
@@ -14,11 +14,11 @@ public class SubMenuView {
 		System.out.println("Digite 2 para editar");
 		System.out.println("Digite 3 para excluir");
 		System.out.println("Digite 4 para sair");
-		int resposta = input.nextInt();
+		String resposta = input.nextLine();
 		return resposta;
 	}
 	
-	public static int telaMenuListagem() {
+	public static String telaMenuListagem() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n");
 		System.out.println("====================");
@@ -30,7 +30,7 @@ public class SubMenuView {
 		System.out.println("Digite 4 para listar fornecedores");
 		System.out.println("Digite 5 para listar usuarios");
 		System.out.println("Digite 7 para sair");
-		int resposta = input.nextInt();
+		String resposta = input.nextLine();
 		return resposta;
 		
 	}
