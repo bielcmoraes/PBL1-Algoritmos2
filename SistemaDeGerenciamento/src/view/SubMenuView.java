@@ -27,6 +27,11 @@ public class SubMenuView {
 		return resposta;
 	}
 	
+	public static void erroGerenciamentos() {
+		System.out.println("Operacao não concluida!");
+		System.out.println("Tente novamente!");
+	}
+	
 	/**Método responsável por capturar e retornar a escolha do usuário do sistema em relação ao menu de listagem.
 	 * 
 	 * @return String correspondentes a escolha do usuário.

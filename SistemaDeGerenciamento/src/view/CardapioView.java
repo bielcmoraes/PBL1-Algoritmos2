@@ -101,7 +101,7 @@ public class CardapioView {
 	 * 
 	 * @return Método buscaPrato
 	 */
-	public String excluirPrato() {
+	public static String excluirPrato() {
 		System.out.println("\n");
 		System.out.println("=================");
 		System.out.println("= EXCLUIR PRATO =");

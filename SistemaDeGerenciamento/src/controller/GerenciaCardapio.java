@@ -29,8 +29,6 @@ public class GerenciaCardapio implements CardapioCopyable {
 		try {
 			preco = Double.parseDouble(info[1]);
 		} catch (java.lang.NumberFormatException a) {
-			System.out.println("Prato nao cadastrado!!!");
-			System.out.println("Preco invalido");
 			return false;
 		}
 		
@@ -43,8 +41,6 @@ public class GerenciaCardapio implements CardapioCopyable {
 		}
 		
 		if (produtos.size() != info[4].split(", ").length) {
-			System.out.println("Prato nao cadastrado!!!");
-			System.out.println("Produtos invalidos");
 			return false;
 		}
 		
@@ -55,8 +51,6 @@ public class GerenciaCardapio implements CardapioCopyable {
 			return true;
 		} 
 		catch(ArrayIndexOutOfBoundsException a){
-			System.out.println("Prato nao cadastrado!!!");
-			System.out.println("Problema ao acessar o ArrayList");
 			return false;
 		}
 	}
@@ -74,8 +68,6 @@ public class GerenciaCardapio implements CardapioCopyable {
 					try {
 						preco = Double.parseDouble(info[1]);
 					} catch (java.lang.NumberFormatException a) {
-						System.out.println("Prato nao editado!!!");
-						System.out.println("Preco invalido");
 						return false;
 					}
 					
@@ -88,8 +80,6 @@ public class GerenciaCardapio implements CardapioCopyable {
 					}
 					
 					if (produtos.size() != info[4].split(", ").length) {
-						System.out.println("Prato nao cadastrado!!!");
-						System.out.println("Produtos invalidos");
 						return false;
 					}
 						
@@ -100,11 +90,9 @@ public class GerenciaCardapio implements CardapioCopyable {
 					return true;
 				}
 			}
-			System.out.println("Codigo de prato nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a){
-			System.out.println("Prato nao editado!!!");
-			System.out.println("Erro com o array");
+			return false;
 		}
 		return false;
 	}
@@ -120,11 +108,9 @@ public class GerenciaCardapio implements CardapioCopyable {
 					return true;
 				}
 			}
-			System.out.println("Codigo de prato nao encontrado!!!");
 		}
 		catch(ArrayIndexOutOfBoundsException a) {
-			System.out.println("Prato nao removido!!!");
-			System.out.println("Erro no array");
+			return false;
 		}
 		return false;
 	}

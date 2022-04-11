@@ -48,15 +48,9 @@ public class Login {
 				if(usuario.getLogin().equals(infoLogin[0]) && usuario.getSenha().equals(infoLogin[1])) {
 					return usuario;
 				}
-				else {
-					//Mensagem de erro de login
-					LoginView.erroLogin();
-				}
 			}
 		}
 		else {
-			System.out.println("Erro no Array");
-			System.out.println("Reinicie o sistema");
 			return null;
 		}
 		return null;

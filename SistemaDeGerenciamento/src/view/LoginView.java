@@ -19,9 +19,9 @@ public class LoginView {
 		System.out.println("= LOGIN =");
 		System.out.println("=========");
 		Scanner input = new Scanner(System.in);
-		System.out.println("Login");
+		System.out.println("Login: ");
 		String login = input.nextLine();
-		System.out.println("Senha");
+		System.out.println("\nSenha: ");
 		String senha = input.nextLine();
 		
 		String validacao[] = new String[2];
@@ -34,7 +34,7 @@ public class LoginView {
 	 */
 	public static void erroLogin() {
 		System.out.println("\n");
-		System.out.println("Login ou senha incorretos!!!");
-		System.out.println("Tente novamente!!!");
+		System.out.println("Não foi possível logar!");
+		System.out.println("Tente novamente!");
 	}
 }

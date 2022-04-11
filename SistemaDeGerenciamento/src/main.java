@@ -12,6 +12,7 @@ import view.CardapioView;
 import view.FornecedorView;
 import view.LoginView;
 import view.ProdutosView;
+import view.SubMenuView;
 import view.UsuarioView;
 import view.VendaView;
 
@@ -32,7 +33,9 @@ public class main {
 			do{
 				String[] infoLogin = LoginView.logar();
 				usuarioLogado = login.autenticarLogin(dados.getListaUsuarios(), infoLogin);
-				
+				if(usuarioLogado == null) {
+					LoginView.erroLogin();
+				}
 			}while(usuarioLogado == null);
 			boolean logado = true;
 			
@@ -111,18 +114,27 @@ public class main {
 						case 1:
 							System.out.println("Cadastrando Prato");
 							String[] infoCadastro = CardapioView.cadastrarPrato();
-							((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
+							boolean cadastrarPrato = ((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
+							if(cadastrarPrato == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 2:
 							System.out.println("Editando Prato");
 							String codigoPratoEdit = CardapioView.buscaPrato();
 							String [] infoEdicao = CardapioView.editarPrato();
-							((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
+							boolean editarPrato = ((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
+							if(editarPrato == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 3:
 							System.out.println("Excluindo Prato");
 							String codigoPratoDel = CardapioView.buscaPrato();
-							((Gerente) usuarioLogado).excluirPrato(dados.getCardapio(), dados.getListaIds(), codigoPratoDel);
+							boolean excluirPrato = ((Gerente) usuarioLogado).excluirPrato(dados.getCardapio(), dados.getListaIds(), codigoPratoDel);
+							if(excluirPrato == false) {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						case 4:
 							break;
