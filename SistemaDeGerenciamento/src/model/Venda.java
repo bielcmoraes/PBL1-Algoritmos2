@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**Classe para objetos do tipo Venda, onde são contidos, valores e metódos necessarios para implementação da classe.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @see Entidade
  */
 public class Venda extends Entidade{
 	
@@ -63,7 +63,7 @@ public class Venda extends Entidade{
 	}
 	
 	/**Metódo para retorno de lista com pratos vendidos.
-	 * @return ArrayList<Prato> Pratos da venda*/
+	 * @return Lista de pratos da venda*/
 	public ArrayList<Prato> getPratos() {
 		return pratos;
 	}
@@ -93,7 +93,7 @@ public class Venda extends Entidade{
 	}
 	
 	/**Metódo para alterar o metódo de pagamento da venda.
-	 * @param metodoPagamento Nova forma de pagamento da venda*/
+	 * @param metodoDePagamento	Nova forma de pagamento da venda*/
 	public void setMetodoDePagamento(String metodoDePagamento) {
 		this.metodoDePagamento = metodoDePagamento;
 	}

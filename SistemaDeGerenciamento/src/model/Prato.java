@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**Classe para objetos do tipo Prato, onde são contidos, valores e metódos necessarios para implementação da classe.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @see Entidade
  */
 public class Prato extends Entidade{
 	
@@ -84,7 +84,7 @@ public class Prato extends Entidade{
 	}
 	
 	/**Metódo para retorno de lista de produtos que compõem o prato.
-	 * @return ArrayList<Produto> Lista de produtos*/
+	 * @return Lista de produtos*/
 	public ArrayList<Produto> getProdutos() {
 		return produtos;
 	}

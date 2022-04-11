@@ -7,7 +7,7 @@ import view.ListagemView;
 /**Classe para objetos do tipo Funcionario, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @see Usuario
  */
 public class Funcionario extends Usuario implements VendaCopyable, ListagemCopyable{
 	
@@ -72,7 +72,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo ListagemView.
-	 * @param listaFornecedor Lista de Fornecedores
+	 * @param listarFornecedor Lista de Fornecedores
 	 */
 	@Override
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
@@ -81,8 +81,8 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo ListagemView.
-	 * @param listaProduto Lista de produtos
-	 * @return listarProduto
+	 * @param listarProduto Lista de produtos
+	 * @return Lista de produtos
 	 */
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {

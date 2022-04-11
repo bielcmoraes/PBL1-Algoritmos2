@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**Classe abstrata Usuario, onde são contidos, valores e metódos necessarios para implementação de outras classes.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @see Entidade
  */
 public abstract class Usuario extends Entidade{
 	private String nome;

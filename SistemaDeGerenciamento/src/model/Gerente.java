@@ -11,7 +11,7 @@ import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
- *
+ * @see Usuario
  */
 public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable, ListagemCopyable{
 	
@@ -72,7 +72,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaUsuario e retornar o método cadastrarUsuario.
-	 * @param listaFornecedores Lista de usuarios
+	 * @param listarFornecedores Lista de usuarios
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuario
 	 * @return Boolean cadastrarUsuario
@@ -84,7 +84,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaUsuario e retornar o método editarUsuario.
-	 * @param listaFornecedores Lista de usuarios
+	 * @param listarFornecedores Lista de usuarios
 	 * @param codigoUsuario Id do usuario que deseja editar
 	 * @param info Entradas do usuario
 	 * @return Boolean editarUsuario
@@ -98,7 +98,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaUsuario e retornar o método excluirUsuario.
-	 * @param listaFornecedores Lista de usuarios
+	 * @param listarFornecedores Lista de usuarios
 	 * @param listaIds Lista de id's
 	 * @param codigoUsuario Id do usuário que deseja excluir
 	 * @return Boolean excluirUsuario
@@ -234,7 +234,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo ListagemView.
-	 * @param listaFornecedor Lista de Fornecedores
+	 * @param listarFornecedor Lista de Fornecedores
 	 */
 	@Override
 	public void listarFornecedor(ArrayList<Fornecedor> listaFornecedores) {
@@ -243,7 +243,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 	
 	/**Metódo para instanciar um objeto do tipo ListagemView.
-	 * @param listaProduto Lista de produtos
+	 * @param listarProduto Lista de produtos
 	 */
 	@Override
 	public void listarProduto(ArrayList<Produto> listaProdutos) {

@@ -19,7 +19,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param listaIds Lista de id's
 	 * @param listaProdutos Lista de produtos
 	 * @param info Entrada do usuário
-	 * @return
+	 * @return true se o prato for cadastrado com sucesso e false se o prato não for cadastrado com sucesso
 	 */
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) {

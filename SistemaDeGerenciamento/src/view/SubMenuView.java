@@ -27,6 +27,9 @@ public class SubMenuView {
 		return resposta;
 	}
 	
+	/**Método responsável por exibir mensagem de erro ao usuário do sistema.
+	 * 
+	 */
 	public static void erroGerenciamentos() {
 		System.out.println("Operacao não concluida!");
 		System.out.println("Tente novamente!");
