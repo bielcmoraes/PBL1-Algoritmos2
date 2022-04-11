@@ -17,10 +17,18 @@ import view.SubMenuView;
 import view.UsuarioView;
 import view.VendaView;
 
-
-//Fazer uma herança entre o main o BancoDeDados
+/**Principal classe do sistema. Responsável por fazer a chamada das demais classes e métodos que serão compilados e posteriormente interpretados pela Java
+ * Virtual Machine.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class Main {
-
+	
+	/**Primeiro e principal método que será executado pela Java Virtual Machine.
+	 * 
+	 * @param args Possiveis parâmetros que podem ser passados para a aplicação a partir da linha de comando.
+	 */
 	public static void main(String[] args) {
 	
 		//Intancio as listas
