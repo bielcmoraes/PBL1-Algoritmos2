@@ -18,10 +18,10 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * O método é responsável por cadastrar um objeto do tipo Prato em uma ArrayList<Prato>.
 	 * Esse cadastro só ocorre caso todos os dados passados atraves da String []
 	 * possam ser convertidos para seus respectivos tipos correspondente.
-	 * @param cardapio - Lista de Pratos
-	 * @param listaIds - Lista de IDs
-	 * @param listaProdutos - Lista de Produtos
-	 * @param info - Lista com as entradas do usuario
+	 * @param cardapio Lista de Pratos
+	 * @param listaIds Lista de IDs
+	 * @param listaProdutos Lista de Produtos
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
@@ -62,10 +62,10 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * Essa edição só ocorre caso todos os dados passados atraves da String []
 	 * possam ser convertidos para seus respectivos tipos correspondente
 	 * e o prato a ser editado possa ser encontrada na lista de pratos.
-	 * @param cardapio - Lista de Pratos
-	 * @param listaProdutos - Lista de Produtos
-	 * @param codigoPrato - Codigo do prato a ser editado
-	 * @param info - Lista com as entradas do usuario
+	 * @param cardapio Lista de Pratos
+	 * @param listaProdutos Lista de Produtos
+	 * @param codigoPrato Codigo do prato a ser editado
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
@@ -112,9 +112,9 @@ public class GerenciaCardapio implements CardapioCopyable {
 	/**
 	 * O método é responsável por excluir um objeto do tipo Prato em uma ArrayList<Prato>.
 	 * Essa exclusão só ocorre caso o prato a ser excluido possa ser encontrada na lista de pratos.
-	 * @param cardapio - Lista de Pratos
-	 * @param listaIds - Lista de IDs
-	 * @param codigoPrato - Codigo do prato a ser excluido
+	 * @param cardapio Lista de Pratos
+	 * @param listaIds Lista de IDs
+	 * @param codigoPrato Codigo do prato a ser excluido
 	 * @return true caso a exclusão ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override

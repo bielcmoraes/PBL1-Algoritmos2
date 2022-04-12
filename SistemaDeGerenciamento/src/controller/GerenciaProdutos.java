@@ -17,9 +17,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * O método é responsável por cadastrar um objeto do tipo Produto em uma ArrayList<Produto>.
 	 * Esse cadastro só ocorre caso todos os dados passados atraves da String []
 	 * possam ser convertidos para seus respectivos tipos correspondente.
-	 * @param listaProdutos - Lista de Produtos
-	 * @param listaIds - Lista de IDs
-	 * @param info - Lista com as entradas do usuario
+	 * @param listaProdutos Lista de Produtos
+	 * @param listaIds Lista de IDs
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
@@ -54,9 +54,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * Essa edição só ocorre caso todos os dados passados atraves da String [] 
 	 * possam ser convertidos para seus respectivos tipos correspondente
 	 * e o produto a ser editado possa ser encontrado na lista de produtos.
-	 * @param listaProdutos - Lista de Produtos
-	 * @param codigoProduto - Código do Produto a ser editado
-	 * @param info - Lista com as entradas do usuario
+	 * @param listaProdutos Lista de Produtos
+	 * @param codigoProduto Código do Produto a ser editado
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
@@ -94,9 +94,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	/**
 	 * O método é reponsavel por excluir um objeto do tipo Produto já cadastrado em uma ArrayList<Produto>.
 	 * Essa exclusão só ocorre caso o produto a ser excluido seja encontrado na lista de produtos.
-	 * @param listaProdutos - Lista de Produtos
-	 * @param listaIds - Lista de IDs
-	 * @param codigoProduto - Código do Produto a ser editado
+	 * @param listaProdutos Lista de Produtos
+	 * @param listaIds Lista de IDs
+	 * @param codigoProduto Código do Produto a ser editado
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override

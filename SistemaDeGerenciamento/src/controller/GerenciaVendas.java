@@ -20,10 +20,10 @@ public class GerenciaVendas implements VendaCopyable {
 	 * O método é responsável por cadastrar um objeto do tipo Venda em uma ArrayList<Venda>.
 	 * Esse cadastro só ocorre caso todos os dados passados atraves da String []
 	 * possam ser convertidos para seus respectivos tipos correspondente.
-	 * @param listaVendas - Lista de Vendas
-	 * @param listaIds - Lista de IDs
-	 * @param cardapio - Lista de Pratos
-	 * @param info - Lista com as entradas do usuario
+	 * @param listaVendas Lista de Vendas
+	 * @param listaIds Lista de IDs
+	 * @param cardapio Lista de Pratos
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
@@ -78,10 +78,10 @@ public class GerenciaVendas implements VendaCopyable {
 	 * Essa edição só ocorre caso todos os dados passados atraves da String []
 	 * possam ser convertidos para seus respectivos tipos correspondente
 	 * e a venda a ser editada possa ser encontrada na lista de vendas.
-	 * @param listaVendas - Lista de Vendas
-	 * @param cardapio - Lista de Pratos
-	 * @param codigoVenda - Codigo da Venda a ser editada
-	 * @param info - Lista com as entradas do usuario
+	 * @param listaVendas Lista de Vendas
+	 * @param cardapio Lista de Pratos
+	 * @param codigoVenda Codigo da Venda a ser editada
+	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
@@ -143,9 +143,9 @@ public class GerenciaVendas implements VendaCopyable {
 	/**
 	 * O método é responsável por excluir um objeto do tipo Venda em uma ArrayList<Venda>.
 	 * Essa exclusão só ocorre caso a venda a ser excluido possa ser encontrada na lista de vendas.
-	 * @param listaVendas - Lista de Vendas
-	 * @param listaIds - Lista de IDs
-	 * @param codigoVenda - Codigo da Venda a ser excluida
+	 * @param listaVendas Lista de Vendas
+	 * @param listaIds Lista de IDs
+	 * @param codigoVenda Codigo da Venda a ser excluida
 	 * @return true caso a exclusão ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
