@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import model.Fornecedor;
 import model.FornecedorCopyable;
-import view.FornecedorView;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir fornecedor que foram especificados na classe FornecedorCopyable.
  * 

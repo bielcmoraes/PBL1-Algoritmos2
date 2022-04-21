@@ -120,7 +120,7 @@ public class ListagemView implements ListagemCopyable {
 			pratos = pratos.substring(0, pratos.length()-2);
 			System.out.format("%-15s %-15s %-15s %-50s R$ %-12.2f %-15s\n", 
 					venda.getId(), 
-					venda.getData().format(formatoData), 
+					venda.getData(),
 					venda.getHorario(),
 					pratos,
 					venda.getPrecoTotal(),

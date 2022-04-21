@@ -28,11 +28,11 @@ public class Venda extends Entidade{
 	 * @param precoTotal Preço total da venda
 	 * @param metodoDePagamento Forma de pagamento da venda
 	 */
-	public Venda(ArrayList<String> listaIds, LocalDate data, LocalTime horario, ArrayList<Prato> pratos, Double precoTotal, String metodoDePagamento) {
+	public Venda(ArrayList<String> listaIds, ArrayList<Prato> pratos, Double precoTotal, String metodoDePagamento) {
 		
 		super(listaIds);
-		this.data = data;
-		this.horario = horario;
+		this.data = LocalDate.now();
+		this.horario = LocalTime.now();
 		this.pratos = pratos;
 		this.precoTotal = precoTotal;
 		this.metodoDePagamento = metodoDePagamento;

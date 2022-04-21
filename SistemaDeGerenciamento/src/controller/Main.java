@@ -10,14 +10,8 @@ do código, e estou ciente que estes trechos não serão considerados para fins 
 ******************************/
 package controller;
 
-import java.util.ArrayList;
-
-import controller.BancoDeDados;
-import controller.Login;
-import controller.Menu;
 import model.Funcionario;
 import model.Gerente;
-import model.Prato;
 import model.Usuario;
 import view.CardapioView;
 import view.FornecedorView;
@@ -57,7 +51,7 @@ public class Main {
 				}
 			}while(usuarioLogado == null);
 			boolean logado = true;
-			
+					
 			while(logado) {
 				if(usuarioLogado instanceof Gerente) {
 					

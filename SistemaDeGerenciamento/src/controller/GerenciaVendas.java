@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import model.Prato;
 import model.Venda;
 import model.VendaCopyable;
-import view.VendaView;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir vendas da classe VendaCopyable.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
@@ -63,7 +63,7 @@ public class GerenciaVendas implements VendaCopyable {
 			precoTotal += prato.getPreco();
 		}
 		
-		Venda novaVenda = new Venda(listaIds, data, horario, pratos, precoTotal, info[3]);
+		Venda novaVenda = new Venda(listaIds, pratos, precoTotal, info[3]);
 		
 		try {
 			listaVendas.add(novaVenda);

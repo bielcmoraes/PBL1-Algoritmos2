@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import model.Produto;
 import model.ProdutoCopyable;
-import view.ProdutosView;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir produto que foram especificados na classe ProdutoCopyable.
  * 
  *  @author Gabriel Moraes e Luis Fernando Cintra

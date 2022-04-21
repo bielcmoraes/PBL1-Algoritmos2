@@ -1,10 +1,6 @@
 package controller;
 
-import view.LoginView;
-
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import model.Gerente;
 import model.Usuario;
 

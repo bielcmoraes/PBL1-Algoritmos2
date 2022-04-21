@@ -119,7 +119,6 @@ class GerenciaUsuarioTest {
 	
 	@Test
 	void editandoUsuarioListaUsuarioNull() {
-		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String codigoUsuario = "37469";
 		
