@@ -15,6 +15,7 @@ public class Produto extends Entidade {
 	private Double preco;
 	private Double quantidade;
 	private LocalDate validade;
+	private ArrayList<Fornecedor> fornecedores;
 	
 	/**O construtor inicializa o construtor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro. 
 	 * 
@@ -77,5 +78,17 @@ public class Produto extends Entidade {
 	 * @param validade Nova validade do produto*/
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
+	}
+	
+	/**Metódo para retorno de lista com os fornecedores do produto.
+	 * @return Lista de fornecedoores do produto*/
+	public ArrayList<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+	
+	/**Metódo para alterar a lista de fornecedores do produto.
+	 * @param pratos Nova lista de fornecedores do produto*/
+	public void setFornecedores(ArrayList<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
 	}
 }
