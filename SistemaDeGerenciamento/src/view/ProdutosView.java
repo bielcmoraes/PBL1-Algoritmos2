@@ -33,12 +33,16 @@ public class ProdutosView {
 		System.out.println("Digite a validade do produto");
 		String validade = input.nextLine();
 		
-		String [] info = new String[4];
+		System.out.println("Digite os fornecedores do produto");
+		String fornecedores = input.nextLine();
+		
+		String [] info = new String[5];
 		
 		info[0] = nome;
 		info[1] = preco;
 		info[2] = quantidade;
 		info[3] = validade;
+		info[4] = fornecedores;
 		
 		return info;
 	}
@@ -79,12 +83,16 @@ public class ProdutosView {
 		System.out.println("Digite uma nova validade de produto");
 		String validade = input.nextLine();
 		
-		String [] info = new String[4];
+		System.out.println("Digite os novos fornecedores do produto");
+		String fornecedores = input.nextLine();
+		
+		String [] info = new String[5];
 		
 		info[0] = nome;
 		info[1] = preco;
 		info[2] = quantidade;
 		info[3] = validade;
+		info[4] = fornecedores;
 		
 		return info;
 	}

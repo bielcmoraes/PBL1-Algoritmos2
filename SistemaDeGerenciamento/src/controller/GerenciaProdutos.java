@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import model.Fornecedor;
+import model.Prato;
 import model.Produto;
 import model.ProdutoCopyable;
 
@@ -23,7 +25,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info) {
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		
 		Double preco;
 		try {
@@ -47,7 +49,26 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			return false;
 		}
 		
-		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade);
+		
+		ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+		
+		//Verifica se o nome do fornecedor passado está na lista de fornecedores.
+		//Se o nome for igual adiciona o fornecedor à lista.
+		for (String fornecedorNome : info[4].split(", ")) {
+			for (Fornecedor fornecedor : listaFornecedor) {
+				if (fornecedorNome.equals(fornecedor.getNome())) {
+					fornecedores.add(fornecedor);
+				}
+			}
+		}
+		
+		//Garante que os fornecedores adicionados estejam na lista de fornecedores
+		if (fornecedores.size() != info[4].split(", ").length) {
+			System.out.println("AAAAAAAAAA");
+			return false;
+		}
+		
+		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade, fornecedores);
 		
 		try {
 			listaProdutos.add(novoProduto);
@@ -68,7 +89,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info) {
+	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		
 		try {
 			for(Produto produto : listaProdutos) {
@@ -96,10 +117,25 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						return false;
 					}
 					
+					ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+					for (String fornecedorNome : info[4].split(", ")) {
+						for (Fornecedor fornecedor : listaFornecedor) {
+							if (fornecedorNome.equals(fornecedor.getNome())) {
+								fornecedores.add(fornecedor);
+							}
+						}
+					}
+					
+					//Garante que os fornecedores estejam na lista de fornecedores
+					if (fornecedores.size() != info[4].split(", ").length) {
+						return false;
+					}
+					
 					produto.setNome(info[0]);
 					produto.setPreco(preco);
 					produto.setQuantidade(quantidade);
 					produto.setValidade(validade);
+					produto.setFornecedores(fornecedores);
 		
 					return true;
 				}

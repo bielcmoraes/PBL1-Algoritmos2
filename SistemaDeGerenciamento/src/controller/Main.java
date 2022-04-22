@@ -187,7 +187,7 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Produtos");
 							String[] infoCadastroProduto = ProdutosView.cadastrarProduto();
-							boolean cadastrarProduto = ((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto);
+							boolean cadastrarProduto = ((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto, dados.getListaFornecedores());
 							if(cadastrarProduto == false) {
 								SubMenuView.erroGerenciamentos();
 							}
@@ -196,7 +196,7 @@ public class Main {
 							System.out.println("Editando Produtos");
 							String codigoProdutoEdit = ProdutosView.buscaProduto();
 							String [] infoProdutoEdit = ProdutosView.editarProduto();
-							boolean editarProduto = ((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit);
+							boolean editarProduto = ((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit, dados.getListaFornecedores());
 							if(editarProduto == false) {
 								SubMenuView.erroGerenciamentos();
 							}

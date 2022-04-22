@@ -16,7 +16,7 @@ public interface ProdutoCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se o produto for cadastrado com sucesso e false se o produto não for cadastrado com sucesso
 	 */
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info);
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor);
 	
 	/**Assinatura do metódo editarProduto
 	 * 
@@ -25,7 +25,7 @@ public interface ProdutoCopyable {
 	 * @param info Entrada do usuário
 	 * @return true se o produto for editado com sucesso e false se o produto não for editado com sucesso
 	 */
-	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info);
+	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor);
 	
 	/**Assinatura do metódo excluirProduto
 	 * 

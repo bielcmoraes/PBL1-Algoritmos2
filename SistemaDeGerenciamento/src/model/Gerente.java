@@ -116,9 +116,9 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean cadastrarProduto
 	 */
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info) {
+	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
-		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds, info);
+		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds, info, listaFornecedor);
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaProdutos e retornar o método editarProduto.
@@ -128,9 +128,9 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean editarProduto
 	 */
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos,  String codigoProduto, String [] info) {
+	public boolean editarProduto(ArrayList<Produto> listaProdutos,  String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
-		return gerenciamentoProdutos.editarProduto(listaProdutos, codigoProduto, info);
+		return gerenciamentoProdutos.editarProduto(listaProdutos, codigoProduto, info, listaFornecedor);
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaProdutos e retornar o método excluirProduto.

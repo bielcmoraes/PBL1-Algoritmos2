@@ -24,12 +24,13 @@ public class Produto extends Entidade {
 	 * @param preco Preço do produto
 	 * @param validade Validade do produto
 	 */
-	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, LocalDate validade) {
+	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, LocalDate validade, ArrayList<Fornecedor> fornecedores) {
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
 		this.setQuantidade(quantidade);
 		this.validade = validade;
+		this.fornecedores = fornecedores;
 	}
 
 	/**Metódo para retorno de nome do produto.
