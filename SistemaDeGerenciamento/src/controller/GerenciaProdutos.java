@@ -31,15 +31,23 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		} catch (java.lang.NumberFormatException a) {
 			return false;
 		}
+		
+		Double quantidade;
+		try {
+			quantidade = Double.parseDouble(info[2]);
+		} catch (java.lang.NumberFormatException a) {
+			return false;
+		}
+		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate validade;
 		try {
-			validade = LocalDate.parse(info[2], formatoData);
+			validade = LocalDate.parse(info[3], formatoData);
 		} catch (java.time.format.DateTimeParseException a) {
 			return false;
 		}
 		
-		Produto novoProduto = new Produto(listaIds, info[0], preco, validade);
+		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade);
 		
 		try {
 			listaProdutos.add(novoProduto);
@@ -66,21 +74,31 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			for(Produto produto : listaProdutos) {
 				if(codigoProduto.equals(produto.getId())) {
 					
-					produto.setNome(info[0]);
 					Double preco;
 					try {
 						preco = Double.parseDouble(info[1]);
 					} catch (java.lang.NumberFormatException a) {
 						return false;
 					}
+					
+					Double quantidade;
+					try {
+						quantidade = Double.parseDouble(info[2]);
+					} catch (java.lang.NumberFormatException a) {
+						return false;
+					}
+					
 					DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					LocalDate validade;
 					try {
-						validade = LocalDate.parse(info[2], formatoData);
+						validade = LocalDate.parse(info[3], formatoData);
 					} catch (java.time.format.DateTimeParseException a) {
 						return false;
 					}
+					
+					produto.setNome(info[0]);
 					produto.setPreco(preco);
+					produto.setQuantidade(quantidade);
 					produto.setValidade(validade);
 		
 					return true;

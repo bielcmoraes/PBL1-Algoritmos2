@@ -13,6 +13,7 @@ public class Produto extends Entidade {
 	// Attributes
 	private String nome;
 	private Double preco;
+	private Double quantidade;
 	private LocalDate validade;
 	
 	/**O construtor inicializa o construtor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro. 
@@ -22,10 +23,11 @@ public class Produto extends Entidade {
 	 * @param preco Preço do produto
 	 * @param validade Validade do produto
 	 */
-	public Produto(ArrayList<String> listaIds, String nome, Double preco, LocalDate validade) {
+	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, LocalDate validade) {
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
+		this.setQuantidade(quantidade);
 		this.validade = validade;
 	}
 
@@ -53,6 +55,18 @@ public class Produto extends Entidade {
 		this.preco = preco;
 	}
 	
+	/**Metódo para retorno de quantidade do produto.
+	 * @return Double Quantidade do produto*/
+	public Double getQuantidade() {
+		return quantidade;
+	}
+	
+	/**Metódo para alterar a quantidade do produto.
+	 * @param quantidade Nova quantidade de produto*/
+	public void setQuantidade(Double quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	/**Metódo para retorno de validade do produto.
 	 * @return LocalDate Validade do produto*/
 	public LocalDate getValidade() {

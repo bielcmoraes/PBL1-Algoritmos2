@@ -74,12 +74,13 @@ public class ListagemView implements ListagemCopyable {
 		System.out.println("============");
 		System.out.println("= PRODUTOS =");
 		System.out.println("============");
-		System.out.format("%-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO", "VALIDADE");
+		System.out.format("%-15s %-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO","QUANTIDADE", "VALIDADE");
 		for(Produto produto: listaProdutos) {
-			System.out.format("%-15s %-15s R$ %-12.2f %-15s\n", 
+			System.out.format("%-15s %-15s R$ %-12.2f %-12.2f %-15s\n", 
 					produto.getId(), 
 					produto.getNome(), 
 					produto.getPreco(),
+					produto.getQuantidade(),
 					produto.getValidade().format(formatoData));
 		}
 		

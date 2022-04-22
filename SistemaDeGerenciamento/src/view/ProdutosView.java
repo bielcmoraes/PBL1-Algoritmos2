@@ -19,6 +19,7 @@ public class ProdutosView {
 		System.out.println("=====================");
 		System.out.println("= CADASTRAR PRODUTO =");
 		System.out.println("=====================");
+		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite o nome do produto");
 		String nome = input.nextLine();
@@ -26,14 +27,18 @@ public class ProdutosView {
 		System.out.println("Digite o preco do produto");
 		String preco = input.nextLine();
 		
+		System.out.println("Digite a quantidade do produto");
+		String quantidade = input.nextLine();
+		
 		System.out.println("Digite a validade do produto");
 		String validade = input.nextLine();
 		
-		String [] info = new String[3];
+		String [] info = new String[4];
 		
 		info[0] = nome;
 		info[1] = preco;
-		info[2] = validade;
+		info[2] = quantidade;
+		info[3] = validade;
 		
 		return info;
 	}
@@ -60,6 +65,7 @@ public class ProdutosView {
 		System.out.println("==================");
 		System.out.println("= EDITAR PRODUTO =");
 		System.out.println("==================");
+		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite um novo nome de produto");
 		String nome = input.nextLine();
@@ -67,14 +73,18 @@ public class ProdutosView {
 		System.out.println("Digite um novo preco de produto");
 		String preco = input.nextLine();
 		
+		System.out.println("Digite uma nova quantidade de produto");
+		String quantidade = input.nextLine();
+		
 		System.out.println("Digite uma nova validade de produto");
 		String validade = input.nextLine();
 		
-		String [] info = new String[3];
+		String [] info = new String[4];
 		
 		info[0] = nome;
 		info[1] = preco;
-		info[2] = validade;
+		info[2] = quantidade;
+		info[3] = validade;
 		
 		return info;
 	}
