@@ -10,6 +10,7 @@ do código, e estou ciente que estes trechos não serão considerados para fins 
 ******************************/
 package controller;
 
+import exceptions.ProdutoNaoCadastrado;
 import model.Funcionario;
 import model.Gerente;
 import model.Usuario;
@@ -32,8 +33,9 @@ public class Main {
 	/**Primeiro e principal método que será executado pela Java Virtual Machine.
 	 * 
 	 * @param args Possiveis parâmetros que podem ser passados para a aplicação a partir da linha de comando.
+	 * @throws ProdutoNaoCadastrado 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ProdutoNaoCadastrado {
 	
 		//Intancio as listas
 		BancoDeDados dados = new BancoDeDados();
@@ -156,7 +158,16 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Prato");
 							String[] infoCadastro = CardapioView.cadastrarPrato();
-							boolean cadastrarPrato = ((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
+							boolean cadastrarPrato = false;
+							try {
+								cadastrarPrato = ((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
+							} catch (NumberFormatException e) {
+								System.out.println("\nValor Inválido\n");
+							} catch (ProdutoNaoCadastrado e) {
+								System.out.println("\nProduto Inválido\n");
+								System.out.println(e.toString());
+							}
+							
 							if(cadastrarPrato == false) {
 								SubMenuView.erroGerenciamentos();
 							}

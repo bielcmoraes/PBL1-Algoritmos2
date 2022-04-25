@@ -22,19 +22,21 @@ public class ListagemView implements ListagemCopyable {
 	 * de cada prato que compõe o cardápio.
 	 */
 	@Override
-	public void mostrarCardapio(ArrayList<Prato> cardapio) {		
+	public void mostrarCardapio(ArrayList<Prato> cardapio) {	
 		System.out.println("\n");
 		System.out.println("============");
 		System.out.println("= CARDAPIO =");
 		System.out.println("============");
-		System.out.format("%-15s %-30s %-15s %-50s %-15s %-50s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA", "PRODUTOS");
+		System.out.format("%-15s %-30s %-15s %-50s %-15s %-70s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA", "INGREDIENTES");
 		for(Prato prato: cardapio) {
+			String [] ingredientes;
 			String produtos = "";
-			for(Produto produto : prato.getProdutos()) {
-				produtos += produto.getNome() + ", ";
+			ingredientes = prato.getIngredientes();
+			for(int i = 2; i < ingredientes.length; i+=3) {
+				produtos += ingredientes[i-2] + ingredientes[i-1] + " " + ingredientes[i] + ", ";
 			}
 			produtos = produtos.substring(0, produtos.length()-2);
-			System.out.format("%-15s %-30s R$ %-12.2f %-50s %-15s %-50s\n", 
+			System.out.format("%-15s %-30s R$ %-12.2f %-50s %-15s %-70s\n", 
 					prato.getId(), 
 					prato.getNome(), 
 					prato.getPreco(),
