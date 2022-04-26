@@ -3,6 +3,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import exceptions.ProdutoNaoCadastrado;
 import model.CardapioCopyable;
 import model.Prato;
 import model.Produto;
@@ -23,39 +24,35 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param listaProdutos Lista de Produtos
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) {
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
 		
 		Double preco;
-		ArrayList<Produto> produtos = new ArrayList<Produto>();
-		try {
-			preco = Double.parseDouble(info[1]);
-		} catch (java.lang.NumberFormatException a) {
-			return false;
-		}
+		preco = Double.parseDouble(info[1]);
 		
-		for (String produtoNome : info[4].split(", ")) {
-			for (Produto produto : listaProdutos) {
-				if (produtoNome.equals(produto.getNome())) {
-					produtos.add(produto);
+		String [] ingredientes = info[4].split(";");
+		boolean produtoCadastrado;
+		if (ingredientes.length > 0) {
+			for (int i = 2; i < ingredientes.length; i+=3) {
+				produtoCadastrado = false;
+				for (Produto produto : listaProdutos) {
+					if (ingredientes[i].equals(produto.getNome())) {
+						produtoCadastrado = true;
+						break;
+					}
+				}
+				if (produtoCadastrado == false) {
+					throw new ProdutoNaoCadastrado(ingredientes[i]);
 				}
 			}
-		}
-		
-		if (produtos.size() != info[4].split(", ").length) {
-			return false;
-		}
-		
-		Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], produtos);
-		
-		try {
+			Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], ingredientes);
 			cardapio.add(novoPrato);
 			return true;
-		} 
-		catch(ArrayIndexOutOfBoundsException a){
+		} else {
 			return false;
-		}
+		}	
 	}
 	/**
 	 * O método é responsável por editar um objeto do tipo Prato em uma ArrayList<Prato>.

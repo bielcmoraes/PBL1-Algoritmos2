@@ -7,6 +7,7 @@ import controller.GerenciaFornecedor;
 import controller.GerenciaProdutos;
 import controller.GerenciaUsuario;
 import controller.GerenciaVendas;
+import exceptions.ProdutoNaoCadastrado;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
@@ -151,10 +152,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaProdutos Lista de produtos
 	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarPrato
+	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds,
-			ArrayList<Produto> listaProdutos, String [] info) {
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos, info);
 	}

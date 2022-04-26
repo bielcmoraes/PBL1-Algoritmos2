@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import exceptions.ProdutoNaoCadastrado;
+
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento do cardápio e utilizada para "resolver" o problema de herança multipla em Java.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
@@ -16,8 +18,9 @@ public interface CardapioCopyable {
 	 * @param listaProdutos Lista de Produtos
 	 * @param info Entradas do usuário
 	 * @return true se o prato for cadastrado com sucesso e false se o prato não for cadastrado com sucesso
+	 * @throws ProdutoNaoCadastrado 
 	 */
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info);
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado;
 	
 	/**Assinatura do metódo editarPrato
 	 * 

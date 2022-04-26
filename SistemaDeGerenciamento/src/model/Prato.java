@@ -14,7 +14,7 @@ public class Prato extends Entidade{
 	private Double preco;
 	private String descricao;
 	private String categoria;
-	private ArrayList<Produto> produtos;
+	private String [] ingredientes;
 	
 	/**O construtor inicializa o costrutor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro. 
 	 * 
@@ -25,14 +25,14 @@ public class Prato extends Entidade{
 	 * @param categoria Categoria do prato
 	 * @param produtos Produtos que compõem o prato
 	 */
-	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria, ArrayList<Produto> produtos) {
+	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria, String [] ingredientes) {
 		
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
 		this.categoria = categoria;
-		this.produtos = produtos;
+		this.ingredientes = ingredientes;
 	}
 	
 	/**Metódo para retorno de nome do prato.
@@ -85,14 +85,14 @@ public class Prato extends Entidade{
 	
 	/**Metódo para retorno de lista de produtos que compõem o prato.
 	 * @return Lista de produtos*/
-	public ArrayList<Produto> getProdutos() {
-		return produtos;
+	public String [] getIngredientes() {
+		return ingredientes;
 	}
 	
 	/**Metódo para alterar a lista de produtos que compõem o prato.
 	 * @param produtos Nova lista de produtos que compõem o prato*/
-	public void setProdutos(ArrayList<Produto> produtos) {
-		this.produtos = produtos;
+	public void setIngredientes(String [] ingredientes) {
+		this.ingredientes = ingredientes;
 	}
 	
 }
