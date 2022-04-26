@@ -31,11 +31,15 @@ public class FornecedorView{
 		System.out.println("Digite o endereço do fornecedor");
 		String endereco = input.nextLine();
 		
-		String [] info = new String[3];
+		System.out.println("Digite os produtos fornecidos");
+		String produtos = input.nextLine();
+		
+		String [] info = new String[4];
 		
 		info[0] = nome;
 		info[1] = cnpj;
 		info[2] = endereco;
+		info[3] = produtos;
 		
 		return info;
 	}
@@ -72,11 +76,15 @@ public class FornecedorView{
 		System.out.println("Digite um novo endereço de fornecedor");
 		String endereco = input.nextLine();
 		
-		String [] info = new String[3];
+		System.out.println("Digite os novos produtos fornecidos");
+		String produtos = input.nextLine();
+		
+		String [] info = new String[4];
 		
 		info[0] = nome;
 		info[1] = cnpj;
 		info[2] = endereco;
+		info[3] = produtos;
 		
 		return info;
 	}

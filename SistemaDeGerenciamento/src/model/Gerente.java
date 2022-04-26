@@ -39,10 +39,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean cadastrarFornecedor
 	 */
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info, ArrayList<Produto> produtos) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds, info);
+		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds, info, produtos);
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaFornecedor e retornar o método editarFornecedor.
@@ -52,10 +52,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean editarFornecedor
 	 */
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info, ArrayList<Produto> produtos) {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
-		return gerenciamentoFornecedor.editarFornecedor(listaFornecedores, codigoFornecedor, info);
+		return gerenciamentoFornecedor.editarFornecedor(listaFornecedores, codigoFornecedor, info, produtos);
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaFornecedor e retornar o método excluirFornecedor.

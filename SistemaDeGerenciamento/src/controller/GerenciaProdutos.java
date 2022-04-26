@@ -53,19 +53,13 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 		
 		//Verifica se o nome do fornecedor passado está na lista de fornecedores.
-		//Se o nome for igual adiciona o fornecedor à lista.
+		//Se o nome for igual adiciona o fornecedor à lista. (Pode existir produtos sem fornecedores)
 		for (String fornecedorNome : info[4].split(", ")) {
 			for (Fornecedor fornecedor : listaFornecedor) {
 				if (fornecedorNome.equals(fornecedor.getNome())) {
 					fornecedores.add(fornecedor);
 				}
 			}
-		}
-		
-		//Garante que os fornecedores adicionados estejam na lista de fornecedores
-		if (fornecedores.size() != info[4].split(", ").length) {
-			System.out.println("AAAAAAAAAA");
-			return false;
 		}
 		
 		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade, fornecedores);

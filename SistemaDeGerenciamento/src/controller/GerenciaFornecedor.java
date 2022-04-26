@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.Fornecedor;
 import model.FornecedorCopyable;
+import model.Produto;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir fornecedor que foram especificados na classe FornecedorCopyable.
  * 
@@ -18,9 +19,26 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	 *e que existe um problema ao acessar o ArrayList é exibida, e é retornado false.
 	 */
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info, ArrayList<Produto> listaProduto) {
 		
-		Fornecedor novoFornecedor = new Fornecedor(listaIds, info[0], info[1], info[2]);
+		ArrayList<Produto> produtos = new ArrayList<Produto>();
+		
+		//Verifica se o nome do produto passado está na lista de produtos.
+		//Se o nome for igual adiciona o produto à lista.
+		for (String produtoNome : info[3].split(", ")) {
+			for (Produto produto : listaProduto) {
+				if (produtoNome.equals(produto.getNome())) {
+					produtos.add(produto);
+				}
+			}
+		}
+		
+		//Garante que os produtos adicionados estejam na lista de produtos
+		if (produtos.size() != info[3].split(", ").length) {
+			return false;
+		}
+		
+		Fornecedor novoFornecedor = new Fornecedor(listaIds, info[0], info[1], info[2], produtos);
 		
 		if (listaFornecedores != null && info != null) {
 			try {
@@ -45,7 +63,25 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	 * retorna false. 
 	 */
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info, ArrayList<Produto> listaProduto) {
+		
+		//Fazer o método para criar o novo array de produtos
+		ArrayList<Produto> produtos = new ArrayList<Produto>();
+		
+		//Verifica se o nome do produto passado está na lista de produtos.
+		//Se o nome for igual adiciona o produto à lista.
+		for (String produtoNome : info[3].split(", ")) {
+			for (Produto produto : listaProduto) {
+				if (produtoNome.equals(produto.getNome())) {
+					produtos.add(produto);
+				}
+			}
+		}
+		
+		//Garante que os produtos adicionados estejam na lista de produtos
+		if (produtos.size() != info[3].split(", ").length) {
+			return false;
+		}
 		
 		if(listaFornecedores != null && info!= null) {
 			
@@ -55,6 +91,7 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 						fornecedor.setNome(info[0]);
 						fornecedor.setCnpj(info[1]);
 						fornecedor.setEndereco(info[2]);
+						fornecedor.setProdutos(produtos);
 						return true;
 					}else {
 						return false;

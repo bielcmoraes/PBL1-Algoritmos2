@@ -16,7 +16,7 @@ public interface FornecedorCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se o fornecedor for cadastrado com sucesso e false se o fornecedor não for cadastrado com sucesso
 	 */
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info);
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info, ArrayList<Produto> produtos);
 	
 	/**Assinatura do metódo editarFornecedor
 	 * 
@@ -25,7 +25,7 @@ public interface FornecedorCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se o fornecedor for editado com sucesso e false se o fornecedor não for editado com sucesso
 	 */
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info);
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info, ArrayList<Produto> produtos);
 	
 	/**Assinatura do metódo editarFornecedor
 	 * 

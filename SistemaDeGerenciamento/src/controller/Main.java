@@ -61,7 +61,7 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Fornecedor");
 							String[] infoCadastroFornecedor = FornecedorView.cadastrarFornecedor();
-							boolean cadastrarFornecedor = ((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
+							boolean cadastrarFornecedor = ((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor, dados.getListaProdutos());
 							if(cadastrarFornecedor == false) {
 								SubMenuView.erroGerenciamentos();
 							}
@@ -70,7 +70,7 @@ public class Main {
 							System.out.println("Editando Fornecedor");
 							String codigoFornecedorEdit = FornecedorView.buscaFornecedor();
 							String [] infoEditFornecedor = FornecedorView.cadastrarFornecedor();
-							boolean editarFornecedor = ((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
+							boolean editarFornecedor = ((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor, dados.getListaProdutos());
 							if(editarFornecedor == false) {
 								SubMenuView.erroGerenciamentos();
 							}

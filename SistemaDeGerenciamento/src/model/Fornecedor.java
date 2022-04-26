@@ -12,6 +12,7 @@ public class Fornecedor extends Entidade{
 	private String nome;
 	private String cnpj;
 	private String endereco;
+	private ArrayList<Produto> produtos;
 	
 	/**O construtor inicializa o costrutor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro.
 	 * 
@@ -20,11 +21,12 @@ public class Fornecedor extends Entidade{
 	 * @param cnpj CNPJ do fornecedor
 	 * @param endereco Endereço do fornecedor
 	 */
-	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj, String endereco) {
+	public Fornecedor(ArrayList<String> listaIds, String nome, String cnpj, String endereco, ArrayList<Produto> produtos) {
 		super(listaIds);
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
+		this.produtos = produtos;
 	}
 	
 	/**Metódo para retorno de nome do fornecedor
@@ -61,6 +63,14 @@ public class Fornecedor extends Entidade{
 	 * @param endereco Novo endereço do fornecedor*/
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public ArrayList<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(ArrayList<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 }
