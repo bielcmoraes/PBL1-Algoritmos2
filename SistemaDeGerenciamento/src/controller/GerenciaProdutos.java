@@ -65,16 +65,26 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		
 		//Garante que os fornecedores adicionados estejam na lista de fornecedores
 		if (fornecedores.size() != info[4].split(", ").length) {
-			System.out.println("AAAAAAAAAA");
 			return false;
 		}
 		
-		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, info2[1],validade, fornecedores);
+		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, info2[1], validade, fornecedores);
 		
 		try {
 			if (!listaProdutos.containsKey(novoProduto.getNome())) {
+				//Cria uma nova key na HashMap e adiciona o produto;
 				listaProdutos.put(novoProduto.getNome(), new ArrayList<Produto>());
+				
+				//Adiciona o produto ao fornecedor indicado
+				for (String fornecedorNome : info[4].split(", ")) {
+					for (Fornecedor fornecedor : listaFornecedor) {
+						if (fornecedorNome.equals(fornecedor.getNome()) && !fornecedor.getProdutos().contains(novoProduto.getNome())) {
+							fornecedor.getProdutos().add(novoProduto.getNome());
+						}
+					}
+				}
 			}
+			//Adiciona o produto a uma key ja existente da HashMap
 			listaProdutos.get(novoProduto.getNome()).add(novoProduto);
 			return true;
 		} 
