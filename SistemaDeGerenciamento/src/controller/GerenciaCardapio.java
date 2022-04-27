@@ -2,6 +2,7 @@ package controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import exceptions.ProdutoNaoCadastrado;
 import model.CardapioCopyable;
@@ -27,7 +28,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
 		
 		Double preco;
 		preco = Double.parseDouble(info[1]);

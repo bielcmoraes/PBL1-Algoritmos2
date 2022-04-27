@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento de produto e utilizada para "resolver" o problema de herança multipla em Java.
  * 
@@ -16,7 +17,7 @@ public interface ProdutoCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se o produto for cadastrado com sucesso e false se o produto não for cadastrado com sucesso
 	 */
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor);
+	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor);
 	
 	/**Assinatura do metódo editarProduto
 	 * 
@@ -25,7 +26,7 @@ public interface ProdutoCopyable {
 	 * @param info Entrada do usuário
 	 * @return true se o produto for editado com sucesso e false se o produto não for editado com sucesso
 	 */
-	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor);
+	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor);
 	
 	/**Assinatura do metódo excluirProduto
 	 * 
@@ -34,5 +35,5 @@ public interface ProdutoCopyable {
 	 * @param codigoProduto Id do produto que deseja excluir
 	 * @return true se o produto for excluido da lista de produtos com sucesso e false se o produto não for excluido da lista de produtos com sucesso
 	 */
-	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto);
+	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto);
 }
