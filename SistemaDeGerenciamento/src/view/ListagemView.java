@@ -28,13 +28,12 @@ public class ListagemView implements ListagemCopyable {
 		System.out.println("============");
 		System.out.println("= CARDAPIO =");
 		System.out.println("============");
-		System.out.format("%-15s %-30s %-15s %-50s %-15s %-70s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA", "INGREDIENTES");
+		System.out.format("%-15s %-30s %-15s %-50s %-15s %-70s\n", "ID", "NOME","PRECO", "DESCRICAO", "CATEGORIA", "PRODUTOS");
 		for(Prato prato: cardapio) {
-			String [] ingredientes;
+			prato.getReceita();
 			String produtos = "";
-			ingredientes = prato.getIngredientes();
-			for(int i = 2; i < ingredientes.length; i+=3) {
-				produtos += ingredientes[i-2] + ingredientes[i-1] + " " + ingredientes[i] + ", ";
+			for (String produto : prato.getReceita().keySet()) {
+				produtos += produto + ", ";
 			}
 			produtos = produtos.substring(0, produtos.length()-2);
 			System.out.format("%-15s %-30s R$ %-12.2f %-50s %-15s %-70s\n", 
@@ -77,7 +76,7 @@ public class ListagemView implements ListagemCopyable {
 		System.out.println("============");
 		System.out.println("= PRODUTOS =");
 		System.out.println("============");
-		System.out.format("%-15s %-15s %-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO","SQUANTIDADE", "VALIDADE", "FORNECEDORES");
+		System.out.format("%-15s %-15s %-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO","QUANTIDADE", "VALIDADE", "FORNECEDORES");
 		for(ArrayList<Produto> estoque: listaProdutos.values()) {
 			for(Produto produto: estoque) {
 				String fornecedores = "";
@@ -85,11 +84,12 @@ public class ListagemView implements ListagemCopyable {
 					fornecedores += fornecedor.getNome() + ", ";
 				}
 				fornecedores = fornecedores.substring(0, fornecedores.length()-2);
-				System.out.format("%-15s %-15s R$ %-12.2f %-15.2f %-15s %-15s\n", 
+				String quantidade = String.format("%.2f %s", produto.getQuantidade(), produto.getUnidadeDeMedida());
+				System.out.format("%-15s %-15s R$ %-12.2f %-15s %-15s %-15s\n", 
 						produto.getId(), 
 						produto.getNome(), 
 						produto.getPreco(),
-						produto.getQuantidade(),
+						quantidade,
 						produto.getValidade().format(formatoData),
 						fornecedores);
 			}

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.Fornecedor;
-import model.Prato;
 import model.Produto;
 import model.ProdutoCopyable;
 
@@ -35,9 +34,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			return false;
 		}
 		
+		String [] info2 = info[2].split(" ");
 		Double quantidade;
 		try {
-			quantidade = Double.parseDouble(info[2]);
+			quantidade = Double.parseDouble(info2[0]);
 		} catch (java.lang.NumberFormatException a) {
 			return false;
 		}
@@ -69,7 +69,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			return false;
 		}
 		
-		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade, fornecedores);
+		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, info2[1],validade, fornecedores);
 		
 		try {
 			if (!listaProdutos.containsKey(novoProduto.getNome())) {
@@ -107,9 +107,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 							return false;
 						}
 						
+						String [] info2 = info[2].split(" ");
 						Double quantidade;
 						try {
-							quantidade = Double.parseDouble(info[2]);
+							quantidade = Double.parseDouble(info2[0]);
 						} catch (java.lang.NumberFormatException a) {
 							return false;
 						}
@@ -139,6 +140,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						produto.setNome(info[0]);
 						produto.setPreco(preco);
 						produto.setQuantidade(quantidade);
+						produto.setUnidadeDeMedida(info2[1]);
 						produto.setValidade(validade);
 						produto.setFornecedores(fornecedores);
 			

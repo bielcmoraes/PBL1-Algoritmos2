@@ -14,6 +14,7 @@ public class Produto extends Entidade {
 	private String nome;
 	private Double preco;
 	private Double quantidade;
+	private String unidadeDeMedida;
 	private LocalDate validade;
 	private ArrayList<Fornecedor> fornecedores;
 	
@@ -24,11 +25,12 @@ public class Produto extends Entidade {
 	 * @param preco Preço do produto
 	 * @param validade Validade do produto
 	 */
-	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, LocalDate validade, ArrayList<Fornecedor> fornecedores) {
+	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, String unidadeDeMedida, LocalDate validade, ArrayList<Fornecedor> fornecedores) {
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
-		this.setQuantidade(quantidade);
+		this.quantidade = quantidade;
+		this.unidadeDeMedida = unidadeDeMedida;
 		this.validade = validade;
 		this.fornecedores = fornecedores;
 	}
@@ -91,5 +93,13 @@ public class Produto extends Entidade {
 	 * @param pratos Nova lista de fornecedores do produto*/
 	public void setFornecedores(ArrayList<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
+	}
+
+	public String getUnidadeDeMedida() {
+		return unidadeDeMedida;
+	}
+
+	public void setUnidadeDeMedida(String unidadeDeMedida) {
+		this.unidadeDeMedida = unidadeDeMedida;
 	}
 }

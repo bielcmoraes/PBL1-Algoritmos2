@@ -29,31 +29,39 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 */
 	@Override
 	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
-		
-		Double preco;
-		preco = Double.parseDouble(info[1]);
+		Double preco = null;
+		try {
+			preco = Double.parseDouble(info[1]);
+		} catch (NumberFormatException e) {
+			// preco invalido
+		}
 		
 		String [] ingredientes = info[4].split(";");
-		boolean produtoCadastrado;
-		if (ingredientes.length > 0) {
+		HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
+		HashMap<String, Double> receita = new HashMap<String, Double>();
+		
+		if (ingredientes.length > 0 && ingredientes.length % 3 == 0) {
 			for (int i = 2; i < ingredientes.length; i+=3) {
-				produtoCadastrado = false;
-				for (Produto produto : listaProdutos) {
-					if (ingredientes[i].equals(produto.getNome())) {
-						produtoCadastrado = true;
-						break;
+				if (listaProdutos.containsKey(ingredientes[i])) {
+					produtos.put(ingredientes[i], listaProdutos.get(ingredientes[i]));
+					Double quantidade = null;
+					try {
+						quantidade = Double.parseDouble(ingredientes[i-2]);
+					} catch (NumberFormatException e) {
+						// quantidade invalida
 					}
-				}
-				if (produtoCadastrado == false) {
+					receita.put(ingredientes[i], quantidade);
+				} else {
 					throw new ProdutoNaoCadastrado(ingredientes[i]);
 				}
 			}
-			Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], ingredientes);
+			
+			Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], produtos, receita);
 			cardapio.add(novoPrato);
-			return true;
 		} else {
-			return false;
-		}	
+			// formato dos ingredientes invalidos
+		}
+		return true;
 	}
 	/**
 	 * O método é responsável por editar um objeto do tipo Prato em uma ArrayList<Prato>.
@@ -65,44 +73,54 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param codigoPrato Codigo do prato a ser editado
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado {
 		
 		
 		try {
 			for(Prato prato : cardapio) {
 				if(codigoPrato.equals(prato.getId())) {
-					Double preco;
-					ArrayList<Produto> produtos = new ArrayList<Produto>();
-		
+					
+					Double preco = null;
 					try {
 						preco = Double.parseDouble(info[1]);
-					} catch (java.lang.NumberFormatException a) {
-						return false;
+					} catch (NumberFormatException e) {
+						// preco invalido
 					}
 					
-					for (String produtoNome : info[4].split(", ")) {
-						for (Produto produto : listaProdutos) {
-							if (produtoNome.equals(produto.getNome())) {
-								produtos.add(produto);
+					String [] ingredientes = info[4].split(";");
+					HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
+					HashMap<String, Double> receita = new HashMap<String, Double>();
+					
+					if (ingredientes.length > 0 && ingredientes.length % 3 == 0) {
+						for (int i = 2; i < ingredientes.length; i+=3) {
+							if (listaProdutos.containsKey(ingredientes[i])) {
+								produtos.put(ingredientes[i], listaProdutos.get(ingredientes[i]));
+								Double quantidade = null;
+								try {
+									quantidade = Double.parseDouble(ingredientes[i-2]);
+								} catch (NumberFormatException e) {
+									// quantidade invalida
+								}
+								receita.put(ingredientes[i], quantidade);
+							} else {
+								throw new ProdutoNaoCadastrado(ingredientes[i]);
 							}
 						}
-					}
 					
-					if (produtos.size() != info[4].split(", ").length) {
-						return false;
+						prato.setNome(info[0]);
+						prato.setPreco(preco);
+						prato.setDescricao(info[2]);
+						prato.setCategoria(info[3]);
+					} else {
+						// formato dos ingredientes invalidos
 					}
-						
-					prato.setNome(info[0]);
-					prato.setPreco(preco);
-					prato.setDescricao(info[2]);
-					prato.setCategoria(info[3]);
-					return true;
 				}
 			}
-		}
-		catch(ArrayIndexOutOfBoundsException a){
+			//prato nao cadastrado
+		} catch (ArrayIndexOutOfBoundsException a) {
 			return false;
 		}
 		return false;

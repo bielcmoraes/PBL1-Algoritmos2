@@ -167,9 +167,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param codigoPrato Id do prato que deseja editar
 	 * @param info Entradas do usuário
 	 * @return Boolean editarPrato
+	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos, codigoPrato, info);
 	}

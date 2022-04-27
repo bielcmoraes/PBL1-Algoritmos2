@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**Classe para objetos do tipo Prato, onde são contidos, valores e metódos necessarios para implementação da classe.
  * 
@@ -14,7 +15,8 @@ public class Prato extends Entidade{
 	private Double preco;
 	private String descricao;
 	private String categoria;
-	private String [] ingredientes;
+	private HashMap<String, ArrayList<Produto>> produtos;
+	private HashMap<String, Double> receita;
 	
 	/**O construtor inicializa o costrutor da classe herdada e atribui a cada variável da classe os respectivos valores fornecidos como parâmetro. 
 	 * 
@@ -25,14 +27,15 @@ public class Prato extends Entidade{
 	 * @param categoria Categoria do prato
 	 * @param produtos Produtos que compõem o prato
 	 */
-	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria, String [] ingredientes) {
+	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria, HashMap<String, ArrayList<Produto>> produtos, HashMap<String, Double> receita) {
 		
 		super(listaIds);
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
 		this.categoria = categoria;
-		this.ingredientes = ingredientes;
+		this.produtos = produtos;
+		this.receita = receita;
 	}
 	
 	/**Metódo para retorno de nome do prato.
@@ -82,17 +85,22 @@ public class Prato extends Entidade{
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
-	/**Metódo para retorno de lista de produtos que compõem o prato.
-	 * @return Lista de produtos*/
-	public String [] getIngredientes() {
-		return ingredientes;
+
+	public HashMap<String, ArrayList<Produto>> getProdutos() {
+		return produtos;
 	}
-	
-	/**Metódo para alterar a lista de produtos que compõem o prato.
-	 * @param produtos Nova lista de produtos que compõem o prato*/
-	public void setIngredientes(String [] ingredientes) {
-		this.ingredientes = ingredientes;
+
+	public void setProdutos(HashMap<String, ArrayList<Produto>> produtos) {
+		this.produtos = produtos;
 	}
+
+	public HashMap<String, Double> getReceita() {
+		return receita;
+	}
+
+	public void setReceita(HashMap<String, Double> receita) {
+		this.receita = receita;
+	}
+
 	
 }

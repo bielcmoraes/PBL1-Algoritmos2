@@ -27,7 +27,7 @@ public class ProdutosView {
 		System.out.println("Digite o preco do produto");
 		String preco = input.nextLine();
 		
-		System.out.println("Digite a quantidade do produto");
+		System.out.println("Digite a quantidade do produto (Ex: 10 kg)");
 		String quantidade = input.nextLine();
 		
 		System.out.println("Digite a validade do produto");

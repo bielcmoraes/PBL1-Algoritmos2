@@ -30,8 +30,9 @@ public interface CardapioCopyable {
 	 * @param codigoPrato Id do prato que deseja editar
 	 * @param info Entradas do usuário
 	 * @return true se o prato for editado com sucesso e false se o prato não for editado com sucesso
+	 * @throws ProdutoNaoCadastrado 
 	 */
-	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info);
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado;
 	
 	/**Assinatura do metódo excluirPrato
 	 * 

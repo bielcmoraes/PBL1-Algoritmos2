@@ -10,6 +10,7 @@ do código, e estou ciente que estes trechos não serão considerados para fins 
 ******************************/
 package controller;
 
+import PreCadastro.PreCadastro;
 import exceptions.ProdutoNaoCadastrado;
 import model.Funcionario;
 import model.Gerente;
@@ -39,6 +40,10 @@ public class Main {
 	
 		//Intancio as listas
 		BancoDeDados dados = new BancoDeDados();
+		PreCadastro preCadastro = new PreCadastro();
+		preCadastro.PreCadastrarFornecedores(dados);
+		preCadastro.PreCadastrarProdutos(dados);
+		preCadastro.PreCadastrarPratos(dados);
 		
 		while(true) {
 			
