@@ -2,6 +2,7 @@ package view;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Fornecedor;
 import model.ListagemCopyable;
@@ -70,12 +71,13 @@ public class ListagemView implements ListagemCopyable {
 	 * cadastrados no sistema.
 	 */
 	@Override
-	public void listarProduto(ArrayList<Produto> listaProdutos) {
+	public void listarProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		System.out.println("\n");
 		System.out.println("============");
 		System.out.println("= PRODUTOS =");
 		System.out.println("============");
+<<<<<<< HEAD
 		System.out.format("%-15s %-15s %-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO","QUANTIDADE", "VALIDADE", "FORNECEDORES");
 		for(Produto produto: listaProdutos) {
 			String fornecedores = "";
@@ -86,7 +88,25 @@ public class ListagemView implements ListagemCopyable {
 			
 			try {
 				fornecedores = fornecedores.substring(0, fornecedores.length()-2);
+=======
+		System.out.format("%-15s %-15s %-15s %-15s %-15s %-15s\n", "ID", "NOME","PRECO","SQUANTIDADE", "VALIDADE", "FORNECEDORES");
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {
+			for(Produto produto: estoque) {
+				String fornecedores = "";
+				for(Fornecedor fornecedor : produto.getFornecedores()) {
+					fornecedores += fornecedor.getNome() + ", ";
+				}
+				fornecedores = fornecedores.substring(0, fornecedores.length()-2);
+				System.out.format("%-15s %-15s R$ %-12.2f %-15.2f %-15s %-15s\n", 
+						produto.getId(), 
+						produto.getNome(), 
+						produto.getPreco(),
+						produto.getQuantidade(),
+						produto.getValidade().format(formatoData),
+						fornecedores);
+>>>>>>> branch 'master' of https://github.com/bielcmoraes/PBL1-Algoritmos2.git
 			}
+<<<<<<< HEAD
 			catch(IndexOutOfBoundsException e){
 				fornecedores = "Fornecedor não cadastrado";
 			}
@@ -98,6 +118,8 @@ public class ListagemView implements ListagemCopyable {
 					produto.getQuantidade(),
 					produto.getValidade().format(formatoData),
 					fornecedores);
+=======
+>>>>>>> branch 'master' of https://github.com/bielcmoraes/PBL1-Algoritmos2.git
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import exceptions.ProdutoNaoCadastrado;
 
@@ -20,7 +21,7 @@ public interface CardapioCopyable {
 	 * @return true se o prato for cadastrado com sucesso e false se o prato não for cadastrado com sucesso
 	 * @throws ProdutoNaoCadastrado 
 	 */
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado;
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado;
 	
 	/**Assinatura do metódo editarPrato
 	 * 
@@ -30,7 +31,7 @@ public interface CardapioCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se o prato for editado com sucesso e false se o prato não for editado com sucesso
 	 */
-	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info);
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info);
 	
 	/**Assinatura do metódo excluirPrato
 	 * 

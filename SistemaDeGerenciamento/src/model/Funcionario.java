@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import controller.GerenciaVendas;
 import view.ListagemView;
@@ -85,7 +86,7 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @return Lista de produtos
 	 */
 	@Override
-	public void listarProduto(ArrayList<Produto> listaProdutos) {
+	public void listarProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		ListagemView listagemView = new ListagemView();
 		listagemView.listarProduto(listaProdutos);	
 	}

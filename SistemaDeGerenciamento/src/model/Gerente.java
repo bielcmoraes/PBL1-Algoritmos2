@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
@@ -117,7 +118,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean cadastrarProduto
 	 */
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds, info, listaFornecedor);
 	}
@@ -129,7 +130,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean editarProduto
 	 */
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos,  String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos,  String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.editarProduto(listaProdutos, codigoProduto, info, listaFornecedor);
 	}
@@ -141,7 +142,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean excluirProduto
 	 */
 	@Override
-	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
+	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.excluirProduto(listaProdutos, listaIds, codigoProduto);
 	}
@@ -155,7 +156,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, ArrayList<Produto> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos, info);
 	}
@@ -168,7 +169,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @return Boolean editarPrato
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, ArrayList<Produto> listaProdutos, String codigoPrato, String [] info) {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos, codigoPrato, info);
 	}
@@ -247,7 +248,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listarProduto Lista de produtos
 	 */
 	@Override
-	public void listarProduto(ArrayList<Produto> listaProdutos) {
+	public void listarProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		ListagemView listagemView = new ListagemView();
 		listagemView.listarProduto(listaProdutos);	
 	}

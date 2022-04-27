@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.*;
 
@@ -13,7 +14,7 @@ public class BancoDeDados {
 	
 	private ArrayList<Fornecedor> listaFornecedores = new ArrayList<Fornecedor>();
 	private ArrayList<Prato> cardapio = new ArrayList<Prato>();
-	private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+	private HashMap<String, ArrayList<Produto>> listaProdutos = new HashMap<String, ArrayList<Produto>>();
 	private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	private ArrayList<Venda> listaVendas = new ArrayList<Venda>();
 	private ArrayList<String> listaIds = new ArrayList<String>();
@@ -26,7 +27,7 @@ public class BancoDeDados {
 	
 	/**Metódo para retorno da lista de produtos
 	 * @return Retorna o atributo privado listaProdutos*/
-	public ArrayList<Produto> getListaProdutos() {
+	public HashMap<String, ArrayList<Produto>> getListaProdutos() {
 		return listaProdutos;
 	}
 	

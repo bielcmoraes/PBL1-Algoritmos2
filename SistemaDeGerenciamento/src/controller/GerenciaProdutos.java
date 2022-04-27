@@ -3,6 +3,7 @@ package controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Fornecedor;
 import model.Prato;
@@ -25,7 +26,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean cadastrarProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		
 		Double preco;
 		try {
@@ -65,7 +66,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, validade, fornecedores);
 		
 		try {
-			listaProdutos.add(novoProduto);
+			if (!listaProdutos.containsKey(novoProduto.getNome())) {
+				listaProdutos.put(novoProduto.getNome(), new ArrayList<Produto>());
+			}
+			listaProdutos.get(novoProduto.getNome()).add(novoProduto);
 			return true;
 		} 
 		catch(ArrayIndexOutOfBoundsException a){
@@ -83,55 +87,57 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean editarProduto(ArrayList<Produto> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
 		
 		try {
-			for(Produto produto : listaProdutos) {
-				if(codigoProduto.equals(produto.getId())) {
-					
-					Double preco;
-					try {
-						preco = Double.parseDouble(info[1]);
-					} catch (java.lang.NumberFormatException a) {
-						return false;
-					}
-					
-					Double quantidade;
-					try {
-						quantidade = Double.parseDouble(info[2]);
-					} catch (java.lang.NumberFormatException a) {
-						return false;
-					}
-					
-					DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-					LocalDate validade;
-					try {
-						validade = LocalDate.parse(info[3], formatoData);
-					} catch (java.time.format.DateTimeParseException a) {
-						return false;
-					}
-					
-					ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
-					for (String fornecedorNome : info[4].split(", ")) {
-						for (Fornecedor fornecedor : listaFornecedor) {
-							if (fornecedorNome.equals(fornecedor.getNome())) {
-								fornecedores.add(fornecedor);
+			for(ArrayList<Produto> estoque : listaProdutos.values()) {
+				for(Produto produto : estoque) {
+					if(codigoProduto.equals(produto.getId())) {
+						
+						Double preco;
+						try {
+							preco = Double.parseDouble(info[1]);
+						} catch (java.lang.NumberFormatException a) {
+							return false;
+						}
+						
+						Double quantidade;
+						try {
+							quantidade = Double.parseDouble(info[2]);
+						} catch (java.lang.NumberFormatException a) {
+							return false;
+						}
+						
+						DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						LocalDate validade;
+						try {
+							validade = LocalDate.parse(info[3], formatoData);
+						} catch (java.time.format.DateTimeParseException a) {
+							return false;
+						}
+						
+						ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+						for (String fornecedorNome : info[4].split(", ")) {
+							for (Fornecedor fornecedor : listaFornecedor) {
+								if (fornecedorNome.equals(fornecedor.getNome())) {
+									fornecedores.add(fornecedor);
+								}
 							}
 						}
+						
+						//Garante que os fornecedores estejam na lista de fornecedores
+						if (fornecedores.size() != info[4].split(", ").length) {
+							return false;
+						}
+						
+						produto.setNome(info[0]);
+						produto.setPreco(preco);
+						produto.setQuantidade(quantidade);
+						produto.setValidade(validade);
+						produto.setFornecedores(fornecedores);
+			
+						return true;
 					}
-					
-					//Garante que os fornecedores estejam na lista de fornecedores
-					if (fornecedores.size() != info[4].split(", ").length) {
-						return false;
-					}
-					
-					produto.setNome(info[0]);
-					produto.setPreco(preco);
-					produto.setQuantidade(quantidade);
-					produto.setValidade(validade);
-					produto.setFornecedores(fornecedores);
-		
-					return true;
 				}
 			}
 		}
@@ -148,14 +154,16 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean excluirProduto(ArrayList<Produto> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
+	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
 		
 		try {
-			for(Produto produto : listaProdutos) {
-				if(codigoProduto.equals(produto.getId())) {
-					int index = listaProdutos.indexOf(produto);
-					listaProdutos.remove(index);
-					return true;
+			for(ArrayList<Produto> estoque : listaProdutos.values()) {
+				for(Produto produto : estoque) {
+					if(codigoProduto.equals(produto.getId())) {
+						int index = estoque.indexOf(produto);
+						estoque.remove(index);
+						return true;
+					}
 				}
 			}
 		}
