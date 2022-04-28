@@ -28,7 +28,7 @@ public class GeraTabela {
 		//Cria uma nova tabela com três colunas
 		Table tabela = new Table(3);
 		tabela.addCell("ID: ");
-		tabela.addCell("Nome: ");
+		tabela.addCell("NOME: ");
 		tabela.addCell("VALIDADE: ");
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -46,6 +46,27 @@ public class GeraTabela {
 		celulaTotal.setColspan(3);
 		tabela.addCell(celulaTotal);
 		tabela.setBackgroundColor(Color.LIGHT_GRAY);
+		return tabela;
+	}
+	
+	public Table estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		
+		Table tabela = new Table(3);
+		tabela.addCell("ID: ");
+		tabela.addCell("NOME: ");
+		tabela.addCell("QUANTIDADE: ");
+		
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {
+			
+			int quantidade = 0;
+			for(Produto produto : estoque) {
+				tabela.addCell(produto.getId());
+				tabela.addCell(produto.getNome());
+				quantidade += produto.getQuantidade();
+			}
+			tabela.addCell(String.valueOf(quantidade));
+		}
+
 		return tabela;
 	}
 

@@ -29,7 +29,7 @@ public class Main2 {
 		
 		GeraTabela tabela = new GeraTabela();
 		
-		GeraRelatorios r = new GeraRelatorios(tabela.estoqueTotal(dados.getListaProdutos()));
+		GeraRelatorios r = new GeraRelatorios(tabela.estoquePorProduto(dados.getListaProdutos()));
 		
 		
 		/*
