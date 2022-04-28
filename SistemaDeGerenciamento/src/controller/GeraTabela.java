@@ -12,6 +12,7 @@ import com.lowagie.text.Cell;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 
+import model.Fornecedor;
 import model.Produto;
 
 /**
@@ -67,6 +68,43 @@ public class GeraTabela {
 			tabela.addCell(String.valueOf(quantidade));
 		}
 
+		return tabela;
+	}
+	
+	/*
+	public Table estoqueProdutosaVencer() {
+		
+		Table tabela = new Table(3);
+		tabela.addCell("ID: ");
+		tabela.addCell("NOME: ");
+		tabela.addCell("VALIDADE: ");
+		return tabela;
+	}
+	*/
+	
+	public Table fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		
+		Table tabela = new Table(2);
+		tabela.addCell("PRODUTO: ");
+		tabela.addCell("FORNECEDORES: ");
+		
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {
+			
+			for(Produto produto : estoque) {
+				String nomeProduto = produto.getNome();
+				
+				tabela.addCell(produto.getNome());
+				
+				String fornecedores = "";
+				for(Fornecedor fornecedor : produto.getFornecedores()) {
+					fornecedores += fornecedor.getNome() + ", ";
+				}
+				fornecedores = fornecedores.substring(0, fornecedores.length()-2);
+				
+				tabela.addCell(fornecedores);
+			}
+		}
+		
 		return tabela;
 	}
 

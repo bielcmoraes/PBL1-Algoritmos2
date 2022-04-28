@@ -21,7 +21,7 @@ public class PreCadastro {
 		info[1] = "10";//preco;
 		info[2] = "100 kg";//quantidade;
 		info[3] = "10/10/2022";//validade;
-		info[4] = "Joao";//fornecedores;
+		info[4] = "Joao, Maria";//fornecedores;
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		
 		info[0] = "Leite";//nome;
