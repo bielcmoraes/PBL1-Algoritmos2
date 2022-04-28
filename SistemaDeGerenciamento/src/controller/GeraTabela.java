@@ -6,16 +6,13 @@ package controller;
 import java.awt.Color;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
-import com.lowagie.text.Element;
-import com.lowagie.text.Table;
-import com.lowagie.text.alignment.HorizontalAlignment;
+import java.util.HashMap;
 
-import model.Entidade;
-import model.Fornecedor;
+import com.lowagie.text.Cell;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Table;
+
 import model.Produto;
-import model.Usuario;
-import model.Venda;
 
 /**
  * @author Gabriel Moraes
@@ -24,29 +21,30 @@ import model.Venda;
 public class GeraTabela {
 	//Métodos
 	
-	public Table vendasPorData(ArrayList<Venda> listaVenda) {
+	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		
-		//Ordena a lista pela data da venda
-		listaVenda.sort(Comparator.comparing(Venda::getData));
+		int total = 0;
 		
-		//Cria uma nova tabela com duas colunas
-		Table tabela = new Table(5);
-		tabela.addCell("DATA: ");
-		tabela.addCell("HORÁRIO: ");
-		tabela.addCell("PRATOS: ");
-		tabela.addCell("PREÇO TOTAL: ");
-		tabela.addCell("MÉTODO DE PAGAMENTO: ");
+		//Cria uma nova tabela com três colunas
+		Table tabela = new Table(3);
+		tabela.addCell("ID: ");
+		tabela.addCell("Nome: ");
+		tabela.addCell("VALIDADE: ");
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
 		
-		for(Venda venda : listaVenda) {
-			tabela.addCell(venda.getData().format(formatoData));
-			tabela.addCell(venda.getHorario().format(formatoHorario));
-			tabela.addCell(venda.getPratos().toString());
-			tabela.addCell(venda.getPrecoTotal().toString());
-			tabela.addCell(venda.getMetodoDePagamento());
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {
+			
+			for(Produto produto : estoque) {
+				tabela.addCell(produto.getId());
+				tabela.addCell(produto.getNome());
+				tabela.addCell(produto.getValidade().format(formatoData));
+				total += produto.getQuantidade();
+			}
 		}
+		Cell celulaTotal = new Cell(new Paragraph("Total: " + String.valueOf(total)));
+		celulaTotal.setColspan(3);
+		tabela.addCell(celulaTotal);
 		tabela.setBackgroundColor(Color.LIGHT_GRAY);
 		return tabela;
 	}

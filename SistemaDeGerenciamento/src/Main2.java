@@ -9,6 +9,7 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
+import PreCadastro.PreCadastro;
 import controller.BancoDeDados;
 import controller.GeraRelatorios;
 import controller.GeraTabela;
@@ -20,6 +21,18 @@ public class Main2 {
 
 	public static void main(String[] args) {
 		
+		BancoDeDados dados = new BancoDeDados();
+		PreCadastro preCadastro = new PreCadastro();
+		preCadastro.PreCadastrarFornecedores(dados);
+		preCadastro.PreCadastrarProdutos(dados);
+		preCadastro.PreCadastrarPratos(dados);
+		
+		GeraTabela tabela = new GeraTabela();
+		
+		GeraRelatorios r = new GeraRelatorios(tabela.estoqueTotal(dados.getListaProdutos()));
+		
+		
+		/*
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate data = null;
 		

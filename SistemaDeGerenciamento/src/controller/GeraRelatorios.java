@@ -19,7 +19,7 @@ import model.Usuario;
 public class GeraRelatorios{
 	
 	//Construtores
-	public GeraRelatorios(Table tabela, String nomeUsuario) {
+	public GeraRelatorios(Table tabela) {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
