@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import controller.GeraRelatorio;
 import controller.GerenciaCardapio;
 import controller.GerenciaFornecedor;
 import controller.GerenciaProdutos;
@@ -15,7 +16,7 @@ import view.ListagemView;
  * @author Gabriel Moraes e Luis Fernando Cintra
  * @see Usuario
  */
-public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable, ListagemCopyable{
+public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable, ListagemCopyable, GeraRelatoriosCopyable{
 	
 	/**O construtor vazio inicializa o construtor vazio da classe herdada. Necessario para intanciar um representante da classe com informações de id, login e senha pré estabelecidas.
 	 */
@@ -270,6 +271,34 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	public void listarVenda(ArrayList<Venda> listaVendas) {
 		ListagemView listagemView = new ListagemView();
 		listagemView.listarVenda(listaVendas);
+	}
+
+	@Override
+	public void estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.estoqueTotal(listaProdutos);
+		
+	}
+
+	@Override
+	public void estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.estoquePorProduto(listaProdutos);
+		
+	}
+
+	@Override
+	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.fornecedorPorProduto(listaProdutos);
+		
+	}
+
+	@Override
+	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.fornecedorPorFornecedor(listaFornecedores);
+		
 	}
 
 }

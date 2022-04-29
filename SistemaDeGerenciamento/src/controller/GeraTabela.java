@@ -20,7 +20,6 @@ import model.Produto;
  *
  */
 public class GeraTabela {
-	//Métodos
 	
 	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		

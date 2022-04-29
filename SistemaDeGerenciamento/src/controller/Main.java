@@ -251,6 +251,48 @@ public class Main {
 						}
 					}
 					else if(decisao[0] == 7) {
+						switch(decisao[1]) {
+						case 1:
+							System.out.println("VENDAS NO GERAL falta implementar");
+							break;
+						
+						case 2:
+							System.out.println("VENDAS POR PERIODO falta implementar");
+							break;
+							
+						case 3:
+							System.out.println("VENDAS POR TIPO DE PRATOS falta implementar");
+							break;
+							
+						case 4:
+							((Gerente) usuarioLogado).estoqueTotal(dados.getListaProdutos());
+							System.out.println("Relatorio gerado com sucesso!!!");
+							break;
+							
+						case 5:
+							((Gerente) usuarioLogado).estoquePorProduto(dados.getListaProdutos());
+							System.out.println("Relatorio gerado com sucesso!!!");
+							break;
+							
+						case 6:
+							System.out.println("ESTOQUE POR PRODUTOS A VENCER falta implementar");
+							break;
+							
+						case 7:
+							((Gerente) usuarioLogado).fornecedorPorProduto(dados.getListaProdutos());
+							System.out.println("Relatorio gerado com sucesso!!!");
+							break;
+							
+						case 8:
+							((Gerente) usuarioLogado).fornecedorPorFornecedor(dados.getListaFornecedores());
+							System.out.println("Relatorio gerado com sucesso!!!");
+							break;
+						
+						case 9:
+							break;
+						}
+						}
+					else if(decisao[0] == 8) {
 						logado = false;
 						}
 				}

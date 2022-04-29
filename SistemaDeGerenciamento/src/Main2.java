@@ -11,9 +11,9 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import PreCadastro.PreCadastro;
 import controller.BancoDeDados;
-import controller.GeraRelatorios;
 import controller.GeraTabela;
 import model.Gerente;
+import model.Relatorio;
 import model.Usuario;
 import model.Venda;
 
@@ -29,7 +29,7 @@ public class Main2 {
 		
 		GeraTabela tabela = new GeraTabela();
 		
-		GeraRelatorios r = new GeraRelatorios(tabela.fornecedorPorFornecedor(dados.getListaFornecedores()));
+		Relatorio r = new Relatorio(tabela.fornecedorPorFornecedor(dados.getListaFornecedores()));
 		
 		
 		/*

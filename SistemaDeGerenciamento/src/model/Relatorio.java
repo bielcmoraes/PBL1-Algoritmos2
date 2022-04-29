@@ -1,4 +1,4 @@
-package controller;
+package model;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
@@ -14,12 +14,10 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
-import model.Usuario;
-
-public class GeraRelatorios{
+public class Relatorio{
 	
 	//Construtores
-	public GeraRelatorios(Table tabela) {
+	public Relatorio(Table tabela) {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");

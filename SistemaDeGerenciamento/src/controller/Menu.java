@@ -44,7 +44,17 @@ public class Menu {
 			decisoes[0] = escolha;
 			decisoes[1] = resposta;
 			
-		}else if(escolha == 7){
+		}else if(escolha == 7) {
+			int resposta;
+			try {
+				resposta = Integer.parseInt(SubMenuView.telaMenuGerarRelatorioPDF());
+			} catch (java.lang.NumberFormatException a) {
+				resposta = 0;
+			}
+			decisoes[0] = escolha;
+			decisoes[1] = resposta;
+		}
+		else if(escolha == 8){
 			decisoes[0] = escolha;
 		}else {
 			System.out.println("Escolha uma opção válida");
