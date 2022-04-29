@@ -91,8 +91,6 @@ public class GeraTabela {
 		for(ArrayList<Produto> estoque: listaProdutos.values()) {
 			
 			for(Produto produto : estoque) {
-				String nomeProduto = produto.getNome();
-				
 				tabela.addCell(produto.getNome());
 				
 				String fornecedores = "";
@@ -105,6 +103,25 @@ public class GeraTabela {
 			}
 		}
 		
+		return tabela;
+	}
+	
+	public Table fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+		
+		Table tabela = new Table(2);
+		tabela.addCell("FORNECEDOR: ");
+		tabela.addCell("PRODUTOS: ");
+		
+		for(Fornecedor fornecedor: listaFornecedores) {
+			String produtos = "";
+			for(String produto : fornecedor.getProdutos()) {
+				produtos += produto + ", ";
+			}
+			produtos = produtos.substring(0, produtos.length()-2);
+			
+			tabela.addCell(fornecedor.getNome());
+			tabela.addCell(produtos);
+		}
 		return tabela;
 	}
 
