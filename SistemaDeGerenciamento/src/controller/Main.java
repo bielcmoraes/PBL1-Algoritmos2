@@ -101,7 +101,7 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							boolean cadastrarVenda = ((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							boolean cadastrarVenda = ((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
 							if(cadastrarVenda == false) {
 								SubMenuView.erroGerenciamentos();
 							}
@@ -304,7 +304,7 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							boolean cadastrarVenda = ((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info);
+							boolean cadastrarVenda = ((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
 							if(cadastrarVenda == false) {
 								SubMenuView.erroGerenciamentos();
 							}

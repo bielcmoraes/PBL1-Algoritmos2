@@ -5,8 +5,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
+import model.ComparadorDeValidadeProduto;
 import model.Prato;
+import model.Produto;
 import model.Venda;
 import model.VendaCopyable;
 
@@ -27,11 +31,12 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
-	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info) {
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
 	
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate data;
 		try {
+			
 			data = LocalDate.parse(info[0], formatoData);
 		} catch (java.time.format.DateTimeParseException a) {
 			return false;
@@ -55,8 +60,57 @@ public class GerenciaVendas implements VendaCopyable {
 		}
 		
 		if (pratos.size() != info[2].split(", ").length) {
+			// prato não cadastrado
 			return false;
 		}
+		
+		HashMap<String, Double> ingredientesTotal = new HashMap<String, Double>();
+		for (Prato prato : pratos) {
+			for (String produto : prato.getReceita().keySet()) {
+				if (ingredientesTotal.containsKey(produto)) {
+					ingredientesTotal.put(produto, ingredientesTotal.get(produto) + prato.getReceita().get(produto));
+				} else {
+					ingredientesTotal.put(produto, prato.getReceita().get(produto));
+				}
+			}
+		}
+		
+		HashMap<String, Double> estoqueTotal = new HashMap<String, Double>();
+		for (String produto : listaProdutos.keySet()) {
+			ArrayList<Produto> estoque = listaProdutos.get(produto);
+			Double quantidadeTotal = 0.0;
+			for (Produto item : estoque) {
+				quantidadeTotal += item.getQuantidade();
+			}
+			estoqueTotal.put(produto, quantidadeTotal);
+		}
+		
+		for (String produto : ingredientesTotal.keySet()) {
+			if (estoqueTotal.get(produto) < ingredientesTotal.get(produto)) {
+				// Quantidade de <produto> insuficiente para o prato
+				return false;
+			}
+		}
+		
+		for (String produto : ingredientesTotal.keySet()) {
+			ArrayList<Produto> estoque = listaProdutos.get(produto);
+			Collections.sort(estoque, new ComparadorDeValidadeProduto());
+			Double quantUsada = ingredientesTotal.get(produto);
+			while (quantUsada > 0) {
+				Double quantRestante = estoque.get(0).getQuantidade() - quantUsada;
+				if (quantRestante > 0) {
+					estoque.get(0).setQuantidade(quantRestante);
+					break;
+				} else {
+					quantUsada = quantUsada - estoque.get(0).getQuantidade();
+					estoque.remove(0);
+					if (quantRestante == 0) {
+						break;
+					}
+				} 
+			}
+		}
+		
 		
 		Double precoTotal = 0.0;
 		for (Prato prato : pratos) {

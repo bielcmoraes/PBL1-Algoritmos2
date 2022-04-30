@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento de vendas e utilizada para "resolver" o problema de herança multipla em Java.
  * 
@@ -17,7 +18,7 @@ public interface VendaCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se a venda for cadastrada com sucesso e false se a venda não for cadastrada com sucesso
 	 */
-	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info);
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos);
 	
 	/**Assinatura do metódo editarVenda
 	 * 

@@ -33,8 +33,22 @@ public class PreCadastro {
 		
 		info[0] = "Pao";//nome;
 		info[1] = "0.5";//preco;
-		info[2] = "50 un";//quantidade;
+		info[2] = "1 un";//quantidade;
 		info[3] = "15/09/2022";//validade;
+		info[4] = "Jose";//fornecedores;
+		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
+		
+		info[0] = "Pao";//nome;
+		info[1] = "0.5";//preco;
+		info[2] = "1 un";//quantidade;
+		info[3] = "02/09/2021";//validade;
+		info[4] = "Jose";//fornecedores;
+		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
+		
+		info[0] = "Pao";//nome;
+		info[1] = "0.5";//preco;
+		info[2] = "1 un";//quantidade;
+		info[3] = "01/09/2020";//validade;
 		info[4] = "Jose";//fornecedores;
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		
