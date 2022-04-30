@@ -46,4 +46,12 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 		
 	}
 
+	@Override
+	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+		GeraTabela tabela = new GeraTabela();
+		Table info = tabela.vendasPorTipoDePrato(listaVendas);
+		new Relatorio(info);
+		
+	}
+
 }

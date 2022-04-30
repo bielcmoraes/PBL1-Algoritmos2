@@ -265,7 +265,8 @@ public class Main {
 							break;
 							
 						case 3:
-							System.out.println("VENDAS POR TIPO DE PRATOS falta implementar");
+							((Gerente) usuarioLogado).vendasPorTipoDePrato(dados.getListaVendas());
+							System.out.println("Relatorio gerado com sucesso!!!");
 							break;
 							
 						case 4:
