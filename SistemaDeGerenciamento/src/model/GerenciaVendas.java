@@ -26,26 +26,9 @@ public class GerenciaVendas implements VendaCopyable {
 	 */
 	@Override
 	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
-	
-		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate data;
-		try {
-			
-			data = LocalDate.parse(info[0], formatoData);
-		} catch (java.time.format.DateTimeParseException a) {
-			return false;
-		}
-		
-		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime horario;
-		try {
-			horario = LocalTime.parse(info[1], formatoHorario);
-		} catch (java.time.format.DateTimeParseException a) {
-			return false;
-		}
 		
 		ArrayList<Prato> pratos = new ArrayList<Prato>();
-		for (String pratoNome : info[2].split(", ")) {
+		for (String pratoNome : info[0].split(", ")) {
 			for (Prato prato : cardapio) {
 				if (pratoNome.equals(prato.getNome())) {
 					pratos.add(prato);
@@ -53,7 +36,7 @@ public class GerenciaVendas implements VendaCopyable {
 			}
 		}
 		
-		if (pratos.size() != info[2].split(", ").length) {
+		if (pratos.size() != info[0].split(", ").length) {
 			// prato não cadastrado
 			return false;
 		}
@@ -111,7 +94,7 @@ public class GerenciaVendas implements VendaCopyable {
 			precoTotal += prato.getPreco();
 		}
 		
-		Venda novaVenda = new Venda(listaIds, pratos, precoTotal, info[3]);
+		Venda novaVenda = new Venda(listaIds, pratos, precoTotal, info[1]);
 		
 		try {
 			listaVendas.add(novaVenda);

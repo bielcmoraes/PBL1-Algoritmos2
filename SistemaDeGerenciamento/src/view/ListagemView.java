@@ -125,6 +125,8 @@ public class ListagemView implements ListagemCopyable {
 	@Override
 	public void listarVenda(ArrayList<Venda> listaVendas) {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
+		
 		System.out.println("\n");
 		System.out.println("==========");
 		System.out.println("= VENDAS =");
@@ -138,8 +140,8 @@ public class ListagemView implements ListagemCopyable {
 			pratos = pratos.substring(0, pratos.length()-2);
 			System.out.format("%-15s %-15s %-15s %-50s R$ %-12.2f %-15s\n", 
 					venda.getId(), 
-					venda.getData(),
-					venda.getHorario(),
+					venda.getData().format(formatoData),
+					venda.getHorario().format(formatoHorario),
 					pratos,
 					venda.getPrecoTotal(),
 					venda.getMetodoDePagamento());
