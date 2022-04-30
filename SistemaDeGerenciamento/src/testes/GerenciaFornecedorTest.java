@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.BancoDeDados;
-import controller.GerenciaFornecedor;
+import model.BancoDeDados;
 import model.Fornecedor;
+import model.GerenciaFornecedor;
 
 class GerenciaFornecedorTest {
 	

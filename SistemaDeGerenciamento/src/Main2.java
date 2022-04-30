@@ -10,8 +10,8 @@ import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
 import PreCadastro.PreCadastro;
-import controller.BancoDeDados;
-import controller.GeraTabela;
+import model.BancoDeDados;
+import model.GeraTabela;
 import model.Gerente;
 import model.Relatorio;
 import model.Usuario;

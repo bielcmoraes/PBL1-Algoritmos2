@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 
 import java.time.LocalDate;
@@ -7,12 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
-import model.ComparadorDeValidadeProduto;
-import model.Prato;
-import model.Produto;
-import model.Venda;
-import model.VendaCopyable;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir vendas da classe VendaCopyable.
  * 

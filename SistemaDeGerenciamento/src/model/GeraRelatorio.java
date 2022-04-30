@@ -1,14 +1,9 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.lowagie.text.Table;
-
-import model.Fornecedor;
-import model.GeraRelatoriosCopyable;
-import model.Produto;
-import model.Relatorio;
 
 public class GeraRelatorio implements GeraRelatoriosCopyable {
 

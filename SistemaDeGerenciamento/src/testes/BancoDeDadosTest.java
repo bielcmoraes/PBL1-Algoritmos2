@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import controller.BancoDeDados;
+import model.BancoDeDados;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Gerente;

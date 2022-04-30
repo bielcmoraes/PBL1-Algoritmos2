@@ -1,9 +1,7 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import model.*;
 
 /**Classe responsável por instanciar todos os ArrayList's que são utilizados no programa.
  * 

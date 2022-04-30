@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.GerenciaVendas;
 import view.ListagemView;
 /**Classe para objetos do tipo Funcionario, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 

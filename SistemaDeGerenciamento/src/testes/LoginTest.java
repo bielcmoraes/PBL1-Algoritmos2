@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.BancoDeDados;
-import controller.Login;
+import model.BancoDeDados;
+import model.Login;
 import model.Usuario;
 
 class LoginTest {

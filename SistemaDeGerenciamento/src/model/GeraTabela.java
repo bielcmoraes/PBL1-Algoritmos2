@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controller;
+package model;
 
 import java.awt.Color;
 import java.time.format.DateTimeFormatter;
@@ -11,9 +11,6 @@ import java.util.HashMap;
 import com.lowagie.text.Cell;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
-
-import model.Fornecedor;
-import model.Produto;
 
 /**
  * @author Gabriel Moraes

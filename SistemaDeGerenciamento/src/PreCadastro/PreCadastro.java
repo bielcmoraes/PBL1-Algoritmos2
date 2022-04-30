@@ -3,11 +3,11 @@ package PreCadastro;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.BancoDeDados;
-import controller.GerenciaCardapio;
-import controller.GerenciaFornecedor;
-import controller.GerenciaProdutos;
 import exceptions.ProdutoNaoCadastrado;
+import model.BancoDeDados;
+import model.GerenciaCardapio;
+import model.GerenciaFornecedor;
+import model.GerenciaProdutos;
 import model.Prato;
 import model.Produto;
 

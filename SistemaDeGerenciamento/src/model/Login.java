@@ -1,8 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-import model.Gerente;
-import model.Usuario;
 
 /**Classe que contém os metódos necessários para que a autenticação de usuário ocorra, permitindo que somente os usuários cadastrados possam acessar 
  * o sistema.

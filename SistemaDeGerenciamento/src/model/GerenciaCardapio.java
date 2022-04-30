@@ -1,13 +1,10 @@
-package controller;
+package model;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import exceptions.ProdutoNaoCadastrado;
-import model.CardapioCopyable;
-import model.Prato;
-import model.Produto;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir pratos da classe CardapioCopyable.
  * 

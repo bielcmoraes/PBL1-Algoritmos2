@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.BancoDeDados;
-import controller.GerenciaProdutos;
+import model.BancoDeDados;
+import model.GerenciaProdutos;
 
 class GerenciaProdutoTest {
 
@@ -73,7 +73,7 @@ class GerenciaProdutoTest {
 		info[0] = "Frango";
 		info[1] = "9.99"; 
 		info[2] = "10/10/2022";
-		assertFalse(gerenciaProduto.editarProduto(bancoDeDados.getListaProdutos(), "999", info), "Editando 1 produto não cadastrado");
+		assertFalse(gerenciaProduto.editarProduto(bancoDeDados.getListaProdutos(), "999", info), "Editando 1 produto nï¿½o cadastrado");
 	}
 	
 	@Test
@@ -144,7 +144,7 @@ class GerenciaProdutoTest {
 		BancoDeDados bancoDeDados = new BancoDeDados();
 		GerenciaProdutos gerenciaProduto = new GerenciaProdutos();
 	
-		assertFalse(gerenciaProduto.excluirProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(),"999"), "Excluindo 1 produto não cadastrado");
+		assertFalse(gerenciaProduto.excluirProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(),"999"), "Excluindo 1 produto nï¿½o cadastrado");
 	}
 	
 	@Test
@@ -180,7 +180,7 @@ class GerenciaProdutoTest {
 		String id = bancoDeDados.getListaProdutos().get(0).getId();
 
 		gerenciaProduto.excluirProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), id);
-		assertEquals("Massa", bancoDeDados.getListaProdutos().get(0).getNome(), "Exclusão do produto correto");
+		assertEquals("Massa", bancoDeDados.getListaProdutos().get(0).getNome(), "Exclusï¿½o do produto correto");
 	}
 }
 

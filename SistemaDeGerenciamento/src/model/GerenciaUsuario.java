@@ -1,11 +1,6 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.Funcionario;
-import model.Gerente;
-import model.Usuario;
-import model.UsuarioCopyable;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir usuário que foram especificados na classe UsuarioCopyable.
  * 

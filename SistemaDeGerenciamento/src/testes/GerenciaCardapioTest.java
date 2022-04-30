@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.BancoDeDados;
-import controller.GerenciaCardapio;
-import controller.GerenciaProdutos;
+import model.BancoDeDados;
+import model.GerenciaCardapio;
+import model.GerenciaProdutos;
 
 class GerenciaCardapioTest {
 	

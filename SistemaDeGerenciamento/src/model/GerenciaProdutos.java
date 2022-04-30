@@ -1,13 +1,9 @@
-package controller;
+package model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import model.Fornecedor;
-import model.Produto;
-import model.ProdutoCopyable;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir produto que foram especificados na classe ProdutoCopyable.
  * 

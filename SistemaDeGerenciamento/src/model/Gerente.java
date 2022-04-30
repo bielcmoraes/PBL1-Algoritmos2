@@ -3,12 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.GeraRelatorio;
-import controller.GerenciaCardapio;
-import controller.GerenciaFornecedor;
-import controller.GerenciaProdutos;
-import controller.GerenciaUsuario;
-import controller.GerenciaVendas;
 import exceptions.ProdutoNaoCadastrado;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
