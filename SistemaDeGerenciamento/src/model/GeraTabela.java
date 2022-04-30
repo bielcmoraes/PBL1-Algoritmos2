@@ -161,5 +161,46 @@ public class GeraTabela {
 		
 		return tabela;
 	}
+	
+	public Table vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+		
+		Table tabela = new Table(3);
+		tabela.setWidth(100);
+		tabela.addCell("PRATO:");
+		tabela.addCell("QUANTIDADE VENDIDA:");
+		tabela.addCell("VALOR VENDIDO:");
+		
+		ArrayList<String> listaPratos = new ArrayList<String>();
+		
+		//Monta um array com todos os pratos vendidos sem repetir pratos
+		for(Venda venda: listaVendas) {
+			for(Prato prato: venda.getPratos()) {
+				String nomePrato = prato.getNome();
+				
+				if(!listaPratos.contains(nomePrato)) {
+					listaPratos.add(nomePrato);
+				}
+			}
+		}
+		
+		//Compara os pratos vendidos com a lista de vendas contando quantos pratos foram vendidos e o total de venda de cada prato
+		for(String pratoVendido: listaPratos) {
+			int quantidade = 0;
+			double valor = 0;
+			for(Venda venda: listaVendas) {
+				for(Prato prato: venda.getPratos()) {
+					if(pratoVendido.equals(prato.getNome())) {
+						quantidade += 1;
+						valor += prato.getPreco();
+					}
+				}
+			}
+			tabela.addCell(pratoVendido);
+			tabela.addCell(String.valueOf(quantidade));
+			tabela.addCell(String.valueOf(valor));
+		}
+		
+		return tabela;
+	}
 
 }

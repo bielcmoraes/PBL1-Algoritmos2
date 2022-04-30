@@ -8,6 +8,7 @@ import model.BancoDeDados;
 import model.GerenciaCardapio;
 import model.GerenciaFornecedor;
 import model.GerenciaProdutos;
+import model.GerenciaVendas;
 import model.Prato;
 import model.Produto;
 
@@ -109,8 +110,50 @@ public class PreCadastro {
 			
 		} catch (ProdutoNaoCadastrado e) {
 			
+		}	
+	}
+	
+	public void preCadastrarVendas(BancoDeDados bancoDeDados) {
+		GerenciaVendas gerenciaVendas = new GerenciaVendas();
+		
+		String [] info = new String[2];
+		
+		info[0] = "Cachorro Quente";
+		info[1] = "Pix";
+		
+		try {
+			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
+		
+		}catch (NumberFormatException e) {
+			
 		}
 		
+		info[0] = "Pure de Batata";
+		info[1] = "Dinheiro";
 		
+		try {
+			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
+		
+		}catch (NumberFormatException e) {
+			
+		}
+		
+		info[0] = "Cachorro Quente, Pure de Batata";
+		info[1] = "Credito";
+		try {
+			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
+		
+		}catch (NumberFormatException e) {
+			
+		}
+		
+		info[0] = "Pure de Batata, Cachorro Quente";
+		info[1] = "Dinheiro";
+		try {
+			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
+		
+		}catch (NumberFormatException e) {
+			
+		}
 	}
 }

@@ -26,10 +26,11 @@ public class Main2 {
 		preCadastro.PreCadastrarFornecedores(dados);
 		preCadastro.PreCadastrarProdutos(dados);
 		preCadastro.PreCadastrarPratos(dados);
+		preCadastro.preCadastrarVendas(dados);
 		
 		GeraTabela tabela = new GeraTabela();
 		
-		Relatorio r = new Relatorio(tabela.vendasTotal(dados.getListaVendas()));
+		Relatorio r = new Relatorio(tabela.vendasPorTipoDePrato(dados.getListaVendas()));
 		
 		
 		/*

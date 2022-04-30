@@ -46,6 +46,7 @@ public class Main {
 		preCadastro.PreCadastrarFornecedores(dados);
 		preCadastro.PreCadastrarProdutos(dados);
 		preCadastro.PreCadastrarPratos(dados);
+		preCadastro.preCadastrarVendas(dados);
 		
 		while(true) {
 			
