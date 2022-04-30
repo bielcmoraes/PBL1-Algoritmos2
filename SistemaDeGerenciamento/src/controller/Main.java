@@ -255,7 +255,8 @@ public class Main {
 					else if(decisao[0] == 7) {
 						switch(decisao[1]) {
 						case 1:
-							System.out.println("VENDAS NO GERAL falta implementar");
+							((Gerente) usuarioLogado).vendasTotal(dados.getListaVendas());
+							System.out.println("Relatorio gerado com sucesso!!!");
 							break;
 						
 						case 2:

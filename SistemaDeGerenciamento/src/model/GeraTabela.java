@@ -120,5 +120,46 @@ public class GeraTabela {
 		}
 		return tabela;
 	}
+	
+	public Table vendasTotal(ArrayList<Venda> listaVendas) {
+		
+		double totalVendido = 0;
+		Table tabela = new Table(6);
+		tabela.setWidth(100);
+		tabela.addCell("ID:");
+		tabela.addCell("DATA:");
+		tabela.addCell("HORARIO:");
+		tabela.addCell("PREÇO TOTAL:");
+		tabela.addCell("MÉTODO DE PAGAMENTO:");
+		tabela.addCell("ITENS:");
+		
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
+		
+		for(Venda venda: listaVendas) {
+			
+			String itens = "";
+			for(Prato prato : venda.getPratos()) {
+				itens += prato.getNome() + ", ";
+			}
+			
+			itens = itens.substring(0, itens.length()-2);
+			tabela.addCell(venda.getId());
+			tabela.addCell(venda.getData().format(formatoData));
+			tabela.addCell(venda.getHorario().format(formatoHorario));
+			tabela.addCell(String.valueOf(venda.getPrecoTotal()));
+			tabela.addCell(venda.getMetodoDePagamento());
+			tabela.addCell(itens);
+			
+			totalVendido += venda.getPrecoTotal();
+		}
+		tabela.setBackgroundColor(Color.LIGHT_GRAY);
+		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido)));
+		celulaTotal.setColspan(6);
+		celulaTotal.setBackgroundColor(Color.gray);
+		tabela.addCell(celulaTotal);
+		
+		return tabela;
+	}
 
 }

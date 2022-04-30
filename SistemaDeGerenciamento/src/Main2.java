@@ -29,7 +29,7 @@ public class Main2 {
 		
 		GeraTabela tabela = new GeraTabela();
 		
-		Relatorio r = new Relatorio(tabela.fornecedorPorFornecedor(dados.getListaFornecedores()));
+		Relatorio r = new Relatorio(tabela.vendasTotal(dados.getListaVendas()));
 		
 		
 		/*
