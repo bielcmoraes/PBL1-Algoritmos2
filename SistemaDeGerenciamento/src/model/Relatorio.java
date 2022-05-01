@@ -18,7 +18,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class Relatorio{
 	
 	//Construtores
-	public Relatorio(Table tabela) {
+	public Relatorio(Table tabela, String tipoRelatorio) {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
@@ -31,13 +31,16 @@ public class Relatorio{
     	Document documentPDF = new Document();
 
         try {
-            PdfWriter.getInstance(documentPDF, new FileOutputStream(data + ".pdf"));
+        
+        	String nomeArquivo = tipoRelatorio.toLowerCase().replaceAll("\\s+","_") + data.formatted(formatoData).replace("-", "")+".pdf";
+            PdfWriter.getInstance(documentPDF, new FileOutputStream(nomeArquivo));
 
             documentPDF.open();
             //Cabeçalho do Arquivo
             Paragraph cabecalho = new Paragraph();
             cabecalho.add("\nData: " + data);
-            cabecalho.add("\nHorário: " + horario);            
+            cabecalho.add("\nHorário: " + horario);
+            cabecalho.add("\n\n" + tipoRelatorio);
             
             //Tabela com as informações
             Paragraph corpo = new Paragraph();
@@ -57,7 +60,7 @@ public class Relatorio{
         }
 	}
 	
-public Relatorio(Table tabela1, Table tabela2) {
+	public Relatorio(Table tabela1, Table tabela2, String tipoRelatorio) {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");

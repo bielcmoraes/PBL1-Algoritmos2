@@ -13,6 +13,7 @@ public interface GeraRelatoriosCopyable {
 	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
 	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores);
 	public void vendasTotal(ArrayList<Venda> listaVendas);
+	public void vendasPorPeriodo(ArrayList<Venda> listaVendas);
 	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas);
 	
 }

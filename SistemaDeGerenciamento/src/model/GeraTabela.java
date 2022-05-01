@@ -255,6 +255,135 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	public Table vendasDiarias(ArrayList<Venda> listaVendas) {
+		
+		double totalVendido = 0;
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
+		
+		Table tabela = new Table(5);
+		tabela.setWidth(100);
+		tabela.addCell("ID:");
+		tabela.addCell("DATA:");
+		tabela.addCell("HORARIO:");
+		tabela.addCell("MÉTODO DE PAGAMENTO:");
+		tabela.addCell("ITENS:");
+		
+		for(Venda venda : listaVendas) {
+			
+			String itens = "";
+			for(Prato prato : venda.getPratos()) {
+				itens += prato.getNome() + ", ";
+			}
+			
+			itens = itens.substring(0, itens.length()-2);
+			if(venda.getData().equals(LocalDate.now())) {
+				tabela.addCell(venda.getId());
+				tabela.addCell(venda.getData().format(formatoData));
+				tabela.addCell(venda.getHorario().format(formatoHorario));
+				tabela.addCell(venda.getMetodoDePagamento());
+				tabela.addCell(itens);
+			}
+			totalVendido += venda.getPrecoTotal();
+			
+		}
+		
+		
+		
+		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
+		celulaTotal.setColspan(5);
+		celulaTotal.setBackgroundColor(Color.gray);
+		tabela.addCell(celulaTotal);
+		
+		return tabela;
+	}
+	
+public Table vendasSemanal(ArrayList<Venda> listaVendas) {
+		
+		double totalVendido = 0;
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
+		
+		Table tabela = new Table(5);
+		tabela.setWidth(100);
+		tabela.addCell("ID:");
+		tabela.addCell("DATA:");
+		tabela.addCell("HORARIO:");
+		tabela.addCell("MÉTODO DE PAGAMENTO:");
+		tabela.addCell("ITENS:");
+		
+		for(Venda venda : listaVendas) {
+			
+			String itens = "";
+			for(Prato prato : venda.getPratos()) {
+				itens += prato.getNome() + ", ";
+			}
+			
+			itens = itens.substring(0, itens.length()-2);
+			
+			//Compara a data atual menos uma semana com a data da venda
+			if(LocalDate.now().minusWeeks(1).isBefore(venda.getData())) {
+				tabela.addCell(venda.getId());
+				tabela.addCell(venda.getData().format(formatoData));
+				tabela.addCell(venda.getHorario().format(formatoHorario));
+				tabela.addCell(venda.getMetodoDePagamento());
+				tabela.addCell(itens);
+			}
+			totalVendido += venda.getPrecoTotal();
+			
+		}
+		
+		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
+		celulaTotal.setColspan(5);
+		celulaTotal.setBackgroundColor(Color.gray);
+		tabela.addCell(celulaTotal);
+		
+		return tabela;
+	}
+	
+	public Table vendasMensais(ArrayList<Venda> listaVendas) {
+		
+		double totalVendido = 0;
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
+		
+		Table tabela = new Table(5);
+		tabela.setWidth(100);
+		tabela.addCell("ID:");
+		tabela.addCell("DATA:");
+		tabela.addCell("HORARIO:");
+		tabela.addCell("MÉTODO DE PAGAMENTO:");
+		tabela.addCell("ITENS:");
+		
+		for(Venda venda : listaVendas) {
+			
+			String itens = "";
+			for(Prato prato : venda.getPratos()) {
+				itens += prato.getNome() + ", ";
+			}
+			
+			itens = itens.substring(0, itens.length()-2);
+			
+			//Compara o mês e o ano das vendas com o atual e adiciona na tabela
+			if(venda.getData().getMonth().equals(LocalDate.now().getMonth()) && venda.getData().getYear() == LocalDate.now().getYear()) {
+				tabela.addCell(venda.getId());
+				tabela.addCell(venda.getData().format(formatoData));
+				tabela.addCell(venda.getHorario().format(formatoHorario));
+				tabela.addCell(venda.getMetodoDePagamento());
+				tabela.addCell(itens);
+			}
+			totalVendido += venda.getPrecoTotal();
+			
+		}
+		
+		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
+		celulaTotal.setColspan(5);
+		celulaTotal.setBackgroundColor(Color.gray);
+		tabela.addCell(celulaTotal);
+		
+		return tabela;
+	}
+	
 	public Table vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
 		
 		Table tabela = new Table(3);

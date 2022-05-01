@@ -44,7 +44,7 @@ public class Main2 {
 		dados.getListaProdutos().get(pertoDeVencer.getNome()).add(pertoDeVencer);
 		GeraTabela tabela = new GeraTabela();
 		
-		Relatorio r = new Relatorio(tabela.estoqueProdutosVencidos(dados.getListaProdutos()), tabela.estoqueProdutosPertoDeVencer(dados.getListaProdutos()));
+		Relatorio r = new Relatorio(tabela.vendasNosUltimosSeteDias(dados.getListaVendas()));
 		
 		
 		/*

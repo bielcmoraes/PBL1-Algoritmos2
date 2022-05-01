@@ -11,14 +11,14 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	public void estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.estoqueTotal(listaProdutos);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio de estoque total");
 	}
 
 	@Override
 	public void estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.estoquePorProduto(listaProdutos);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio de estoque por produto");
 		
 	}
 
@@ -27,7 +27,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 		GeraTabela tabela = new GeraTabela();
 		Table info1 = tabela.estoqueProdutosVencidos(listaProdutos);
 		Table info2 = tabela.estoqueProdutosPertoDeVencer(listaProdutos);
-		new Relatorio(info1, info2);
+		new Relatorio(info1, info2, "Produtos do estoque vencidos e próximos de vencer");
 		
 	}
 	
@@ -35,7 +35,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.fornecedorPorProduto(listaProdutos);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio de fornecedor por produto");
 		
 	}
 
@@ -43,7 +43,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.fornecedorPorFornecedor(listaFornecedores);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio de fornecedor por fornecedor");
 		
 	}
 
@@ -51,16 +51,34 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	public void vendasTotal(ArrayList<Venda> listaVendas) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.vendasTotal(listaVendas);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio total de vendas");
 		
 	}
 
 	@Override
+	public void vendasPorPeriodo(ArrayList<Venda> listaVendas) {
+		GeraTabela tabela = new GeraTabela();
+		
+		//Relatorio de vendas diárias
+		Table info = tabela.vendasDiarias(listaVendas);
+		new Relatorio(info, "Relatorio de vendas diarias");
+		
+		//Relatorio de vendas semanais
+		info = tabela.vendasSemanal(listaVendas);
+		new Relatorio(info,"Relatorio de vendas semanais");
+		
+		//Relatorio de vendas mensais
+		info = tabela.vendasSemanal(listaVendas);
+		new Relatorio(info, "Relatorio de vendas mensais");
+	}
+	
+	@Override
 	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.vendasPorTipoDePrato(listaVendas);
-		new Relatorio(info);
+		new Relatorio(info, "Relatorio de vendas por tipo de prato");
 		
 	}
+
 
 }

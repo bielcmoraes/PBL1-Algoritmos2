@@ -310,11 +310,19 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
+	public void vendasPorPeriodo(ArrayList<Venda> listaVendas) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.vendasPorPeriodo(listaVendas);
+		
+	}
+	
+	@Override
 	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		relatorio.vendasPorTipoDePrato(listaVendas);
 		
 	}
+
 
 
 }

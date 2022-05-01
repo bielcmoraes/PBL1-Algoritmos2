@@ -261,7 +261,7 @@ public class Main {
 							break;
 						
 						case 2:
-							System.out.println("VENDAS POR PERIODO falta implementar");
+							((Gerente) usuarioLogado).vendasPorPeriodo(dados.getListaVendas());
 							break;
 							
 						case 3:
