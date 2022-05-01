@@ -101,11 +101,22 @@ public class GeraTabela {
 		tabela.addCell("ID: ");
 		tabela.addCell("NOME: ");
 		tabela.addCell("QUANTIDADE: ");
-		for(Produto produto: produtosPertoDeVencer) {
-			tabela.addCell(produto.getId());
-			tabela.addCell(produto.getNome());
-			tabela.addCell(produto.getValidade().format(formatoData));
+		
+		if(!produtosPertoDeVencer.isEmpty()) {
+			for(Produto produto: produtosPertoDeVencer) {
+				tabela.addCell(produto.getId());
+				tabela.addCell(produto.getNome());
+				tabela.addCell(produto.getValidade().format(formatoData));
+			}
+			
+		}else {
+			Paragraph vazioText = new Paragraph("Não há produtos próximos de vencer no sistema!");
+			Cell vazio = new Cell(vazioText);
+			vazio.setColspan(3);
+			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
+			tabela.addCell(vazio);
 		}
+		
 		
 		return tabela;
 	}
@@ -140,12 +151,22 @@ public class GeraTabela {
 		tabela.addCell("NOME: ");
 		tabela.addCell("QUANTIDADE: ");
 		
-		
-		for(Produto produto: produtosVencidos) {
+		if(!produtosVencidos.isEmpty()) {
+			for(Produto produto: produtosVencidos) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
 			}
+			
+		}else {
+			Paragraph vazioText = new Paragraph("Não há produtos vencidos no sistema!");
+			Cell vazio = new Cell(vazioText);
+			vazio.setColspan(3);
+			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
+			tabela.addCell(vazio);
+		}
+		
+		
 		return tabela;
 	}
 	
