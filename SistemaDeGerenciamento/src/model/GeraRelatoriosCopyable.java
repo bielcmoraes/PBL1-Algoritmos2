@@ -9,6 +9,7 @@ public interface GeraRelatoriosCopyable {
 	
 	public void estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos);
 	public void estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
+	public void estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos);
 	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
 	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores);
 	public void vendasTotal(ArrayList<Venda> listaVendas);

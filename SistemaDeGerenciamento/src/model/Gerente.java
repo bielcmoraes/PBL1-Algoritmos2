@@ -282,6 +282,13 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
+	public void estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		GeraRelatorio relatorio = new GeraRelatorio();
+		relatorio.estoqueProdutosPertoDeVencer(listaProdutos);
+		
+	}
+	
+	@Override
 	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		relatorio.fornecedorPorProduto(listaProdutos);
@@ -308,5 +315,6 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		relatorio.vendasPorTipoDePrato(listaVendas);
 		
 	}
+
 
 }

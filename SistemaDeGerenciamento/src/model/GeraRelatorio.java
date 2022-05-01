@@ -23,6 +23,15 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	}
 
 	@Override
+	public void estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		GeraTabela tabela = new GeraTabela();
+		Table info1 = tabela.estoqueProdutosVencidos(listaProdutos);
+		Table info2 = tabela.estoqueProdutosPertoDeVencer(listaProdutos);
+		new Relatorio(info1, info2);
+		
+	}
+	
+	@Override
 	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraTabela tabela = new GeraTabela();
 		Table info = tabela.fornecedorPorProduto(listaProdutos);

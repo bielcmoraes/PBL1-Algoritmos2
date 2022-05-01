@@ -280,7 +280,8 @@ public class Main {
 							break;
 							
 						case 6:
-							System.out.println("ESTOQUE POR PRODUTOS A VENCER falta implementar");
+							((Gerente) usuarioLogado).estoqueProdutosPertoDeVencer(dados.getListaProdutos());
+							System.out.println("Relatorio gerado com sucesso!!!");
 							break;
 							
 						case 7:

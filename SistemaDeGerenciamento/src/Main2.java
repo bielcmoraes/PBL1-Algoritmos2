@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -11,8 +12,10 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import PreCadastro.PreCadastro;
 import model.BancoDeDados;
+import model.Fornecedor;
 import model.GeraTabela;
 import model.Gerente;
+import model.Produto;
 import model.Relatorio;
 import model.Usuario;
 import model.Venda;
@@ -28,9 +31,20 @@ public class Main2 {
 		preCadastro.PreCadastrarPratos(dados);
 		preCadastro.preCadastrarVendas(dados);
 		
+		
+		LocalDate validade = LocalDate.of(2022, 05, 06);
+		LocalDate validadeVencida = LocalDate.of(2021, 10, 04);
+		ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+		
+		Produto pertoDeVencer = new Produto(dados.getListaIds(), "Pao", 0.5, 10.0, "Un", validade, fornecedores);
+		Produto vencido = new Produto(dados.getListaIds(), "Pao", 0.5, 10.0, "Un", validadeVencida, fornecedores);
+
+		dados.getListaProdutos().put(vencido.getNome(), new ArrayList<Produto>());
+		dados.getListaProdutos().get(vencido.getNome()).add(vencido);
+		dados.getListaProdutos().get(pertoDeVencer.getNome()).add(pertoDeVencer);
 		GeraTabela tabela = new GeraTabela();
 		
-		Relatorio r = new Relatorio(tabela.vendasPorTipoDePrato(dados.getListaVendas()));
+		Relatorio r = new Relatorio(tabela.estoqueProdutosVencidos(dados.getListaProdutos()), tabela.estoqueProdutosPertoDeVencer(dados.getListaProdutos()));
 		
 		
 		/*

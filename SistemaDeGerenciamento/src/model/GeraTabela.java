@@ -4,8 +4,10 @@
 package model;
 
 import java.awt.Color;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import com.lowagie.text.Cell;
@@ -67,16 +69,86 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	/*
-	public Table estoqueProdutosaVencer() {
+	
+	public Table estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		ArrayList<Produto> produtosPertoDeVencer = new ArrayList<Produto>();
+		
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {	
+			for(Produto produto : estoque) {
+				
+				//Adiciona uma semana à data atual e compara com a validade dos produtos. Se a validade for menor
+				//o produto está vencido ou falta no maximo 7 dias para vencer.
+				LocalDate dataAtual = LocalDate.now();
+				
+				if(dataAtual.plusWeeks(1).isAfter(produto.getValidade()) && dataAtual.isBefore(produto.getValidade())) {
+					produtosPertoDeVencer.add(produto);	
+				}
+				}
+			}
+		produtosPertoDeVencer.sort(Comparator.comparing(Produto::getValidade));
 		
 		Table tabela = new Table(3);
+		Paragraph proximoDeVencerText = new Paragraph("PRÓXIMO À VENCER");
+		
+		Cell proximoDeVencer = new Cell(proximoDeVencerText);
+		proximoDeVencer.setColspan(3);
+		proximoDeVencer.setBackgroundColor(Color.yellow);
+		proximoDeVencer.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		tabela.addCell(proximoDeVencer);
+	
 		tabela.addCell("ID: ");
 		tabela.addCell("NOME: ");
-		tabela.addCell("VALIDADE: ");
+		tabela.addCell("QUANTIDADE: ");
+		for(Produto produto: produtosPertoDeVencer) {
+			tabela.addCell(produto.getId());
+			tabela.addCell(produto.getNome());
+			tabela.addCell(produto.getValidade().format(formatoData));
+		}
+		
 		return tabela;
 	}
-	*/
+	
+	public Table estoqueProdutosVencidos(HashMap<String, ArrayList<Produto>> listaProdutos) {
+		
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		ArrayList<Produto> produtosVencidos = new ArrayList<Produto>();
+		LocalDate dataAtual = LocalDate.now();
+		
+		for(ArrayList<Produto> estoque: listaProdutos.values()) {
+			for(Produto produto : estoque) {
+				
+				if(dataAtual.isAfter(produto.getValidade())) {
+					produtosVencidos.add(produto);
+				}
+				}
+		}
+		
+		//Ordena os arrays pela data de validade
+		produtosVencidos.sort(Comparator.comparing(Produto::getValidade));
+		Table tabela = new Table(3);
+		Paragraph vencidoText = new Paragraph("VENCIDOS");
+		
+		Cell vencidos = new Cell(vencidoText);
+		vencidos.setColspan(3);
+		vencidos.setBackgroundColor(Color.red);
+		vencidos.setHorizontalAlignment(Cell.ALIGN_CENTER);
+		tabela.addCell(vencidos);
+	
+		tabela.addCell("ID: ");
+		tabela.addCell("NOME: ");
+		tabela.addCell("QUANTIDADE: ");
+		
+		
+		for(Produto produto: produtosVencidos) {
+				tabela.addCell(produto.getId());
+				tabela.addCell(produto.getNome());
+				tabela.addCell(produto.getValidade().format(formatoData));
+			}
+		return tabela;
+	}
+	
 	
 	public Table fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		
