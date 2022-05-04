@@ -59,6 +59,13 @@ public class PreCadastro {
 		info[3] = "20/08/2022";//validade;
 		info[4] = "Jose";//fornecedores;
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
+		
+		info[0] = "Salsicha";//nome;
+		info[1] = "2";//preco;
+		info[2] = "10 un";//quantidade;
+		info[3] = "25/10/2022";//validade;
+		info[4] = "Jose";//fornecedores;
+		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 	}
 	
 	public void PreCadastrarFornecedores (BancoDeDados bancoDeDados) {

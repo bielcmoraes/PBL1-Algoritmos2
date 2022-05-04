@@ -73,13 +73,15 @@ public class Relatorio{
     	Document documentPDF = new Document();
 
         try {
-            PdfWriter.getInstance(documentPDF, new FileOutputStream(data + ".pdf"));
+        	String nomeArquivo = tipoRelatorio.toLowerCase().replaceAll("\\s+","_") + data.formatted(formatoData).replace("-", "")+".pdf";
+            PdfWriter.getInstance(documentPDF, new FileOutputStream(nomeArquivo));
 
             documentPDF.open();
             //Cabeçalho do Arquivo
             Paragraph cabecalho = new Paragraph();
             cabecalho.add("\nData: " + data);
-            cabecalho.add("\nHorário: " + horario);            
+            cabecalho.add("\nHorário: " + horario);
+            cabecalho.add("\n\n" + tipoRelatorio);
             
             //Tabelas com as informações
             Cell celula = new Cell();

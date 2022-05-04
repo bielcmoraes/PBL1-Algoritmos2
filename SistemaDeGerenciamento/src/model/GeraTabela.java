@@ -22,13 +22,14 @@ public class GeraTabela {
 	
 	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		
-		int total = 0;
+		int produtosCadastrados = 0;
 		
 		//Cria uma nova tabela com três colunas
-		Table tabela = new Table(3);
-		tabela.addCell("ID: ");
-		tabela.addCell("NOME: ");
-		tabela.addCell("VALIDADE: ");
+		Table tabela = new Table(4);
+		tabela.addCell("ID:");
+		tabela.addCell("NOME:");
+		tabela.addCell("VALIDADE:");
+		tabela.addCell("QUANTIDADE:");
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
@@ -38,11 +39,12 @@ public class GeraTabela {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
-				total += produto.getQuantidade();
+				tabela.addCell(String.valueOf(produto.getQuantidade()) + " " + produto.getUnidadeDeMedida());
+				produtosCadastrados += 1;
 			}
 		}
-		Cell celulaTotal = new Cell(new Paragraph("Total: " + String.valueOf(total)));
-		celulaTotal.setColspan(3);
+		Cell celulaTotal = new Cell(new Paragraph("Total de produtos cadastrados: " + String.valueOf(produtosCadastrados)));
+		celulaTotal.setColspan(4);
 		tabela.addCell(celulaTotal);
 		tabela.setBackgroundColor(Color.LIGHT_GRAY);
 		return tabela;
@@ -58,12 +60,16 @@ public class GeraTabela {
 		for(ArrayList<Produto> estoque: listaProdutos.values()) {
 			
 			int quantidade = 0;
+			String unidadeDeMedida;
 			for(Produto produto : estoque) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
+				
 				quantidade += produto.getQuantidade();
+				unidadeDeMedida = " " + produto.getUnidadeDeMedida();
+				tabela.addCell(String.valueOf(quantidade) + unidadeDeMedida);
 			}
-			tabela.addCell(String.valueOf(quantidade));
+			
 		}
 
 		return tabela;
@@ -89,30 +95,32 @@ public class GeraTabela {
 			}
 		produtosPertoDeVencer.sort(Comparator.comparing(Produto::getValidade));
 		
-		Table tabela = new Table(3);
+		Table tabela = new Table(4);
 		Paragraph proximoDeVencerText = new Paragraph("PRÓXIMO À VENCER");
 		
 		Cell proximoDeVencer = new Cell(proximoDeVencerText);
-		proximoDeVencer.setColspan(3);
+		proximoDeVencer.setColspan(4);
 		proximoDeVencer.setBackgroundColor(Color.yellow);
 		proximoDeVencer.setHorizontalAlignment(Cell.ALIGN_CENTER);
 		tabela.addCell(proximoDeVencer);
 	
-		tabela.addCell("ID: ");
-		tabela.addCell("NOME: ");
-		tabela.addCell("QUANTIDADE: ");
+		tabela.addCell("ID:");
+		tabela.addCell("NOME:");
+		tabela.addCell("VALIDADE:");
+		tabela.addCell("QUANTIDADE:");
 		
 		if(!produtosPertoDeVencer.isEmpty()) {
 			for(Produto produto: produtosPertoDeVencer) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
+				tabela.addCell(String.valueOf(produto.getQuantidade()));
 			}
 			
 		}else {
 			Paragraph vazioText = new Paragraph("Não há produtos próximos de vencer no sistema!");
 			Cell vazio = new Cell(vazioText);
-			vazio.setColspan(3);
+			vazio.setColspan(4);
 			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			tabela.addCell(vazio);
 		}
@@ -138,30 +146,32 @@ public class GeraTabela {
 		
 		//Ordena os arrays pela data de validade
 		produtosVencidos.sort(Comparator.comparing(Produto::getValidade));
-		Table tabela = new Table(3);
+		Table tabela = new Table(4);
 		Paragraph vencidoText = new Paragraph("VENCIDOS");
 		
 		Cell vencidos = new Cell(vencidoText);
-		vencidos.setColspan(3);
+		vencidos.setColspan(4);
 		vencidos.setBackgroundColor(Color.red);
 		vencidos.setHorizontalAlignment(Cell.ALIGN_CENTER);
 		tabela.addCell(vencidos);
 	
-		tabela.addCell("ID: ");
-		tabela.addCell("NOME: ");
-		tabela.addCell("QUANTIDADE: ");
+		tabela.addCell("ID:");
+		tabela.addCell("NOME:");
+		tabela.addCell("VALIDADE:");
+		tabela.addCell("QUANTIDADE:");
 		
 		if(!produtosVencidos.isEmpty()) {
 			for(Produto produto: produtosVencidos) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
+				tabela.addCell(String.valueOf(produto.getQuantidade()));
 			}
 			
 		}else {
 			Paragraph vazioText = new Paragraph("Não há produtos vencidos no sistema!");
 			Cell vazio = new Cell(vazioText);
-			vazio.setColspan(3);
+			vazio.setColspan(4);
 			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			tabela.addCell(vazio);
 		}
@@ -298,7 +308,7 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-public Table vendasSemanal(ArrayList<Venda> listaVendas) {
+	public Table vendasSemanal(ArrayList<Venda> listaVendas) {
 		
 		double totalVendido = 0;
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
