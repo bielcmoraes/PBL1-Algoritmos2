@@ -12,6 +12,7 @@ package controller;
 
 import PreCadastro.PreCadastro;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.RelatorioNaoGerado;
 import model.BancoDeDados;
 import model.Funcionario;
 import model.Gerente;
@@ -38,7 +39,7 @@ public class Main {
 	 * @param args Possiveis parâmetros que podem ser passados para a aplicação a partir da linha de comando.
 	 * @throws ProdutoNaoCadastrado 
 	 */
-	public static void main(String[] args) throws ProdutoNaoCadastrado {
+	public static void main(String[] args) throws ProdutoNaoCadastrado, RelatorioNaoGerado {
 	
 		//Intancio as listas
 		BancoDeDados dados = new BancoDeDados();
@@ -256,17 +257,30 @@ public class Main {
 					else if(decisao[0] == 7) {
 						switch(decisao[1]) {
 						case 1:
-							((Gerente) usuarioLogado).vendasTotal(dados.getListaVendas());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioVendasTotal = ((Gerente) usuarioLogado).vendasTotal(dados.getListaVendas());
+							if(relatorioVendasTotal = true) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						
 						case 2:
-							((Gerente) usuarioLogado).vendasPorPeriodo(dados.getListaVendas());
+							boolean relatorioVendasPorPeriodo = ((Gerente) usuarioLogado).vendasPorPeriodo(dados.getListaVendas());
+							if(relatorioVendasPorPeriodo) {
+								System.out.println("Relatoris gerados com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 							
 						case 3:
-							((Gerente) usuarioLogado).vendasPorTipoDePrato(dados.getListaVendas());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioVendasPorTipoDePrato = ((Gerente) usuarioLogado).vendasPorTipoDePrato(dados.getListaVendas());
+							if(relatorioVendasPorTipoDePrato) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 							
 						case 4:
@@ -275,23 +289,40 @@ public class Main {
 							break;
 							
 						case 5:
-							((Gerente) usuarioLogado).estoquePorProduto(dados.getListaProdutos());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioEstoqueTotal = ((Gerente) usuarioLogado).estoquePorProduto(dados.getListaProdutos());
+							
+							if(relatorioEstoqueTotal) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 							
 						case 6:
-							((Gerente) usuarioLogado).estoqueProdutosPertoDeVencer(dados.getListaProdutos());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioEstoqueProdutosPertoDeVencer = ((Gerente) usuarioLogado).estoqueProdutosPertoDeVencer(dados.getListaProdutos());
+							if(relatorioEstoqueProdutosPertoDeVencer) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 							
 						case 7:
-							((Gerente) usuarioLogado).fornecedorPorProduto(dados.getListaProdutos());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioFornecedorPorProduto = ((Gerente) usuarioLogado).fornecedorPorProduto(dados.getListaProdutos());
+							if(relatorioFornecedorPorProduto) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 							
 						case 8:
-							((Gerente) usuarioLogado).fornecedorPorFornecedor(dados.getListaFornecedores());
-							System.out.println("Relatorio gerado com sucesso!!!");
+							boolean relatorioFornecedorPorFornecedor = ((Gerente) usuarioLogado).fornecedorPorFornecedor(dados.getListaFornecedores());
+							if(relatorioFornecedorPorFornecedor) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							}else {
+								SubMenuView.erroGerenciamentos();
+							}
 							break;
 						
 						case 9:

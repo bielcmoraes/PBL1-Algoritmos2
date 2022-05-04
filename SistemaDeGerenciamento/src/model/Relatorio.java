@@ -18,7 +18,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class Relatorio{
 	
 	//Construtores
-	public Relatorio(Table tabela, String tipoRelatorio) {
+	public Relatorio(Table tabela, String tipoRelatorio) throws DocumentException, FileNotFoundException {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
@@ -29,8 +29,6 @@ public class Relatorio{
         
     	//Instancia um novo documento
     	Document documentPDF = new Document();
-
-        try {
         
         	String nomeArquivo = tipoRelatorio.toLowerCase().replaceAll("\\s+","_") + data.formatted(formatoData).replace("-", "")+".pdf";
             PdfWriter.getInstance(documentPDF, new FileOutputStream(nomeArquivo));
@@ -50,17 +48,9 @@ public class Relatorio{
             documentPDF.add(cabecalho);
             documentPDF.add(corpo);
             documentPDF.close();
-
-        } catch (DocumentException e) {
-            
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            
-            e.printStackTrace();
-        }
 	}
 	
-	public Relatorio(Table tabela1, Table tabela2, String tipoRelatorio) {
+	public Relatorio(Table tabela1, Table tabela2, String tipoRelatorio) throws DocumentException, FileNotFoundException {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     	DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
@@ -71,8 +61,7 @@ public class Relatorio{
         
     	//Instancia um novo documento
     	Document documentPDF = new Document();
-
-        try {
+    	
         	String nomeArquivo = tipoRelatorio.toLowerCase().replaceAll("\\s+","_") + data.formatted(formatoData).replace("-", "")+".pdf";
             PdfWriter.getInstance(documentPDF, new FileOutputStream(nomeArquivo));
 
@@ -93,14 +82,6 @@ public class Relatorio{
             documentPDF.add(cabecalho);
             documentPDF.add(corpo);
             documentPDF.close();
-
-        } catch (DocumentException e) {
-            
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            
-            e.printStackTrace();
-        }
 	}
 	
 }

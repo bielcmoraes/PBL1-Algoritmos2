@@ -268,58 +268,58 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
-	public void estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.estoqueTotal(listaProdutos);
+		return relatorio.estoqueTotal(listaProdutos);
 		
 	}
 
 	@Override
-	public void estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.estoquePorProduto(listaProdutos);
+		return relatorio.estoquePorProduto(listaProdutos);
 		
 	}
 
 	@Override
-	public void estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.estoqueProdutosPertoDeVencer(listaProdutos);
+		return relatorio.estoqueProdutosPertoDeVencer(listaProdutos);
 		
 	}
 	
 	@Override
-	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.fornecedorPorProduto(listaProdutos);
+		return relatorio.fornecedorPorProduto(listaProdutos);
 		
 	}
 
 	@Override
-	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.fornecedorPorFornecedor(listaFornecedores);
+		return relatorio.fornecedorPorFornecedor(listaFornecedores);
 		
 	}
 
 	@Override
-	public void vendasTotal(ArrayList<Venda> listaVendas) {
+	public boolean vendasTotal(ArrayList<Venda> listaVendas) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.vendasTotal(listaVendas);
+		return relatorio.vendasTotal(listaVendas);
 		
 	}
 
 	@Override
-	public void vendasPorPeriodo(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.vendasPorPeriodo(listaVendas);
+		return relatorio.vendasPorPeriodo(listaVendas);
 		
 	}
 	
 	@Override
-	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
 		GeraRelatorio relatorio = new GeraRelatorio();
-		relatorio.vendasPorTipoDePrato(listaVendas);
+		return relatorio.vendasPorTipoDePrato(listaVendas);
 		
 	}
 

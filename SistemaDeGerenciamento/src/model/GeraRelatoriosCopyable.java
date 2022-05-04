@@ -7,13 +7,13 @@ import com.lowagie.text.Table;
 
 public interface GeraRelatoriosCopyable {
 	
-	public void estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos);
-	public void estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
-	public void estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos);
-	public void fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
-	public void fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores);
-	public void vendasTotal(ArrayList<Venda> listaVendas);
-	public void vendasPorPeriodo(ArrayList<Venda> listaVendas);
-	public void vendasPorTipoDePrato(ArrayList<Venda> listaVendas);
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos);
+	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
+	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos);
+	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos);
+	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores);
+	public boolean vendasTotal(ArrayList<Venda> listaVendas);
+	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas);
+	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas);
 	
 }
