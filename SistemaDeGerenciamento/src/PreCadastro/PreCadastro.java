@@ -3,6 +3,7 @@ package PreCadastro;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
 import exceptions.ProdutoNaoCadastrado;
 import model.BancoDeDados;
 import model.GerenciaCardapio;
@@ -68,24 +69,36 @@ public class PreCadastro {
 		gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 	}
 	
-	public void PreCadastrarFornecedores (BancoDeDados bancoDeDados) {
+	public void PreCadastrarFornecedores (BancoDeDados bancoDeDados){
 		GerenciaFornecedor gerenciaFornecedor = new GerenciaFornecedor();
 		
 		String [] info = new String[3];
 		info[0] = "Joao";//nome;
 		info[1] = "77.994.900/0001-26";//cnpj;
 		info[2] = "Rua A";//endereco;
-		gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		try {
+			gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		} catch (ErroGrave e) {
+			System.out.println(e.toString());
+		}
 		
 		info[0] = "Maria";//nome;
 		info[1] = "37.889.838/0001-98";//cnpj;
 		info[2] = "Rua B";//endereco;
-		gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		try {
+			gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		} catch (ErroGrave e) {
+			System.out.println(e.toString());
+		}
 		
 		info[0] = "Jose";//nome;
 		info[1] = "37.889.838/0001-98";//cnpj;
 		info[2] = "Rua C";//endereco;
-		gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		try {
+			gerenciaFornecedor.cadastrarFornecedor(bancoDeDados.getListaFornecedores(), bancoDeDados.getListaIds(), info);
+		} catch (ErroGrave e) {
+			System.out.println(e.toString());
+		}
 	}
 	
 	public void PreCadastrarPratos (BancoDeDados bancoDeDados) {
