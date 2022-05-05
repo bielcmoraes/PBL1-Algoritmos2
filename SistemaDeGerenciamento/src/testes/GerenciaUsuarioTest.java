@@ -38,7 +38,7 @@ class GerenciaUsuarioTest {
 		info[1] = "2";
 		info[2] = "login";
 		info[3] = "senha";
-		assertFalse(gu.cadastrarUsuario(null, bd.getListaIds(), info),"Cadastrando funcionario com lista de funcionarios não instanciada");
+		assertThrows(ErroGrave.class, () -> gu.cadastrarUsuario(null, bd.getListaIds(), info),"Cadastrando funcionario com lista de funcionarios não instanciada");
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ class GerenciaUsuarioTest {
 		info[1] = "1";
 		info[2] = "login";
 		info[3] = "senha";
-		assertFalse(gu.cadastrarUsuario(bd.getListaUsuarios(), null, info), "Cadastrando gerente com lista de Ids não instanciada");
+		assertThrows(ErroGrave.class, () -> gu.cadastrarUsuario(bd.getListaUsuarios(), null, info), "Cadastrando gerente com lista de Ids não instanciada");	
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ class GerenciaUsuarioTest {
 		info[1] = "2";
 		info[2] = "login";
 		info[3] = "senha";
-		assertFalse(gu.cadastrarUsuario(bd.getListaUsuarios(), null, info),"Cadastrando funcionario com lista de Ids não instanciada");
+		assertThrows(ErroGrave.class, () -> gu.cadastrarUsuario(bd.getListaUsuarios(), null, info),"Cadastrando funcionario com lista de Ids não instanciada");
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ class GerenciaUsuarioTest {
 		info[1] = "2";
 		info[2] = "admin";
 		info[3] = "admin";
-		assertFalse(gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando funcionario com mesmo login");
+		assertThrows(LoginJaCadastrado.class, () -> gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando funcionario com mesmo login");
 	}
 	
 	@Test
@@ -145,7 +145,7 @@ class GerenciaUsuarioTest {
 		info[0] = "Editado";
 		info[1] = "abacate";
 		
-		assertThrows(ErroGrave.class, () -> gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
+		assertThrows(NaoEncontrado.class, () -> gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
 	}
 	
 	@Test
@@ -167,7 +167,7 @@ class GerenciaUsuarioTest {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String codigoUsuario = "76676";
-	assertFalse(gu.excluirUsuario(null, bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de usuarios null");
+		assertThrows(ErroGrave.class, () -> gu.excluirUsuario(null, bd.getListaIds(), codigoUsuario), "Excluindo usuario com lista de usuarios null");
 	}
 	
 	@Test
@@ -185,7 +185,7 @@ class GerenciaUsuarioTest {
 		Gerente g1 = new Gerente();
 		bd.getListaUsuarios().add(g1);
 		String codigoUsuario = "7667699999";
-	assertFalse(gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com codigo de usuario incorreto");
+		assertThrows(NaoEncontrado.class, () -> gu.excluirUsuario(bd.getListaUsuarios(), bd.getListaIds(), codigoUsuario), "Excluindo usuario com codigo de usuario incorreto");
 	}
 	
 	@Test
