@@ -16,7 +16,7 @@ import exceptions.EscolhaIncorreta;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.RelatorioNaoGerado;
-import exceptions.UsuarioNaoEncontrado;
+import exceptions.NaoEncontrado;
 import model.BancoDeDados;
 import model.Funcionario;
 import model.Gerente;
@@ -76,26 +76,29 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Fornecedor");
 							String[] infoCadastroFornecedor = FornecedorView.cadastrarFornecedor();
-							boolean cadastrarFornecedor = ((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
-							if(cadastrarFornecedor == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).cadastrarFornecedor(dados.getListaFornecedores(), dados.getListaIds(), infoCadastroFornecedor);
+							} catch (ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 2:
 							System.out.println("Editando Fornecedor");
 							String codigoFornecedorEdit = FornecedorView.buscaFornecedor();
 							String [] infoEditFornecedor = FornecedorView.cadastrarFornecedor();
-							boolean editarFornecedor = ((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
-							if(editarFornecedor == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).editarFornecedor(dados.getListaFornecedores(), codigoFornecedorEdit, infoEditFornecedor);
+							} catch (ErroGrave | NaoEncontrado e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Fornecedor");
 							String codigoFornecedorDel = FornecedorView.buscaFornecedor();
-							boolean excluirFornecedor = ((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores(),dados.getListaIds(), codigoFornecedorDel);
-							if(excluirFornecedor == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).excluirFornecedor(dados.getListaFornecedores(),dados.getListaIds(), codigoFornecedorDel);
+							} catch (ErroGrave | NaoEncontrado e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:
@@ -152,7 +155,7 @@ public class Main {
 							String [] infoEditUsuario = UsuarioView.editaUsuario();
 							try {
 								((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
-							} catch (UsuarioNaoEncontrado | ErroGrave e) {
+							} catch (NaoEncontrado | ErroGrave e) {
 								System.out.println(e.toString());
 							}
 							break;
@@ -161,7 +164,7 @@ public class Main {
 							String codigoUsuarioDel = UsuarioView.buscaUsuario();
 							try {
 								((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
-							} catch (ErroGrave | UsuarioNaoEncontrado e) {
+							} catch (ErroGrave | NaoEncontrado e) {
 								System.out.println(e.toString());
 							}
 							break;

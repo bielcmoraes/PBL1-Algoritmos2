@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.LoginJaCadastrado;
-import exceptions.UsuarioNaoEncontrado;
+import exceptions.NaoEncontrado;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir usuário que foram especificados na classe UsuarioCopyable.
  * 
@@ -69,11 +69,11 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	 * valores que passados pelo usuário através do vetor info. As substituições das informações são feitas utilizando os metódos de setters presentes
 	 * na classe Usuario e é retornado true.
 	 * Caso não exista um usuário com id igual ao codigo de usuário ou a lista de usuários e o vetor info tiverem valor null, o metódo retorna false. 
-	 * @throws UsuarioNaoEncontrado 
+	 * @throws NaoEncontrado 
 	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws UsuarioNaoEncontrado, ErroGrave {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws NaoEncontrado, ErroGrave {
 		
 		try {
 			for(Usuario usuario : listaUsuarios) {
@@ -82,7 +82,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					usuario.setSenha(info[1]);
 					return true;
 				}else {
-					throw new UsuarioNaoEncontrado();
+					throw new NaoEncontrado("Usuário");
 				}
 			}
 		}catch(ArrayIndexOutOfBoundsException a){
@@ -97,11 +97,11 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	 * de id's forem diferentes de null, o respectivo usuário é removido da lista de usuários, seu id é removido da lista de id's e o metódo retorna true.
 	 * Caso as condições citadas anteriormente não forem satisfeitas o metódo retorna false.
 	 * @throws ErroGrave 
-	 * @throws UsuarioNaoEncontrado 
+	 * @throws NaoEncontrado 
 	 * 
 	 */
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, UsuarioNaoEncontrado {
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, NaoEncontrado {
 		
 		try {
 			for(Usuario usuario : listaUsuarios) {
@@ -112,7 +112,7 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					return true;
 				}
 				else {
-					throw new UsuarioNaoEncontrado();
+					throw new NaoEncontrado("Usuário");
 				}
 			}
 		}catch(ArrayIndexOutOfBoundsException a){

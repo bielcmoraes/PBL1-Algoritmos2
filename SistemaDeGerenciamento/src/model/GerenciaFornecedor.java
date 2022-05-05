@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import exceptions.ErroGrave;
+import exceptions.NaoEncontrado;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir fornecedor que foram especificados na classe FornecedorCopyable.
  * 
  * @author Gabriel Moraes
@@ -13,25 +16,22 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	 * e o vetor que armazena as entradas do usuário não forem null o objeto do tipo fornecedor que foi instanciado é adicionado na 
 	 * lista de fornecedores e é retornado true. Caso a lista de fornecedores seja igual a null uma mensagem exibindo que o fornecedor não foi cadastrado 
 	 *e que existe um problema ao acessar o ArrayList é exibida, e é retornado false.
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String [] info) throws ErroGrave {
 		
 		Fornecedor novoFornecedor = new Fornecedor(listaIds, info[0], info[1], info[2]);
 		
-		if (listaFornecedores != null && info != null) {
 			try {
 				listaFornecedores.add(novoFornecedor);
 				return true;
 			} 
 			catch(ArrayIndexOutOfBoundsException a){
-				return false;
-			}
-		}
-		else {
-			return false;
-		}
-		
+				throw new ErroGrave();
+			}catch( NullPointerException a) {
+				throw new ErroGrave();
+			}	
 	}
 	
 	/**O método, caso a lista de fornecedores e o vetor que armazena as entradas do usuário forem diferentes null, percorre a lista de fornecedores 
@@ -40,11 +40,11 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	 * vetor info. As substituições das informações são feitas utilizando os metódos de setters presentes na classe Fornecedor e é retornado true.
 	 * Caso não exista um fornecedor com id igual ao codigo de fornecedor ou a lista de fornecedores e o vetor info tiverem valor null, o metódo 
 	 * retorna false. 
+	 * @throws ErroGrave 
+	 * @throws NaoEncontrado 
 	 */
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
-		
-		if(listaFornecedores != null && info!= null) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) throws ErroGrave, NaoEncontrado {
 			
 			try {
 				for(Fornecedor fornecedor : listaFornecedores) {
@@ -54,16 +54,14 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 						fornecedor.setEndereco(info[2]);
 						return true;
 					}else {
-						return false;
+						throw new NaoEncontrado("Fornecedor");
 					}
 				}
+			}catch(ArrayIndexOutOfBoundsException a){
+				throw new ErroGrave();
+			}catch( NullPointerException a) {
+				throw new ErroGrave();
 			}
-			catch(ArrayIndexOutOfBoundsException a){
-				return false;
-			}
-			
-		}else {
-		}
 		return false;
 	}
 	
@@ -72,11 +70,11 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 	 * ao código de fornecedor o objeto é removido da lista de fornecedores, seu id é removido da lista de id's e a função retorna true. Caso não exista
 	 * um fornecedor com id igual ao código de fornecedor que foi passado como parâmetro ou a lista de fornecedores e a lista de id's tiverem valor null
 	 * a função retorna false.
+	 * @throws ErroGrave 
+	 * @throws NaoEncontrado 
 	 */
 	@Override
-	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String codigoFornecedor) {
-		
-		if(listaFornecedores != null && listaIds!= null) {
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String codigoFornecedor) throws ErroGrave, NaoEncontrado {
 			
 			try {
 				for(Fornecedor fornecedor : listaFornecedores) {
@@ -87,14 +85,14 @@ public class GerenciaFornecedor implements FornecedorCopyable {
 						return true;
 					}
 					else {
-						return false;
+						throw new NaoEncontrado("Fornecedor");
 					}
 				}
+			}catch(ArrayIndexOutOfBoundsException a){
+				throw new ErroGrave();
+			}catch( NullPointerException a) {
+				throw new ErroGrave();
 			}
-			catch(ArrayIndexOutOfBoundsException a) {
-				return false;
-			}
-		}
 		return false;
 	}
 

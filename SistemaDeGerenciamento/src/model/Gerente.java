@@ -7,7 +7,7 @@ import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
-import exceptions.UsuarioNaoEncontrado;
+import exceptions.NaoEncontrado;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
@@ -38,9 +38,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do Usuario
 	 * @return Boolean cadastrarFornecedor
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info) {
+	public boolean cadastrarFornecedor(ArrayList<Fornecedor> listaFornecedores, ArrayList<String> listaIds, String[] info) throws ErroGrave {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
 		return gerenciamentoFornecedor.cadastrarFornecedor(listaFornecedores, listaIds, info);
@@ -51,9 +52,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param codigoFornecedor Id do fornecedor que deseja editar
 	 * @param info Entradas do Usuario
 	 * @return Boolean editarFornecedor
+	 * @throws ErroGrave 
+	 * @throws NaoEncontrado 
 	 */
 	@Override
-	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) {
+	public boolean editarFornecedor(ArrayList<Fornecedor> listaFornecedores, String codigoFornecedor, String [] info) throws ErroGrave, NaoEncontrado {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
 		return gerenciamentoFornecedor.editarFornecedor(listaFornecedores, codigoFornecedor, info);
@@ -64,9 +67,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoFornecedor Id do fornecedor que deseja excluir
 	 * @return Boolean excluirFornecedor
+	 * @throws NaoEncontrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores,ArrayList<String> listaIds, String codigoFornecedor) {
+	public boolean excluirFornecedor(ArrayList<Fornecedor> listaFornecedores,ArrayList<String> listaIds, String codigoFornecedor) throws ErroGrave, NaoEncontrado {
 		
 		GerenciaFornecedor gerenciamentoFornecedor = new GerenciaFornecedor();
 		return gerenciamentoFornecedor.excluirFornecedor(listaFornecedores, listaIds, codigoFornecedor);
@@ -92,10 +97,10 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param info Entradas do usuario
 	 * @return Boolean editarUsuario
 	 * @throws ErroGrave 
-	 * @throws UsuarioNaoEncontrado 
+	 * @throws NaoEncontrado 
 	 */
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws UsuarioNaoEncontrado, ErroGrave {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws NaoEncontrado, ErroGrave {
 		
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
@@ -107,11 +112,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoUsuario Id do usuário que deseja excluir
 	 * @return Boolean excluirUsuario
-	 * @throws UsuarioNaoEncontrado 
+	 * @throws NaoEncontrado 
 	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, UsuarioNaoEncontrado {
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, NaoEncontrado {
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		return gerenciamentoUsuario.excluirUsuario(listaUsuarios, listaIds, codigoUsuario);
 	}
