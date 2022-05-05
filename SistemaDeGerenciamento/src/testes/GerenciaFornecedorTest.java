@@ -1,9 +1,13 @@
 package testes;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import exceptions.ErroGrave;
+import exceptions.NaoEncontrado;
 import model.BancoDeDados;
 import model.Fornecedor;
 import model.GerenciaFornecedor;
@@ -11,18 +15,18 @@ import model.GerenciaFornecedor;
 class GerenciaFornecedorTest {
 	
 	@Test
-	void cadastrandoFornecedorEmListaNaoInstanciada() {
+	void cadastrandoFornecedorEmListaNaoInstanciada() throws ErroGrave {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String [] info = new String[3] ;
 		info[0] = "Fornecedor1";
 		info[1] = "373746667";
 		info[2] = "Rua Bonita";
-		assertFalse(gf.cadastrarFornecedor(null, bd.getListaIds(), info));
+		assertThrows(ErroGrave.class, () -> gf.cadastrarFornecedor(null, bd.getListaIds(), info));
 	}
 	
 	@Test
-	void adicionandoUmFornecedorNaListaVazia() {
+	void adicionandoUmFornecedorNaListaVazia() throws ErroGrave {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String [] info = new String[3] ;
@@ -33,7 +37,7 @@ class GerenciaFornecedorTest {
 	}
 	
 	@Test
-	void cadastrandoVariosFornecedores() {
+	void cadastrandoVariosFornecedores() throws ErroGrave {
 		
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
@@ -49,33 +53,33 @@ class GerenciaFornecedorTest {
 	}
 	
 	@Test
-	void editandoFornecedorEmListaDeFornecedoresNaoInstanciada() {
+	void editandoFornecedorEmListaDeFornecedoresNaoInstanciada() throws ErroGrave, NaoEncontrado {
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
 		String [] info = new String[3] ;
 		info[0] = "Alteracao";
 		info[1] = "00000";
 		info[2] = "Rua de baixo";
-		assertFalse(gf.editarFornecedor(null, codigoFornecedor, info), "Tentando cadastrar fornecedor em lista não instanciada");
+		assertThrows(ErroGrave.class, () -> gf.editarFornecedor(null, codigoFornecedor, info), "Tentando cadastrar fornecedor em lista não instanciada");
 	}
 	
 	@Test
-	void editandoFornecedorVetorInfoNull() {
+	void editandoFornecedorVetorInfoNull() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertFalse(gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, null), "Tentando cadastrar fornecedor com vetor de informações null");
+		assertThrows(ErroGrave.class, () -> gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, null), "Tentando cadastrar fornecedor com vetor de informações null");
 	}
 	
 	@Test
-	void editandoFornecedorListaFornecedoresEVetorInfoNull() {
+	void editandoFornecedorListaFornecedoresEVetorInfoNull() throws ErroGrave, NaoEncontrado {
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertFalse(gf.editarFornecedor(null, codigoFornecedor, null), "Tentando cadastrar fornecedor com lista de fornecedores e vetor de informações null");
+		assertThrows(ErroGrave.class, () -> gf.editarFornecedor(null, codigoFornecedor, null), "Tentando cadastrar fornecedor com lista de fornecedores e vetor de informações null");
 	}
 	
 	@Test
-	void editandoFonecedorComCodigoFornecedorIncorreto() {
+	void editandoFonecedorComCodigoFornecedorIncorreto() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		Fornecedor f1 = new Fornecedor(bd.getListaIds(), "Menino Maluquinho", "989876765", "Rua da esquerda");
@@ -85,10 +89,10 @@ class GerenciaFornecedorTest {
 		info[0] = "Alteracao";
 		info[1] = "00000";
 		info[2] = "Rua de baixo";
-		assertFalse(gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, info), "Tentando editar fornecedor com codigo de fornecedor incorreto");
+		assertThrows(NaoEncontrado.class, () -> gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, info), "Tentando editar fornecedor com codigo de fornecedor incorreto");
 	}
 	@Test
-	void editanfoFornecedorComSucesso() {
+	void editanfoFornecedorComSucesso() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		Fornecedor f1 = new Fornecedor(bd.getListaIds(), "Menino Maluquinho", "989876765", "Rua da esquerda");
@@ -102,23 +106,23 @@ class GerenciaFornecedorTest {
 	}
 	
 	@Test
-	void excluindoFornecedorEmListaDeFornecedoreNaoInstanciada() {
+	void excluindoFornecedorEmListaDeFornecedoresNaoInstanciada() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertFalse(gf.excluirFornecedor(null, bd.getListaIds(), codigoFornecedor),"Excluindo fornecedor com lista de fornecedores não instanciada");
+		assertThrows(ErroGrave.class, () -> gf.excluirFornecedor(null, bd.getListaIds(), codigoFornecedor),"Excluindo fornecedor com lista de fornecedores não instanciada");
 	}
 	
 	@Test
-	void excluindoFornecedorListaIdsNull() {
+	void excluindoFornecedorListaIdsNull() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertFalse(gf.excluirFornecedor(bd.getListaFornecedores(), null, codigoFornecedor), "Excluindo fornecedor com lista de ids null");
+		assertThrows(ErroGrave.class, () -> gf.excluirFornecedor(bd.getListaFornecedores(), null, codigoFornecedor), "Excluindo fornecedor com lista de ids null");
 	}
 	
 	@Test
-	void excluindoFornecedorCodigoFornecedorIncorreto() {
+	void excluindoFornecedorCodigoFornecedorIncorreto() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		Fornecedor f1 = new Fornecedor(bd.getListaIds(), "Bruxa do 71", "893373485", "Vila do Chaves");
@@ -128,12 +132,12 @@ class GerenciaFornecedorTest {
 		info[0] = "Alteracao";
 		info[1] = "00000";
 		info[2] = "Rua de baixo";
-		assertFalse(gf.excluirFornecedor(bd.getListaFornecedores(), bd.getListaIds(), codigoFornecedor));
+		assertThrows(NaoEncontrado.class, () -> gf.excluirFornecedor(bd.getListaFornecedores(), bd.getListaIds(), codigoFornecedor));
 		
 	}
 	
 	@Test
-	void excluindoFornecedorComSucesso() {
+	void excluindoFornecedorComSucesso() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		Fornecedor f1 = new Fornecedor(bd.getListaIds(), "Bruxa do 71", "893373485", "Vila do Chaves");

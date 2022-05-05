@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.ErroGrave;
+import exceptions.EscolhaIncorreta;
+import exceptions.LoginJaCadastrado;
+import exceptions.NaoEncontrado;
 import model.BancoDeDados;
 import model.Funcionario;
 import model.GerenciaUsuario;
@@ -13,7 +17,7 @@ import model.Usuario;
 class GerenciaUsuarioTest {
 	
 	@Test
-	void cadastrandoGerenteComListaUsuarioNaoInstanciada() {
+	void cadastrandoGerenteComListaUsuarioNaoInstanciada() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -25,7 +29,7 @@ class GerenciaUsuarioTest {
 	}
 
 	@Test
-	void cadastrandoFuncionarioComListaUsuarioNaoInstanciada() {
+	void cadastrandoFuncionarioComListaUsuarioNaoInstanciada() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -37,7 +41,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoGerenteComListaIdsNaoInstanciada() {
+	void cadastrandoGerenteComListaIdsNaoInstanciada() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -49,7 +53,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoFuncionarioComListaIdsNaoInstanciada() {
+	void cadastrandoFuncionarioComListaIdsNaoInstanciada() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -61,7 +65,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoVariosGerentesMesmoLogin(){
+	void cadastrandoVariosGerentesMesmoLogin() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave{
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Usuario g1 = new Gerente();
@@ -77,7 +81,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoVariosFuncionariosMesmoLogin(){
+	void cadastrandoVariosFuncionariosMesmoLogin() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave{
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Usuario f1 = new Funcionario(bd.getListaIds(), "Abacaxi", "admin", "admin");
@@ -92,7 +96,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoGerenteComSucesso(){
+	void cadastrandoGerenteComSucesso() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave{
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -105,7 +109,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void cadastrandoFuncionarioComSucesso(){
+	void cadastrandoFuncionarioComSucesso() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave{
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String [] info = new String[4];
@@ -118,7 +122,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void editandoUsuarioListaUsuarioNull() {
+	void editandoUsuarioListaUsuarioNull() throws NaoEncontrado, ErroGrave {
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String codigoUsuario = "37469";
 		
@@ -130,7 +134,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void editandoUsuarioCodigoUsuarioIncorreto() {
+	void editandoUsuarioCodigoUsuarioIncorreto() throws NaoEncontrado, ErroGrave {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Gerente g1 = new Gerente();
@@ -145,7 +149,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void editandoUsuarioComSucesso() {
+	void editandoUsuarioComSucesso() throws NaoEncontrado, ErroGrave {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Gerente g1 = new Gerente();
@@ -159,7 +163,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void removendoUsuarioListaUsuarioNull() {
+	void removendoUsuarioListaUsuarioNull() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String codigoUsuario = "76676";
@@ -167,7 +171,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void removendoUsuarioListaIdsNull() {
+	void removendoUsuarioListaIdsNull() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		String codigoUsuario = "76676";
@@ -175,7 +179,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void removendoUsuarioCodigoUsuarioIncorreto() {
+	void removendoUsuarioCodigoUsuarioIncorreto() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Gerente g1 = new Gerente();
@@ -185,7 +189,7 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
-	void removendoUsuarioComSucesso() {
+	void removendoUsuarioComSucesso() throws ErroGrave, NaoEncontrado {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
 		Gerente g1 = new Gerente();
