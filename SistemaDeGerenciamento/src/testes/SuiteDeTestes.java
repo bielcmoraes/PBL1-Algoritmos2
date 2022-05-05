@@ -6,6 +6,7 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @SelectClasses({
 	BancoDeDadosTest.class,
+	GeraRelatorioTest.class,
 	GerenciaCardapioTest.class,
 	GerenciaFornecedorTest.class,
 	GerenciaProdutoTest.class,
@@ -15,5 +16,4 @@ import org.junit.platform.suite.api.Suite;
 })
 
 class SuiteDeTestes {
-
 }

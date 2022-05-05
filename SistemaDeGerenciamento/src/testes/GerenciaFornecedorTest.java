@@ -68,7 +68,7 @@ class GerenciaFornecedorTest {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertThrows(ErroGrave.class, () -> gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, null), "Tentando cadastrar fornecedor com vetor de informações null");
+		assertFalse(gf.editarFornecedor(bd.getListaFornecedores(), codigoFornecedor, null), "Tentando cadastrar fornecedor com vetor de informações null");
 	}
 	
 	@Test
@@ -118,7 +118,7 @@ class GerenciaFornecedorTest {
 		BancoDeDados bd = new BancoDeDados();
 		GerenciaFornecedor gf = new GerenciaFornecedor();
 		String codigoFornecedor = "88778";
-		assertThrows(ErroGrave.class, () -> gf.excluirFornecedor(bd.getListaFornecedores(), null, codigoFornecedor), "Excluindo fornecedor com lista de ids null");
+		assertFalse(gf.excluirFornecedor(bd.getListaFornecedores(), null, codigoFornecedor), "Excluindo fornecedor com lista de ids null");
 	}
 	
 	@Test

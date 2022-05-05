@@ -1,5 +1,6 @@
 package testes;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class GerenciaUsuarioTest {
 		info[1] = "1";
 		info[2] = "login";
 		info[3] = "senha";
-		assertFalse(gu.cadastrarUsuario(null, bd.getListaIds(), info), "Cadastrando gerente com lista de gerente não instanciada");
+		assertThrows(ErroGrave.class, () -> gu.cadastrarUsuario(null, bd.getListaIds(), info), "Cadastrando gerente com lista de gerente não instanciada");
 	}
 
 	@Test
@@ -76,8 +77,7 @@ class GerenciaUsuarioTest {
 		info[3] = "admin";
 		
 		bd.getListaUsuarios().add(g1);
-		assertFalse(gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com mesmo login");
-		
+		assertThrows(LoginJaCadastrado.class, () -> gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com mesmo login");	
 	}
 	
 	@Test
@@ -130,7 +130,7 @@ class GerenciaUsuarioTest {
 		info[0] = "Editado";
 		info[1] = "abacate";
 		
-		assertFalse(gu.editarUsuario(null, codigoUsuario, info), "Editando usuario com lista de usuario null");
+		assertThrows(ErroGrave.class, () -> gu.editarUsuario(null, codigoUsuario, info), "Editando usuario com lista de usuario null");
 	}
 	
 	@Test
@@ -145,7 +145,7 @@ class GerenciaUsuarioTest {
 		info[0] = "Editado";
 		info[1] = "abacate";
 		
-		assertFalse(gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
+		assertThrows(ErroGrave.class, () -> gu.editarUsuario(bd.getListaUsuarios(), codigoUsuario, info), "Editando usuario com lista de usuario null");
 	}
 	
 	@Test
