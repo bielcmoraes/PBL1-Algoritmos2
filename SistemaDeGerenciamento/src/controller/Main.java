@@ -11,8 +11,12 @@ do código, e estou ciente que estes trechos não serão considerados para fins 
 package controller;
 
 import PreCadastro.PreCadastro;
+import exceptions.ErroGrave;
+import exceptions.EscolhaIncorreta;
+import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.RelatorioNaoGerado;
+import exceptions.UsuarioNaoEncontrado;
 import model.BancoDeDados;
 import model.Funcionario;
 import model.Gerente;
@@ -136,26 +140,29 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Usuario");
 							String [] infoUsuario = UsuarioView.cadastraUsuario();
-							boolean cadastrarUsuario = ((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds(), infoUsuario);
-							if(cadastrarUsuario == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).cadastrarUsuario(dados.getListaUsuarios(), dados.getListaIds(), infoUsuario);
+							}catch(EscolhaIncorreta | LoginJaCadastrado | ErroGrave a) {
+								System.out.println(a.toString());
 							}
 							break;
 						case 2:
 							System.out.println("Editando Usuario");
 							String codigoUsuarioEdit = UsuarioView.buscaUsuario();
 							String [] infoEditUsuario = UsuarioView.editaUsuario();
-							boolean editarUsuario =((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
-							if(editarUsuario == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).editarUsuario(dados.getListaUsuarios(), codigoUsuarioEdit, infoEditUsuario);
+							} catch (UsuarioNaoEncontrado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Usuario");
 							String codigoUsuarioDel = UsuarioView.buscaUsuario();
-							boolean excluirUsuario =((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
-							if(excluirUsuario == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).excluirUsuario(dados.getListaUsuarios(), dados.getListaIds(), codigoUsuarioDel);
+							} catch (ErroGrave | UsuarioNaoEncontrado e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:

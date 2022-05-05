@@ -3,7 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
+import exceptions.EscolhaIncorreta;
+import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.UsuarioNaoEncontrado;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
@@ -73,9 +77,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuario
 	 * @return Boolean cadastrarUsuario
+	 * @throws EscolhaIncorreta, LoginJaCadastrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] info) {
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] info) throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		return gerenciamentoUsuario.cadastrarUsuario(listaUsuarios, listaIds, info);
 	}
@@ -85,9 +91,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param codigoUsuario Id do usuario que deseja editar
 	 * @param info Entradas do usuario
 	 * @return Boolean editarUsuario
+	 * @throws ErroGrave 
+	 * @throws UsuarioNaoEncontrado 
 	 */
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws UsuarioNaoEncontrado, ErroGrave {
 		
 		//Istancia o gerenciamento de usuario
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
@@ -99,9 +107,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoUsuario Id do usuário que deseja excluir
 	 * @return Boolean excluirUsuario
+	 * @throws UsuarioNaoEncontrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, UsuarioNaoEncontrado {
 		GerenciaUsuario gerenciamentoUsuario = new GerenciaUsuario();
 		return gerenciamentoUsuario.excluirUsuario(listaUsuarios, listaIds, codigoUsuario);
 	}

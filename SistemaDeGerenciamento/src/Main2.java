@@ -24,6 +24,13 @@ public class Main2 {
 
 	public static void main(String[] args) {
 		
+		ArrayList<Produto> test = new ArrayList();
+		test = null;
+		for(Produto produto: test) {
+			System.out.println("AAAAAAAAAAA");
+		}
+		System.out.println("BBBBBB");
+		/*
 		BancoDeDados dados = new BancoDeDados();
 		PreCadastro preCadastro = new PreCadastro();
 		preCadastro.PreCadastrarFornecedores(dados);
@@ -45,7 +52,7 @@ public class Main2 {
 		GeraTabela tabela = new GeraTabela();
 		
 		Relatorio r = new Relatorio(tabela.vendasNosUltimosSeteDias(dados.getListaVendas()));
-		
+		*/
 		
 		/*
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");

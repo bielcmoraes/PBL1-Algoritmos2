@@ -5,7 +5,8 @@ import java.util.ArrayList;
 /**Classe que contém os metódos necessários para que a autenticação de usuário ocorra, permitindo que somente os usuários cadastrados possam acessar 
  * o sistema.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class Login {
@@ -36,17 +37,16 @@ public class Login {
 	 */
 	public Usuario autenticarLogin(ArrayList<Usuario> listaUsuarios, String[] infoLogin) {
 		
-		if(listaUsuarios != null) {
+		try {
 			//Tente validar o login
 			for(Usuario usuario: listaUsuarios) {
 				if(usuario.getLogin().equals(infoLogin[0]) && usuario.getSenha().equals(infoLogin[1])) {
 					return usuario;
 				}
 			}
-		}
-		else {
+		}catch(NullPointerException a) {
 			return null;
 		}
-		return null;
+		return null;	
 	}	
 }

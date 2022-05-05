@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+import exceptions.ErroGrave;
+import exceptions.EscolhaIncorreta;
+import exceptions.LoginJaCadastrado;
+import exceptions.UsuarioNaoEncontrado;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir usuário que foram especificados na classe UsuarioCopyable.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
@@ -15,48 +20,46 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	 * um objeto do resppectivo tipo (Gerente ou Funcionário) é instanciado e armazenado na lista de usuários e o metódo retorna true. Caso exista um login cadastrado igual ao 
 	 *login fornecido, ou apção que determina o tipo de objeto que será instanciado seja diferente de "1" ou "2" ou a lista de usuários e a lista de id's
 	 *estejam com valor igual a null o mmetódo retorna false.
+	 * @throws EscolhaIncorreta 
+	 * @throws LoginJaCadastrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] infoUsuario) {
-		
-		if(listaUsuarios != null && listaIds != null) {
+	public boolean cadastrarUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String [] infoUsuario) throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
 			
-			try {
-				//Cria um novo Gerente e adiciona na lista
-				if(infoUsuario[1].equals("1")) {
-					
-					for(Usuario usuario: listaUsuarios) {
-						if(usuario.getLogin().equals(infoUsuario[2])) {
-							return false;
-						}
+		try {
+			//Cria um novo Gerente e adiciona na lista
+			if(infoUsuario[1].equals("1")) {
+				
+				for(Usuario usuario: listaUsuarios) {
+					if(usuario.getLogin().equals(infoUsuario[2])) {
+						throw new LoginJaCadastrado(); 
 					}
-					Usuario novoUsuario = new Gerente(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
-					listaUsuarios.add(novoUsuario);
-					return true;
 				}
-				//Cria um novo Funcionario e adiciona na lista
-				else if(infoUsuario[1].equals("2")) {
-					
-					for(Usuario usuario: listaUsuarios) {
-						if(usuario.getLogin().equals(infoUsuario[2])) {
-							return false;
-						}
-					}
-					
-					Usuario novoUsuario = new Funcionario(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
-					listaUsuarios.add(novoUsuario);
-					return true;
-					
-				}else {
-					System.out.println("Opção incorreta escolha 1 ou 2");
-					return false;
-				}
-			}catch(ArrayIndexOutOfBoundsException a){
-				return false;
+				Usuario novoUsuario = new Gerente(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+				listaUsuarios.add(novoUsuario);
+				return true;
 			}
-		}
-		else {
-			return false;
+			//Cria um novo Funcionario e adiciona na lista
+			else if(infoUsuario[1].equals("2")) {
+				
+				for(Usuario usuario: listaUsuarios) {
+					if(usuario.getLogin().equals(infoUsuario[2])) {
+						throw new LoginJaCadastrado();
+					}
+				}
+				
+				Usuario novoUsuario = new Funcionario(listaIds, infoUsuario[0], infoUsuario[2], infoUsuario[3]);
+				listaUsuarios.add(novoUsuario);
+				return true;
+				
+			}else {
+				throw new EscolhaIncorreta();
+			}
+		}catch(ArrayIndexOutOfBoundsException a){
+			throw new ErroGrave();
+		}catch(NullPointerException n) {
+			throw new ErroGrave();
 		}
 	}
 	
@@ -66,26 +69,26 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	 * valores que passados pelo usuário através do vetor info. As substituições das informações são feitas utilizando os metódos de setters presentes
 	 * na classe Usuario e é retornado true.
 	 * Caso não exista um usuário com id igual ao codigo de usuário ou a lista de usuários e o vetor info tiverem valor null, o metódo retorna false. 
+	 * @throws UsuarioNaoEncontrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) {
+	public boolean editarUsuario(ArrayList<Usuario> listaUsuarios, String codigoUsuario, String [] info) throws UsuarioNaoEncontrado, ErroGrave {
 		
-		if(listaUsuarios != null && info != null) {
-			
-			try {
-				for(Usuario usuario : listaUsuarios) {
-					if(usuario.getId().equals(codigoUsuario)) {
-						usuario.setNome(info[0]);
-						usuario.setSenha(info[1]);
-						return true;
-					}else {
-						return false;
-					}
+		try {
+			for(Usuario usuario : listaUsuarios) {
+				if(usuario.getId().equals(codigoUsuario)) {
+					usuario.setNome(info[0]);
+					usuario.setSenha(info[1]);
+					return true;
+				}else {
+					throw new UsuarioNaoEncontrado();
 				}
 			}
-			catch(ArrayIndexOutOfBoundsException a){
-				return false;
-			}
+		}catch(ArrayIndexOutOfBoundsException a){
+			throw new ErroGrave();
+		}catch(NullPointerException n) {
+			throw new ErroGrave();
 		}
 		return false;
 	}
@@ -93,29 +96,29 @@ public class GerenciaUsuario implements UsuarioCopyable {
 	/**Se existir um usuário com atributo de id igual ao códido de usuário passado como parâmetro do método e a lista de usuários juntamente com a lista
 	 * de id's forem diferentes de null, o respectivo usuário é removido da lista de usuários, seu id é removido da lista de id's e o metódo retorna true.
 	 * Caso as condições citadas anteriormente não forem satisfeitas o metódo retorna false.
+	 * @throws ErroGrave 
+	 * @throws UsuarioNaoEncontrado 
 	 * 
 	 */
 	@Override
-	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) {
+	public boolean excluirUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<String> listaIds, String codigoUsuario) throws ErroGrave, UsuarioNaoEncontrado {
 		
-		if(listaUsuarios != null && listaIds != null) {
-	
-			try {
-				for(Usuario usuario : listaUsuarios) {
-					if(usuario.getId().equals(codigoUsuario)) {
-						int index = listaUsuarios.indexOf(usuario);
-						listaUsuarios.remove(index);
-						listaIds.remove(codigoUsuario);
-						return true;
-					}
-					else {
-						return false;
-					}
+		try {
+			for(Usuario usuario : listaUsuarios) {
+				if(usuario.getId().equals(codigoUsuario)) {
+					int index = listaUsuarios.indexOf(usuario);
+					listaUsuarios.remove(index);
+					listaIds.remove(codigoUsuario);
+					return true;
+				}
+				else {
+					throw new UsuarioNaoEncontrado();
 				}
 			}
-			catch(ArrayIndexOutOfBoundsException a) {
-				return false;
-			}
+		}catch(ArrayIndexOutOfBoundsException a){
+			throw new ErroGrave();
+		}catch(NullPointerException n) {
+			throw new ErroGrave();
 		}
 		return false;
 	}
