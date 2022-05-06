@@ -22,9 +22,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			new Relatorio(info, "Relatorio de estoque total");
 			return true;
 			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Relatorio de estoque total");
-			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Relatorio de estoque total");
             
@@ -41,9 +38,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			Table info = tabela.estoquePorProduto(listaProdutos);
 			new Relatorio(info, "Relatorio de estoque por produto");
 			return true;
-			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Relatorio de estoque por produto");
 			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Relatorio de estoque por produto");
@@ -64,9 +58,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			new Relatorio(info1, info2, "Produtos do estoque vencidos e próximos de vencer");
 			return true;
 			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Produtos do estoque vencidos e próximos de vencer");  
-			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Produtos do estoque vencidos e próximos de vencer"); 
             
@@ -84,10 +75,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			new Relatorio(info, "Relatorio de fornecedor por produto");
 			return true;
 			
-		}catch(NullPointerException e) {
-        	throw new RelatorioNaoGerado("Relatorio de fornecedor por produto"); 
-			
-		} catch (DocumentException e) {
+		}catch (DocumentException e) {
         	throw new RelatorioNaoGerado("Relatorio de fornecedor por produto"); 
             
         } catch (FileNotFoundException e) {
@@ -106,9 +94,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			new Relatorio(info, "Relatorio de fornecedor por fornecedor");
 			return true;
 			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Relatorio de fornecedor por fornecedor"); 
-			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Relatorio de fornecedor por fornecedor"); 
             
@@ -126,9 +111,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			Table info = tabela.vendasTotal(listaVendas);
 			new Relatorio(info, "Relatorio total de vendas");
 			return true;
-			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Relatorio total de vendas"); 
 			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Relatorio total de vendas"); 
@@ -150,10 +132,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 				Table info = tabela.vendasDiarias(listaVendas);
 				new Relatorio(info, "Relatorio de vendas diarias");
 				
-			}catch(NullPointerException e) {
-				throw new RelatorioNaoGerado("Relatorio de vendas diarias");
-
-				
 			} catch (DocumentException e) {
 				throw new RelatorioNaoGerado("Relatorio de vendas diarias");
 	            
@@ -166,9 +144,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 				//Relatorio de vendas semanais
 				Table info = tabela.vendasSemanal(listaVendas);
 				new Relatorio(info,"Relatorio de vendas semanais");
-				
-			}catch(NullPointerException e) {
-				throw new RelatorioNaoGerado("Relatorio de vendas semanais");
 				
 			} catch (DocumentException e) {
 				throw new RelatorioNaoGerado("Relatorio de vendas semanais");
@@ -183,10 +158,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 				//Relatorio de vendas mensais
 				Table info = tabela.vendasSemanal(listaVendas);
 				new Relatorio(info, "Relatorio de vendas mensais");
-			}catch(NullPointerException e) {
-				throw new RelatorioNaoGerado("Relatorio de vendas mensais");
-				
-			} catch (DocumentException e) {
+			}catch (DocumentException e) {
 				throw new RelatorioNaoGerado("Relatorio de vendas mensais");
 	            
 	        } catch (FileNotFoundException e) {
@@ -208,9 +180,6 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			Table info = tabela.vendasPorTipoDePrato(listaVendas);
 			new Relatorio(info, "Relatorio de vendas por tipo de prato");
 			return true;
-			
-		}catch(NullPointerException e) {
-			throw new RelatorioNaoGerado("Relatorio de vendas por tipo de prato");
 			
 		} catch (DocumentException e) {
 			throw new RelatorioNaoGerado("Relatorio de vendas por tipo de prato");

@@ -1,6 +1,5 @@
 package testes;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
@@ -14,9 +13,7 @@ import com.lowagie.text.Table;
 
 import PreCadastro.PreCadastro;
 import exceptions.ErroGrave;
-import exceptions.RelatorioNaoGerado;
 import model.BancoDeDados;
-import model.GeraRelatorio;
 import model.GeraTabela;
 import model.Produto;
 
@@ -27,7 +24,7 @@ class GeraTabelaTest {
 	GeraTabela gt = new GeraTabela();
 	@BeforeEach
 	
-	@Test
+	@Test 
 	void estoqueTotalComListaDeProdutosNull() {
 		assertThrows(ErroGrave.class, () -> gt.estoqueTotal(null), "Tentando gerar tabela de estoque total com lista não instanciada");	
 	}
