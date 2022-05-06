@@ -7,27 +7,29 @@ import java.util.HashMap;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Table;
 
+import exceptions.ErroGrave;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.RelatorioNaoGerado;
 
 public class GeraRelatorio implements GeraRelatoriosCopyable {
 
 	@Override
-	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado{
 		
-		try{GeraTabela tabela = new GeraTabela();
+		try{
+			GeraTabela tabela = new GeraTabela();
 			Table info = tabela.estoqueTotal(listaProdutos);
 			new Relatorio(info, "Relatorio de estoque total");
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de estoque total");
 			
 		} catch (DocumentException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de estoque total");
             
         } catch (FileNotFoundException e) {
-        	return false;
+        	throw new RelatorioNaoGerado("Relatorio de estoque total");
         	
         }
 	}

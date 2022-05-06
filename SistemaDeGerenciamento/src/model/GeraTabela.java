@@ -14,13 +14,15 @@ import com.lowagie.text.Cell;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 
+import exceptions.ErroGrave;
+
 /**
  * @author Gabriel Moraes
  *
  */
 public class GeraTabela {
 	
-	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		int produtosCadastrados = 0;
 		
@@ -33,16 +35,21 @@ public class GeraTabela {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
-		for(ArrayList<Produto> estoque: listaProdutos.values()) {
-			
-			for(Produto produto : estoque) {
-				tabela.addCell(produto.getId());
-				tabela.addCell(produto.getNome());
-				tabela.addCell(produto.getValidade().format(formatoData));
-				tabela.addCell(String.valueOf(produto.getQuantidade()) + " " + produto.getUnidadeDeMedida());
-				produtosCadastrados += 1;
+		try {
+			for(ArrayList<Produto> estoque: listaProdutos.values()) {
+				
+				for(Produto produto : estoque) {
+					tabela.addCell(produto.getId());
+					tabela.addCell(produto.getNome());
+					tabela.addCell(produto.getValidade().format(formatoData));
+					tabela.addCell(String.valueOf(produto.getQuantidade()) + " " + produto.getUnidadeDeMedida());
+					produtosCadastrados += 1;
+				}
 			}
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
+		
 		Cell celulaTotal = new Cell(new Paragraph("Total de produtos cadastrados: " + String.valueOf(produtosCadastrados)));
 		celulaTotal.setColspan(4);
 		tabela.addCell(celulaTotal);
@@ -50,28 +57,30 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	public Table estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public Table estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		Table tabela = new Table(3);
 		tabela.addCell("ID: ");
 		tabela.addCell("NOME: ");
 		tabela.addCell("QUANTIDADE: ");
 		
-		for(ArrayList<Produto> estoque: listaProdutos.values()) {
-			
-			int quantidade = 0;
-			String unidadeDeMedida;
-			for(Produto produto : estoque) {
-				tabela.addCell(produto.getId());
-				tabela.addCell(produto.getNome());
+		try {
+			for(ArrayList<Produto> estoque: listaProdutos.values()) {
 				
-				quantidade += produto.getQuantidade();
-				unidadeDeMedida = " " + produto.getUnidadeDeMedida();
-				tabela.addCell(String.valueOf(quantidade) + unidadeDeMedida);
-			}
-			
+				int quantidade = 0;
+				String unidadeDeMedida;
+				for(Produto produto : estoque) {
+					tabela.addCell(produto.getId());
+					tabela.addCell(produto.getNome());
+					
+					quantidade += produto.getQuantidade();
+					unidadeDeMedida = " " + produto.getUnidadeDeMedida();
+					tabela.addCell(String.valueOf(quantidade) + unidadeDeMedida);
+				}
 		}
-
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
+		}
 		return tabela;
 	}
 	
@@ -109,23 +118,20 @@ public class GeraTabela {
 		tabela.addCell("VALIDADE:");
 		tabela.addCell("QUANTIDADE:");
 		
-		if(!produtosPertoDeVencer.isEmpty()) {
+		try {
 			for(Produto produto: produtosPertoDeVencer) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
 				tabela.addCell(String.valueOf(produto.getQuantidade()));
 			}
-			
-		}else {
+		}catch(NullPointerException a) {
 			Paragraph vazioText = new Paragraph("Não há produtos próximos de vencer no sistema!");
 			Cell vazio = new Cell(vazioText);
 			vazio.setColspan(4);
 			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			tabela.addCell(vazio);
 		}
-		
-		
 		return tabela;
 	}
 	
@@ -160,71 +166,78 @@ public class GeraTabela {
 		tabela.addCell("VALIDADE:");
 		tabela.addCell("QUANTIDADE:");
 		
-		if(!produtosVencidos.isEmpty()) {
+		try {
 			for(Produto produto: produtosVencidos) {
 				tabela.addCell(produto.getId());
 				tabela.addCell(produto.getNome());
 				tabela.addCell(produto.getValidade().format(formatoData));
 				tabela.addCell(String.valueOf(produto.getQuantidade()));
 			}
-			
-		}else {
+		}catch(NullPointerException a) {
 			Paragraph vazioText = new Paragraph("Não há produtos vencidos no sistema!");
 			Cell vazio = new Cell(vazioText);
 			vazio.setColspan(4);
 			vazio.setHorizontalAlignment(Cell.ALIGN_CENTER);
 			tabela.addCell(vazio);
 		}
-		
-		
 		return tabela;
 	}
 	
 	
-	public Table fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public Table fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		Table tabela = new Table(2);
 		tabela.addCell("PRODUTO: ");
 		tabela.addCell("FORNECEDORES: ");
 		
-		for(ArrayList<Produto> estoque: listaProdutos.values()) {
-			
-			for(Produto produto : estoque) {
-				tabela.addCell(produto.getNome());
+		try {
+			for(ArrayList<Produto> estoque: listaProdutos.values()) {
 				
-				String fornecedores = "";
-				for(Fornecedor fornecedor : produto.getFornecedores()) {
-					fornecedores += fornecedor.getNome() + ", ";
+				for(Produto produto : estoque) {
+					tabela.addCell(produto.getNome());
+					
+					String fornecedores = "";
+					for(Fornecedor fornecedor : produto.getFornecedores()) {
+						fornecedores += fornecedor.getNome() + ", ";
+					}
+					fornecedores = fornecedores.substring(0, fornecedores.length()-2);
+					
+					tabela.addCell(fornecedores);
 				}
-				fornecedores = fornecedores.substring(0, fornecedores.length()-2);
-				
-				tabela.addCell(fornecedores);
 			}
+			
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
 		
 		return tabela;
 	}
 	
-	public Table fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public Table fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws ErroGrave {
 		
 		Table tabela = new Table(2);
 		tabela.addCell("FORNECEDOR: ");
 		tabela.addCell("PRODUTOS: ");
 		
-		for(Fornecedor fornecedor: listaFornecedores) {
-			String produtos = "";
-			for(String produto : fornecedor.getProdutos()) {
-				produtos += produto + ", ";
+		try {
+			for(Fornecedor fornecedor: listaFornecedores) {
+				String produtos = "";
+				for(String produto : fornecedor.getProdutos()) {
+					produtos += produto + ", ";
+				}
+				produtos = produtos.substring(0, produtos.length()-2);
+				
+				tabela.addCell(fornecedor.getNome());
+				tabela.addCell(produtos);
 			}
-			produtos = produtos.substring(0, produtos.length()-2);
-			
-			tabela.addCell(fornecedor.getNome());
-			tabela.addCell(produtos);
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
+		
 		return tabela;
 	}
 	
-	public Table vendasTotal(ArrayList<Venda> listaVendas) {
+	public Table vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
 		Table tabela = new Table(6);
@@ -238,24 +251,30 @@ public class GeraTabela {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
-		
-		for(Venda venda: listaVendas) {
+		try {
 			
-			String itens = "";
-			for(Prato prato : venda.getPratos()) {
-				itens += prato.getNome() + ", ";
+			for(Venda venda: listaVendas) {
+				
+				String itens = "";
+				for(Prato prato : venda.getPratos()) {
+					itens += prato.getNome() + ", ";
+				}
+				
+				itens = itens.substring(0, itens.length()-2);
+				tabela.addCell(venda.getId());
+				tabela.addCell(venda.getData().format(formatoData));
+				tabela.addCell(venda.getHorario().format(formatoHorario));
+				tabela.addCell(String.valueOf(venda.getPrecoTotal()));
+				tabela.addCell(venda.getMetodoDePagamento());
+				tabela.addCell(itens);
+				
+				totalVendido += venda.getPrecoTotal();
 			}
 			
-			itens = itens.substring(0, itens.length()-2);
-			tabela.addCell(venda.getId());
-			tabela.addCell(venda.getData().format(formatoData));
-			tabela.addCell(venda.getHorario().format(formatoHorario));
-			tabela.addCell(String.valueOf(venda.getPrecoTotal()));
-			tabela.addCell(venda.getMetodoDePagamento());
-			tabela.addCell(itens);
-			
-			totalVendido += venda.getPrecoTotal();
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
+		
 		tabela.setBackgroundColor(Color.LIGHT_GRAY);
 		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido)));
 		celulaTotal.setColspan(6);
@@ -265,7 +284,7 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	public Table vendasDiarias(ArrayList<Venda> listaVendas) {
+	public Table vendasDiarias(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -279,27 +298,30 @@ public class GeraTabela {
 		tabela.addCell("MÉTODO DE PAGAMENTO:");
 		tabela.addCell("ITENS:");
 		
-		for(Venda venda : listaVendas) {
-			
-			String itens = "";
-			for(Prato prato : venda.getPratos()) {
-				itens += prato.getNome() + ", ";
-			}
-			
-			itens = itens.substring(0, itens.length()-2);
-			if(venda.getData().equals(LocalDate.now())) {
-				tabela.addCell(venda.getId());
-				tabela.addCell(venda.getData().format(formatoData));
-				tabela.addCell(venda.getHorario().format(formatoHorario));
-				tabela.addCell(venda.getMetodoDePagamento());
-				tabela.addCell(itens);
-			}
-			totalVendido += venda.getPrecoTotal();
-			
+try {
+	
+	for(Venda venda : listaVendas) {
+		
+		String itens = "";
+		for(Prato prato : venda.getPratos()) {
+			itens += prato.getNome() + ", ";
 		}
 		
+		itens = itens.substring(0, itens.length()-2);
+		if(venda.getData().equals(LocalDate.now())) {
+			tabela.addCell(venda.getId());
+			tabela.addCell(venda.getData().format(formatoData));
+			tabela.addCell(venda.getHorario().format(formatoHorario));
+			tabela.addCell(venda.getMetodoDePagamento());
+			tabela.addCell(itens);
+		}
+		totalVendido += venda.getPrecoTotal();
 		
-		
+		}
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
+		}
+
 		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
 		celulaTotal.setColspan(5);
 		celulaTotal.setBackgroundColor(Color.gray);
@@ -308,7 +330,7 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	public Table vendasSemanal(ArrayList<Venda> listaVendas) {
+	public Table vendasSemanal(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -322,26 +344,34 @@ public class GeraTabela {
 		tabela.addCell("MÉTODO DE PAGAMENTO:");
 		tabela.addCell("ITENS:");
 		
-		for(Venda venda : listaVendas) {
+		try {
 			
-			String itens = "";
-			for(Prato prato : venda.getPratos()) {
-				itens += prato.getNome() + ", ";
+			for(Venda venda : listaVendas) {
+				
+				String itens = "";
+				for(Prato prato : venda.getPratos()) {
+					itens += prato.getNome() + ", ";
+				}
+				
+				itens = itens.substring(0, itens.length()-2);
+				
+				//Compara a data atual menos uma semana com a data da venda
+				if(LocalDate.now().minusWeeks(1).isBefore(venda.getData())) {
+					tabela.addCell(venda.getId());
+					tabela.addCell(venda.getData().format(formatoData));
+					tabela.addCell(venda.getHorario().format(formatoHorario));
+					tabela.addCell(venda.getMetodoDePagamento());
+					tabela.addCell(itens);
+				}
+				totalVendido += venda.getPrecoTotal();
+				
 			}
 			
-			itens = itens.substring(0, itens.length()-2);
-			
-			//Compara a data atual menos uma semana com a data da venda
-			if(LocalDate.now().minusWeeks(1).isBefore(venda.getData())) {
-				tabela.addCell(venda.getId());
-				tabela.addCell(venda.getData().format(formatoData));
-				tabela.addCell(venda.getHorario().format(formatoHorario));
-				tabela.addCell(venda.getMetodoDePagamento());
-				tabela.addCell(itens);
-			}
-			totalVendido += venda.getPrecoTotal();
-			
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
+
+		
 		
 		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
 		celulaTotal.setColspan(5);
@@ -351,7 +381,7 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	public Table vendasMensais(ArrayList<Venda> listaVendas) {
+	public Table vendasMensais(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -365,26 +395,32 @@ public class GeraTabela {
 		tabela.addCell("MÉTODO DE PAGAMENTO:");
 		tabela.addCell("ITENS:");
 		
-		for(Venda venda : listaVendas) {
-			
-			String itens = "";
-			for(Prato prato : venda.getPratos()) {
-				itens += prato.getNome() + ", ";
+		try {
+			for(Venda venda : listaVendas) {
+				
+				String itens = "";
+				for(Prato prato : venda.getPratos()) {
+					itens += prato.getNome() + ", ";
+				}
+				
+				itens = itens.substring(0, itens.length()-2);
+				
+				//Compara o mês e o ano das vendas com o atual e adiciona na tabela
+				if(venda.getData().getMonth().equals(LocalDate.now().getMonth()) && venda.getData().getYear() == LocalDate.now().getYear()) {
+					tabela.addCell(venda.getId());
+					tabela.addCell(venda.getData().format(formatoData));
+					tabela.addCell(venda.getHorario().format(formatoHorario));
+					tabela.addCell(venda.getMetodoDePagamento());
+					tabela.addCell(itens);
+				}
+				totalVendido += venda.getPrecoTotal();
+				
 			}
-			
-			itens = itens.substring(0, itens.length()-2);
-			
-			//Compara o mês e o ano das vendas com o atual e adiciona na tabela
-			if(venda.getData().getMonth().equals(LocalDate.now().getMonth()) && venda.getData().getYear() == LocalDate.now().getYear()) {
-				tabela.addCell(venda.getId());
-				tabela.addCell(venda.getData().format(formatoData));
-				tabela.addCell(venda.getHorario().format(formatoHorario));
-				tabela.addCell(venda.getMetodoDePagamento());
-				tabela.addCell(itens);
-			}
-			totalVendido += venda.getPrecoTotal();
-			
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
+		
+		
 		
 		Cell celulaTotal = new Cell(new Paragraph("Total Vendido: " + String.valueOf(totalVendido) + " reais."));
 		celulaTotal.setColspan(5);
@@ -394,7 +430,7 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	public Table vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+	public Table vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		Table tabela = new Table(3);
 		tabela.setWidth(100);
@@ -402,6 +438,8 @@ public class GeraTabela {
 		tabela.addCell("QUANTIDADE VENDIDA:");
 		tabela.addCell("VALOR VENDIDO:");
 		ArrayList<String> listaPratos = new ArrayList<String>();
+	
+		
 		
 		try {
 			//Monta um array com todos os pratos vendidos sem repetir pratos
@@ -414,11 +452,7 @@ public class GeraTabela {
 					}
 				}
 			}
-		}catch(ArrayIndexOutOfBoundsException a){
-			return null;
-		}
-		
-		try {
+			
 			//Compara os pratos vendidos com a lista de vendas contando quantos pratos foram vendidos e o total de venda de cada prato
 			for(String pratoVendido: listaPratos) {
 				int quantidade = 0;
@@ -436,8 +470,8 @@ public class GeraTabela {
 				tabela.addCell(String.valueOf(valor));
 			}
 			
-		}catch(ArrayIndexOutOfBoundsException a) {
-			return null;
+		}catch(NullPointerException a) {
+			throw new ErroGrave();
 		}
 		return tabela;
 	}

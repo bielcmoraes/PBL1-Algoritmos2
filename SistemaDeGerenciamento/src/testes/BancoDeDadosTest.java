@@ -107,8 +107,6 @@ class BancoDeDadosTest {
 	@Test
 	void adicionandoUmaVendaNaLista() {
 		BancoDeDados bd = new BancoDeDados();
-		LocalDate data = LocalDate.of(2022, 03, 12);
-		LocalTime hora = LocalTime.of(15, 30, 55);
 		Venda v1 = new Venda(bd.getListaIds(), bd.getCardapio(), 99.55, "Credito");
 		ArrayList<Venda> v = bd.getListaVendas();
 		v.add(v1);

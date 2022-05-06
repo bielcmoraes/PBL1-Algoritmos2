@@ -43,7 +43,7 @@ public class Main {
 	 * @param args Possiveis parâmetros que podem ser passados para a aplicação a partir da linha de comando.
 	 * @throws ProdutoNaoCadastrado 
 	 */
-	public static void main(String[] args) throws ProdutoNaoCadastrado, RelatorioNaoGerado {
+	public static void main(String[] args) {
 	
 		//Intancio as listas
 		BancoDeDados dados = new BancoDeDados();
@@ -195,9 +195,10 @@ public class Main {
 							System.out.println("Editando Prato");
 							String codigoPratoEdit = CardapioView.buscaPrato();
 							String [] infoEdicao = CardapioView.editarPrato();
-							boolean editarPrato = ((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
-							if(editarPrato == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
+							} catch (ProdutoNaoCadastrado e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
@@ -294,7 +295,11 @@ public class Main {
 							break;
 							
 						case 4:
-							((Gerente) usuarioLogado).estoqueTotal(dados.getListaProdutos());
+							try {
+								((Gerente) usuarioLogado).estoqueTotal(dados.getListaProdutos());
+							} catch (RelatorioNaoGerado e) {
+								System.out.println(e.toString());
+							}
 							System.out.println("Relatorio gerado com sucesso!!!");
 							break;
 							

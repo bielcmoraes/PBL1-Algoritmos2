@@ -7,6 +7,7 @@ import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.RelatorioNaoGerado;
 import exceptions.NaoEncontrado;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
@@ -283,7 +284,7 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
-	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoqueTotal(listaProdutos);
 		
