@@ -268,75 +268,74 @@ public class Main {
 					else if(decisao[0] == 7) {
 						switch(decisao[1]) {
 						case 1:
-							boolean relatorioVendasTotal = ((Gerente) usuarioLogado).vendasTotal(dados.getListaVendas());
-							if(relatorioVendasTotal = true) {
+							try {
+								((Gerente) usuarioLogado).vendasTotal(dados.getListaVendas());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (ErroGrave | RelatorioNaoGerado e1) {
+								System.out.println(e1.toString());
 							}
 							break;
 						
 						case 2:
-							boolean relatorioVendasPorPeriodo = ((Gerente) usuarioLogado).vendasPorPeriodo(dados.getListaVendas());
-							if(relatorioVendasPorPeriodo) {
+							try {
+								((Gerente) usuarioLogado).vendasPorPeriodo(dados.getListaVendas());
 								System.out.println("Relatoris gerados com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (ErroGrave e1) {
+								System.out.println(e1.toString());
 							}
 							break;
 							
 						case 3:
-							boolean relatorioVendasPorTipoDePrato = ((Gerente) usuarioLogado).vendasPorTipoDePrato(dados.getListaVendas());
-							if(relatorioVendasPorTipoDePrato) {
+							try {
+								((Gerente) usuarioLogado).vendasPorTipoDePrato(dados.getListaVendas());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (ErroGrave | RelatorioNaoGerado e1) {
+								System.out.println(e1.toString());
 							}
 							break;
 							
 						case 4:
 							try {
 								((Gerente) usuarioLogado).estoqueTotal(dados.getListaProdutos());
-							} catch (RelatorioNaoGerado e) {
+								System.out.println("Relatorio gerado com sucesso!!!");
+							} catch (RelatorioNaoGerado | ErroGrave e) {
 								System.out.println(e.toString());
 							}
-							System.out.println("Relatorio gerado com sucesso!!!");
 							break;
 							
 						case 5:
-							boolean relatorioEstoqueTotal = ((Gerente) usuarioLogado).estoquePorProduto(dados.getListaProdutos());
-							
-							if(relatorioEstoqueTotal) {
+							try {
+								((Gerente) usuarioLogado).estoquePorProduto(dados.getListaProdutos());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (RelatorioNaoGerado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 							
 						case 6:
-							boolean relatorioEstoqueProdutosPertoDeVencer = ((Gerente) usuarioLogado).estoqueProdutosPertoDeVencer(dados.getListaProdutos());
-							if(relatorioEstoqueProdutosPertoDeVencer) {
+							try {
+								((Gerente) usuarioLogado).estoqueProdutosPertoDeVencer(dados.getListaProdutos());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (ErroGrave | RelatorioNaoGerado e) {
+								System.out.println(e.toString());
 							}
 							break;
 							
 						case 7:
-							boolean relatorioFornecedorPorProduto = ((Gerente) usuarioLogado).fornecedorPorProduto(dados.getListaProdutos());
-							if(relatorioFornecedorPorProduto) {
+							try {
+								((Gerente) usuarioLogado).fornecedorPorProduto(dados.getListaProdutos());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (RelatorioNaoGerado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 							
 						case 8:
-							boolean relatorioFornecedorPorFornecedor = ((Gerente) usuarioLogado).fornecedorPorFornecedor(dados.getListaFornecedores());
-							if(relatorioFornecedorPorFornecedor) {
+							try {
+								((Gerente) usuarioLogado).fornecedorPorFornecedor(dados.getListaFornecedores());
 								System.out.println("Relatorio gerado com sucesso!!!");
-							}else {
-								SubMenuView.erroGerenciamentos();
+							} catch (RelatorioNaoGerado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						

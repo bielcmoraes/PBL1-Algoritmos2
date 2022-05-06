@@ -14,7 +14,7 @@ import exceptions.RelatorioNaoGerado;
 public class GeraRelatorio implements GeraRelatoriosCopyable {
 
 	@Override
-	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado{
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave{
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -31,15 +31,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	throw new RelatorioNaoGerado("Relatorio de estoque total");
         	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
+        }
 	}
 
 	@Override
-	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		try {
 			GeraTabela tabela = new GeraTabela();
 			Table info = tabela.estoquePorProduto(listaProdutos);
@@ -47,24 +43,19 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de estoque por produto");
 			
 		} catch (DocumentException e) {
-			return false;
-            
+			throw new RelatorioNaoGerado("Relatorio de estoque por produto");
+			
         } catch (FileNotFoundException e) {
-        	return false;
-        	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
+        	throw new RelatorioNaoGerado("Relatorio de estoque por produto");        	
+        }
 		
 	}
 
 	@Override
-	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave, RelatorioNaoGerado {
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -72,19 +63,20 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			Table info2 = tabela.estoqueProdutosPertoDeVencer(listaProdutos);
 			new Relatorio(info1, info2, "Produtos do estoque vencidos e próximos de vencer");
 			return true;
+			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Produtos do estoque vencidos e próximos de vencer");  
 			
 		} catch (DocumentException e) {
-			return false;
+			throw new RelatorioNaoGerado("Produtos do estoque vencidos e próximos de vencer"); 
             
         } catch (FileNotFoundException e) {
-        	return false;
+        	throw new RelatorioNaoGerado("Produtos do estoque vencidos e próximos de vencer"); 
         }
 	}
 	
 	@Override
-	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -93,24 +85,20 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+        	throw new RelatorioNaoGerado("Relatorio de fornecedor por produto"); 
 			
 		} catch (DocumentException e) {
-			return false;
+        	throw new RelatorioNaoGerado("Relatorio de fornecedor por produto"); 
             
         } catch (FileNotFoundException e) {
-        	return false;
+        	throw new RelatorioNaoGerado("Relatorio de fornecedor por produto"); 
         	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
+        }
 		
 	}
 
 	@Override
-	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws RelatorioNaoGerado, ErroGrave {
 		
 		try {
 			GeraTabela tabela = new GeraTabela();
@@ -119,24 +107,19 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de fornecedor por fornecedor"); 
 			
 		} catch (DocumentException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de fornecedor por fornecedor"); 
             
         } catch (FileNotFoundException e) {
-        	return false;
+			throw new RelatorioNaoGerado("Relatorio de fornecedor por fornecedor"); 
         	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		
+        }
 	}
 
 	@Override
-	public boolean vendasTotal(ArrayList<Venda> listaVendas) {
+	public boolean vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -145,24 +128,19 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio total de vendas"); 
 			
 		} catch (DocumentException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio total de vendas"); 
             
         } catch (FileNotFoundException e) {
-        	return false;
+			throw new RelatorioNaoGerado("Relatorio total de vendas"); 
         	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		
+        }
 	}
 
 	@Override
-	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) throws ErroGrave {
 		GeraTabela tabela = new GeraTabela();
 		
 		try {
@@ -182,10 +160,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas diarias");
 	        	
-	        } catch (ErroGrave e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	        }
 			
 			try {
 				//Relatorio de vendas semanais
@@ -201,10 +176,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas semanais");
 	        	
-	        } catch (ErroGrave e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	        }
 			
 			try {
 				
@@ -220,11 +192,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas mensais");
 	        	
-	        } catch (ErroGrave e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+	        }
 			return true;
 			
 		}catch(RelatorioNaoGerado r) {
@@ -233,7 +201,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	}
 	
 	@Override
-	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -242,21 +210,15 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			return true;
 			
 		}catch(NullPointerException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de vendas por tipo de prato");
 			
 		} catch (DocumentException e) {
-			return false;
+			throw new RelatorioNaoGerado("Relatorio de vendas por tipo de prato");
             
         } catch (FileNotFoundException e) {
-        	return false;
+        	throw new RelatorioNaoGerado("Relatorio de vendas por tipo de prato");
         	
-        } catch (ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		
-		
+        } 
 	}
 
 

@@ -284,56 +284,56 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	}
 
 	@Override
-	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado {
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoqueTotal(listaProdutos);
 		
 	}
 
 	@Override
-	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoquePorProduto(listaProdutos);
 		
 	}
 
 	@Override
-	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoqueProdutosPertoDeVencer(listaProdutos);
 		
 	}
 	
 	@Override
-	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.fornecedorPorProduto(listaProdutos);
 		
 	}
 
 	@Override
-	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) {
+	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.fornecedorPorFornecedor(listaFornecedores);
 		
 	}
 
 	@Override
-	public boolean vendasTotal(ArrayList<Venda> listaVendas) {
+	public boolean vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.vendasTotal(listaVendas);
 		
 	}
 
 	@Override
-	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) throws ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.vendasPorPeriodo(listaVendas);
 		
 	}
 	
 	@Override
-	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) {
+	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.vendasPorTipoDePrato(listaVendas);
 		
