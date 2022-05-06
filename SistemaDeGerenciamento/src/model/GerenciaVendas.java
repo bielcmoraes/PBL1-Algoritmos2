@@ -116,16 +116,16 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
-	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info) {
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
 		
 		try {
 			for(Venda venda : listaVendas) {
 				if(codigoVenda.equals(venda.getId())) {
-					
+
 					DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-					LocalDate data;
+					LocalDate dia;
 					try {
-						data = LocalDate.parse(info[0], formatoData);
+						dia = LocalDate.parse(info[0], formatoData);
 					} catch (java.time.format.DateTimeParseException a) {
 						return false;
 					}
@@ -137,7 +137,7 @@ public class GerenciaVendas implements VendaCopyable {
 					} catch (java.time.format.DateTimeParseException a) {
 						return false;
 					}
-					
+
 					ArrayList<Prato> pratos = new ArrayList<Prato>();
 					for (String pratoNome : info[2].split(", ")) {
 						for (Prato prato : cardapio) {
@@ -146,17 +146,89 @@ public class GerenciaVendas implements VendaCopyable {
 							}
 						}
 					}
-					
+	
 					if (pratos.size() != info[2].split(", ").length) {
+						// prato não cadastrado
 						return false;
+					}
+					
+					System.out.println("chegou aqui 4// chegou aqui 4// chegou aqui 4");
+					HashMap<String, Double> ingredientesTotal = new HashMap<String, Double>();
+					for (Prato prato : pratos) {
+						for (String produto : prato.getReceita().keySet()) {
+							if (ingredientesTotal.containsKey(produto)) {
+								ingredientesTotal.put(produto, ingredientesTotal.get(produto) + prato.getReceita().get(produto));
+							} else {
+								ingredientesTotal.put(produto, prato.getReceita().get(produto));
+							}
+						}
+					}
+					
+					ArrayList<Prato> pratosRemovidos = venda.getPratos();
+					HashMap<String, Double> ingredientesRemovidos = new HashMap<String, Double>();
+					for (Prato prato : pratosRemovidos) {
+						for (String produto : prato.getReceita().keySet()) {
+							if (ingredientesRemovidos.containsKey(produto)) {
+								ingredientesRemovidos.put(produto, ingredientesRemovidos.get(produto) + prato.getReceita().get(produto));
+							} else {
+								ingredientesRemovidos.put(produto, prato.getReceita().get(produto));
+							}
+						}
+					}
+					
+					for (String produto : ingredientesRemovidos.keySet()) {
+						if (ingredientesTotal.containsKey(produto)) {
+							Double restante = ingredientesTotal.get(produto) - ingredientesRemovidos.get(produto);
+							if (restante <= 0) {
+								ingredientesTotal.remove(produto);
+							} else {
+								ingredientesTotal.put(produto, restante);
+							}
+						}
+					}
+					
+					HashMap<String, Double> estoqueTotal = new HashMap<String, Double>();
+					for (String produto : listaProdutos.keySet()) {
+						ArrayList<Produto> estoque = listaProdutos.get(produto);
+						Double quantidadeTotal = 0.0;
+						for (Produto item : estoque) {
+							quantidadeTotal += item.getQuantidade();
+						}
+						estoqueTotal.put(produto, quantidadeTotal);
+					}
+					
+					for (String produto : ingredientesTotal.keySet()) {
+						if (estoqueTotal.get(produto) < ingredientesTotal.get(produto)) {
+							// Quantidade de <produto> insuficiente para o prato
+							return false;
+						}
+					}
+					
+					for (String produto : ingredientesTotal.keySet()) {
+						ArrayList<Produto> estoque = listaProdutos.get(produto);
+						Collections.sort(estoque, new ComparadorDeValidadeProduto());
+						Double quantUsada = ingredientesTotal.get(produto);
+						while (quantUsada > 0) {
+							Double quantRestante = estoque.get(0).getQuantidade() - quantUsada;
+							if (quantRestante > 0) {
+								estoque.get(0).setQuantidade(quantRestante);
+								break;
+							} else {
+								quantUsada = quantUsada - estoque.get(0).getQuantidade();
+								estoque.remove(0);
+								if (quantRestante == 0) {
+									break;
+								}
+							} 
+						}
 					}
 					
 					Double precoTotal = 0.0;
 					for (Prato prato : pratos) {
 						precoTotal += prato.getPreco();
 					}
-						
-					venda.setData(data);
+					
+					venda.setData(dia);
 					venda.setHorario(horario);
 					venda.setPratos(pratos);
 					venda.setPrecoTotal(precoTotal);

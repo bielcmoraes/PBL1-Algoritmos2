@@ -31,6 +31,12 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		}
 		
 		String [] info2 = info[2].split(" ");
+		
+		if (info2.length != 2) {
+			// Formato da quantidade invalido
+			return false;
+		}
+		
 		Double quantidade;
 		try {
 			quantidade = Double.parseDouble(info2[0]);
@@ -65,7 +71,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		}
 		
 		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, info2[1], validade, fornecedores);
-		
+
 		try {
 			if (!listaProdutos.containsKey(novoProduto.getNome())) {
 				//Cria uma nova key na HashMap e adiciona o produto;

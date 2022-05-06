@@ -28,7 +28,7 @@ public interface VendaCopyable {
 	 * @param info Entradas do usuário
 	 * @return true se a venda for editada com sucesso e false se a venda não for editada com sucesso	 
 	 */
-	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info);
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos);
 	
 	/**Assinatura do metódo excluirVenda
 	 * 
