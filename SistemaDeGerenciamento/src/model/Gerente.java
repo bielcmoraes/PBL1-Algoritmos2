@@ -5,10 +5,17 @@ import java.util.HashMap;
 
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
+import exceptions.FormatoDataInvalido;
+import exceptions.FormatoIngredientesInvalido;
+import exceptions.FormatoQuantidadeInvalido;
+import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.QuantidadeInvalida;
 import exceptions.RelatorioNaoGerado;
 import exceptions.NaoEncontrado;
+import exceptions.PratoNaoCadastrado;
+import exceptions.PrecoInvalido;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
@@ -127,9 +134,15 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarProduto
+	 * @throws ErroGrave 
+	 * @throws FornecedorNaoCadastrado 
+	 * @throws FormatoDataInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws FormatoQuantidadeInvalido 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) throws PrecoInvalido, FormatoQuantidadeInvalido, QuantidadeInvalida, FormatoDataInvalido, FornecedorNaoCadastrado, ErroGrave {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.cadastrarProduto(listaProdutos, listaIds, info, listaFornecedor);
 	}
@@ -139,9 +152,15 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param codigoProduto Id do produto que deseja editar
 	 * @param info Entradas do usuário
 	 * @return Boolean editarProduto
+	 * @throws ErroGrave 
+	 * @throws FornecedorNaoCadastrado 
+	 * @throws FormatoDataInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws FormatoQuantidadeInvalido 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos,  String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos,  String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) throws PrecoInvalido, FormatoQuantidadeInvalido, QuantidadeInvalida, FormatoDataInvalido, FornecedorNaoCadastrado, ErroGrave {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.editarProduto(listaProdutos, codigoProduto, info, listaFornecedor);
 	}
@@ -151,9 +170,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoProduto Id do produto que deseja excluir
 	 * @return Boolean excluirProduto
+	 * @throws ErroGrave 
+	 * @throws ProdutoNaoCadastrado 
 	 */
 	@Override
-	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
+	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) throws ProdutoNaoCadastrado, ErroGrave {
 		GerenciaProdutos gerenciamentoProdutos = new GerenciaProdutos();
 		return gerenciamentoProdutos.excluirProduto(listaProdutos, listaIds, codigoProduto);
 	}
@@ -165,9 +186,13 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarPrato
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws ErroGrave 
+	 * @throws FormatoIngredientesInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado, PrecoInvalido, QuantidadeInvalida, FormatoIngredientesInvalido, ErroGrave{
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos, info);
 	}
@@ -179,9 +204,14 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param info Entradas do usuário
 	 * @return Boolean editarPrato
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws PratoNaoCadastrado 
+	 * @throws ErroGrave 
+	 * @throws FormatoIngredientesInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado, PrecoInvalido, QuantidadeInvalida, FormatoIngredientesInvalido, ErroGrave, PratoNaoCadastrado {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos, codigoPrato, info);
 	}
@@ -191,9 +221,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoPrato Id do prato que deseja editar
 	 * @return Boolean excluirPrato
+	 * @throws PratoNaoCadastrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
+	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) throws ErroGrave, PratoNaoCadastrado {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.excluirPrato(cardapio, listaIds, codigoPrato);
 	}

@@ -4,7 +4,12 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
+import exceptions.FormatoIngredientesInvalido;
+import exceptions.PratoNaoCadastrado;
+import exceptions.PrecoInvalido;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.QuantidadeInvalida;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir pratos da classe CardapioCopyable.
  * 
@@ -23,42 +28,50 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
-		Double preco = null;
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws 
+	PrecoInvalido, QuantidadeInvalida, ProdutoNaoCadastrado, FormatoIngredientesInvalido, ErroGrave {
 		try {
-			preco = Double.parseDouble(info[1]);
-		} catch (NumberFormatException e) {
-			// preco invalido
-		}
-		
-		String [] ingredientes = info[4].split(";");
-		HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
-		HashMap<String, Double> receita = new HashMap<String, Double>();
-		
-		if (ingredientes.length > 0 && ingredientes.length % 3 == 0) {
-			for (int i = 2; i < ingredientes.length; i+=3) {
-				if (listaProdutos.containsKey(ingredientes[i])) {
-					produtos.put(ingredientes[i], listaProdutos.get(ingredientes[i]));
-					Double quantidade = null;
-					try {
-						quantidade = Double.parseDouble(ingredientes[i-2]);
-					} catch (NumberFormatException e) {
-						// quantidade invalida
-					}
-					receita.put(ingredientes[i], quantidade);
-				} else {
-					throw new ProdutoNaoCadastrado(ingredientes[i]);
-				}
+			Double preco = null;
+			try {
+				preco = Double.parseDouble(info[1]);
+			} catch (NumberFormatException e) {
+				throw new PrecoInvalido();
 			}
 			
-			Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], produtos, receita);
-			cardapio.add(novoPrato);
-		} else {
-			// formato dos ingredientes invalidos
+			String [] ingredientes = info[4].split(";");
+			HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
+			HashMap<String, Double> receita = new HashMap<String, Double>();
+			
+			if (ingredientes.length > 0 && ingredientes.length % 3 == 0) {
+				for (int i = 2; i < ingredientes.length; i+=3) {
+					if (listaProdutos.containsKey(ingredientes[i])) {
+						produtos.put(ingredientes[i], listaProdutos.get(ingredientes[i]));
+						Double quantidade = null;
+						try {
+							quantidade = Double.parseDouble(ingredientes[i-2]);
+						} catch (NumberFormatException e) {
+							throw new QuantidadeInvalida();
+						}
+						receita.put(ingredientes[i], quantidade);
+					} else {
+						throw new ProdutoNaoCadastrado();
+					}
+				}
+				
+				Prato novoPrato = new Prato(listaIds, info[0], preco, info[2], info[3], produtos, receita);
+				cardapio.add(novoPrato);
+			} else {
+				throw new FormatoIngredientesInvalido();
+			}
+			return true;
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
-		return true;
 	}
 	/**
 	 * O método é responsável por editar um objeto do tipo Prato em uma ArrayList<Prato>.
@@ -71,9 +84,11 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws PratoNaoCadastrado 
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) 
+			throws PrecoInvalido, QuantidadeInvalida, ProdutoNaoCadastrado, FormatoIngredientesInvalido, ErroGrave, PratoNaoCadastrado {
 		
 		
 		try {
@@ -84,7 +99,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 					try {
 						preco = Double.parseDouble(info[1]);
 					} catch (NumberFormatException e) {
-						// preco invalido
+						throw new PrecoInvalido();
 					}
 					
 					String [] ingredientes = info[4].split(";");
@@ -99,11 +114,11 @@ public class GerenciaCardapio implements CardapioCopyable {
 								try {
 									quantidade = Double.parseDouble(ingredientes[i-2]);
 								} catch (NumberFormatException e) {
-									// quantidade invalida
+									throw new QuantidadeInvalida();
 								}
 								receita.put(ingredientes[i], quantidade);
 							} else {
-								throw new ProdutoNaoCadastrado(ingredientes[i]);
+								throw new ProdutoNaoCadastrado();
 							}
 						}
 					
@@ -112,15 +127,16 @@ public class GerenciaCardapio implements CardapioCopyable {
 						prato.setDescricao(info[2]);
 						prato.setCategoria(info[3]);
 					} else {
-						// formato dos ingredientes invalidos
+						throw new FormatoIngredientesInvalido();
 					}
 				}
 			}
-			//prato nao cadastrado
-		} catch (ArrayIndexOutOfBoundsException a) {
-			return false;
+			throw new PratoNaoCadastrado();
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
-		return false;
 	}
 	/**
 	 * O método é responsável por excluir um objeto do tipo Prato em uma ArrayList<Prato>.
@@ -129,9 +145,11 @@ public class GerenciaCardapio implements CardapioCopyable {
 	 * @param listaIds Lista de IDs
 	 * @param codigoPrato Codigo do prato a ser excluido
 	 * @return true caso a exclusão ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
+	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) 
+			throws ErroGrave, PratoNaoCadastrado {
 		
 		try {
 			for(Prato prato : cardapio) {
@@ -141,10 +159,11 @@ public class GerenciaCardapio implements CardapioCopyable {
 					return true;
 				}
 			}
+			throw new PratoNaoCadastrado();
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
-		catch(ArrayIndexOutOfBoundsException a) {
-			return false;
-		}
-		return false;
 	}
 }
