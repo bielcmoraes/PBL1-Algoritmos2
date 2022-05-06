@@ -6,6 +6,7 @@ import java.util.HashMap;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.FormatoDataInvalido;
+import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
@@ -13,6 +14,7 @@ import exceptions.ProdutoNaoCadastrado;
 import exceptions.QuantidadeInvalida;
 import exceptions.RelatorioNaoGerado;
 import exceptions.NaoEncontrado;
+import exceptions.PratoNaoCadastrado;
 import exceptions.PrecoInvalido;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
@@ -184,9 +186,13 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarPrato
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws ErroGrave 
+	 * @throws FormatoIngredientesInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado{
+	public boolean cadastrarPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, HashMap<String, ArrayList<Produto>> listaProdutos, String [] info) throws NumberFormatException, ProdutoNaoCadastrado, PrecoInvalido, QuantidadeInvalida, FormatoIngredientesInvalido, ErroGrave{
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.cadastrarPrato(cardapio, listaIds, listaProdutos, info);
 	}
@@ -198,9 +204,14 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param info Entradas do usuário
 	 * @return Boolean editarPrato
 	 * @throws ProdutoNaoCadastrado 
+	 * @throws PratoNaoCadastrado 
+	 * @throws ErroGrave 
+	 * @throws FormatoIngredientesInvalido 
+	 * @throws QuantidadeInvalida 
+	 * @throws PrecoInvalido 
 	 */
 	@Override
-	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado {
+	public boolean editarPrato(ArrayList<Prato> cardapio, HashMap<String, ArrayList<Produto>> listaProdutos, String codigoPrato, String [] info) throws ProdutoNaoCadastrado, PrecoInvalido, QuantidadeInvalida, FormatoIngredientesInvalido, ErroGrave, PratoNaoCadastrado {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.editarPrato(cardapio, listaProdutos, codigoPrato, info);
 	}
@@ -210,9 +221,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de id's
 	 * @param codigoPrato Id do prato que deseja editar
 	 * @return Boolean excluirPrato
+	 * @throws PratoNaoCadastrado 
+	 * @throws ErroGrave 
 	 */
 	@Override
-	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) {
+	public boolean excluirPrato(ArrayList<Prato> cardapio, ArrayList<String> listaIds, String codigoPrato) throws ErroGrave, PratoNaoCadastrado {
 		GerenciaCardapio gerenciamentoCardapio = new GerenciaCardapio();
 		return gerenciamentoCardapio.excluirPrato(cardapio, listaIds, codigoPrato);
 	}

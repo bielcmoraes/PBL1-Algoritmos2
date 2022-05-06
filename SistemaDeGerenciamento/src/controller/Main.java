@@ -14,6 +14,7 @@ import PreCadastro.PreCadastro;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.FormatoDataInvalido;
+import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
@@ -21,6 +22,7 @@ import exceptions.ProdutoNaoCadastrado;
 import exceptions.QuantidadeInvalida;
 import exceptions.RelatorioNaoGerado;
 import exceptions.NaoEncontrado;
+import exceptions.PratoNaoCadastrado;
 import exceptions.PrecoInvalido;
 import model.BancoDeDados;
 import model.Funcionario;
@@ -182,18 +184,11 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Prato");
 							String[] infoCadastro = CardapioView.cadastrarPrato();
-							boolean cadastrarPrato = false;
 							try {
-								cadastrarPrato = ((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
-							} catch (NumberFormatException e) {
-								System.out.println("\nValor Inválido\n");
-							} catch (ProdutoNaoCadastrado e) {
-								System.out.println("\nProduto Inválido\n");
+								((Gerente) usuarioLogado).cadastrarPrato(dados.getCardapio(), dados.getListaIds(), dados.getListaProdutos(), infoCadastro);
+							} catch (PrecoInvalido | QuantidadeInvalida | FormatoIngredientesInvalido
+									| ErroGrave | NumberFormatException | ProdutoNaoCadastrado e) {
 								System.out.println(e.toString());
-							}
-							
-							if(cadastrarPrato == false) {
-								SubMenuView.erroGerenciamentos();
 							}
 							break;
 						case 2:
@@ -202,16 +197,18 @@ public class Main {
 							String [] infoEdicao = CardapioView.editarPrato();
 							try {
 								((Gerente) usuarioLogado).editarPrato(dados.getCardapio(), dados.getListaProdutos(), codigoPratoEdit, infoEdicao);
-							} catch (ProdutoNaoCadastrado e) {
+							} catch (PrecoInvalido | QuantidadeInvalida | FormatoIngredientesInvalido | ErroGrave
+									| PratoNaoCadastrado | ProdutoNaoCadastrado e) {
 								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Prato");
 							String codigoPratoDel = CardapioView.buscaPrato();
-							boolean excluirPrato = ((Gerente) usuarioLogado).excluirPrato(dados.getCardapio(), dados.getListaIds(), codigoPratoDel);
-							if(excluirPrato == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).excluirPrato(dados.getCardapio(), dados.getListaIds(), codigoPratoDel);
+							} catch (ErroGrave | PratoNaoCadastrado e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:

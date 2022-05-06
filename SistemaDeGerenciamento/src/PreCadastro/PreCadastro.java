@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import exceptions.ErroGrave;
 import exceptions.FormatoDataInvalido;
+import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
 import exceptions.PrecoInvalido;
@@ -158,26 +159,30 @@ public class PreCadastro {
 		info[2] = "Cachorro Quente Simples";//descricao;
 		info[3] = "Lanche";//categoria;
 		info[4] = "1;un;Salsicha;1;un;Pao;";//ingredientes;
+
 		try {
 			gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), info);
-		} catch (NumberFormatException e) {
-			
-		} catch (ProdutoNaoCadastrado e) {
-			
+		} catch (PrecoInvalido | QuantidadeInvalida | ProdutoNaoCadastrado | FormatoIngredientesInvalido
+				| ErroGrave e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+
 		
 		info[0] = "Pure de Batata";//nome;
 		info[1] = "5";//preco;
 		info[2] = "Pure de Batata Simples";//descricao;
 		info[3] = "Acompanhamento";//categoria;
 		info[4] = "0.5;kg;Batata;0.5;l;Leite;";//ingredientes;
+
 		try {
 			gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), info);
-		} catch (NumberFormatException e) {
-			
-		} catch (ProdutoNaoCadastrado e) {
-			
-		}	
+		} catch (PrecoInvalido | QuantidadeInvalida | ProdutoNaoCadastrado | FormatoIngredientesInvalido
+				| ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 	
 	public void preCadastrarVendas(BancoDeDados bancoDeDados) {
