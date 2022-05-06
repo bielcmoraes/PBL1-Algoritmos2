@@ -221,9 +221,9 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
-			String[] info) {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
-		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info);
+		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info, listaProdutos);
 	}
 	
 	/**Metódo para instanciar um objeto do tipo GerenciaVendas e retornar o método excluirVenda.

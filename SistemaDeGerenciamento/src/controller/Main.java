@@ -121,7 +121,7 @@ public class Main {
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							boolean editarVenda = ((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							boolean editarVenda = ((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							if(editarVenda == false) {
 								SubMenuView.erroGerenciamentos();
 							}
@@ -365,7 +365,7 @@ public class Main {
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							boolean editarVenda = ((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda);
+							boolean editarVenda = ((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							if(editarVenda == false) {
 								SubMenuView.erroGerenciamentos();
 							}
