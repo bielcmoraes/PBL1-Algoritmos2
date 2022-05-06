@@ -31,7 +31,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	throw new RelatorioNaoGerado("Relatorio de estoque total");
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
@@ -51,7 +55,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	return false;
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 		
 	}
 
@@ -93,7 +101,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	return false;
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 
@@ -115,7 +127,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	return false;
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 
@@ -137,7 +153,11 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	return false;
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 
@@ -162,7 +182,10 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas diarias");
 	        	
-	        }
+	        } catch (ErroGrave e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			try {
 				//Relatorio de vendas semanais
@@ -178,7 +201,10 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas semanais");
 	        	
-	        }
+	        } catch (ErroGrave e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			try {
 				
@@ -194,7 +220,10 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 	        } catch (FileNotFoundException e) {
 	        	throw new RelatorioNaoGerado("Relatorio de vendas mensais");
 	        	
-	        }
+	        } catch (ErroGrave e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			return true;
 			
@@ -221,7 +250,12 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         } catch (FileNotFoundException e) {
         	return false;
         	
-        }
+        } catch (ErroGrave e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
 		
 	}
 

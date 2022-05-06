@@ -11,6 +11,7 @@ import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
 import PreCadastro.PreCadastro;
+import exceptions.ErroGrave;
 import model.BancoDeDados;
 import model.Fornecedor;
 import model.GeraTabela;
@@ -22,25 +23,20 @@ import model.Venda;
 
 public class Main2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DocumentException, FileNotFoundException, ErroGrave {
 		
-		ArrayList<Produto> test = new ArrayList();
-		test = null;
-		for(Produto produto: test) {
-			System.out.println("AAAAAAAAAAA");
-		}
-		System.out.println("BBBBBB");
-		/*
+		
+		
 		BancoDeDados dados = new BancoDeDados();
 		PreCadastro preCadastro = new PreCadastro();
 		preCadastro.PreCadastrarFornecedores(dados);
 		preCadastro.PreCadastrarProdutos(dados);
 		preCadastro.PreCadastrarPratos(dados);
-		preCadastro.preCadastrarVendas(dados);
+		preCadastro.preCadastrarVendas(dados); 
 		
 		
-		LocalDate validade = LocalDate.of(2022, 05, 06);
-		LocalDate validadeVencida = LocalDate.of(2021, 10, 04);
+		LocalDate validade = LocalDate.of(2022, 05, 07);
+		LocalDate validadeVencida = LocalDate.of(2022, 10, 04);
 		ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 		
 		Produto pertoDeVencer = new Produto(dados.getListaIds(), "Pao", 0.5, 10.0, "Un", validade, fornecedores);
@@ -51,8 +47,7 @@ public class Main2 {
 		dados.getListaProdutos().get(pertoDeVencer.getNome()).add(pertoDeVencer);
 		GeraTabela tabela = new GeraTabela();
 		
-		Relatorio r = new Relatorio(tabela.vendasNosUltimosSeteDias(dados.getListaVendas()));
-		*/
+		Relatorio r = new Relatorio(tabela.estoqueProdutosPertoDeVencer(dados.getListaProdutos()), "relatorio X");
 		
 		/*
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
