@@ -56,8 +56,6 @@ public class GerenciaUsuario implements UsuarioCopyable {
 			}else {
 				throw new EscolhaIncorreta();
 			}
-		}catch(ArrayIndexOutOfBoundsException a){
-			throw new ErroGrave();
 		}catch(NullPointerException n) {
 			throw new ErroGrave();
 		}
@@ -85,8 +83,6 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					throw new NaoEncontrado("Usuário");
 				}
 			}
-		}catch(ArrayIndexOutOfBoundsException a){
-			throw new ErroGrave();
 		}catch(NullPointerException n) {
 			throw new ErroGrave();
 		}
@@ -115,8 +111,6 @@ public class GerenciaUsuario implements UsuarioCopyable {
 					throw new NaoEncontrado("Usuário");
 				}
 			}
-		}catch(ArrayIndexOutOfBoundsException a){
-			throw new ErroGrave();
 		}catch(NullPointerException n) {
 			throw new ErroGrave();
 		}

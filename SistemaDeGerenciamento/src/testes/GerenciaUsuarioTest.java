@@ -96,6 +96,19 @@ class GerenciaUsuarioTest {
 	}
 	
 	@Test
+	void cadastrandoComOpcaoErrada() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave {
+		BancoDeDados bd  = new BancoDeDados();
+		GerenciaUsuario gu = new GerenciaUsuario();
+		String [] info = new String[4];
+		info[0] = "Pernalonga";
+		info[1] = "6";
+		info[2] = "velhinho";
+		info[3] = "queqha";
+		assertThrows(EscolhaIncorreta.class, () -> gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com sucesso");
+	}
+	
+	
+	@Test
 	void cadastrandoGerenteComSucesso() throws EscolhaIncorreta, LoginJaCadastrado, ErroGrave{
 		BancoDeDados bd  = new BancoDeDados();
 		GerenciaUsuario gu = new GerenciaUsuario();
@@ -104,7 +117,7 @@ class GerenciaUsuarioTest {
 		info[1] = "1";
 		info[2] = "velhinho";
 		info[3] = "queqha";
-		assertTrue(gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com mesmo login");
+		assertTrue(gu.cadastrarUsuario(bd.getListaUsuarios(), bd.getListaIds(), info), "Cadastrando gerente com sucesso");
 		
 	}
 	
