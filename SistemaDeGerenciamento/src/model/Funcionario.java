@@ -3,6 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
+import exceptions.FormatoDataInvalido;
+import exceptions.FormatoHorarioInvalido;
+import exceptions.PratoNaoCadastrado;
+import exceptions.QuantidadeProdutosInsuficiente;
+import exceptions.VendaNaoCadastrada;
 import view.ListagemView;
 /**Classe para objetos do tipo Funcionario, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
@@ -28,10 +34,13 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param info Entradas do usuário
 	 * @return Boolean cadastrarVenda
+	 * @throws ErroGrave 
+	 * @throws QuantidadeProdutosInsuficiente 
+	 * @throws PratoNaoCadastrado 
 	 */
 	@Override
 	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
-			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.cadastrarVenda(listaVendas, listaIds, cardapio, info, listaProdutos);
 	}
@@ -42,10 +51,15 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @param info Entradas do Usuario
 	 * @return Boolean editarVenda
+	 * @throws ErroGrave 
+	 * @throws QuantidadeProdutosInsuficiente 
+	 * @throws PratoNaoCadastrado 
+	 * @throws FormatoHorarioInvalido 
+	 * @throws FormatoDataInvalido 
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
-			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info, listaProdutos);
 	}
@@ -55,9 +69,11 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @param listaIds Lista de ids
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @return Boolean excluirVenda
+	 * @throws ErroGrave 
+	 * @throws VendaNaoCadastrada 
 	 */
 	@Override
-	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
+	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) throws VendaNaoCadastrada, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.excluirVenda(listaVendas, listaIds, codigoVenda);
 	}

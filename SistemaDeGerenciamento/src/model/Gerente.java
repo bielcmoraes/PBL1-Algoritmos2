@@ -6,13 +6,16 @@ import java.util.HashMap;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.FormatoDataInvalido;
+import exceptions.FormatoHorarioInvalido;
 import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.QuantidadeInvalida;
+import exceptions.QuantidadeProdutosInsuficiente;
 import exceptions.RelatorioNaoGerado;
+import exceptions.VendaNaoCadastrada;
 import exceptions.NaoEncontrado;
 import exceptions.PratoNaoCadastrado;
 import exceptions.PrecoInvalido;
@@ -236,10 +239,13 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param cardapio Cardapio (lista de pratos)
 	 * @param info Entradas do Usuario
 	 * @return Boolean cadastrarVenda
+	 * @throws ErroGrave 
+	 * @throws QuantidadeProdutosInsuficiente 
+	 * @throws PratoNaoCadastrado 
 	 */
 	@Override
 	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio,
-			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.cadastrarVenda(listaVendas, listaIds, cardapio, info, listaProdutos);
 	}
@@ -250,10 +256,15 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @param info Entradas do Usuario
 	 * @return Boolean editarVenda
+	 * @throws ErroGrave 
+	 * @throws QuantidadeProdutosInsuficiente 
+	 * @throws PratoNaoCadastrado 
+	 * @throws FormatoHorarioInvalido 
+	 * @throws FormatoDataInvalido 
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
-			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info, listaProdutos);
 	}
@@ -263,9 +274,11 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 	 * @param listaIds Lista de ids
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @return Boolean excluirVenda
+	 * @throws ErroGrave 
+	 * @throws VendaNaoCadastrada 
 	 */
 	@Override
-	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
+	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) throws VendaNaoCadastrada, ErroGrave {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.excluirVenda(listaVendas, listaIds, codigoVenda);
 	}
