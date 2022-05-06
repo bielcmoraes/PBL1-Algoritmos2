@@ -49,7 +49,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 					}
 					receita.put(ingredientes[i], quantidade);
 				} else {
-					throw new ProdutoNaoCadastrado(ingredientes[i]);
+					throw new ProdutoNaoCadastrado();
 				}
 			}
 			

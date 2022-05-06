@@ -5,6 +5,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
+import exceptions.FormatoDataInvalido;
+import exceptions.FormatoQuantidadeInvalido;
+import exceptions.FornecedorNaoCadastrado;
+import exceptions.PrecoInvalido;
+import exceptions.ProdutoNaoCadastrado;
+import exceptions.QuantidadeInvalida;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir produto que foram especificados na classe ProdutoCopyable.
  * 
  *  @author Gabriel Moraes e Luis Fernando Cintra
@@ -21,27 +29,29 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean cadastrarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String [] info, ArrayList<Fornecedor> listaFornecedor) 
+			throws PrecoInvalido, FormatoQuantidadeInvalido, QuantidadeInvalida, FormatoDataInvalido, FornecedorNaoCadastrado, ErroGrave{
 		
 		Double preco;
 		try {
+			
 			preco = Double.parseDouble(info[1]);
-		} catch (java.lang.NumberFormatException a) {
-			return false;
+		} catch (java.lang.NumberFormatException e) {
+			throw new PrecoInvalido();
 		}
+		
 		
 		String [] info2 = info[2].split(" ");
 		
 		if (info2.length != 2) {
-			// Formato da quantidade invalido
-			return false;
+			throw new FormatoQuantidadeInvalido();
 		}
 		
 		Double quantidade;
 		try {
 			quantidade = Double.parseDouble(info2[0]);
-		} catch (java.lang.NumberFormatException a) {
-			return false;
+		} catch (java.lang.NumberFormatException e) {
+			throw new QuantidadeInvalida();
 		}
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -49,7 +59,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		try {
 			validade = LocalDate.parse(info[3], formatoData);
 		} catch (java.time.format.DateTimeParseException a) {
-			return false;
+			throw new FormatoDataInvalido();
 		}
 		
 		
@@ -67,7 +77,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		
 		//Garante que os fornecedores adicionados estejam na lista de fornecedores
 		if (fornecedores.size() != info[4].split(", ").length) {
-			return false;
+			throw new FornecedorNaoCadastrado();
 		}
 		
 		Produto novoProduto = new Produto(listaIds, info[0], preco, quantidade, info2[1], validade, fornecedores);
@@ -89,9 +99,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			//Adiciona o produto a uma key ja existente da HashMap
 			listaProdutos.get(novoProduto.getNome()).add(novoProduto);
 			return true;
-		} 
-		catch(ArrayIndexOutOfBoundsException a){
-			return false;
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
 	}
 	/**
@@ -105,7 +116,8 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) {
+	public boolean editarProduto(HashMap<String, ArrayList<Produto>> listaProdutos, String codigoProduto, String [] info, ArrayList<Fornecedor> listaFornecedor) 
+			throws PrecoInvalido, FormatoQuantidadeInvalido, QuantidadeInvalida, FormatoDataInvalido, FornecedorNaoCadastrado, ErroGrave {
 		
 		try {
 			for(ArrayList<Produto> estoque : listaProdutos.values()) {
@@ -116,15 +128,20 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						try {
 							preco = Double.parseDouble(info[1]);
 						} catch (java.lang.NumberFormatException a) {
-							return false;
+							throw new PrecoInvalido();
 						}
 						
 						String [] info2 = info[2].split(" ");
+						
+						if (info2.length != 2) {
+							throw new FormatoQuantidadeInvalido();
+						}
+						
 						Double quantidade;
 						try {
 							quantidade = Double.parseDouble(info2[0]);
 						} catch (java.lang.NumberFormatException a) {
-							return false;
+							throw new QuantidadeInvalida();
 						}
 						
 						DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -132,7 +149,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						try {
 							validade = LocalDate.parse(info[3], formatoData);
 						} catch (java.time.format.DateTimeParseException a) {
-							return false;
+							throw new FormatoDataInvalido();
 						}
 						
 						ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
@@ -146,7 +163,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						
 						//Garante que os fornecedores estejam na lista de fornecedores
 						if (fornecedores.size() != info[4].split(", ").length) {
-							return false;
+							throw new FornecedorNaoCadastrado();
 						}
 						
 						produto.setNome(info[0]);
@@ -161,7 +178,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 				}
 			}
 		}
-		catch(ArrayIndexOutOfBoundsException a){
+		catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
 		return false;
 	}
@@ -174,7 +194,8 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
-	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) {
+	public boolean excluirProduto(HashMap<String, ArrayList<Produto>> listaProdutos, ArrayList<String> listaIds, String codigoProduto) 
+	throws ProdutoNaoCadastrado, ErroGrave {
 		
 		try {
 			for(ArrayList<Produto> estoque : listaProdutos.values()) {
@@ -186,10 +207,12 @@ public class GerenciaProdutos implements ProdutoCopyable {
 					}
 				}
 			}
+			throw new ProdutoNaoCadastrado();
 		}
-		catch(ArrayIndexOutOfBoundsException a) {
-			return false;
+		catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
-		return false;
 	}
 }

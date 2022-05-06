@@ -13,10 +13,15 @@ package controller;
 import PreCadastro.PreCadastro;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
+import exceptions.FormatoDataInvalido;
+import exceptions.FormatoQuantidadeInvalido;
+import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
+import exceptions.QuantidadeInvalida;
 import exceptions.RelatorioNaoGerado;
 import exceptions.NaoEncontrado;
+import exceptions.PrecoInvalido;
 import model.BancoDeDados;
 import model.Funcionario;
 import model.Gerente;
@@ -218,26 +223,31 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Produtos");
 							String[] infoCadastroProduto = ProdutosView.cadastrarProduto();
-							boolean cadastrarProduto = ((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto, dados.getListaFornecedores());
-							if(cadastrarProduto == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).cadastrarProduto(dados.getListaProdutos(), dados.getListaIds(), infoCadastroProduto, dados.getListaFornecedores());
+							} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida
+									| FormatoDataInvalido | FornecedorNaoCadastrado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 2:
 							System.out.println("Editando Produtos");
 							String codigoProdutoEdit = ProdutosView.buscaProduto();
 							String [] infoProdutoEdit = ProdutosView.editarProduto();
-							boolean editarProduto = ((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit, dados.getListaFornecedores());
-							if(editarProduto == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).editarProduto(dados.getListaProdutos(), codigoProdutoEdit, infoProdutoEdit, dados.getListaFornecedores());
+							} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida
+									| FormatoDataInvalido | FornecedorNaoCadastrado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Produtos");
 							String codigoProdutoDel = ProdutosView.buscaProduto();
-							boolean excluirProduto = ((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos(), dados.getListaIds(), codigoProdutoDel);
-							if(excluirProduto == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).excluirProduto(dados.getListaProdutos(), dados.getListaIds(), codigoProdutoDel);
+							} catch (ProdutoNaoCadastrado | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:

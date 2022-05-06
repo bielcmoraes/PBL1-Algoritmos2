@@ -2,15 +2,12 @@ package exceptions;
 
 public class ProdutoNaoCadastrado extends Exception{
 	
-	private String produto;
-	
-	public ProdutoNaoCadastrado(String produto) {
+	public ProdutoNaoCadastrado() {
 		super();
-		this.produto = produto;
 	}
 	
 	@Override
 	public String toString() {
-		return produto + "não cadastrado";
+		return "Produto nao cadastrado!";
 	}
 }
