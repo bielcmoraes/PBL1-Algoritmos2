@@ -1,8 +1,5 @@
 package PreCadastro;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import exceptions.ErroGrave;
 import exceptions.FormatoDataInvalido;
 import exceptions.FormatoIngredientesInvalido;
@@ -16,8 +13,6 @@ import model.GerenciaCardapio;
 import model.GerenciaFornecedor;
 import model.GerenciaProdutos;
 import model.GerenciaVendas;
-import model.Prato;
-import model.Produto;
 
 public class PreCadastro {
 	
