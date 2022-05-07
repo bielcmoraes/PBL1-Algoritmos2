@@ -5,9 +5,11 @@ import exceptions.FormatoDataInvalido;
 import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
+import exceptions.PratoNaoCadastrado;
 import exceptions.PrecoInvalido;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.QuantidadeInvalida;
+import exceptions.QuantidadeProdutosInsuficiente;
 import model.BancoDeDados;
 import model.GerenciaCardapio;
 import model.GerenciaFornecedor;
@@ -29,8 +31,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Leite";//nome;
@@ -42,8 +43,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Pao";//nome;
@@ -55,8 +55,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Pao";//nome;
@@ -68,8 +67,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Pao";//nome;
@@ -81,8 +79,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Salsicha";//nome;
@@ -94,8 +91,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Salsicha";//nome;
@@ -107,8 +103,7 @@ public class PreCadastro {
 			gerenciaProdutos.cadastrarProduto(bancoDeDados.getListaProdutos(), bancoDeDados.getListaIds(), info, bancoDeDados.getListaFornecedores());
 		} catch (PrecoInvalido | FormatoQuantidadeInvalido | QuantidadeInvalida | FormatoDataInvalido
 				| FornecedorNaoCadastrado | ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 	
@@ -159,8 +154,7 @@ public class PreCadastro {
 			gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), info);
 		} catch (PrecoInvalido | QuantidadeInvalida | ProdutoNaoCadastrado | FormatoIngredientesInvalido
 				| ErroGrave e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println(e1.toString());
 		}
 
 		
@@ -174,8 +168,7 @@ public class PreCadastro {
 			gerenciaCardapio.cadastrarPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), bancoDeDados.getListaProdutos(), info);
 		} catch (PrecoInvalido | QuantidadeInvalida | ProdutoNaoCadastrado | FormatoIngredientesInvalido
 				| ErroGrave e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	
 	}
@@ -190,9 +183,8 @@ public class PreCadastro {
 		
 		try {
 			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
-		
-		}catch (NumberFormatException e) {
-			
+		} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Pure de Batata";
@@ -200,27 +192,27 @@ public class PreCadastro {
 		
 		try {
 			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
-		
-		}catch (NumberFormatException e) {
-			
+		} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Cachorro Quente, Pure de Batata";
 		info[1] = "Credito";
+		
 		try {
 			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
-		
-		}catch (NumberFormatException e) {
-			
+		} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+			System.out.println(e.toString());
 		}
 		
 		info[0] = "Pure de Batata, Cachorro Quente";
 		info[1] = "Dinheiro";
+
 		try {
 			gerenciaVendas.cadastrarVenda(bancoDeDados.getListaVendas(), bancoDeDados.getListaIds(), bancoDeDados.getCardapio(), info, bancoDeDados.getListaProdutos());
-		
-		}catch (NumberFormatException e) {
-			
+		} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+			System.out.println(e.toString());
 		}
+		
 	}
 }

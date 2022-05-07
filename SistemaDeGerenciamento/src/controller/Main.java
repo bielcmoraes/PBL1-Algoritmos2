@@ -14,13 +14,16 @@ import PreCadastro.PreCadastro;
 import exceptions.ErroGrave;
 import exceptions.EscolhaIncorreta;
 import exceptions.FormatoDataInvalido;
+import exceptions.FormatoHorarioInvalido;
 import exceptions.FormatoIngredientesInvalido;
 import exceptions.FormatoQuantidadeInvalido;
 import exceptions.FornecedorNaoCadastrado;
 import exceptions.LoginJaCadastrado;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.QuantidadeInvalida;
+import exceptions.QuantidadeProdutosInsuficiente;
 import exceptions.RelatorioNaoGerado;
+import exceptions.VendaNaoCadastrada;
 import exceptions.NaoEncontrado;
 import exceptions.PratoNaoCadastrado;
 import exceptions.PrecoInvalido;
@@ -119,26 +122,30 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							boolean cadastrarVenda = ((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
-							if(cadastrarVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
+							} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 2:
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							boolean editarVenda = ((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
-							if(editarVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
+							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
+									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Vendas");
 							String codigoVendaDel = VendaView.buscaVenda();
-							boolean excluirVenda = ((Gerente) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
-							if(excluirVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Gerente) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							} catch (VendaNaoCadastrada | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:
@@ -362,26 +369,30 @@ public class Main {
 						case 1:
 							System.out.println("Cadastrando Vendas");
 							String[] info = VendaView.cadastrarVenda();
-							boolean cadastrarVenda = ((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
-							if(cadastrarVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Funcionario) usuarioLogado).cadastrarVenda(dados.getListaVendas(), dados.getListaIds(), dados.getCardapio(), info, dados.getListaProdutos());
+							} catch (PratoNaoCadastrado | QuantidadeProdutosInsuficiente | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 2:
 							System.out.println("Editando Vendas");
 							String codigoVendaEdit = VendaView.buscaVenda();
 							String [] infoEditVenda = VendaView.editarVenda();
-							boolean editarVenda = ((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
-							if(editarVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
+							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
+									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 3:
 							System.out.println("Excluindo Vendas");
 							String codigoVendaDel = VendaView.buscaVenda();
-							boolean excluirVenda = ((Funcionario) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
-							if(excluirVenda == false) {
-								SubMenuView.erroGerenciamentos();
+							try {
+								((Funcionario) usuarioLogado).excluirVenda(dados.getListaVendas(), dados.getListaIds(), codigoVendaDel);
+							} catch (VendaNaoCadastrada | ErroGrave e) {
+								System.out.println(e.toString());
 							}
 							break;
 						case 4:

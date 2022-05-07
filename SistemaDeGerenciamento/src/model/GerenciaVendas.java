@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import exceptions.ErroGrave;
+import exceptions.FormatoDataInvalido;
+import exceptions.FormatoHorarioInvalido;
+import exceptions.PratoNaoCadastrado;
+import exceptions.QuantidadeProdutosInsuficiente;
+import exceptions.VendaNaoCadastrada;
+
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir vendas da classe VendaCopyable.
  * 
  * @author Gabriel Moraes e Luis Fernando Cintra
@@ -23,9 +30,12 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @param cardapio Lista de Pratos
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 * @throws QuantidadeProdutosInsuficiente 
+	 * @throws PratoNaoCadastrado 
 	 */
 	@Override
-	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean cadastrarVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, ArrayList<Prato> cardapio, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos)
+			throws PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
 		
 		ArrayList<Prato> pratos = new ArrayList<Prato>();
 		for (String pratoNome : info[0].split(", ")) {
@@ -37,8 +47,7 @@ public class GerenciaVendas implements VendaCopyable {
 		}
 		
 		if (pratos.size() != info[0].split(", ").length) {
-			// prato não cadastrado
-			return false;
+			throw new PratoNaoCadastrado();
 		}
 		
 		HashMap<String, Double> ingredientesTotal = new HashMap<String, Double>();
@@ -64,8 +73,7 @@ public class GerenciaVendas implements VendaCopyable {
 		
 		for (String produto : ingredientesTotal.keySet()) {
 			if (estoqueTotal.get(produto) < ingredientesTotal.get(produto)) {
-				// Quantidade de <produto> insuficiente para o prato
-				return false;
+				throw new QuantidadeProdutosInsuficiente();
 			}
 		}
 		
@@ -99,9 +107,10 @@ public class GerenciaVendas implements VendaCopyable {
 		try {
 			listaVendas.add(novaVenda);
 			return true;
-		} 
-		catch(ArrayIndexOutOfBoundsException a){
-			return false;
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
 	}
 	/**
@@ -116,7 +125,8 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
-	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) {
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) 
+			throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave{
 		
 		try {
 			for(Venda venda : listaVendas) {
@@ -127,7 +137,7 @@ public class GerenciaVendas implements VendaCopyable {
 					try {
 						dia = LocalDate.parse(info[0], formatoData);
 					} catch (java.time.format.DateTimeParseException a) {
-						return false;
+						throw new FormatoDataInvalido();
 					}
 					
 					DateTimeFormatter formatoHorario = DateTimeFormatter.ofPattern("HH:mm");
@@ -135,7 +145,7 @@ public class GerenciaVendas implements VendaCopyable {
 					try {
 						horario = LocalTime.parse(info[1], formatoHorario);
 					} catch (java.time.format.DateTimeParseException a) {
-						return false;
+						throw new FormatoHorarioInvalido();
 					}
 
 					ArrayList<Prato> pratos = new ArrayList<Prato>();
@@ -148,11 +158,9 @@ public class GerenciaVendas implements VendaCopyable {
 					}
 	
 					if (pratos.size() != info[2].split(", ").length) {
-						// prato não cadastrado
-						return false;
+						throw new PratoNaoCadastrado();
 					}
 					
-					System.out.println("chegou aqui 4// chegou aqui 4// chegou aqui 4");
 					HashMap<String, Double> ingredientesTotal = new HashMap<String, Double>();
 					for (Prato prato : pratos) {
 						for (String produto : prato.getReceita().keySet()) {
@@ -199,8 +207,7 @@ public class GerenciaVendas implements VendaCopyable {
 					
 					for (String produto : ingredientesTotal.keySet()) {
 						if (estoqueTotal.get(produto) < ingredientesTotal.get(produto)) {
-							// Quantidade de <produto> insuficiente para o prato
-							return false;
+							throw new QuantidadeProdutosInsuficiente();
 						}
 					}
 					
@@ -237,9 +244,10 @@ public class GerenciaVendas implements VendaCopyable {
 					return true;
 				}
 			}
-		}
-		catch(ArrayIndexOutOfBoundsException a){
-			return false;
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
 		return false;
 	}
@@ -252,7 +260,8 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @return true caso a exclusão ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 */
 	@Override
-	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) {
+	public boolean excluirVenda(ArrayList<Venda> listaVendas, ArrayList<String> listaIds, String codigoVenda) 
+			throws VendaNaoCadastrada, ErroGrave {
 		
 		try {
 			for(Venda venda : listaVendas) {
@@ -262,10 +271,11 @@ public class GerenciaVendas implements VendaCopyable {
 					return true;
 				}
 			}
+			throw new VendaNaoCadastrada();
+		} catch(ArrayIndexOutOfBoundsException e1) {
+			throw new ErroGrave();
+		} catch(NullPointerException e2) {
+			throw new ErroGrave();
 		}
-		catch(ArrayIndexOutOfBoundsException a) {
-			return false;
-		}
-		return false;
 	}
 }
