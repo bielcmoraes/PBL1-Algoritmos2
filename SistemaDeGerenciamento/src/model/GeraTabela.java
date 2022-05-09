@@ -16,12 +16,22 @@ import com.lowagie.text.Table;
 
 import exceptions.ErroGrave;
 
-/**
+/**Classe respónsavel por implementar métodos que geram as diferentes tabelas que serão utilizadas para gerar os relatórios PDFs.
+ * 
  * @author Gabriel Moraes
- *
+ * @author Luis Fernando Cintra
  */
 public class GeraTabela {
 	
+	/* O método percorre o HashMap que armazena todos os produtos cadastrados no sistema, adiciona as informações de ID, nome,
+	 * validade e quantidade correspondente a cada produto às linhas da tabela e, conta a quantidade de produtos cadastrados
+	 * sistema adicionando esse valor à última célula da tabela. Caso a o HashMap de produtos esteja vazio um texto informando
+	 * que o estoque está vazio é adicionado à tabela.
+	 * 
+	 * @param listaProdutos HashMap de Produtos
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		int produtosCadastrados = 0;
@@ -70,6 +80,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o HashMap que armazena todos os produtos cadastrados no sistema, adiciona as informações de ID, nome,
+	 * e quantidade total de cada produto às linhas da tabela. Caso a o HashMap de produtos esteja vazio um texto informando
+	 * que o estoque está vazio é adicionado à tabela.
+	 * 
+	 * @param listaProdutos HashMap de Produtos
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		Table tabela = new Table(3);
@@ -105,7 +123,15 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	
+	/* O método percorre o HashMap que armazena todos os produtos cadastrados no sistema, adiciona todos os produtos que faltam no máximo sete dias
+	 * para vencer à um ArrayList auxiliar de produtos e ordena o ArrayList de produtos próximos de vencer pela validade em ordem crescente. Em seguida 
+	 * adiciona as informações de ID, nome, validade e quantidade dos produtos próximo de vencer à tabela. Caso o ArrayList de produtos perto de vencer
+	 * esteja vazio um texto informando que não há produtos próximos de vencer é adicionado à tabela.
+	 * 
+	 * @param listaProdutos HashMap de Produtos
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -162,6 +188,15 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o HashMap que armazena todos os produtos cadastrados no sistema, adiciona todos os produtos vencidos à um ArrayList auxiliar 
+	 * de produtos e ordena o ArrayList de produtos vencidos pela validade em ordem crescente. Em seguida adiciona as informações de ID, nome, validade
+	 * e quantidade dos produtos vencidos à tabela. Caso o ArrayList de produtos vencidos esteja  vazio um texto informando que não há produtos vencidos 
+	 * é adicionado à tabela.
+	 * 
+	 * @param listaProdutos HashMap de Produtos
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table estoqueProdutosVencidos(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -218,7 +253,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
-	
+	/* O método percorre o HashMap que armazena todos os produtos cadastrados no sistema e adiciona o nome e os fornecedores de cada
+	 * produto ás linhas da tabela . Caso o ArrayList de produtos vencidos esteja  vazio um texto informando que não há produtos
+	 * cadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaProdutos HashMap de Produtos
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave {
 		
 		Table tabela = new Table(2);
@@ -255,6 +297,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/*O método percorre o ArrayList que armazena todos os fornecedores cadastrados no sistema e adiciona o nome dos fornecedores e os produtos
+	 *fornecidos por cada fornecedor ás linhas da tabela . Caso o ArrayList de produtos vencidos esteja  vazio um texto informando que não há 
+	 *produtoscadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaFornecedores Lista de Fornecedores
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws ErroGrave {
 		
 		Table tabela = new Table(2);
@@ -288,6 +338,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o ArrayList que armazena todos as vendas cadastrados no sistema e adiciona as informações de ID, data, horário, preço total,
+	 * método de pagamento e itens vendidos às linhas da tabela. Caso o ArrayList de produtos vencidos esteja  vazio um texto informando que não há 
+	 * produtoscadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaVendas Lista de Vendas
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
@@ -343,6 +401,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o ArrayList que armazena todos as vendas cadastrados no sistema e adiciona as informações de ID, data, horário, método
+	 * de pagamento e itens vendidos das vendas realizadas no dia às linhas da tabela. Caso o ArrayList de produtos vencidos esteja  vazio um 
+	 * texto informando que não há produtoscadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaVendas Lista de Vendas
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table vendasDiarias(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
@@ -395,6 +461,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o ArrayList que armazena todos as vendas cadastrados no sistema e adiciona as informações de ID, data, horário, método
+	 * de pagamento e itens vendidos das vendas realizadas nos últimos sete dias às linhas da tabela. Caso o ArrayList de produtos vencidos esteja  vazio um 
+	 * texto informando que não há produtoscadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaVendas Lista de Vendas
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table vendasSemanal(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
@@ -452,6 +526,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/* O método percorre o ArrayList que armazena todos as vendas cadastrados no sistema e adiciona as informações de ID, data, horário, método
+	 * de pagamento e itens vendidos das vendas realizadas no mês às linhas da tabela. Caso o ArrayList de produtos vencidos esteja  vazio um 
+	 * texto informando que não há produtoscadastrados no sistema é adicionado à tabela.
+	 * 
+	 * @param listaVendas Lista de Vendas
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table vendasMensais(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		double totalVendido = 0;
@@ -508,6 +590,14 @@ public class GeraTabela {
 		return tabela;
 	}
 	
+	/*  O método percorre o ArrayList que armazena todos as vendas cadastrados no sistema e adiciona a quantidade e o valor vendido de cada prato
+	 *  às linhas da tabela. Caso o ArrayList de produtos vencidos esteja  vazio um texto informando que não há produtoscadastrados no sistema é 
+	 *  adicionado à tabela.
+	 * 
+	 * @param listaVendas Lista de Vendas
+	 * @return Table tabela
+	 * @throws ErroGrave
+	 */
 	public Table vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave {
 		
 		Table tabela = new Table(3);

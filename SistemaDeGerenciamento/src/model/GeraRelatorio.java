@@ -11,10 +11,22 @@ import exceptions.ErroGrave;
 import exceptions.ProdutoNaoCadastrado;
 import exceptions.RelatorioNaoGerado;
 
+/**Classe respónsavel por implementar os métodos de gerar relatórios PDF que foram especificados na classe GeraRelatoriosCopyable.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class GeraRelatorio implements GeraRelatoriosCopyable {
-
+	
+	/*O método gera uma tabela do estoque total por meio do metódo estoqueTotal da classe GeraTabela e passa a tabela para o modelo de relatório 
+	 * que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
-	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave{
+	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		
 		try{
 			GeraTabela tabela = new GeraTabela();
@@ -30,7 +42,14 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         	
         }
 	}
-
+	
+	/*O método gera uma tabela do estoque pro produto através do metódo estoquePorProduto da classe GeraTabela e passa a tabela para o modelo de
+	 * relatório que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		try {
@@ -47,7 +66,16 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         }
 		
 	}
-
+	
+	/*O método gera duas tabelas: uma do estoque com os produtos vencidos e outra com os produtos que faltam no máximo sete dias
+	 * para vencer, através dos métodos estoqueProdutosVencidos e estoqueProdutosPertoDeVencer da classe GerarTabela, respectivamente. 
+	 * Passa as tabelas para o modelo de relatório que gera um relatório com ambas tabelas e retorna true. Trata erros relacionadoas a 
+	 * criação do documento lançando uma excessão do tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave, RelatorioNaoGerado {
 		
@@ -66,6 +94,13 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         }
 	}
 	
+	/*O método gera uma tabela dos fornecedores por produto através do metódo fornecedorPorProduto da classe GeraTabela e passa a tabela para o modelo de
+	 * relatório que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		
@@ -84,7 +119,15 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         }
 		
 	}
-
+	
+	/*O método gera uma tabela dos fornecedores por fornecedor através do metódo fornecedorPorFornecedor da classe GeraTabela e passa a tabela para 
+	 * o modelo de relatório que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do tipo 
+	 * RelatorioNaoGerado.
+	 *
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws RelatorioNaoGerado, ErroGrave {
 		
@@ -102,7 +145,14 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         	
         }
 	}
-
+	
+	/*O método gera uma tabela de vendas total através do metódo vendasTotal da classe GeraTabela e passa a tabela para o modelo de relatório
+	 * que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		
@@ -120,7 +170,17 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
         	
         }
 	}
-
+	
+	/*O método gera três tabelas: uma tabela contendo as vendas diárias, outra tabela contendo as vendas semanais e uma terceira contendo as vendas
+	 * mensais, através do métodos vendasDiarias, vendasSemanal e  vendasMensais, respectivamente, da classe GeraTabela. Passa as tabelas para o
+	 * três modelos de relatórios distindos que geram um relatório para cada periodo das vendas e retorna true ao final das operações. Trata erros
+	 * relacionadoas a criação do documento lançando uma excessão do tipo RelatorioNaoGerado, caso uma escessão do tipo RelatorioNaoGerado seja
+	 * lançada retorna false.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) throws ErroGrave {
 		GeraTabela tabela = new GeraTabela();
@@ -156,7 +216,7 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 			try {
 				
 				//Relatorio de vendas mensais
-				Table info = tabela.vendasSemanal(listaVendas);
+				Table info = tabela.vendasMensais(listaVendas);
 				new Relatorio(info, "Relatorio de vendas mensais");
 			}catch (DocumentException e) {
 				throw new RelatorioNaoGerado("Relatorio de vendas mensais");
@@ -172,6 +232,14 @@ public class GeraRelatorio implements GeraRelatoriosCopyable {
 		}
 	}
 	
+	/*O método gera uma tabela de vendas por tipo de prato através do metódo vendasPorTipoDePrato da classe GeraTabela e passa a tabela para
+	 * o modelo de relatório que gera o relatório e retorna true. Trata erros relacionadoas a criação do documento lançando uma excessão do
+	 * tipo RelatorioNaoGerado.
+	 * 
+	 * @return Boolean true
+	 * @throws RelatorioNaoGerado
+	 * @throws ErroGrave
+	 */
 	@Override
 	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		

@@ -8,6 +8,6 @@ public class EscolhaIncorreta extends Exception {
 	
 	@Override
 	public String toString() {
-		return "Opção incorreta.\n" + "Escolha uma opção válida!";
+		return "Opção incorreta. \nEscolha uma opção válida!";
 	}
 }

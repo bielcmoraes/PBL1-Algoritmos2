@@ -4,20 +4,28 @@ import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-
 import com.lowagie.text.Cell;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
+/**Classe para objetos do tipo Relatorio, onde são contidos, valores e metódos necessarios para implementação da classe.
+ * 
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
+ */
 public class Relatorio{
 	
-	//Construtores
+	/**Cria um novo documento PDF, adicona as informações de data e horário fornecedidos pelo sistema, tipo de relatório e a tabela que foi passada
+	 * como parâmetro ao documento criado. Por fim fecha o documento criado. 
+	 * 
+	 * @param tabela Tabela com as informações do relatório
+	 * @param tipoRelatorio Título do relatório
+	 * @throws DocumentException
+	 * @throws FileNotFoundException
+	 */
 	public Relatorio(Table tabela, String tipoRelatorio) throws DocumentException, FileNotFoundException {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -50,6 +58,14 @@ public class Relatorio{
             documentPDF.close();
 	}
 	
+	/**Cria um novo documento PDF, adicona as informações de data e horário fornecedidos pelo sistema, tipo de relatório e as duas tabelas que foram
+	 * passadas como parâmetro ao documento criado. Por fim fecha o documento criado. 
+	 * 
+	 * @param tabela Tabela com as informações do relatório
+	 * @param tipoRelatorio Título do relatório
+	 * @throws DocumentException
+	 * @throws FileNotFoundException
+	 */
 	public Relatorio(Table tabela1, Table tabela2, String tipoRelatorio) throws DocumentException, FileNotFoundException {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd-MM-yyyy");

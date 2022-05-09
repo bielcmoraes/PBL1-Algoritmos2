@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 /**Classe para objetos do tipo Produto, onde são contidos, valores e metódos necessarios para implementação da classe.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  * @see Entidade
  */
 public class Produto extends Entidade {

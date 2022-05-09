@@ -12,7 +12,8 @@ import exceptions.VendaNaoCadastrada;
 import view.ListagemView;
 /**Classe para objetos do tipo Funcionario, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  * @see Usuario
  */
 public class Funcionario extends Usuario implements VendaCopyable, ListagemCopyable{

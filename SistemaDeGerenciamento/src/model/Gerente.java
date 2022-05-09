@@ -22,7 +22,8 @@ import exceptions.PrecoInvalido;
 import view.ListagemView;
 /**Classe para objetos do tipo Gerente, onde são contidos, valores e metódos necessários para a implementação da classe.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Morae
+ * @author Luis Fernando Cintra
  * @see Usuario
  */
 public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopyable, ProdutoCopyable, CardapioCopyable, VendaCopyable, ListagemCopyable, GeraRelatoriosCopyable{
@@ -327,21 +328,30 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		ListagemView listagemView = new ListagemView();
 		listagemView.listarVenda(listaVendas);
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método estoqueTotal.
+	 * @param listaProdutos HashMap de produtos
+	 */
 	@Override
 	public boolean estoqueTotal(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoqueTotal(listaProdutos);
 		
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método estoquePorProduto.
+	 * @param listaProdutos HashMap de produtos
+	 */
 	@Override
 	public boolean estoquePorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.estoquePorProduto(listaProdutos);
 		
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método estoqueProdutosPertoDeVencer.
+	 * @param listaProdutos HashMap de produtos
+	 */
 	@Override
 	public boolean estoqueProdutosPertoDeVencer(HashMap<String, ArrayList<Produto>> listaProdutos) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
@@ -349,27 +359,39 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		
 	}
 	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método fornecedorPorProduto.
+	 * @param listaProdutos HashMap de produtos
+	 */
 	@Override
 	public boolean fornecedorPorProduto(HashMap<String, ArrayList<Produto>> listaProdutos) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.fornecedorPorProduto(listaProdutos);
 		
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método fornecedorPorFornecedor.
+	 * @param listaFornecedores Lista de fornecedores
+	 */
 	@Override
 	public boolean fornecedorPorFornecedor(ArrayList<Fornecedor> listaFornecedores) throws RelatorioNaoGerado, ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.fornecedorPorFornecedor(listaFornecedores);
 		
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método vendasTotal.
+	 * @param listaVendas Lista de vendas
+	 */
 	@Override
 	public boolean vendasTotal(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();
 		return relatorio.vendasTotal(listaVendas);
 		
 	}
-
+	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método vendasPorPeriodo.
+	 * @param listaVendas Lista de vendas
+	 */
 	@Override
 	public boolean vendasPorPeriodo(ArrayList<Venda> listaVendas) throws ErroGrave {
 		GeraRelatorio relatorio = new GeraRelatorio();
@@ -377,6 +399,9 @@ public class Gerente extends Usuario implements FornecedorCopyable, UsuarioCopya
 		
 	}
 	
+	/**Metódo para instanciar um objeto do tipo GeraRelatorio e retornar o método vendasPorTipoDePrato.
+	 * @param listaVendas Lista de vendas
+	 */
 	@Override
 	public boolean vendasPorTipoDePrato(ArrayList<Venda> listaVendas) throws ErroGrave, RelatorioNaoGerado {
 		GeraRelatorio relatorio = new GeraRelatorio();

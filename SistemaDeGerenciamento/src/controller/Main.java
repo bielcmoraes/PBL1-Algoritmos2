@@ -72,7 +72,7 @@ public class Main {
 				String[] infoLogin = LoginView.logar();
 				usuarioLogado = login.autenticarLogin(dados.getListaUsuarios(), infoLogin);
 				if(usuarioLogado == null) {
-					LoginView.erroLogin();
+					System.out.println("Erro no Login! \n Tente novamente!");
 				}
 			}while(usuarioLogado == null);
 			boolean logado = true;
