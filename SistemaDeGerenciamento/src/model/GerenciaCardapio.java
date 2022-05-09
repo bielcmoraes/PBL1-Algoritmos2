@@ -41,6 +41,10 @@ public class GerenciaCardapio implements CardapioCopyable {
 				throw new PrecoInvalido();
 			}
 			
+			if (preco < 0) {
+				throw new PrecoInvalido();
+			}
+			
 			String [] ingredientes = info[4].split(";");
 			HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
 			HashMap<String, Double> receita = new HashMap<String, Double>();
@@ -53,6 +57,9 @@ public class GerenciaCardapio implements CardapioCopyable {
 						try {
 							quantidade = Double.parseDouble(ingredientes[i-2]);
 						} catch (NumberFormatException e) {
+							throw new QuantidadeInvalida();
+						}
+						if (quantidade <= 0) {
 							throw new QuantidadeInvalida();
 						}
 						receita.put(ingredientes[i], quantidade);
@@ -102,6 +109,10 @@ public class GerenciaCardapio implements CardapioCopyable {
 						throw new PrecoInvalido();
 					}
 					
+					if (preco < 0) {
+						throw new PrecoInvalido();
+					}
+					
 					String [] ingredientes = info[4].split(";");
 					HashMap<String, ArrayList<Produto>> produtos = new HashMap<String, ArrayList<Produto>>();
 					HashMap<String, Double> receita = new HashMap<String, Double>();
@@ -116,6 +127,10 @@ public class GerenciaCardapio implements CardapioCopyable {
 								} catch (NumberFormatException e) {
 									throw new QuantidadeInvalida();
 								}
+								
+								if (quantidade <= 0) {
+									throw new QuantidadeInvalida();
+								}
 								receita.put(ingredientes[i], quantidade);
 							} else {
 								throw new ProdutoNaoCadastrado();
@@ -126,6 +141,7 @@ public class GerenciaCardapio implements CardapioCopyable {
 						prato.setPreco(preco);
 						prato.setDescricao(info[2]);
 						prato.setCategoria(info[3]);
+						return true;
 					} else {
 						throw new FormatoIngredientesInvalido();
 					}
