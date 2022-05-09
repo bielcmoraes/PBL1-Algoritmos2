@@ -40,6 +40,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 			throw new PrecoInvalido();
 		}
 		
+		if (preco < 0) {
+			throw new PrecoInvalido();
+		}
 		
 		String [] info2 = info[2].split(" ");
 		
@@ -51,6 +54,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 		try {
 			quantidade = Double.parseDouble(info2[0]);
 		} catch (java.lang.NumberFormatException e) {
+			throw new QuantidadeInvalida();
+		}
+		
+		if (quantidade <= 0.0) {
 			throw new QuantidadeInvalida();
 		}
 		
@@ -131,6 +138,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 							throw new PrecoInvalido();
 						}
 						
+						if (preco < 0) {
+							throw new PrecoInvalido();
+						}
+						
 						String [] info2 = info[2].split(" ");
 						
 						if (info2.length != 2) {
@@ -141,6 +152,10 @@ public class GerenciaProdutos implements ProdutoCopyable {
 						try {
 							quantidade = Double.parseDouble(info2[0]);
 						} catch (java.lang.NumberFormatException a) {
+							throw new QuantidadeInvalida();
+						}
+						
+						if (quantidade <= 0.0) {
 							throw new QuantidadeInvalida();
 						}
 						
@@ -203,6 +218,9 @@ public class GerenciaProdutos implements ProdutoCopyable {
 					if(codigoProduto.equals(produto.getId())) {
 						int index = estoque.indexOf(produto);
 						estoque.remove(index);
+						if (estoque.size() <= 0) {
+							listaProdutos.remove(produto.getNome());
+						}
 						return true;
 					}
 				}
