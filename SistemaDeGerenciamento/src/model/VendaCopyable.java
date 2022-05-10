@@ -23,6 +23,7 @@ public interface VendaCopyable {
 	 * @param listaIds Lista de id's
 	 * @param cardapio Lista de pratos
 	 * @param info Entradas do usuário
+	 * @param listaProdutos Lista de produtos
 	 * @return true se a venda for cadastrada com sucesso e false se a venda não for cadastrada com sucesso
 	 * @throws QuantidadeProdutosInsuficiente 
 	 * @throws ErroGrave 
@@ -36,6 +37,7 @@ public interface VendaCopyable {
 	 * @param cardapio Lista de pratos
 	 * @param codigoVenda Id da venda que deseja editar
 	 * @param info Entradas do usuário
+	 * @param listaProdutos Lista de produtos
 	 * @return true se a venda for editada com sucesso e false se a venda não for editada com sucesso	 
 	 * @throws ErroGrave 
 	 * @throws QuantidadeProdutosInsuficiente 

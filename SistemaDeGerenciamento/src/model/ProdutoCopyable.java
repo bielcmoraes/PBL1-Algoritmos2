@@ -23,6 +23,7 @@ public interface ProdutoCopyable {
 	 * @param listaProdutos Lista de produtos
 	 * @param listaIds Lista de id's
 	 * @param info Entradas do usuário
+	 * @param listaFornecedor Lista de forncedores
 	 * @return true se o produto for cadastrado com sucesso e false se o produto não for cadastrado com sucesso
 	 * @throws ErroGrave 
 	 * @throws FornecedorNaoCadastrado 
@@ -38,6 +39,7 @@ public interface ProdutoCopyable {
 	 * @param listaProdutos Lista de produtos
 	 * @param codigoProduto Id do produto que deseja editar
 	 * @param info Entrada do usuário
+	 * @param listaFornecedor Lista de forncedores
 	 * @return true se o produto for editado com sucesso e false se o produto não for editado com sucesso
 	 * @throws ErroGrave 
 	 * @throws FornecedorNaoCadastrado 

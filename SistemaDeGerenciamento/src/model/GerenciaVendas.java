@@ -29,6 +29,7 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @param listaIds Lista de IDs
 	 * @param cardapio Lista de Pratos
 	 * @param info Lista com as entradas do usuario
+	 * @param listaProdutos Lista de produtos
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 * @throws QuantidadeProdutosInsuficiente 
 	 * @throws PratoNaoCadastrado 
@@ -125,6 +126,7 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @param cardapio Lista de Pratos
 	 * @param codigoVenda Codigo da Venda a ser editada
 	 * @param info Lista com as entradas do usuario
+	 * @param listaProdutos Lista de produtos
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
 	 * @throws VendaNaoCadastrada 
 	 */

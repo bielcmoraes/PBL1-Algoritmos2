@@ -404,7 +404,7 @@ public class Main {
 								((Funcionario) usuarioLogado).mostrarCardapio(dados.getCardapio());
 								break;
 							case 2:
-								//((Funcionario) usuarioLogado).listarProduto(dados.getListaProdutos());
+								((Funcionario) usuarioLogado).listarProduto(dados.getListaProdutos());
 								break;
 							case 3:
 								((Funcionario) usuarioLogado).listarVenda(dados.getListaVendas());
