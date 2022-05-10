@@ -135,7 +135,7 @@ public class Main {
 							try {
 								((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
-									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+									| QuantidadeProdutosInsuficiente | ErroGrave | VendaNaoCadastrada e) {
 								System.out.println(e.toString());
 							}
 							break;
@@ -382,7 +382,7 @@ public class Main {
 							try {
 								((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
-									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+									| QuantidadeProdutosInsuficiente | ErroGrave | VendaNaoCadastrada e) {
 								System.out.println(e.toString());
 							}
 							break;

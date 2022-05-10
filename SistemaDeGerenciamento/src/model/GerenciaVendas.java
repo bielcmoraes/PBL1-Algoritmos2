@@ -89,6 +89,9 @@ public class GerenciaVendas implements VendaCopyable {
 				} else {
 					quantUsada = quantUsada - estoque.get(0).getQuantidade();
 					estoque.remove(0);
+					if (listaProdutos.get(produto).size() <= 0) {
+						listaProdutos.remove(produto);
+					}
 					if (quantRestante == 0) {
 						break;
 					}
@@ -123,10 +126,11 @@ public class GerenciaVendas implements VendaCopyable {
 	 * @param codigoVenda Codigo da Venda a ser editada
 	 * @param info Lista com as entradas do usuario
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo.
+	 * @throws VendaNaoCadastrada 
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) 
-			throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave{
+			throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave, VendaNaoCadastrada{
 		
 		try {
 			for(Venda venda : listaVendas) {
@@ -223,6 +227,9 @@ public class GerenciaVendas implements VendaCopyable {
 							} else {
 								quantUsada = quantUsada - estoque.get(0).getQuantidade();
 								estoque.remove(0);
+								if (listaProdutos.get(produto).size() <= 0) {
+									listaProdutos.remove(produto);
+								}
 								if (quantRestante == 0) {
 									break;
 								}
@@ -244,12 +251,12 @@ public class GerenciaVendas implements VendaCopyable {
 					return true;
 				}
 			}
+			throw new VendaNaoCadastrada();
 		} catch(ArrayIndexOutOfBoundsException e1) {
 			throw new ErroGrave();
 		} catch(NullPointerException e2) {
 			throw new ErroGrave();
 		}
-		return false;
 	}
 	/**
 	 * O método é responsável por excluir um objeto do tipo Venda em uma ArrayList<Venda>.
@@ -278,4 +285,6 @@ public class GerenciaVendas implements VendaCopyable {
 			throw new ErroGrave();
 		}
 	}
+	
+	
 }

@@ -42,8 +42,9 @@ public interface VendaCopyable {
 	 * @throws PratoNaoCadastrado 
 	 * @throws FormatoHorarioInvalido 
 	 * @throws FormatoDataInvalido 
+	 * @throws VendaNaoCadastrada 
 	 */
-	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave;
+	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda, String [] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave, VendaNaoCadastrada;
 	
 	/**Assinatura do metódo excluirVenda
 	 * 
