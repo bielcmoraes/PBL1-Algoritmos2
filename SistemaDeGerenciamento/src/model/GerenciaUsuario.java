@@ -9,7 +9,8 @@ import exceptions.NaoEncontrado;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir usuário que foram especificados na classe UsuarioCopyable.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class GerenciaUsuario implements UsuarioCopyable {

@@ -13,7 +13,8 @@ import exceptions.QuantidadeInvalida;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir pratos da classe CardapioCopyable.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class GerenciaCardapio implements CardapioCopyable {

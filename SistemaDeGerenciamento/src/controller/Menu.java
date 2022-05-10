@@ -5,7 +5,8 @@ import view.SubMenuView;
 
 /**Classe reponsável por organizar as telas dos diferente menus, de Gerente e Funcionário, que serão exibidas no sistema.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class Menu {

@@ -17,7 +17,8 @@ import exceptions.VendaNaoCadastrada;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir vendas da classe VendaCopyable.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class GerenciaVendas implements VendaCopyable {

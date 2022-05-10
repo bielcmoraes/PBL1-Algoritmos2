@@ -12,7 +12,8 @@ import exceptions.VendaNaoCadastrada;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento de vendas e utilizada para "resolver" o problema de herança multipla em Java.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public interface VendaCopyable {

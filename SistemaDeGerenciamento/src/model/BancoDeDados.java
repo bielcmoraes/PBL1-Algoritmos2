@@ -5,7 +5,8 @@ import java.util.HashMap;
 
 /**Classe responsável por instanciar todos os ArrayList's que são utilizados no programa.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public class BancoDeDados {

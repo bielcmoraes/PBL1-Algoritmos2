@@ -12,7 +12,8 @@ import exceptions.QuantidadeInvalida;
 
 /**Estrutura que contém as assinaturas dos metódos relacionados ao gerenciamento do cardápio e utilizada para "resolver" o problema de herança multipla em Java.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  *
  */
 public interface CardapioCopyable {

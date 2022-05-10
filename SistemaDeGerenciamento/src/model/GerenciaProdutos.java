@@ -15,7 +15,8 @@ import exceptions.QuantidadeInvalida;
 
 /**Classe responsável por implementar os metódos de cadastrar, editar e excluir produto que foram especificados na classe ProdutoCopyable.
  * 
- *  @author Gabriel Moraes e Luis Fernando Cintra
+ *  @author Gabriel Moraes
+ *  @author Luis Fernando Cintra
  *
  */
 public class GerenciaProdutos implements ProdutoCopyable {

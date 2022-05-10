@@ -5,7 +5,8 @@ import java.util.HashMap;
 
 /**Classe para objetos do tipo Prato, onde são contidos, valores e metódos necessarios para implementação da classe.
  * 
- * @author Gabriel Moraes e Luis Fernando Cintra
+ * @author Gabriel Moraes
+ * @author Luis Fernando Cintra
  * @see Entidade
  */
 public class Prato extends Entidade{
