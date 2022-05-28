@@ -24,7 +24,10 @@ public class Produto extends Entidade {
 	 * @param listaIds Lista de id's
 	 * @param nome Nome do produto
 	 * @param preco Preço do produto
+	 * @param quantidade Quantidade do produto
+	 * @param unidadeDeMedida Unidade de medida do produto
 	 * @param validade Validade do produto
+	 * @param fornecedores Fornecedores do produto
 	 */
 	public Produto(ArrayList<String> listaIds, String nome, Double preco, Double quantidade, String unidadeDeMedida, LocalDate validade, ArrayList<Fornecedor> fornecedores) {
 		super(listaIds);
@@ -95,11 +98,15 @@ public class Produto extends Entidade {
 	public void setFornecedores(ArrayList<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
 	}
-
+	
+	/**Metódo para retorno da unidade de medida do produto.
+	 * @return unidadeDeMedida Unidade de medida do produto*/
 	public String getUnidadeDeMedida() {
 		return unidadeDeMedida;
 	}
 
+	/**Metódo para alterar a unidade de medida do produto.
+	 * @param unidadeDeMedida Unidade de medida do produto*/
 	public void setUnidadeDeMedida(String unidadeDeMedida) {
 		this.unidadeDeMedida = unidadeDeMedida;
 	}

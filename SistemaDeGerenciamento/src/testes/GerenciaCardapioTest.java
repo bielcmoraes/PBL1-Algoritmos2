@@ -383,7 +383,7 @@ class GerenciaCardapioTest {
 		gerenciaCardapio.excluirPrato(bancoDeDados.getCardapio(), bancoDeDados.getListaIds(), codigoPrato3);
 		
 		assertEquals(0, bancoDeDados.getCardapio().size(),
-		"Tentando excluir tres pratos cadastrados");
+		"Verificando se a lista esta vazia apos a exclusao dos tres pratos cadastrados");
 	}
 	
 }

@@ -27,6 +27,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @param listaProdutos Lista de Produtos
 	 * @param listaIds Lista de IDs
 	 * @param info Lista com as entradas do usuario
+	 * @param listaFornecedor Lista de fornecedores
 	 * @return true caso o cadastro ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override
@@ -121,6 +122,7 @@ public class GerenciaProdutos implements ProdutoCopyable {
 	 * @param listaProdutos Lista de Produtos
 	 * @param codigoProduto Código do Produto a ser editado
 	 * @param info Lista com as entradas do usuario
+	 * @param listaFornecedor Lista de fornecedores
 	 * @return true caso a edição ocorra corretamente, false caso ocorra algum problema durante o processo
 	 */
 	@Override

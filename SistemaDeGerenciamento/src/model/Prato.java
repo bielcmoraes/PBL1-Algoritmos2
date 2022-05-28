@@ -27,6 +27,7 @@ public class Prato extends Entidade{
 	 * @param descricao Descrição do prato
 	 * @param categoria Categoria do prato
 	 * @param produtos Produtos que compõem o prato
+	 * @param receita Ingredientes e quantidade utilizado no produto
 	 */
 	public Prato(ArrayList<String> listaIds, String nome, Double preco, String descricao, String categoria, HashMap<String, ArrayList<Produto>> produtos, HashMap<String, Double> receita) {
 		
@@ -87,18 +88,26 @@ public class Prato extends Entidade{
 		this.categoria = categoria;
 	}
 
+	/**Metódo para retorno de lista de produtos utilizados no prato.
+	 * @return produtos Lista de produtos*/
 	public HashMap<String, ArrayList<Produto>> getProdutos() {
 		return produtos;
 	}
 
+	/**Metódo para alterar a lista de produtos utilizados no prato.
+	 * @param produtos Novos produtos do prato*/
 	public void setProdutos(HashMap<String, ArrayList<Produto>> produtos) {
 		this.produtos = produtos;
 	}
 
+	/**Metódo para retorno de lista da receita do prato.
+	 * @return receita Receita do prato*/
 	public HashMap<String, Double> getReceita() {
 		return receita;
 	}
 
+	/**Metódo para alterar a receita do prato.
+	 * @param receita Nova receita do prato*/
 	public void setReceita(HashMap<String, Double> receita) {
 		this.receita = receita;
 	}

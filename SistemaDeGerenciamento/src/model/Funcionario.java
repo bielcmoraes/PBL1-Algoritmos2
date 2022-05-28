@@ -57,10 +57,11 @@ public class Funcionario extends Usuario implements VendaCopyable, ListagemCopya
 	 * @throws PratoNaoCadastrado 
 	 * @throws FormatoHorarioInvalido 
 	 * @throws FormatoDataInvalido 
+	 * @throws VendaNaoCadastrada 
 	 */
 	@Override
 	public boolean editarVenda(ArrayList<Venda> listaVendas, ArrayList<Prato> cardapio, String codigoVenda,
-			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave {
+			String[] info, HashMap<String, ArrayList<Produto>> listaProdutos) throws FormatoDataInvalido, FormatoHorarioInvalido, PratoNaoCadastrado, QuantidadeProdutosInsuficiente, ErroGrave, VendaNaoCadastrada {
 		GerenciaVendas gerenciamentoVendas = new GerenciaVendas();
 		return gerenciamentoVendas.editarVenda(listaVendas, cardapio, codigoVenda, info, listaProdutos);
 	}

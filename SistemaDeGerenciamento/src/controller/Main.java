@@ -1,7 +1,7 @@
 /***************************
 Autores: Gabriel Cordeiro Moraes e Luis Fernando do Rosario Cintra
 Componente Curricular: EXA863 MI Programação
-Concluido em: 11/04/2022
+Concluido em: 10/05/2022
 Declaro que este código foi elaborado por nós de forma individual e não contém nenhum
 trecho de código de outro colega ou de outro autor, tais como provindos de livros e
 apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
@@ -135,7 +135,7 @@ public class Main {
 							try {
 								((Gerente) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
-									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+									| QuantidadeProdutosInsuficiente | ErroGrave | VendaNaoCadastrada e) {
 								System.out.println(e.toString());
 							}
 							break;
@@ -382,7 +382,7 @@ public class Main {
 							try {
 								((Funcionario) usuarioLogado).editarVenda(dados.getListaVendas(), dados.getCardapio(),codigoVendaEdit, infoEditVenda, dados.getListaProdutos());
 							} catch (FormatoDataInvalido | FormatoHorarioInvalido | PratoNaoCadastrado
-									| QuantidadeProdutosInsuficiente | ErroGrave e) {
+									| QuantidadeProdutosInsuficiente | ErroGrave | VendaNaoCadastrada e) {
 								System.out.println(e.toString());
 							}
 							break;
@@ -404,7 +404,7 @@ public class Main {
 								((Funcionario) usuarioLogado).mostrarCardapio(dados.getCardapio());
 								break;
 							case 2:
-								//((Funcionario) usuarioLogado).listarProduto(dados.getListaProdutos());
+								((Funcionario) usuarioLogado).listarProduto(dados.getListaProdutos());
 								break;
 							case 3:
 								((Funcionario) usuarioLogado).listarVenda(dados.getListaVendas());
