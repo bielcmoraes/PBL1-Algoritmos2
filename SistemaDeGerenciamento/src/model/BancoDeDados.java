@@ -16,6 +16,7 @@ public class BancoDeDados {
 	private HashMap<String, ArrayList<Produto>> listaProdutos = new HashMap<String, ArrayList<Produto>>();
 	private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	private ArrayList<Venda> listaVendas = new ArrayList<Venda>();
+	private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 	private ArrayList<String> listaIds = new ArrayList<String>();
 	
 	/**Metódo para retorno da lista de fornecedores
@@ -48,6 +49,12 @@ public class BancoDeDados {
 		return cardapio;
 	}
 	
+	/**Metódo para retorno da lista de clientes
+	 * @return Retorna o atributo privado listaClientes*/
+	public ArrayList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
 	/**Metódo para retorno da lista de id's
 	 * @return Retorna o atributo privado listaIds*/
 	public ArrayList<String> getListaIds() {
